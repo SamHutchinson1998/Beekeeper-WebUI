@@ -2,5 +2,8 @@
     <a class="navbar-brand" href="#">
       {% load static %}
       <img src="{% static 'logos/uoh-white.svg' %}" width="90" height="40" alt="">
+      {% if user.is_authenticated %}
+        <p><a href="{% url 'logout' %}">logout</a></p>
+      {%endif%}
     </a>
   </nav>

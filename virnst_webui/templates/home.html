@@ -3,7 +3,6 @@
 {% block content %}
 {% if user.is_authenticated %}
   <div style="text-align:center">Hi {{ user.username }}!  Welcome to VirNST UI!</div>
-  <p><a href="{% url 'logout' %}">logout</a></p>
   {% include '_canvas.html'%}
 {% else %}
   <p>You are not logged in</p>
