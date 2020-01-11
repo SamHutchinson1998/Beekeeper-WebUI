@@ -1,5 +1,7 @@
+{% load static %}
+<script type="text/javascript" src="{% static 'javascript/draggables.js' %}"></script>
+<link href="{% static 'css/draggables.css' %}" rel="stylesheet">
+
 {% for domain in domains%}
-<tr>
-  <th>{{ domain }}</th>
-</tr>
+  <div class="draggable"> {{ domain }} </div>
 {% endfor %}
