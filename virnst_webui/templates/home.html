@@ -2,7 +2,6 @@
 {% block title %}Home{% endblock %}
 {% block content %}
 {% if user.is_authenticated %}
-  <div style="text-align:center">Hi {{ user.username }}!  Welcome to VirNST UI!</div>
   {% include '_canvas.html'%}
 {% else %}
   <p>You are not logged in</p>

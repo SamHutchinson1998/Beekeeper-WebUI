@@ -1,8 +1,6 @@
 // target elements with the "draggable" class
 interact('.draggable')  
   .draggable({
-    // enable inertial throwing
-    inertia: true,
     // keep the element within the area of it's parent
     restrict: {
       restriction: "parent",
