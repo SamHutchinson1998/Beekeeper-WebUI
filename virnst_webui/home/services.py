@@ -1,4 +1,6 @@
 import libvirt
+from xml.dom import minidom
+
 
 def get_domains():
   domain_list = []
