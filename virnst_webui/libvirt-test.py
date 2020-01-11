@@ -1,23 +1,25 @@
-# Example-4.py
+# Example-6.py
 from __future__ import print_function
 import sys
 import libvirt
+from xml.dom import minidom
 
-conn = libvirt.open('qemu:///sams-dissertation.uksouth.cloudapp.azure.com')
+conn = libvirt.open('qemu:///system')
 if conn == None:
     print('Failed to open connection to qemu:///system', file=sys.stderr)
     exit(1)
 
-domainIDs = conn.listDomainsID()
-if domainIDs == None:
-    print('Failed to get a list of domain IDs', file=sys.stderr)
-
-print("Active domain IDs:")
-if len(domainIDs) == 0:
-    print('  None')
+domains = conn.listAllDomains(0)
+if len(domains) != 0:
+    for domain in domains:
+        print(domain.name())
+	raw_xml = domain.XMLDesc(0)
+	xml = minidom.parseString(raw_xml)
+	graphicsTypes = xml.getElementsByTagName('graphics')
+	for graphicsType in graphicsTypes:
+	    print(graphicsType.getAttribute('port'))
 else:
-    for domainID in domainIDs:
-        print('  '+str(domainID))
+    print('  None')
 
 conn.close()
 exit(0)
