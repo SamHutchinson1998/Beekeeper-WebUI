@@ -2,7 +2,7 @@ import interact from 'interactjs'
 
 const position = { x: 0, y: 0 }
 
-interact('.draggable').draggable({
+interact('.domain').draggable({
   onmove: function(event) {
     const target = event.target;
 
@@ -48,7 +48,6 @@ function onMove (event) {
   target.setAttribute('data-y', y);
 }
 
-items
-  .draggable({
-    onmove: onMove(event)
-  })
+items.draggable({
+  onmove: onMove(event)
+})
