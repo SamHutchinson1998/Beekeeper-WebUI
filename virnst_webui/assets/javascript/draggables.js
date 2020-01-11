@@ -1,6 +1,6 @@
 import interact from 'interactjs'
 
-const position = { x: 0, y: 0 }
+const position = { x: 20, y: 20 }
 
 interact('.draggable').draggable({
   listeners: {
