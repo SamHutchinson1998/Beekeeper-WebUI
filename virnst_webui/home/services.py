@@ -1,7 +1,6 @@
 import libvirt
 from xml.dom import minidom
 
-
 def get_domains():
   domain_list = []
   conn = libvirt.open('qemu:///system')
@@ -17,7 +16,7 @@ def get_domain_port(domain):
   port = 5900 #first port a domain attaches to if there are no other domains
   raw_xml = domain.XMLDesc(0)
   xml = minidom.parseString(raw_xml)
-  graphicsTypes = cml.getElementsBytagName('graphics')
+  graphicsTypes = cml.getElementsByTagName('graphics')
   for graphicsType in graphicsTypes:
     port = graphicsType.getAttribute('port')
   return port
