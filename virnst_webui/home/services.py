@@ -5,6 +5,6 @@ def get_domains():
   conn = libvirt.open('qemu:///system')
   domains = conn.listAllDomains(0)
   for domain in domains:
-    domain_list.append(domain)
+    domain_list.append(domain.name())
   conn.close()
   return domain_list
