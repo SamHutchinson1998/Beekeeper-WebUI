@@ -3,8 +3,9 @@
       {% load static %}
       <img src="{% static 'logos/uoh-white.svg' %}" width="90" height="40" alt="">
       {% if user.is_authenticated %}
-        <button class="btn btn-primary" onclick="window.location.href='{% url 'logout' %}';">logout</button>
-        <p><a href="{% url 'logout' %}">logout</a></p>
+        <button class="btn btn-primary" onclick="window.location.href='{% url 'logout' %}';">Logout</button>
+      {% else %}
+        <button class="btn btn-primary" onclick="window.location.href='{% url 'login' %}';">Login</button>
       {%endif%}
     </a>
   </nav>
