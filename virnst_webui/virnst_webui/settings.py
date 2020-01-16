@@ -25,6 +25,10 @@ SECRET_KEY = 'ofaynw4d$d=yv)-n8b&tga7kv_bw7jwi++y1maly7if*(q$ic9'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+if DEBUG:
+    import mimetypes
+    mimetypes.add_type("text/javascript", ".js", True)
+
 ALLOWED_HOSTS = ['sams-dissertation.uksouth.cloudapp.azure.com']
 
 
