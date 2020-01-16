@@ -27,7 +27,7 @@ DEBUG = True
 
 if DEBUG:
     import mimetypes
-    mimetypes.add_type("text/javascript", ".js", True)
+    mimetypes.add_type("application/javascript", ".js", True)
 
 ALLOWED_HOSTS = ['sams-dissertation.uksouth.cloudapp.azure.com']
 
