@@ -17,10 +17,15 @@
   <title>{% block title %} VirNST-UI {% endblock %}</title>
   {% include '_header.html'%}
 </head>
+{% if user.is_authenticated %}
 <body onload="main(document.getElementById('graphContainer'))">
 	<!-- Creates a container for the graph with a grid wallpaper -->
 	<div id="graphContainer"
 		style="position:relative;overflow:hidden;width:321px;height:241px;background: #656565; cursor:default;">
 	</div>
 </body>
+{% else %}
+  <p>You are not logged in</p>
+{% endif %}
+
 </html>
