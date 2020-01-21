@@ -29,7 +29,7 @@ if DEBUG:
     import mimetypes
     mimetypes.add_type("application/javascript", ".js", True)
 
-ALLOWED_HOSTS = ['sams-dissertation.uksouth.cloudapp.azure.com']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
