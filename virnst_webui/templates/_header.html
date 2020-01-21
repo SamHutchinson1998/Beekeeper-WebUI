@@ -1,27 +1,18 @@
-<nav class="navbar navbar-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
   {% load static %}
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">
-        <img src="{% static 'logos/uoh-black.svg' %}" width="90" height="40" alt=""> 
-      </a>
-    </div>
-    {% if user.is_authenticated %}
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">File <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><a href="#">Save</a></li>
-              <li role="separator" class="divider"></li>
-              <li><a href="#">Upload</a></li>
-            </ul>
-          </li>
-        </ul>
+  <a class="navbar-brand" href="#">
+    <img src="{% static 'logos/uoh-black.svg' %}" width="90" height="40" alt=""> 
+  </a>
+  {% if user.is_authenticated %}
+    <div>
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">File <span class="caret"></span></a>
+      <div class="dropdown-menu dropdown-menu-right">
+        <a class="dropdown-item" href="#">Save</a>
+        <a class="dropdown-item" href="#">Upload</a>
       </div>
-      <button class="btn btn-primary" onclick="window.location.href='{% url 'logout' %}';">Logout</button>
-    {% else %}
-      <button class="btn btn-primary" onclick="window.location.href='{% url 'login' %}';">Login</button>
-    {%endif%}
-  </div>
+    </div>
+    <button class="btn btn-primary" onclick="window.location.href='{% url 'logout' %}';">Logout</button>
+  {% else %}
+    <button class="btn btn-primary" onclick="window.location.href='{% url 'login' %}';">Login</button>
+  {%endif%}
 </nav>
