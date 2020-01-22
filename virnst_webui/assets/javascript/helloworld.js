@@ -39,3 +39,10 @@ function main(container)
     }
   }
 };
+
+function saveGraph()
+{
+  var encoder = new mxCodec();
+  var result = encoder.encode(graph.getModel());
+  var xml = mxUtils.getXml(result);
+}
