@@ -28,14 +28,27 @@ function main(container)
     graph.getModel().beginUpdate();
     try
     {
-        var v1 = graph.insertVertex(parent, null, 'Hello,', 20, 20, 80, 30);
-        var v2 = graph.insertVertex(parent, null, 'World!', 200, 150, 80, 30);
-        var e1 = graph.insertEdge(parent, null, '', v1, v2);
+      var v1 = graph.insertVertex(parent, null, 'Hello,', 20, 20, 80, 30);
+      var v2 = graph.insertVertex(parent, null, 'World!', 200, 150, 80, 30);
+      var e1 = graph.insertEdge(parent, null, '', v1, v2);
     }
     finally
     {
-        // Updates the display
-        graph.getModel().endUpdate();
+      // Updates the display
+      // graph.getModel().endUpdate();
+      // read state on load 
+      if(window.localStorage.graphState){
+        var doc = mxUtils.parseXml(window.localStorage.graphState);
+        var dec = new mxCodec(doc);
+        dec.decode(doc.documentElement, graph.getModel());
+      }
+      // save state on change
+      graph.getModel().addListener('change',function(){
+        var codec = new mxCodec();
+        window.localStorage.graphState = codec.encode(
+                graph.getModel()
+            ).outerHTML;
+      });
     }
   }
 };
