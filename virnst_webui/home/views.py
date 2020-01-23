@@ -17,6 +17,9 @@ class HomePageView(TemplateView):
     if request.is_ajax and request.method == "GET":
       xml_string = request.GET.get("XML", None)
       print(xml_string)
+      xml_file = open("graph.xml", "w")
+      xml_file.write(xml_string)
+      xml_file.close()
       return JsonResponse({"valid":True}, status = 200)
     return JsonResponse({"valid":False}, status = 200)
 
