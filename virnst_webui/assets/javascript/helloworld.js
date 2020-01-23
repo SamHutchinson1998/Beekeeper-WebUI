@@ -41,6 +41,7 @@ function main(container)
         var result = encoder.encode(graph.getModel());
         var xml = mxUtils.getXml(result);
         console.log('xml', xml);
+        console.log('raw_data', result)
         sendRequest(xml);
       });
     }
@@ -49,10 +50,8 @@ function main(container)
 
 function sendRequest(xml)
 {
-  var serialize = new XMLSerializer();
-  var serializedXml = serialize.serializeToString(xml);
   $.ajax({
     url: "{% url 'save_xml' %}",
-    data: {'XML': serializedXml},
+    data: {'XML': xml},
   });
 }
