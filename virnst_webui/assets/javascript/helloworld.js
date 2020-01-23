@@ -19,40 +19,31 @@ function main(container)
 
     // Enables rubberband selection
     new mxRubberband(graph);
-    
-    getXml()
-    
+        
     // Gets the default parent for inserting new cells. This
     // is normally the first child of the root (ie. layer 0).
     var parent = graph.getDefaultParent();
-                    
-    // Adds cells to the model in a single step
-    graph.getModel().beginUpdate();
-    try
-    {
-      var v1 = graph.insertVertex(parent, null, 'Hello,', 20, 20, 80, 30);
-      var v2 = graph.insertVertex(parent, null, 'World!', 200, 150, 80, 30);
-      var e1 = graph.insertEdge(parent, null, '', v1, v2);
-    }
-    finally
-    {
-      // Updates the display
-      graph.getModel().endUpdate();
-      graph.getModel().addListener('change', function(){
-        var encoder = new mxCodec();
-        var result = encoder.encode(graph.getModel());
-        var xml = mxUtils.getXml(result);
-        console.log('xml', xml);
-        console.log('raw_data', result)
-        sendRequest(xml);
-      });
-    }
+    var string = getXml();
+    var xml_string = mxUtils.parseXml(string);
+    var codec = new mxCodec(xml_string);
+    codec.decode(doc.documentElement, graph.getModel());
+    
+    graphListener(graph)
+
   }
 };
 
-function graphListener()
+function graphListener(graph)
 {
-
+  // Updates the display
+  graph.getModel().addListener('change', function(){
+    var encoder = new mxCodec();
+    var result = encoder.encode(graph.getModel());
+    var xml = mxUtils.getXml(result);
+    console.log('xml', xml);
+    console.log('raw_data', result)
+    sendRequest(xml);
+  });
 }
 
 function sendRequest(xml)
@@ -71,7 +62,7 @@ function getXml()
   $.ajax({
     url: "retrieveXml",
     success: function(result){
-      console.log('result', result["response"]);
+      // Do nothing
     }
   })
   return result["response"]
