@@ -51,7 +51,7 @@ function main(container)
 function sendRequest(xml)
 {
   $.ajax({
-    url: "{% url 'save_xml' %}",
+    url: "home",
     data: {'XML': xml},
   });
 }
