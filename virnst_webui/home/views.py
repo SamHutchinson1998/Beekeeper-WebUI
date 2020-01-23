@@ -22,4 +22,11 @@ class HomePageView(TemplateView):
       xml_file.close()
       return JsonResponse({"valid":True}, status = 200)
     return JsonResponse({"valid":False}, status = 200)
+  
+  def retrieveXml(request):
+    if request.is_ajax and request.method == "GET":
+      xml_file = open("graph.xml", "r")
+      xml_string = xml_file.read()
+      xml_file.close()
+      return JsonResponse(xml_string, status = 200)
 

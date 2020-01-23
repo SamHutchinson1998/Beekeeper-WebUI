@@ -20,6 +20,8 @@ function main(container)
     // Enables rubberband selection
     new mxRubberband(graph);
     
+    getXml()
+    
     // Gets the default parent for inserting new cells. This
     // is normally the first child of the root (ie. layer 0).
     var parent = graph.getDefaultParent();
@@ -57,4 +59,14 @@ function sendRequest(xml)
       console.log(result);
     }
   });
+}
+
+function getXml()
+{
+  $.ajax({
+    url: "retrieveXml",
+    success: function(result){
+      console.log('result', result)
+    }
+  })
 }
