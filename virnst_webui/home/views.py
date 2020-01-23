@@ -5,10 +5,14 @@ from .services import get_domains
 
 class HomePageView(TemplateView):
   template_name = 'home.html'
+
   def get_context_data(self, *args, **kwargs):
     context = {
       'domains' : get_domains(),
     }
     return context
+
   def saveXml(request):
-    
+    if request.is_ajax and request.method == "GET":
+      xml_string = request.GET.get("XML", None)
+      print(xml_string)

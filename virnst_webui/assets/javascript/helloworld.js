@@ -53,6 +53,6 @@ function sendRequest(xml)
   var serializedXml = serialize.serializeToString(xml);
   $.ajax({
     url: "{% url 'save_xml' %}",
-    data: serializedXml,
+    data: {'XML': serializedXml},
   });
 }
