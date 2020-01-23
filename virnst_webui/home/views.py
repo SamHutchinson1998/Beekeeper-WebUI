@@ -28,5 +28,5 @@ class HomePageView(TemplateView):
       xml_file = open("graph.xml", "r")
       xml_string = xml_file.read()
       xml_file.close()
-      return JsonResponse(xml_string, status = 200)
+      return JsonResponse({"response":xml_string}, status = 200)
 

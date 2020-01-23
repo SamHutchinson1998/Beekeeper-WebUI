@@ -50,6 +50,11 @@ function main(container)
   }
 };
 
+function graphListener()
+{
+
+}
+
 function sendRequest(xml)
 {
   $.ajax({
@@ -66,7 +71,8 @@ function getXml()
   $.ajax({
     url: "retrieveXml",
     success: function(result){
-      console.log('result', result)
+      console.log('result', result["response"]);
     }
   })
+  return result["response"]
 }
