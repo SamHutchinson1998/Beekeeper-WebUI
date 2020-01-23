@@ -35,27 +35,14 @@ function main(container)
     finally
     {
       // Updates the display
-      // graph.getModel().endUpdate();
-      // read state on load 
-      if(window.localStorage.graphState){
-        var doc = mxUtils.parseXml(window.localStorage.graphState);
-        var dec = new mxCodec(doc);
-        dec.decode(doc.documentElement, graph.getModel());
-      }
-      // save state on change
-      graph.getModel().addListener('change',function(){
-        var codec = new mxCodec();
-        window.localStorage.graphState = codec.encode(
-                graph.getModel()
-            ).outerHTML;
+      graph.getModel().endUpdate();
+      graph.getModel().addListener('change', function(){
+        var encoder = new mxCodec();
+        var result = encoder.encode(graph.getModel());
+        var xml = mxUtils.getXml(result);
+        console.log('xml', xml);
+        
       });
     }
   }
 };
-
-function saveGraph()
-{
-  var encoder = new mxCodec();
-  var result = encoder.encode(graph.getModel());
-  var xml = mxUtils.getXml(result);
-}
