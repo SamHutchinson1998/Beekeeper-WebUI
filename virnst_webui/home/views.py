@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
+from django.http import JsonResponse
 from .services import get_domains
 # Create your views here.
 
@@ -16,3 +17,6 @@ class HomePageView(TemplateView):
     if request.is_ajax and request.method == "GET":
       xml_string = request.GET.get("XML", None)
       print(xml_string)
+      return JsonResponse({"valid":True}, status = 200)
+    return JsonResponse({"valid":False}, status = 200)
+

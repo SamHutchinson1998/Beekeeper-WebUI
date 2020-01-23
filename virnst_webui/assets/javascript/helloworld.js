@@ -53,5 +53,8 @@ function sendRequest(xml)
   $.ajax({
     url: "home",
     data: {'XML': xml},
+    success: function(result){
+      console.log(result);
+    }
   });
 }
