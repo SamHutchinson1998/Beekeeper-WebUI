@@ -24,9 +24,10 @@ function main(container)
     // is normally the first child of the root (ie. layer 0).
     var parent = graph.getDefaultParent();
     var string = getXml();
+    console.log(string);
     var xml_string = mxUtils.parseXml(string);
     var codec = new mxCodec(xml_string);
-    codec.decode(doc.documentElement, graph.getModel());
+    codec.decode(xml_string.documentElement, graph.getModel());
     
     graphListener(graph)
 
@@ -59,11 +60,14 @@ function sendRequest(xml)
 
 function getXml()
 {
+  var output = "";
   $.ajax({
     url: "retrieveXml",
+    async: false,
+    contentType: "text/xml",
     success: function(result){
-      // Do nothing
+      output = result["response"];
     }
   })
-  return result["response"]
+  return output;
 }
