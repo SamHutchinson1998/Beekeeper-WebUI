@@ -7,7 +7,8 @@
     <div class="dropdown mr-auto nav-item">
       <a href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">File <span class="caret"></span></a>
       <div class="dropdown-menu" aria-labelledby="dropdownMenu2" >
-        <a class="dropdown-item" href="#">Upload</a>
+        <a class="dropdown-item" data-toggle="modal" data-target="#image_form_modal">Upload</a>
+        {% include '_add_image_form.html' %}
       </div>
     </div>
     <button class="btn btn-primary" onclick="window.location.href='{% url 'logout' %}';">Logout</button>
