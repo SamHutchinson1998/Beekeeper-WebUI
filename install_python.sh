@@ -5,6 +5,7 @@
 apt-install python-pip
 apt-get install libvirt-dev
 pip install libvirt-python
+pip install Pillow
 
 apt-get install python3-venv
 echo "alias python=python3" >> .bashrc
