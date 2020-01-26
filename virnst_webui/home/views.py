@@ -19,7 +19,18 @@ class HomePageView(TemplateView):
   def upload_images(request):
     if request.method == "POST":
       next = request.POST.get('next', '/')
+      form = ImageForm(request.POST)
+      if form.is_valid():
+        get_successful_save(form)
+      else
+        messages.error(request, 'Unable to save Disk Image')
+
+  def get_successful_save(form):
+    if form.save()
+      messages.success(request, 'Disk Image uploaded successfully')
       return HttpResponseRedirect(next)
+    messages.error(request, 'Unable to save Disk Image')
+
 
   def saveXml(request):
     if request.is_ajax and request.method == "GET":
