@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.http import JsonResponse
 from .services import get_domains
+from .models import ImageForm
 # Create your views here.
 
 class HomePageView(TemplateView):
@@ -12,6 +13,13 @@ class HomePageView(TemplateView):
       'domains' : get_domains(),
     }
     return context
+  
+  def get_images(request):
+    if request.method == "POST":
+      form = ImageForm(request.POST)
+    else:
+      form = ImageForm()
+    return render(request, "")
 
   def saveXml(request):
     if request.is_ajax and request.method == "GET":
