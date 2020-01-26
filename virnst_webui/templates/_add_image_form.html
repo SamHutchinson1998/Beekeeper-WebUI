@@ -12,6 +12,7 @@
         <form action="{% url 'upload_image' %}" method="POST">
           {% csrf_token %}
           {{ form|crispy }}
+          <input type="hidden" name="next" value="{{ request.path }}"/>
           <input type="submit" value="Submit" class="btn btn-primary"/>
         </form>
       </div>

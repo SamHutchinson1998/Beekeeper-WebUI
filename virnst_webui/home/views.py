@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.http import JsonResponse
+from django.http import HttpResponseRedirect
 from .services import get_domains
 from .models import ImageForm
 # Create your views here.
@@ -17,8 +18,8 @@ class HomePageView(TemplateView):
 
   def upload_images(request):
     if request.method == "POST":
-      return JsonResponse({"valid":True}, status = 200)
-    return JsonResponse({"valid":False}, status = 200)
+      next = request.POST.get('next', '/')
+      return HttpResponseRedirect(next)
 
   def saveXml(request):
     if request.is_ajax and request.method == "GET":
