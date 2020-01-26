@@ -11,15 +11,9 @@ class HomePageView(TemplateView):
   def get_context_data(self, *args, **kwargs):
     context = {
       'domains' : get_domains(),
+      'form': ImageForm()
     }
     return context
-  
-  def get_images(request):
-    if request.method == "POST":
-      form = ImageForm(request.POST)
-    else:
-      form = ImageForm()
-    return render(request, '_add_image_form.html', {'form': form})
 
   def saveXml(request):
     if request.is_ajax and request.method == "GET":
