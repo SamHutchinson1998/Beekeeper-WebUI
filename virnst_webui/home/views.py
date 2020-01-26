@@ -19,7 +19,7 @@ class HomePageView(TemplateView):
       form = ImageForm(request.POST)
     else:
       form = ImageForm()
-    return render(request, "")
+    return render(request, '_add_image_form.html', {'form': form})
 
   def saveXml(request):
     if request.is_ajax and request.method == "GET":
