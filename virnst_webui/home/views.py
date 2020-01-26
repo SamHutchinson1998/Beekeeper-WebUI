@@ -15,6 +15,9 @@ class HomePageView(TemplateView):
     }
     return context
 
+  def upload_images(request):
+    print("It works")
+
   def saveXml(request):
     if request.is_ajax and request.method == "GET":
       xml_string = request.GET.get("XML", None)

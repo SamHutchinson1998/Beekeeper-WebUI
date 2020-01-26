@@ -9,10 +9,10 @@
         </button>
       </div>
       <div class="modal-body">
-        <form action="" method="POST">
+        <form action="{% url 'upload_image' %}" method="POST">
           {% csrf_token %}
           {{ form|crispy }}
-          <input type="submit" value="Submit" class="btn btn-primary" data-dismiss="modal" />
+          <input type="submit" value="Submit" class="btn btn-primary"/>
         </form>
       </div>
       <div class="modal-footer">
