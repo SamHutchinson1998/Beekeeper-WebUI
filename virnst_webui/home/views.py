@@ -16,7 +16,9 @@ class HomePageView(TemplateView):
     return context
 
   def upload_images(request):
-    print("It works")
+    if request.method == "POST":
+      return JsonResponse({"valid":True}, status = 200)
+    return JsonResponse({"valid":False}, status = 200)
 
   def saveXml(request):
     if request.is_ajax and request.method == "GET":
