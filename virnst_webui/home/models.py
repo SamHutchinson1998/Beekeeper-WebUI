@@ -20,20 +20,3 @@ class ImageForm(forms.ModelForm):
   class Meta:
     model = DiskImage
     fields = ['name', 'devicetype', 'disk_image']
-    widgets = {
-      'name': forms.TextInput(
-        attrs={
-          'class': 'form-control'
-        }
-      )
-      'devicetype': forms.CharField(
-        attrs={
-          'class': 'form-control'
-        }
-      )
-      'disk_image': forms.FileField(
-        attrs={
-          'class': 'form-control'
-        }
-      )
-    }
