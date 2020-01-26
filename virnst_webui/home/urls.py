@@ -4,5 +4,4 @@ urlpatterns = [
     path('', HomePageView.as_view(), name='home'),
     path('home', HomePageView.saveXml, name='save_xml'),
     path('retrieveXml', HomePageView.retrieveXml, name='retrieve_xml'),
-    path('add_image', HomePageView.get_images, name='add_image')
 ]
