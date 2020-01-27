@@ -9,7 +9,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <form action="{% url 'upload_image' %}" method="POST">
+        <form action="{% url 'upload_image' %}" method="POST" enctype="multipart/form-data">
           {% csrf_token %}
           {{ form|crispy }}
           <input type="hidden" name="next" value="{{ request.path }}"/>
