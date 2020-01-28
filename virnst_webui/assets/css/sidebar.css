@@ -1,10 +1,10 @@
-#sidebar {
-    margin: 10px;
+.sidebar {
+    margin: 20px;
     min-width: 250px;
     max-width: 250px;
     min-height: 100%;
 }
-#sidebar.active {
+.sidebar.active {
     margin-left: -250px;
 }
 @media (max-width: 768px) {
