@@ -1,16 +1,9 @@
-<table>
-  <tr>
-    <td>
-      <div class="sidebar bg-light">
-        <p>sidebar</p>
-        <ul id="list"></ul>
-      </div>
-    </td>
-    <td>
-      <button type="button" class="btn btn-info">Info</button>
-    </td>
-  </tr>
-</table>
+<div class="sidebar bg-light">
+  <p>sidebar</p>
+  <ul id="list"></ul>
+</div>
+<button type="button" class="btn btn-info">Info</button>
+
 <script>
 
   const list = document.getElementById('list')
@@ -20,6 +13,6 @@
     listItem.innerHTML = `list-item ${i}`
     list.appendChild(listItem)
   }
-  
+
 </script>
 
