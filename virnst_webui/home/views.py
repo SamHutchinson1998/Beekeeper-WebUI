@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.http import JsonResponse
@@ -19,18 +20,19 @@ class HomePageView(TemplateView):
   def upload_images(request):
     if request.method == "POST":
       next = request.POST.get('next', '/')
-      form = ImageForm(request.POST)
+      form = ImageForm(request.POST, request.FILES) # works
       if form.is_valid():
-        get_successful_save(form)
-      else
-        messages.error(request, 'Unable to save Disk Image')
-
-  def get_successful_save(form):
-    if form.save()
-      messages.success(request, 'Disk Image uploaded successfully')
+        if form.save():
+          messages.success(request, 'Disk Image uploaded successfully', extra_tags='alert-success')
+        else:
+          messages.error(request, 'Unable to save Disk Image 3', extra_tags='alert-danger')
+      else:
+        messages.error(request, 'Unable to save Disk Image 1', extra_tags='alert-danger')
+      #print(form.errors)
       return HttpResponseRedirect(next)
-    messages.error(request, 'Unable to save Disk Image')
-
+    else:
+      messages.error(request, 'Unable to save Disk Image 2', extra_tags='alert-danger')
+      return HttpResponseRedirect(next)
 
   def saveXml(request):
     if request.is_ajax and request.method == "GET":
