@@ -21,10 +21,10 @@
 {% if user.is_authenticated %}
 <body onload="main(document.getElementById('graphContainer'))">
   {% include '_messages.html' %}
+  {% include '_sidebar.html' %}
   <!-- Creates a container for the graph with a grid wallpaper -->
-	<div id="graphContainer"
+  <div id="graphContainer"
     style="height:100vh;width:100%position:relative;overflow:hidden;background: white; cursor:default;">
-    {% include '_sidebar.html' %}
   </div>
 </body>
 {% else %}
