@@ -1,3 +1,8 @@
+.wrapper {
+  display: flex;
+  width: 100%;
+  align-items: stretch;
+}
 #sidebar {
   margin: 20px;
   min-width: 250px;
