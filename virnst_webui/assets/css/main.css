@@ -1,0 +1,14 @@
+#sidebarContainer {
+  position: absolute;
+  overflow: hidden;
+  width: 70px;
+  margin: 10px;
+}
+#graphContainer {
+  height: 100vh;
+  width: 100%;
+  position: absolute;
+  overflow: hidden;
+  background: white;
+  cursor: default;
+}
