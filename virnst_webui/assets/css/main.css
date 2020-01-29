@@ -5,6 +5,7 @@
   height: 550px;
   margin: 40px;
   border-radius: 5px;
+  background-image: url('assets/logos/grid.gif');
 
 }
 #graphContainer {
