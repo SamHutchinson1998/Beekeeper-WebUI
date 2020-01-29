@@ -11,6 +11,10 @@ function main(container)
   }
   else
   {
+    mxConstants.MIN_HOTSPOT_SIZE = 16;
+    mxConstants.DEFAULT_HOTSPOT = 1;
+    mxGraphHandler.prototype.guidesEnabled = true;
+
     // Disables the built-in context menu
     mxEvent.disableContextMenu(container);
     
@@ -19,7 +23,15 @@ function main(container)
 
     // Enables rubberband selection
     new mxRubberband(graph);
-        
+    // Disable highlight of cells when dragging from toolbar
+    graph.setDropEnabled(false);
+
+    graph.isCellSelectable = function(cell)
+    {
+      return !this.isCellLocked(cell);
+    };
+
+    
     // Gets the default parent for inserting new cells. This
     // is normally the first child of the root (ie. layer 0).
     var parent = graph.getDefaultParent();
