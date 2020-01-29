@@ -1,9 +1,10 @@
 #sidebarContainer {
   position: absolute;
   overflow: hidden;
-  width: 70px;
-  height: 150px;
+  width: 120px;
+  height: 350px;
   margin: 10px;
+  background: yellowgreen;
 }
 #graphContainer {
   height: 100vh;

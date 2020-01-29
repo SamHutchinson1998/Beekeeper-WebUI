@@ -23,11 +23,8 @@
 {% if user.is_authenticated %}
 <body onload="main(document.getElementById('graphContainer'))">
   {% include '_messages.html' %}
-  <div id="sidebarContainer" class="bg-light">
-  </div>
-  <div id="graphContainer">
-
-  </div>
+  <div id="sidebarContainer"></div>
+  <div id="graphContainer"></div>
 </body>
 {% else %}
   <p>You are not logged in</p>
