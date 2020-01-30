@@ -4,7 +4,7 @@ from django.views.generic import TemplateView
 from django.http import JsonResponse
 from django.http import HttpResponseRedirect
 from .services import get_domains
-from .models import ImageForm
+from .models import ImageForm, DiskImage
 # Create your views here.
 
 class HomePageView(TemplateView):
@@ -20,7 +20,7 @@ class HomePageView(TemplateView):
   def upload_images(request):
     if request.method == "POST":
       next = request.POST.get('next', '/')
-      form = ImageForm(request.POST, request.FILES) # works
+      form = ImageForm(request.POST, request.FILES)
       if form.is_valid():
         if form.save():
           messages.success(request, 'Disk Image uploaded successfully', extra_tags='alert-success')
@@ -28,7 +28,6 @@ class HomePageView(TemplateView):
           messages.error(request, 'Unable to save Disk Image 3', extra_tags='alert-danger')
       else:
         messages.error(request, 'Unable to save Disk Image 1', extra_tags='alert-danger')
-      #print(form.errors)
       return HttpResponseRedirect(next)
     else:
       messages.error(request, 'Unable to save Disk Image 2', extra_tags='alert-danger')
@@ -50,4 +49,9 @@ class HomePageView(TemplateView):
       xml_string = xml_file.read()
       xml_file.close()
       return JsonResponse({"response":xml_string}, status = 200)
-
+  
+  def get_devices(request):
+    if request.is_ajax and request.method == "GET":
+      print(request)
+      disk_images = DiskImage.objects.all()
+      return JsonResponse({"disk_images":disk_images}, status = 200)

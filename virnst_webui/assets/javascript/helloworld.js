@@ -1,7 +1,7 @@
 // Program starts here. Creates a sample graph in the
 // DOM node with the specified ID. This function is invoked
 // from the onLoad event handler of the document (see below).
-function main(container)
+function main(container, sidebar)
 {
   // Checks if the browser is supported
   if (!mxClient.isBrowserSupported())
@@ -31,7 +31,6 @@ function main(container)
       return !this.isCellLocked(cell);
     };
 
-    
     // Gets the default parent for inserting new cells. This
     // is normally the first child of the root (ie. layer 0).
     var parent = graph.getDefaultParent();
@@ -57,6 +56,55 @@ function graphListener(graph)
     console.log('raw_data', result)
     sendRequest(xml);
   });
+}
+
+function addSidebarIcon(sidebar, image, graph)
+{
+  var funct = function(graph, evt, cell, x, y)
+  {
+    var parent = graph.getDefaultParent();
+    var model = graph.getModel();
+    
+    var device = null;
+    
+    model.beginUpdate();
+    try
+    {
+      // code goes here
+      device = graph.insertVertex(parent, null, null, x, y, 120, 120);
+      device.setConnectable(false);
+    }
+    finally
+    {
+      model.endUpdate();
+    }
+    graph.setSelectionCell(device);
+  }
+  var icon = document.createElement('img');
+  icon.setAttribute('src', image);
+  icon.style.width = '120px';
+  icon.style.height = '120px';
+  icon.title = 'Drag this onto the canvas to create a new device';
+
+  var dragElement = document.createElement('div');
+  dragElement.style.width = '150px';
+  dragElement.style.height = '150px';
+
+  var ds = mxUtils.makeDraggable(icon,graph,funct,dragElement,0,0,true,true);
+  ds.setGuidesEnabled(true);
+}
+
+function getDevices()
+{
+  var output = null;
+  $.ajax({
+    url: "get_devices",
+    async: false,
+    success: function(result){
+      output = result;
+    }
+  });
+  return output;
 }
 
 function sendRequest(xml)
