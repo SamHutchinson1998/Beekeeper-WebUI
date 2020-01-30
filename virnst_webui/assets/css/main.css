@@ -1,9 +1,9 @@
 #sidebarContainer {
   position: absolute;
   overflow: hidden;
-  width: 180px;
-  height: 550px;
-  margin: 40px;
+  width: 200px;
+  height: 650px;
+  margin: 50px;
   border-radius: 5px;
 }
 #graphContainer {
