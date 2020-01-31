@@ -23,7 +23,8 @@ function main(container, sidebar)
     var images_list = getDevices();
     var i;
     for(i = 0; i < images_list.length; i++){
-      console.log(images_list[i].name)
+      var image = images_list[i].fields
+      console.log(image.name) # works
     }
     // Enables rubberband selection
     new mxRubberband(graph);
