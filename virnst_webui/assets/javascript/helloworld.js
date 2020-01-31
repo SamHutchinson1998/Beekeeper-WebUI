@@ -21,6 +21,10 @@ function main(container, sidebar)
     // Creates the graph inside the given container
     var graph = new mxGraph(container);
     var images_list = getDevices();
+    var i;
+    for(i = 0; i < images_list.length; i++){
+      console.log(images_list[i].name)
+    }
     // Enables rubberband selection
     new mxRubberband(graph);
     // Disable highlight of cells when dragging from toolbar
