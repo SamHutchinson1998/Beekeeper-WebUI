@@ -3,7 +3,6 @@
 // from the onLoad event handler of the document (see below).
 function main(container, sidebar)
 {
-  getDevices();
   // Checks if the browser is supported
   if (!mxClient.isBrowserSupported())
   {
@@ -21,7 +20,7 @@ function main(container, sidebar)
     
     // Creates the graph inside the given container
     var graph = new mxGraph(container);
-
+    var images_list = getDevices();
     // Enables rubberband selection
     new mxRubberband(graph);
     // Disable highlight of cells when dragging from toolbar
@@ -102,7 +101,7 @@ function getDevices()
     url: "get_devices",
     async: false,
     success: function(result){
-      output = result;
+      output = result['disk_images'];
       console.log(output);
     }
   });
