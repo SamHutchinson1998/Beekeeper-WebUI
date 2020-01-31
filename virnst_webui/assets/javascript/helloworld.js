@@ -89,8 +89,10 @@ function addSidebarIcon(sidebar, image, graph)
   icon.style.width = '120px';
   icon.style.height = '120px';
   icon.title = 'Drag this onto the canvas to create a new device';
+  sidebar.appendChild(icon);
 
   var dragElement = document.createElement('div');
+  dragElement.style.border = 'dashed black 1px';
   dragElement.style.width = '150px';
   dragElement.style.height = '150px';
 
