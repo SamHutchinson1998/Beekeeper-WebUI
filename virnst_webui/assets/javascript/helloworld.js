@@ -24,7 +24,7 @@ function main(container, sidebar)
     var i;
     for(i = 0; i < images_list.length; i++){
       var image = images_list[i].fields
-      console.log(image.name) # works
+      addSidebarIcon(sidebar, image.image, graph);
     }
     // Enables rubberband selection
     new mxRubberband(graph);
@@ -75,7 +75,6 @@ function addSidebarIcon(sidebar, image, graph)
     model.beginUpdate();
     try
     {
-      // code goes here
       device = graph.insertVertex(parent, null, null, x, y, 120, 120);
       device.setConnectable(false);
     }
