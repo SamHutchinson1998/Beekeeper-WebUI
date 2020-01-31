@@ -14,7 +14,7 @@ class DiskImage(models.Model):
   name = models.CharField(max_length=100)
   devicetype = models.CharField(max_length=8,choices=DEVICE_TYPES, default='pc')
   disk_image = models.FileField(upload_to='disk_images/')
-  image = models.ImageField(default='../assets/devices/computer.svg')
+  image = models.ImageField(default='../devices/computer.svg')
 
 class ImageForm(forms.ModelForm):
   class Meta:
