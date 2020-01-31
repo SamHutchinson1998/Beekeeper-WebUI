@@ -3,8 +3,10 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.http import JsonResponse
 from django.http import HttpResponseRedirect
+from django.core.serializers import serialize
 from .services import get_domains
 from .models import ImageForm, DiskImage
+import json
 # Create your views here.
 
 class HomePageView(TemplateView):
@@ -53,5 +55,5 @@ class HomePageView(TemplateView):
   def get_devices(request):
     if request.is_ajax and request.method == "GET":
       print(request)
-      disk_images = DiskImage.objects.all()
+      disk_images = json.loads(serialize('json', DiskImage.objects.all()))
       return JsonResponse({"disk_images":disk_images}, status = 200)

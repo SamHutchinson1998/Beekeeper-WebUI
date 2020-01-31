@@ -13,3 +13,8 @@
   overflow: hidden;
   cursor: default;
 }
+#messagesContainer{
+  position: absolute;
+  overflow: hidden;
+  cursor: default;
+}

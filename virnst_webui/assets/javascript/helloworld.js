@@ -3,6 +3,7 @@
 // from the onLoad event handler of the document (see below).
 function main(container, sidebar)
 {
+  getDevices();
   // Checks if the browser is supported
   if (!mxClient.isBrowserSupported())
   {
@@ -102,6 +103,7 @@ function getDevices()
     async: false,
     success: function(result){
       output = result;
+      console.log(output);
     }
   });
   return output;
