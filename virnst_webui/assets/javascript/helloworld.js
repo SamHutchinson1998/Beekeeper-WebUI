@@ -44,7 +44,7 @@ function main(container, sidebar)
     var xml_string = mxUtils.parseXml(string);
     var codec = new mxCodec(xml_string);
     codec.decode(xml_string.documentElement, graph.getModel());
-    
+    keyBindings(graph)
     graphListener(graph)
 
   }
@@ -75,7 +75,7 @@ function addSidebarIcon(sidebar, image, graph)
     model.beginUpdate();
     try
     {
-      device = graph.insertVertex(parent, null, null, x, y, 120, 120);
+      device = graph.insertVertex(parent, null, '', x, y, 20, 20, `shape=image;image=${image};`);
       device.setConnectable(false);
     }
     finally
@@ -86,8 +86,8 @@ function addSidebarIcon(sidebar, image, graph)
   }
   var icon = document.createElement('img');
   icon.setAttribute('src', image);
-  icon.style.width = '120px';
-  icon.style.height = '120px';
+  icon.style.width = '200px';
+  icon.style.height = '200px';
   icon.title = 'Drag this onto the canvas to create a new device';
   sidebar.appendChild(icon);
 
@@ -99,6 +99,19 @@ function addSidebarIcon(sidebar, image, graph)
   var ds = mxUtils.makeDraggable(icon,graph,funct,dragElement,0,0,true,true);
   ds.setGuidesEnabled(true);
 }
+
+function keyBindings(graph)
+{
+  var keyHandler = new mxKeyHandler(graph);
+  keyHandler.bindKey(46, function(evt)
+  {
+    if (graph.isEnabled())
+    {
+      graph.removeCells();
+    }
+  });
+}
+
 
 function getDevices()
 {
