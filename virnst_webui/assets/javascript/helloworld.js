@@ -75,7 +75,7 @@ function addSidebarIcon(sidebar, image, graph)
     model.beginUpdate();
     try
     {
-      device = graph.insertVertex(parent, null, '', x, y, 20, 20, `shape=image;image=${image};`);
+      device = graph.insertVertex(parent, null, '', x, y, 120, 120, `shape=image;image=${image};`);
       device.setConnectable(false);
     }
     finally
