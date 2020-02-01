@@ -75,7 +75,7 @@ function addSidebarIcon(sidebar, image, graph)
     model.beginUpdate();
     try
     {
-      device = graph.insertVertex(parent, null, '', x, y, 120, 120, `shape=image;image=${image};`);
+      device = graph.insertVertex(parent, null, '', x, y, 100, 100, `shape=image;image=${image};`);
       device.setConnectable(false);
     }
     finally
@@ -86,8 +86,7 @@ function addSidebarIcon(sidebar, image, graph)
   }
   var icon = document.createElement('img');
   icon.setAttribute('src', image);
-  icon.style.width = '200px';
-  icon.style.height = '200px';
+  icon.setAttribute('id', 'sidebarItem');
   icon.title = 'Drag this onto the canvas to create a new device';
   sidebar.appendChild(icon);
 
