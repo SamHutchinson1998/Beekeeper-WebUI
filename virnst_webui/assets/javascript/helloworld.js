@@ -26,13 +26,12 @@ function main(container, sidebar)
       var image = images_list[i].fields;
       var imageVectorPath = getVector(image);
       console.log(imageVectorPath);
-      addSidebarIcon(sidebar, imageVectorPath, graph);
+      addSidebarIcon(sidebar, imageVectorPath, graph, image.name);
     }
     // Enables rubberband selection
     new mxRubberband(graph);
     // Disable highlight of cells when dragging from toolbar
     graph.setDropEnabled(false);
-
     graph.isCellSelectable = function(cell)
     {
       return !this.isCellLocked(cell);
@@ -48,7 +47,6 @@ function main(container, sidebar)
     codec.decode(xml_string.documentElement, graph.getModel());
     keyBindings(graph)
     graphListener(graph)
-
   }
 };
 
@@ -58,12 +56,11 @@ function getVector(device)
   {
     case "pc":
       return '../static/devices/computer.svg';
-    case "SWITCH":
+    case "switch":
       return '../static/devices/switch.svg';
     case "router":
       return '../static/devices/router.svg';
-    case "MULTI-LAYER SWITCH":
-      return '../static/devices/computer.svg';
+    case "mlswitch":
     default:
       return '../static/devices/computer.svg';
   }
@@ -82,7 +79,7 @@ function graphListener(graph)
   });
 }
 
-function addSidebarIcon(sidebar, image, graph)
+function addSidebarIcon(sidebar, image, graph, label)
 {
   var funct = function(graph, evt, cell, x, y)
   {
@@ -90,11 +87,12 @@ function addSidebarIcon(sidebar, image, graph)
     var model = graph.getModel();
     
     var device = null;
-    
+    var stylesheet = `shape=image;image=${image};` +
+    `verticalLabelPosition=bottom;verticalAlign=top;`;
     model.beginUpdate();
     try
     {
-      device = graph.insertVertex(parent, null, '', x, y, 100, 100, `shape=image;image=${image};`);
+      device = graph.insertVertex(parent, null, label, x, y, 100, 100, stylesheet);
       device.setConnectable(true);
     }
     finally
@@ -129,7 +127,6 @@ function keyBindings(graph)
     }
   });
 }
-
 
 function getDevices()
 {
