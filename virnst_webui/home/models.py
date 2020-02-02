@@ -22,4 +22,4 @@ class ImageForm(forms.ModelForm):
   class Meta:
     model = DiskImage
     fields = ['name', 'devicetype', 'disk_image']
-    model.image = get_image_vector(model.devicetype)
+    image = get_image_vector(model.devicetype)
