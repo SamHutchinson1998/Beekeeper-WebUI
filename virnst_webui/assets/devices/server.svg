@@ -9,9 +9,9 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="210mm"
-   height="297mm"
-   viewBox="0 0 210 297"
+   width="134.05554mm"
+   height="134.05556mm"
+   viewBox="0 0 134.05554 134.05556"
    version="1.1"
    id="svg7457"
    inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
@@ -116,9 +116,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.80970659"
-     inkscape:cx="340.908"
-     inkscape:cy="618.32846"
+     inkscape:zoom="1.145098"
+     inkscape:cx="472.99365"
+     inkscape:cy="131.11838"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -126,7 +126,11 @@
      inkscape:window-height="1017"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
-     inkscape:window-maximized="1" />
+     inkscape:window-maximized="1"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
   <metadata
      id="metadata7454">
     <rdf:RDF>
@@ -142,7 +146,8 @@
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
-     id="layer1">
+     id="layer1"
+     transform="translate(-25.075222,-103.40958)">
     <rect
        style="opacity:1;fill:#000000;fill-opacity:0;stroke:#000000;stroke-width:5.36292219;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect7459"
@@ -175,12 +180,12 @@
        x="81.328835"
        y="202.00572" />
     <rect
-       style="opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:2.50409794;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:2.53233242;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect7459-4-2"
-       width="128.517"
-       height="5.5336404"
-       x="-155.84584"
-       y="230.67944"
+       width="131.6026"
+       height="5.5264444"
+       x="-158.0108"
+       y="230.68304"
        transform="scale(-1,1)" />
     <ellipse
        style="opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:3.22217751;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"

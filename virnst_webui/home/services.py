@@ -20,3 +20,13 @@ def get_domain_port(domain):
   for graphicsType in graphicsTypes:
     port = graphicsType.getAttribute('port')
   return port
+
+def get_image_vector(device):
+  # Get the vector graphic associated with the image
+  switcher = {
+    'ROUTER': '../static/devices/router.svg',
+    'SWITCH': '../static/devices/switch.svg',
+    'SERVER': '../static/devices/server.svg'
+  }
+  # Return the graphic for computer by default if the device isn't found
+  return switcher.get(device, '../static/devices/computer.svg')

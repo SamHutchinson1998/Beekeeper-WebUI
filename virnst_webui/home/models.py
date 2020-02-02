@@ -1,5 +1,6 @@
 from django.db import models
 from django import forms
+from .services import get_image_vector
 
 # Create your models here.
 
@@ -7,7 +8,8 @@ DEVICE_TYPES = (
   ('router','ROUTER'),
   ('pc','PC'),
   ('switch','SWITCH'),
-  ('mlswitch','MULTI-LAYER SWITCH')
+  ('mlswitch','MULTI-LAYER SWITCH'),
+  ('server', 'SERVER')
 )
 
 class DiskImage(models.Model):
@@ -20,3 +22,4 @@ class ImageForm(forms.ModelForm):
   class Meta:
     model = DiskImage
     fields = ['name', 'devicetype', 'disk_image']
+    model.image = get_image_vector(model.devicetype)

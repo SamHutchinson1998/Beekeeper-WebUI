@@ -9,9 +9,9 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="210mm"
-   height="297mm"
-   viewBox="0 0 210 297"
+   width="134.05556mm"
+   height="134.05556mm"
+   viewBox="0 0 134.05556 134.05556"
    version="1.1"
    id="svg7457"
    inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
@@ -116,9 +116,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.7"
-     inkscape:cx="174.07658"
-     inkscape:cy="556.81205"
+     inkscape:zoom="0.35"
+     inkscape:cx="190.52867"
+     inkscape:cy="299.08525"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -126,7 +126,11 @@
      inkscape:window-height="1017"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
-     inkscape:window-maximized="1" />
+     inkscape:window-maximized="1"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
   <metadata
      id="metadata7454">
     <rdf:RDF>
@@ -142,7 +146,8 @@
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
-     id="layer1">
+     id="layer1"
+     transform="translate(-41.662352,-87.306723)">
     <rect
        style="opacity:1;fill:#000000;fill-opacity:0;stroke:#000000;stroke-width:11.50728226;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect7459"
