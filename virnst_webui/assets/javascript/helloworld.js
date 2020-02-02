@@ -24,7 +24,8 @@ function main(container, sidebar)
     var i;
     for(i = 0; i < images_list.length; i++){
       var image = images_list[i].fields
-      addSidebarIcon(sidebar, image.image, graph);
+      var imageVectorPath = getVector(image);
+      addSidebarIcon(sidebar, imageVectorPath, graph);
     }
     // Enables rubberband selection
     new mxRubberband(graph);
@@ -49,6 +50,23 @@ function main(container, sidebar)
 
   }
 };
+
+function getVector(device)
+{
+  switch(device.devicetype)
+  {
+    case "PC":
+      return '../static/devices/computer.svg';
+    case "SWITCH":
+      return '../static/devices/switch.svg';
+    case "ROUTER":
+      return '../static/devices/router.svg';
+    case "MULTI-LAYER SWITCH":
+      return '../static/devices/computer.svg';
+    default:
+      return '../static/devices/computer.svg';
+  }
+}
 
 function graphListener(graph)
 {
