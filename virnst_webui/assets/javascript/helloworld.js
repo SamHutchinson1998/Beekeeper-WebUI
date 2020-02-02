@@ -23,8 +23,9 @@ function main(container, sidebar)
     var images_list = getDevices();
     var i;
     for(i = 0; i < images_list.length; i++){
-      var image = images_list[i].fields
+      var image = images_list[i].fields;
       var imageVectorPath = getVector(image);
+      console.log(imageVectorPath);
       addSidebarIcon(sidebar, imageVectorPath, graph);
     }
     // Enables rubberband selection
@@ -55,11 +56,11 @@ function getVector(device)
 {
   switch(device.devicetype)
   {
-    case "PC":
+    case "pc":
       return '../static/devices/computer.svg';
     case "SWITCH":
       return '../static/devices/switch.svg';
-    case "ROUTER":
+    case "router":
       return '../static/devices/router.svg';
     case "MULTI-LAYER SWITCH":
       return '../static/devices/computer.svg';
