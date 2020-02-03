@@ -24,9 +24,7 @@ function main(container, sidebar)
     var i;
     for(i = 0; i < images_list.length; i++){
       var image = images_list[i].fields;
-      var imageVectorPath = getVector(image);
-      console.log(imageVectorPath);
-      addSidebarIcon(sidebar, imageVectorPath, graph, image.name);
+      addSidebarIcon(sidebar, graph, image);
     }
     // Enables rubberband selection
     new mxRubberband(graph);
@@ -79,8 +77,9 @@ function graphListener(graph)
   });
 }
 
-function addSidebarIcon(sidebar, image, graph, label)
+function addSidebarIcon(sidebar, graph, disk_image)
 {
+  image = getVector(disk_image);
   var funct = function(graph, evt, cell, x, y)
   {
     var parent = graph.getDefaultParent();
@@ -92,7 +91,7 @@ function addSidebarIcon(sidebar, image, graph, label)
     model.beginUpdate();
     try
     {
-      device = graph.insertVertex(parent, null, label, x, y, 100, 100, stylesheet);
+      device = graph.insertVertex(parent, null, disk_image.name, x, y, 100, 100, stylesheet);
       device.setConnectable(true);
     }
     finally
@@ -103,6 +102,7 @@ function addSidebarIcon(sidebar, image, graph, label)
   }
   var icon = document.createElement('img');
   icon.setAttribute('src', image);
+  icon.setAttribute('data-image-id', disk_image.id)
   icon.setAttribute('id', 'sidebarItem');
   icon.title = 'Drag this onto the canvas to create a new device';
   sidebar.appendChild(icon);
