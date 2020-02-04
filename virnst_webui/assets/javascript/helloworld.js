@@ -40,7 +40,7 @@ function main(container, sidebar)
     // is normally the first child of the root (ie. layer 0).
     var parent = graph.getDefaultParent();
     var string = getXml();
-    console.log(string);
+    //console.log(string);
     var xml_string = mxUtils.parseXml(string);
     var codec = new mxCodec(xml_string);
     codec.decode(xml_string.documentElement, graph.getModel());
@@ -72,8 +72,8 @@ function graphListener(graph)
     var encoder = new mxCodec();
     var result = encoder.encode(graph.getModel());
     var xml = mxUtils.getXml(result);
-    console.log('xml', xml);
-    console.log('raw_data', result)
+    //console.log('xml', xml);
+    //console.log('raw_data', result)
     sendRequest(xml);
   });
 }
@@ -83,8 +83,8 @@ function addSidebarIcon(sidebar, graph, disk_image, image_id)
   var image = getVector(disk_image);
   var funct = function(graph, evt, cell, x, y)
   {
-    $('#device_modal').modal('show');
-    //getDeviceModal(image_id)
+    //$('#device_modal').modal('show');
+    getDeviceModal(image_id)
     // This function can take the image ID too!!
     var parent = graph.getDefaultParent();
     var model = graph.getModel();

@@ -45,6 +45,6 @@ class ImageForm(forms.ModelForm):
     fields = ['name', 'devicetype', 'disk_image']
 
 class VirtualMachineForm(forms.ModelForm):
-  class meta:
+  class Meta:
     model = VirtualMachine
     fields = ['name', 'ram', 'disk_size', 'cpus']
