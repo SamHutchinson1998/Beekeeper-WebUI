@@ -63,9 +63,9 @@ class HomePageView(TemplateView):
       image_id = request.GET.get("image_id", None)
       form = VirtualMachineForm()
       image = DiskImage.objects.get(pk=image_id)
-      form['disk_image'].value() = image
+      #form['disk_image'].value() = image
       return render(request, '_add_device_form.html', {'device_form':form})
   
   def post_device_form(request):
-    print request.POST
+    print(request.POST)
       
