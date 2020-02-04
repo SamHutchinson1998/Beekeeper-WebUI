@@ -1,11 +1,10 @@
 from django.contrib import messages
 from django.shortcuts import render
 from django.views.generic import TemplateView
-from django.http import JsonResponse
-from django.http import HttpResponseRedirect
+from django.http import JsonResponse, HttpResponseRedirect, HttpResponse
 from django.core.serializers import serialize
 from .services import get_domains
-from .models import ImageForm, DiskImage
+from .models import ImageForm, DiskImage, VirtualMachine, VirtualMachineForm
 import json
 # Create your views here.
 
@@ -15,7 +14,8 @@ class HomePageView(TemplateView):
   def get_context_data(self, *args, **kwargs):
     context = {
       'domains' : get_domains(),
-      'form': ImageForm()
+      'form': ImageForm(),
+      'device_form': VirtualMachineForm()
     }
     return context
 
@@ -57,3 +57,15 @@ class HomePageView(TemplateView):
       print(request)
       disk_images = json.loads(serialize('json', DiskImage.objects.all()))
       return JsonResponse({"disk_images":disk_images}, status = 200)
+
+  def get_device_form(request):
+    if request.is_ajax and request.method == "GET":
+      image_id = request.GET.get("image_id", None)
+      form = VirtualMachineForm()
+      image = DiskImage.objects.get(pk=image_id)
+      form['disk_image'].value() = image
+      return render(request, '_add_device_form.html', {'device_form':form})
+  
+  def post_device_form(request):
+    print request.POST
+      

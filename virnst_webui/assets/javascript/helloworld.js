@@ -83,6 +83,8 @@ function addSidebarIcon(sidebar, graph, disk_image, image_id)
   var image = getVector(disk_image);
   var funct = function(graph, evt, cell, x, y)
   {
+    getDeviceModal(image_id)
+    // This function can take the image ID too!!
     var parent = graph.getDefaultParent();
     var model = graph.getModel();
     
@@ -126,6 +128,20 @@ function keyBindings(graph)
     {
       graph.removeCells();
     }
+  });
+}
+
+function getDeviceModal(image_id)
+{
+  $.ajax({
+    url: 'get_device_form',
+    async: false,
+    data: {'image_id': image_id},
+    success: function(formHTML){
+      $('.modal-body').html(formHTML);
+      $('#device_modal').modal('show');
+    },
+    datatype: 'html'
   });
 }
 
