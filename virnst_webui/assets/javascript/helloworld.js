@@ -83,7 +83,8 @@ function addSidebarIcon(sidebar, graph, disk_image, image_id)
   var image = getVector(disk_image);
   var funct = function(graph, evt, cell, x, y)
   {
-    getDeviceModal(image_id)
+    $('#device_modal').modal('show');
+    //getDeviceModal(image_id)
     // This function can take the image ID too!!
     var parent = graph.getDefaultParent();
     var model = graph.getModel();
