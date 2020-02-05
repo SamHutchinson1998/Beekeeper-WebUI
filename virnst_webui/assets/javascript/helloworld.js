@@ -84,12 +84,12 @@ function addSidebarIcon(sidebar, graph, disk_image, image_id)
   var funct = function(graph, evt, cell, x, y)
   {
     $('#device_modal').modal('show');
-    $('#device_modal').on("hidden.bs.modal", function () {
+    document.getElementById('close_button').onclick = function removeDevice(){
       if (graph.isEnabled())
       {
         graph.removeCells();
       }
-    });
+    }
     //getDeviceModal(image_id)
     // This function can take the image ID too!!
     var parent = graph.getDefaultParent();
