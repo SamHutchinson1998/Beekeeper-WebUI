@@ -68,4 +68,5 @@ class HomePageView(TemplateView):
   
   def post_device_form(request):
     print(request.POST)
-      
+    next = request.POST.get('next', '/')
+    return HttpResponseRedirect(next)
