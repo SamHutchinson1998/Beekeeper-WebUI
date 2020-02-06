@@ -59,6 +59,8 @@ function getVector(device)
       return '../static/devices/switch.svg';
     case "router":
       return '../static/devices/router.svg';
+    case 'server':
+      return '../static/devices/server.svg';
     case "mlswitch":
     default:
       return '../static/devices/computer.svg';
