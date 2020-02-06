@@ -33,7 +33,6 @@ class DiskImage(models.Model):
   disk_image = models.FileField(upload_to='disk_images/')
 
 class VirtualMachine(models.Model):
-  name = models.CharField(max_length=100)
   ram = models.CharField(max_length=8)
   disk_size = models.IntegerField()
   cpus = models.IntegerField()
@@ -47,4 +46,4 @@ class ImageForm(forms.ModelForm):
 class VirtualMachineForm(forms.ModelForm):
   class Meta:
     model = VirtualMachine
-    fields = ['name', 'ram', 'disk_size', 'cpus', 'disk_image']
+    fields = ['ram', 'disk_size', 'cpus', 'disk_image']
