@@ -13,10 +13,14 @@
         <form action="{% url 'post_device_form' %}" method="POST" enctype="multipart/form-data">
           {% csrf_token %}
           {{ device_form.name|as_crispy_field }}
-          <div>
-            <div class="sliderColumn">{{ device_form.ram|attr:"onchange:updateLabel(this.value,'ramValue')"|attr:"type:range"|attr:"class:custom-range"|attr:"min:1"|attr:"max:4096"|as_crispy_field }}</div>
-            <div class="sliderValueColumn" id="ramValue">0</th>
-          </div>
+          <table>
+            <th style="width:85%;"class="sliderColumn">
+               {{ device_form.ram|attr:"id:ramSlider"|attr:"onchange:updateLabel(this.value,'ramValue')"|attr:"type:range"|attr:"class:custom-range"|attr:"min:1"|attr:"max:4096"|as_crispy_field }}
+            </th>
+            <th>
+               <input type="text" onkeyup="updateLabel(this.value,'ramSlider')" style="margin-top:25px;margin-left:10px;"class="form-control" id="ramValue">
+            </th>
+          </table>
           {{ device_form.disk_size|attr:"type:range"|attr:"class:custom-range"|attr:"min:1"|attr:"max:50"|as_crispy_field}}
           {{ device_form.cpus|attr:"type:range"|attr:"class:custom-range"|attr:"min:1"|attr:"max:4"|as_crispy_field}}
           <input type="hidden" name="next" value="{{ request.path }}"/>
@@ -32,6 +36,10 @@
 <script>
   function updateLabel(val, element)
   {
-    document.getElementById(element).innerHTML = val;
+    document.getElementById(element).value = val;
+  }
+  function updateSlider(val, slider)
+  {
+    document.getElementById(slider).value = val;
   }
 </script>

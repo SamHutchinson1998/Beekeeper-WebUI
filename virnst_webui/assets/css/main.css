@@ -31,12 +31,3 @@
   cursor: default;
 }
 
-.sliderColumn{
-  float: left;
-  width: 95%;
-}
-
-.sliderValueColumn{
-  float: right;
-  width: 5%;
-}
