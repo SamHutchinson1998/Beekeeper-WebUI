@@ -151,12 +151,13 @@ function getDeviceModal(image_id)
     url: 'get_device_modal',
     async: false,
     data: {'image_id': image_id},
+    //contentType: 'application/json',
+    datatype: 'html',
     success: function(formHTML){
       console.log(formHTML);
       $('#device_modal').modal('show');
-      $('.modal-body').html(formHTML); // This doesn't work ffs
+      $('.modal-body').html(formHTML);
     },
-    datatype: 'html'
   });
 }
 
