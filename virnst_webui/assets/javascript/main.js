@@ -85,13 +85,7 @@ function addSidebarIcon(sidebar, graph, disk_image, image_id)
   var image = getVector(disk_image);
   var funct = function(graph, evt, cell, x, y)
   {
-    getDeviceModal(image_id);
-    $('#device_modal').on("hidden.bs.modal", function () {
-      if (graph.isEnabled())
-      {
-        graph.removeCells();
-      }
-    });
+    getDeviceModal(image_id, graph);
     // This function can take the image ID too!!
     var parent = graph.getDefaultParent();
     var model = graph.getModel();
@@ -145,18 +139,17 @@ function keyBindings(graph)
   });
 }
 
-function getDeviceModal(image_id)
+function getDeviceModal(image_id, graph)
 {
-  $.ajax({
-    url: 'get_device_modal',
-    async: false,
-    data: {'image_id': image_id},
-    //contentType: 'application/json',
-    datatype: 'html',
-    success: function(formHTML){
-      $('#device_modal').modal('show');
-      //$('.modal-body').html(formHTML);
-    },
+  $('#device_modal').modal('show');
+  $('#device_modal').on("hidden.bs.modal", function () {
+    if (graph.isEnabled())
+    {
+      graph.removeCells();
+    }
+  });
+  $('#device_modal').on("shown.bs.modal", function(){
+    // do something
   });
 }
 
