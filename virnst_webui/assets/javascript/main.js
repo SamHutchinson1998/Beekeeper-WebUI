@@ -198,3 +198,11 @@ function getXml()
   })
   return output;
 }
+function updateLabel(val, element)
+{
+  document.getElementById(element).value = val;
+}
+function updateSlider(val, slider)
+{
+  document.getElementById(slider).value = val;
+}
