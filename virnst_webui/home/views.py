@@ -44,14 +44,14 @@ class HomePageView(TemplateView):
       xml_file.close()
       return JsonResponse({"valid":True}, status = 200)
     return JsonResponse({"valid":False}, status = 200)
-  
+
   def retrieveXml(request):
     if request.is_ajax and request.method == "GET":
       xml_file = open("graph.xml", "r")
       xml_string = xml_file.read()
       xml_file.close()
       return JsonResponse({"response":xml_string}, status = 200)
-  
+
   def get_devices(request):
     if request.is_ajax and request.method == "GET":
       print(request)
@@ -65,7 +65,6 @@ class HomePageView(TemplateView):
       image = DiskImage.objects.get(pk=image_id)
       #form['disk_image'].value() = image
       return render(request, '_device_form.html', {'device_form':form})
- 
  
   def post_device_form(request):
     print(request.POST)

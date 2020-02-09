@@ -154,9 +154,8 @@ function getDeviceModal(image_id)
     //contentType: 'application/json',
     datatype: 'html',
     success: function(formHTML){
-      console.log(formHTML);
       $('#device_modal').modal('show');
-      $('.modal-body').html(formHTML);
+      //$('.modal-body').html(formHTML);
     },
   });
 }
@@ -198,12 +197,4 @@ function getXml()
     }
   })
   return output;
-}
-function updateLabel(val, element)
-{
-  document.getElementById(element).value = val;
-}
-function updateSlider(val, slider)
-{
-  document.getElementById(slider).value = val;
 }
