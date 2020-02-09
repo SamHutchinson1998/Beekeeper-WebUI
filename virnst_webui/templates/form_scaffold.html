@@ -37,6 +37,7 @@
                <input type="text" onkeyup="updateLabel(this.value,'cpusSlider')" style="margin-top:25px;margin-left:10px;"class="form-control" id="cpusValue">
             </th>
           </table>
+          {{ device_form.disk_image|as_hidden|attr:"id:disk_image_id_field"|as_crispy_field}}
           <input type="hidden" name="next" value="{{ request.path }}"/>
           <input type="submit" value="Submit" class="btn btn-primary"/>
       </form>
