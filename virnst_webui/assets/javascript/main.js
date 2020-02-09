@@ -149,7 +149,9 @@ function getDeviceModal(image_id, graph)
     }
   });
   $('#device_modal').on("shown.bs.modal", function(){
+    console.log(image_id);
     // do something
+    document.getElementById('#id_disk_image').value = image_id;
   });
 }
 
