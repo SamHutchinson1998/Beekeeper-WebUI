@@ -11,8 +11,7 @@
 
 <script> mxBasePath = "{% static 'javascript/mxgraph-master/javascript/src' %}"</script>
 <script src="{% static 'javascript/mxgraph-master/javascript/src/js/mxClient.js' %}"></script>
-<script src="{% static 'javascript/helloworld.js' %}"></script>
-<script src="{% static 'javascript/sidebar.js' %}"></script>
+<script src="{% static 'javascript/main.js' %}"></script>
 
 <html style="height:100%;width:100%;">
 <head>
@@ -25,8 +24,7 @@
   <div id="graphContainer" style="background-image: url({% static 'logos/grid.gif' %})"></div>
   <div id="sidebarContainer" class="bg-light"></div>
   {% include '_messages.html' %}
-  {% include '_add_device_form.html' %}
-
+  {% include 'form_scaffold.html' %}
 </body>
 {% else %}
   <p>You are not logged in</p>

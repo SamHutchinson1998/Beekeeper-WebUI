@@ -154,7 +154,7 @@ function getDeviceModal(image_id)
     success: function(formHTML){
       console.log(formHTML);
       $('#device_modal').modal('show');
-      //$('.modal-body').html(formHTML); // This doesn't work ffs
+      $('.modal-body').html(formHTML); // This doesn't work ffs
     },
     datatype: 'html'
   });
