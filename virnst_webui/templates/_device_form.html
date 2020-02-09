@@ -1,3 +1,5 @@
+{% load widget_tweaks %}
+{% load crispy_forms_tags %}
 <form action="{% url 'post_device_form' %}" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     {{ device_form.name|as_crispy_field }}
@@ -38,5 +40,5 @@
     {
       document.getElementById(slider).value = val;
     }
-  </script>
+</script>
   
