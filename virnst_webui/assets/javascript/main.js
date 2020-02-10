@@ -142,18 +142,17 @@ function keyBindings(graph)
 function getDeviceModal(image_id, graph)
 {
   $(document).ready(function(){
-    $('#device_modal').modal('show');
-    $('#device_modal').on("hidden.bs.modal", function () {
+    $('#device_modal').on("hide.bs.modal", function () {
       if (graph.isEnabled())
       {
         graph.removeCells();
       }
     });
-    $('#device_modal').on("shown.bs.modal", function(){
-      //console.log(image_id);
-      // do something
-      document.getElementById('#id_disk_image').value = image_id;
+    $('#device_modal').on("shown.bs.modal", function(event){
+      var id_string = image_id.toString();
+      document.getElementById('#id_disk_image').value = id_string;
     });
+    $('#device_modal').modal('show');
   });
 }
 
