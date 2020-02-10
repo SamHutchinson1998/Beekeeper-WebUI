@@ -33,7 +33,7 @@ class DiskImage(models.Model):
   disk_image = models.FileField(upload_to='disk_images/')
 
 class VirtualMachine(models.Model):
-  name = models.CharField(max_length=100)
+  name = models.CharField(max_length=100,default="vm_name")
   ram = models.CharField(max_length=8)
   disk_size = models.IntegerField()
   cpus = models.IntegerField()

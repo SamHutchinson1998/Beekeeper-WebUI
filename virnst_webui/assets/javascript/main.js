@@ -141,6 +141,7 @@ function keyBindings(graph)
 
 function getDeviceModal(image_id, graph)
 {
+  $('#device_modal').modal('show');
   $(document).ready(function(){
     $('#device_modal').on("hide.bs.modal", function () {
       if (graph.isEnabled())
@@ -150,9 +151,8 @@ function getDeviceModal(image_id, graph)
     });
     $('#device_modal').on("shown.bs.modal", function(event){
       var id_string = image_id.toString();
-      document.getElementById('#id_disk_image').value = id_string;
+      document.getElementById('disk_image_id').value = id_string;
     });
-    $('#device_modal').modal('show');
   });
 }
 
@@ -164,7 +164,6 @@ function getDevices()
     async: false,
     success: function(result){
       output = result['disk_images'];
-      console.log(output);
     }
   });
   return output;
@@ -176,7 +175,6 @@ function sendRequest(xml)
     url: "home",
     data: {'XML': xml},
     success: function(result){
-      console.log(result);
     }
   });
 }
