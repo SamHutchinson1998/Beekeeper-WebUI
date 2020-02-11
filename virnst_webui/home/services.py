@@ -55,7 +55,7 @@ def create_virtual_machine(request):
         <target dev='hda'/>
       </disk>
       <disk type='file' device='cdrom'>
-        <source file='{settings.MEDIA_ROOT}{disk_image}'/>
+        <source file='{settings.MEDIA_ROOT}/{disk_image}'/>
         <target dev='hdc' bus='ide' tray='open'/>
         <readonly/>
       </disk>
