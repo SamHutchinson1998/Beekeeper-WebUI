@@ -64,3 +64,15 @@ def create_virtual_machine(request):
     </devices>
   </domain>"""
   print(xml)
+  spawn_machine(xml)
+
+def spawn_machine(xml):
+  conn = libvirt.open('qemu:///system')
+  dom = conn.defineXML(xml, 0)
+  if dom == None:
+    print('Failed to define a domain from an XML definition.', file=sys.stderr)
+  if dom.create(dom) < 0:
+    print('Can not boot guest domain.', file=sys.stderr)
+  else:
+    print('Guest '+dom.name()+' has booted', file=sys.stderr)
+  conn.close()
