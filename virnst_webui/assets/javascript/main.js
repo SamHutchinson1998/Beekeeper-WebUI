@@ -85,8 +85,6 @@ function addSidebarIcon(sidebar, graph, disk_image, image_id)
   var image = getVector(disk_image);
   var funct = function(graph, evt, cell, x, y)
   {
-    getDeviceModal(image_id, graph);
-    // This function can take the image ID too!!
     var parent = graph.getDefaultParent();
     var model = graph.getModel();
     
@@ -104,6 +102,9 @@ function addSidebarIcon(sidebar, graph, disk_image, image_id)
       model.endUpdate();
     }
     graph.setSelectionCell(device);
+    cell_id = ((mxCell)graph.getSelectionCell()).getId();
+    console.log(cell_id);
+    getDeviceModal(image_id, cell_id, graph);
   }
   var icon = document.createElement('img');
   icon.setAttribute('src', image);
@@ -139,12 +140,12 @@ function keyBindings(graph)
       for(i = 0; i < selected_cells.length; i++){
         console.log(selected_cells[i]);
       }
-      //graph.removeCells();
+      graph.removeCells();
     }
   });
 }
 
-function getDeviceModal(image_id, graph)
+function getDeviceModal(image_id, cell_id, graph)
 {
   $('#device_modal').modal('show');
   $(document).ready(function(){
@@ -156,7 +157,9 @@ function getDeviceModal(image_id, graph)
     });
     $('#device_modal').on("shown.bs.modal", function(event){
       var id_string = image_id.toString();
+      var cell_id_string = cell_id.toString();
       document.getElementById('disk_image_id').value = id_string;
+      document.getElementById('cell_id').value = cell_id_string;
     });
   });
 }

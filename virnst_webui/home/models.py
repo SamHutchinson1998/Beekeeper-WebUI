@@ -37,6 +37,7 @@ class VirtualMachine(models.Model):
   ram = models.CharField(max_length=8)
   disk_size = models.IntegerField()
   cpus = models.IntegerField()
+  cell_id = models.IntegerField()
   disk_image = models.ForeignKey(DiskImage, on_delete=models.CASCADE)
 
 class ImageForm(forms.ModelForm):
@@ -47,4 +48,4 @@ class ImageForm(forms.ModelForm):
 class VirtualMachineForm(forms.ModelForm):
   class Meta:
     model = VirtualMachine
-    fields = ['name','ram', 'disk_size', 'cpus', 'disk_image']
+    fields = ['name','ram', 'disk_size', 'cpus', 'cell_id','disk_image']
