@@ -12,6 +12,7 @@ def get_domains():
   conn.close()
   return domain_list
 
+# Can still be useful for another day, maybe when a user decides to VNC into a VM? 
 def get_domain_port(domain):
   port = 5900 #first port a domain attaches to if there are no other domains
   raw_xml = domain.XMLDesc(0)
@@ -28,7 +29,8 @@ def create_virtual_machine(request):
   memory = request.POST.get('ram',None)
   disk_size = request.POST.get('disk_size',None)
   cpus = request.POST.get('cpus',None)
-  disk_image = request.POST.get('disk_image',None)
+  disk_image = DiskImage.objects.get(pk=request.POST.get('disk_image',None)).disk_image
+  
   xml = f"""
   <domain type='kvm'>
     <name>{name}</name>
@@ -56,7 +58,7 @@ def create_virtual_machine(request):
         <readonly/>
       </disk>
       <input type='mouse' bus='ps2'/>
-      <graphics type='vnc' port='-1' listen='127.0.0.1'/>
+      <graphics type='vnc' port='-1' autoport='yes' listen='0.0.0.0'/>
     </devices>
   </domain>"""
   print(xml)
