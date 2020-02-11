@@ -3,16 +3,17 @@
   overflow: hidden;
   width: 200px;
   height: 85vh;
-  margin: 50px;
+  margin: 40px;
   border-radius: 5px;
+  overflow-y: scroll;
 }
 
 #sidebarItem {
   margin: auto;
   width: 100px;
   height: 100px;
-  margin-left: 30%;
-  margin-right: 30%;
+  margin-left: 50px;
+  margin-right: 50px;
   margin-top: 15px;
   margin-bottom: 20px;
 }
