@@ -80,6 +80,6 @@ class HomePageView(TemplateView):
       if vm_record.delete():
         return JsonResponse({'result': 'success'},status = 200)
       else:
-        return JsonResponse({'result': 'error'},status = 500})
+        return JsonResponse({'result': 'error'},status = 500)
       # more code here
       # code here to search the VirtualMachines table by Cell ID and remove a given record from the db
