@@ -106,18 +106,24 @@ function addSidebarIcon(sidebar, graph, disk_image, image_id)
     console.log(cell_id);
     getDeviceModal(image_id, cell_id, graph);
   }
+  var wrapper = document.createElement('div');
+  wrapper.setAttribute('data-image-tags',`${disk_image.name},${disk_image.devicetype}`);
+
+
   var icon = document.createElement('img');
   icon.setAttribute('src', image);
-  icon.setAttribute('data-image-name', disk_image.name)
-  icon.setAttribute('data-image-id', image_id)
+  icon.setAttribute('data-image-name', disk_image.name);
+  icon.setAttribute('data-image-id', image_id);
   icon.setAttribute('id', 'sidebarItem');
   icon.title = 'Drag this onto the canvas to create a new device';
-  sidebar.appendChild(icon);
+  wrapper.appendChild(icon);
 
   var description = document.createElement('div');
   description.innerHTML = disk_image.name;
   description.setAttribute('align','center');
-  sidebar.appendChild(description); 
+  wrapper.appendChild(description); 
+
+  sidebar.appendChild(wrapper);
 
   var dragElement = document.createElement('div');
   dragElement.style.border = 'dashed black 1px';
