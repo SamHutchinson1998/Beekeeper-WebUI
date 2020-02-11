@@ -1,6 +1,7 @@
 import libvirt
 from xml.dom import minidom
 from .models import DiskImage
+from django.conf import settings
 
 def get_domains():
   domain_list = []
@@ -54,7 +55,7 @@ def create_virtual_machine(request):
         <target dev='hda'/>
       </disk>
       <disk type='file' device='cdrom'>
-        <source file='{disk_image}'/>
+        <source file='{settings.MEDIA_ROOT}{disk_image}'/>
         <target dev='hdc' bus='ide' tray='open'/>
         <readonly/>
       </disk>
