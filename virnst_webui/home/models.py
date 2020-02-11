@@ -37,7 +37,7 @@ class VirtualMachine(models.Model):
   ram = models.CharField(max_length=8)
   disk_size = models.IntegerField()
   cpus = models.IntegerField()
-  cell_id = models.IntegerField()
+  cell_id = models.IntegerField(default='0')
   disk_image = models.ForeignKey(DiskImage, on_delete=models.CASCADE)
 
 class ImageForm(forms.ModelForm):

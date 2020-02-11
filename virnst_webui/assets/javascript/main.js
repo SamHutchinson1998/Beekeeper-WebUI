@@ -102,7 +102,7 @@ function addSidebarIcon(sidebar, graph, disk_image, image_id)
       model.endUpdate();
     }
     graph.setSelectionCell(device);
-    cell_id = ((mxCell)graph.getSelectionCell()).getId();
+    cell_id = graph.getSelectionCell().getId();
     console.log(cell_id);
     getDeviceModal(image_id, cell_id, graph);
   }
