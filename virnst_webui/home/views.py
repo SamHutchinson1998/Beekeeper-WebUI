@@ -59,18 +59,16 @@ class HomePageView(TemplateView):
       return JsonResponse({"disk_images":disk_images}, status = 200)
  
   def post_device_form(request):
+    next = request.POST.get('next', '/')
     if request.method == "POST":
       form = VirtualMachineForm(request.POST)
       if form.is_valid():
         if form.save():
           messages.success(request, 'Successfully added device', extra_tags='alert-success')
-          return JsonResponse({"valid":True},status = 200)
         else:
           messages.error(request, 'Unable to add device', extra_tags='alert-danger')
-          return JsonResponse({"valid":False},status = 500)
       else:
         messages.error(request, "Unable to add device", extra_tags='alert-danger')
-        return JsonResponse({"valid":False},status = 500)
     else:
       messages.error(request, 'Unable to add device', extra_tags='alert-danger')
-      return JsonResponse({"valid":False},status = 500)
+    return HttpResponseRedirect(next)
