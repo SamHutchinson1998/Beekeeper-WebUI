@@ -1,5 +1,6 @@
 import libvirt
 from xml.dom import minidom
+from .models import DiskImage
 
 def get_domains():
   domain_list = []
