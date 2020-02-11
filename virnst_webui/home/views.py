@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.http import JsonResponse, HttpResponseRedirect, HttpResponse
 from django.core.serializers import serialize
-from .services import get_domains
+from .services import get_domains, create_virtual_machine
 from .models import ImageForm, DiskImage, VirtualMachine, VirtualMachineForm
 import json
 # Create your views here.
@@ -64,6 +64,7 @@ class HomePageView(TemplateView):
       form = VirtualMachineForm(request.POST)
       if form.is_valid():
         if form.save():
+          create_virtual_machine(request)
           messages.success(request, 'Successfully added device', extra_tags='alert-success')
         else:
           messages.error(request, 'Unable to add device', extra_tags='alert-danger')
