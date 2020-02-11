@@ -20,8 +20,8 @@ class HomePageView(TemplateView):
     return context
 
   def upload_images(request):
+    next = request.POST.get('next', '/')
     if request.method == "POST":
-      next = request.POST.get('next', '/')
       form = ImageForm(request.POST, request.FILES)
       if form.is_valid():
         if form.save():
@@ -57,16 +57,20 @@ class HomePageView(TemplateView):
       print(request)
       disk_images = json.loads(serialize('json', DiskImage.objects.all()))
       return JsonResponse({"disk_images":disk_images}, status = 200)
-
-  def get_device_form(request):
-    if request.is_ajax and request.method == "GET":
-      image_id = request.GET.get("image_id", None)
-      form = VirtualMachineForm()
-      image = DiskImage.objects.get(pk=image_id)
-      #form['disk_image'].value() = image
-      return render(request, 'form_scaffold.html', {'device_form':form})
  
   def post_device_form(request):
-    print(request.POST)
-    next = request.POST.get('next', '/')
-    return HttpResponseRedirect(next)
+    if request.method == "POST":
+      form = VirtualMachineForm(request.POST)
+      if form.is_valid():
+        if form.save():
+          messages.success(request, 'Successfully added device', extra_tags='alert-success')
+          return JsonResponse({"valid":True},status = 200)
+        else:
+          messages.error(request, 'Unable to add device', extra_tags='alert-danger')
+          return JsonResponse({"valid":False},status = 500)
+      else:
+        messages.error(request, "Unable to add device", extra_tags='alert-danger')
+        return JsonResponse({"valid":False},status = 500)
+    else:
+      messages.error(request, 'Unable to add device', extra_tags='alert-danger')
+      return JsonResponse({"valid":False},status = 500)
