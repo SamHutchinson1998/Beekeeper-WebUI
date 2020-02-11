@@ -1,7 +1,9 @@
 import libvirt
+import sys
 from xml.dom import minidom
 from .models import DiskImage
 from django.conf import settings
+
 
 def get_domains():
   domain_list = []
@@ -48,7 +50,7 @@ def create_virtual_machine(request):
       <boot dev='cdrom'/>
     </os>
     <devices>
-      <emulator>/usr/bin/qemu-kvm</emulator>
+      <emulator>/usr/bin/qemu-system-x86_64</emulator>
       <disk type='file' device='disk'>
         <source file='/var/lib/libvirt/images/{name}.img'/>
         <driver name='qemu' type='raw'/>
@@ -67,11 +69,13 @@ def create_virtual_machine(request):
   spawn_machine(xml)
 
 def spawn_machine(xml):
+  config = xml
+  # Plan B is to use a shellscript to do it haha xd
   conn = libvirt.open('qemu:///system')
-  dom = conn.defineXML(xml, 0)
+  dom = conn.defineXML(config)
   if dom == None:
     print('Failed to define a domain from an XML definition.', file=sys.stderr)
-  if dom.create(dom) < 0:
+  if dom.create() < 0:
     print('Can not boot guest domain.', file=sys.stderr)
   else:
     print('Guest '+dom.name()+' has booted', file=sys.stderr)
