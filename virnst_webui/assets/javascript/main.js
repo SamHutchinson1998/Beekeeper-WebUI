@@ -138,7 +138,7 @@ function keyBindings(graph)
       var i;
       var selected_cells = graph.getSelectionCells();
       for(i = 0; i < selected_cells.length; i++){
-        console.log(selected_cells[i]);
+        console.log(selected_cells[i].getId());
       }
       graph.removeCells();
     }
