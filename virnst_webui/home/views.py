@@ -72,3 +72,8 @@ class HomePageView(TemplateView):
     else:
       messages.error(request, 'Unable to add device', extra_tags='alert-danger')
     return HttpResponseRedirect(next)
+
+  def remove_device(request):
+    if request.is_ajax and request.method == "GET":
+      print(request.GET)
+      # more code here

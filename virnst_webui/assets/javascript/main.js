@@ -134,7 +134,12 @@ function keyBindings(graph)
   {
     if (graph.isEnabled())
     {
-      graph.removeCells();
+      var i;
+      var selected_cells = graph.getSelectionCells();
+      for(i = 0; i < selected_cells.length; i++){
+        console.log(selected_cells[i]);
+      }
+      //graph.removeCells();
     }
   });
 }
@@ -167,6 +172,25 @@ function getDevices()
     }
   });
   return output;
+}
+
+function removeDevice(data)
+{
+  console.log(data);
+  $.ajax({
+    url: 'remove_device',
+    data: {'devices':data},
+    async: false,
+    success: function(result){
+      if(result.status == 200){
+        console.log('success', result);
+      }
+      else{
+        // handle error code here
+        console.log('error', result);
+      }
+    }
+  });
 }
 
 function sendRequest(xml)
