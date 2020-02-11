@@ -75,5 +75,11 @@ class HomePageView(TemplateView):
 
   def remove_device(request):
     if request.is_ajax and request.method == "GET":
-      print(request.GET)
+      retrieved_cell_id = request.GET.get('cell_id',None)
+      vm_record = VirtualMachine.objects.get(cell_id=retrieved_cell_id)
+      if vm_record.delete():
+        return JsonResponse({'result': 'success'},status = 200)
+      else:
+        return JsonResponse({'result': 'error'},status = 500})
       # more code here
+      # code here to search the VirtualMachines table by Cell ID and remove a given record from the db

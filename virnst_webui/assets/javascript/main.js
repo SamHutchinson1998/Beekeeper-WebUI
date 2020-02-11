@@ -138,7 +138,8 @@ function keyBindings(graph)
       var i;
       var selected_cells = graph.getSelectionCells();
       for(i = 0; i < selected_cells.length; i++){
-        console.log(selected_cells[i].getId());
+        cell_id = selected_cells[i].getId();
+        removeDevice(cell_id);
       }
       graph.removeCells();
     }
@@ -177,15 +178,14 @@ function getDevices()
   return output;
 }
 
-function removeDevice(data)
+function removeDevice(cell_id)
 {
-  console.log(data);
   $.ajax({
     url: 'remove_device',
-    data: {'devices':data},
+    data: {'cell_id':cell_id},
     async: false,
     success: function(result){
-      if(result.status == 200){
+      if(result.status == 200){ // if the task was successful
         console.log('success', result);
       }
       else{
