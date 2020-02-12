@@ -51,8 +51,8 @@ def create_virtual_machine(request):
     <on_crash>destroy</on_crash>
     <os>
       <type arch='x86_64' machine='pc-i440fx-bionic'>hvm</type>
-      <boot dev='cdrom'/>
       <boot dev='hd'/>
+      <boot dev='cdrom'/>
     </os>
     <features>
       <acpi/>
