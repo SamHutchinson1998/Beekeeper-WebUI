@@ -77,7 +77,7 @@ def create_virtual_machine(request):
       <graphics type='vnc' port='-1' autoport='yes' listen='0.0.0.0'/>
     </devices>
   </domain>"""
-  print(xml)
+  #print(xml)
   spawn_machine(disk_size, name, xml)
 
 def spawn_machine(disk_size, name, xml):
@@ -98,7 +98,8 @@ def spawn_machine(disk_size, name, xml):
 def remove_machine(virtual_machine):
   conn = libvirt.open('qemu:///system')
   dom = conn.lookupByName(virtual_machine.name)
-  if dom.destroy():
-    if dom.undefine():
-      print(f'domain {virtual_machine.name} destroyed')
-      os.system(f'rm -rf /var/lib/libvirt/images/{virtual_machine.name}.img')
+  dom.undefine()
+  print(dom)
+  dom.destroy()
+  print(f'domain {virtual_machine.name} destroyed')
+  os.system(f'rm -rf /var/lib/libvirt/images/{virtual_machine.name}.img')
