@@ -94,3 +94,10 @@ def spawn_machine(disk_size, name, xml):
     else:
       print('Guest '+dom.name()+' has booted', file=sys.stderr)
   conn.close()
+
+def remove_machine(virtual_machine):
+  conn = libvirt.open('qemu:///system')
+  dom = conn.lookupByName(virtual_machine.name)
+  if dom.destroy():
+    if dom.delete():
+      print(f'domain {virtual_machine.name} destroyed')

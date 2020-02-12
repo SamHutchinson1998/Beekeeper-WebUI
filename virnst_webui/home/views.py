@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.http import JsonResponse, HttpResponseRedirect, HttpResponse
 from django.core.serializers import serialize
-from .services import get_domains, create_virtual_machine
+from .services import get_domains, create_virtual_machine, remove_machine
 from .models import ImageForm, DiskImage, VirtualMachine, VirtualMachineForm
 import json
 # Create your views here.
@@ -79,6 +79,7 @@ class HomePageView(TemplateView):
       retrieved_cell_id = request.GET.get('cell_id',None)
       vm_record = VirtualMachine.objects.get(cell_id=retrieved_cell_id)
       if vm_record.delete():
+        remove_machine(vm_record)
         return JsonResponse({'result': 'success'},status = 200)
       else:
         return JsonResponse({'result': 'error'},status = 500)
