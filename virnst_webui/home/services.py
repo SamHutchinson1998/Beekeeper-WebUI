@@ -3,6 +3,7 @@ import sys
 from xml.dom import minidom
 from .models import DiskImage
 from django.conf import settings
+import os
 
 
 def get_domains():
@@ -66,17 +67,19 @@ def create_virtual_machine(request):
     </devices>
   </domain>"""
   print(xml)
-  spawn_machine(xml)
+  spawn_machine(disk_size, name, xml)
 
-def spawn_machine(xml):
+def spawn_machine(disk_size, name, xml):
   config = xml
   # Plan B is to use a shellscript to do it haha xd
   conn = libvirt.open('qemu:///system')
   dom = conn.defineXML(config)
   if dom == None:
     print('Failed to define a domain from an XML definition.', file=sys.stderr)
-  if dom.create() < 0:
-    print('Can not boot guest domain.', file=sys.stderr)
   else:
-    print('Guest '+dom.name()+' has booted', file=sys.stderr)
+    os.system(f'qemu-img create -f raw /var/lib/libvirt/images/{name}.img {disk_size}G')
+    if dom.create() < 0:
+      print('Can not boot guest domain.', file=sys.stderr)
+    else:
+      print('Guest '+dom.name()+' has booted', file=sys.stderr)
   conn.close()
