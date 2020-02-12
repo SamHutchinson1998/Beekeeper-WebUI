@@ -59,7 +59,7 @@ def create_virtual_machine(request):
       </disk>
       <disk type='file' device='cdrom'>
         <source file='{settings.MEDIA_ROOT}/{disk_image}'/>
-        <target dev='hdc' bus='ide' tray='open'/>
+        <target dev='hdc' bus='ide'/>
         <readonly/>
       </disk>
       <input type='mouse' bus='ps2'/>
