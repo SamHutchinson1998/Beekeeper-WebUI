@@ -99,5 +99,6 @@ def remove_machine(virtual_machine):
   conn = libvirt.open('qemu:///system')
   dom = conn.lookupByName(virtual_machine.name)
   if dom.destroy():
-    if dom.delete():
+    if dom.undefine():
       print(f'domain {virtual_machine.name} destroyed')
+      os.system(f'rm -rf /var/lib/libvirt/images/{virtual_machine.name}.img')
