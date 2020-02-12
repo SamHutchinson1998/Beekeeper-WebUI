@@ -21,6 +21,7 @@
 </head>
 {% if user.is_authenticated %}
 <body onload="main(document.getElementById('graphContainer'), document.getElementById('sidebarContainer'))">
+  <div id="toolbarContainer" class="bg-light"></div>
   <div id="graphContainer" style="background-image: url({% static 'logos/grid.gif' %})"></div>
   <div id="sidebarContainer" class="bg-light"></div>
   {% include '_messages.html' %}
