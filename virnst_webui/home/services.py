@@ -39,27 +39,29 @@ def create_virtual_machine(request):
   xml = f"""
   <domain type='kvm'>
     <name>{name}</name>
-    <memory units='MB'>{memory}</memory>
-    <vcpu>{cpus}</vcpu>
+    <memory unit='MB'>{memory}</memory>
+    <currentmemory unit='MB'>{memory}</memory>
+    <vcpu placement='static'>{cpus}</vcpu>
     <clock sync='localtime'/>
     <on_poweroff>destroy</on_poweroff>
     <on_reboot>restart</on_reboot>
     <on_crash>destroy</on_crash>
     <os>
-      <type arch='x86_64' machine='pc'>hvm</type>
-      <boot dev='hd'/>
+      <type arch='x86_64' machine='pc-i440fx-bionic'>hvm</type>
       <boot dev='cdrom'/>
+      <boot dev='hd'/>
     </os>
     <devices>
-      <emulator>/usr/bin/qemu-system-x86_64</emulator>
+      <emulator>/usr/bin/kvm-spice</emulator>
       <disk type='file' device='disk'>
         <source file='/var/lib/libvirt/images/{name}.img'/>
         <driver name='qemu' type='raw'/>
-        <target dev='hda'/>
+        <target dev='vda' bus='virtio'/>
       </disk>
       <disk type='file' device='cdrom'>
+        <driver name='qemu' type='raw'/>
         <source file='{settings.MEDIA_ROOT}/{disk_image}'/>
-        <target dev='hdc' bus='ide'/>
+        <target dev='hda' bus='ide'/>
         <readonly/>
       </disk>
       <input type='mouse' bus='ps2'/>
