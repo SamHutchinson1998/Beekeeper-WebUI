@@ -40,7 +40,7 @@ def create_virtual_machine(request):
   <domain type='kvm'>
     <name>{name}</name>
     <memory unit='MB'>{memory}</memory>
-    <currentmemory unit='MB'>{memory}</memory>
+    <currentmemory unit='MB'>{memory}</currentmemory>
     <vcpu placement='static'>{cpus}</vcpu>
     <clock sync='localtime'/>
     <on_poweroff>destroy</on_poweroff>
