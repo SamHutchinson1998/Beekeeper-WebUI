@@ -43,6 +43,9 @@ def create_virtual_machine(request):
     <currentmemory unit='MB'>{memory}</currentmemory>
     <vcpu placement='static'>{cpus}</vcpu>
     <clock sync='localtime'/>
+    <resource>
+      <partition>/machine</partition>
+    </resource>
     <on_poweroff>destroy</on_poweroff>
     <on_reboot>restart</on_reboot>
     <on_crash>destroy</on_crash>
@@ -51,16 +54,22 @@ def create_virtual_machine(request):
       <boot dev='cdrom'/>
       <boot dev='hd'/>
     </os>
+    <features>
+      <acpi/>
+      <apic/>
+    </features>
     <devices>
       <emulator>/usr/bin/kvm-spice</emulator>
       <disk type='file' device='disk'>
         <source file='/var/lib/libvirt/images/{name}.img'/>
+        <backingstore/>
         <driver name='qemu' type='raw'/>
         <target dev='vda' bus='virtio'/>
       </disk>
       <disk type='file' device='cdrom'>
         <driver name='qemu' type='raw'/>
         <source file='{settings.MEDIA_ROOT}/{disk_image}'/>
+        <backingstore/>
         <target dev='hda' bus='ide'/>
         <readonly/>
       </disk>
