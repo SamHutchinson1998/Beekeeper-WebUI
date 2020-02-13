@@ -1,4 +1,4 @@
-#!/home/sam/Documents/Dissertation/VIRNST-WebUI-Python/venv/bin/python3
+#!/home/sam/Documents/Dissertation/Beekeeper-WebUI-Python/venv/bin/python3
 from django.core import management
 
 if __name__ == "__main__":
