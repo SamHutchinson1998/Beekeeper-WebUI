@@ -1,16 +1,12 @@
-interact('.toolbarContainer')
-  .draggable({
-    // keep the element within the area of it's parent
-    modifiers: [
-      interact.modifiers.restrictRect({
-        restriction: 'parent',
-        endOnly: true
-      })
-    ],
-    onmove: dragMoveListener,
-    // enable autoScroll
-    autoScroll: true,
-  })
+interact('#toolbarContainer').draggable({
+  onmove: dragMoveListener,
+  modifiers: [
+    interact.modifiers.restrictRect({
+      restriction: 'parent',
+      endOnly: true
+    })
+  ],
+})
 
 function dragMoveListener (event) {
   var target = event.target
