@@ -10,13 +10,14 @@
 
 #toolbarContainer{
   position: absolute;
+  white-space: nowrap;
   overflow: hidden;
-  height: 250px;
-  width: 150px;
+  top: 0px;
+  left: 0px;
+  max-height: 24px;
+  height: 36px;
+  right: 0px;
   padding: 2px;
-  border-radius: 5px;
-  -webkit-transform: translate(0px, 0px);
-          transform: translate(0px, 0px);
 }
 
 #graphContainer {
