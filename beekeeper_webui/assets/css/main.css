@@ -10,12 +10,9 @@
 
 #toolbarContainer{
   position: absolute;
-  white-space: nowrap;
   overflow: hidden;
-  top: 0px;
   left: 0px;
-  max-height: 24px;
-  height: 36px;
+  height: 20px;
   right: 0px;
   padding: 2px;
 }
