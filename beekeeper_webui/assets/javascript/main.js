@@ -17,7 +17,7 @@ function main(container, sidebar)
 
     // Disables the built-in context menu
     mxEvent.disableContextMenu(container);
-    
+
     // Creates the graph inside the given container
     var graph = new mxGraph(container);
     var images_list = getDevices();
@@ -27,6 +27,8 @@ function main(container, sidebar)
       var id = images_list[i].pk;
       addSidebarIcon(sidebar, graph, image, id);
     }
+    // Populates toolbar
+    populateToolbar(graph);
     // Enables rubberband selection
     new mxRubberband(graph);
     // Disable highlight of cells when dragging from toolbar
