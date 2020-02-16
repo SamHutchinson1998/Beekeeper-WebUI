@@ -158,9 +158,7 @@ function addToolbarIcon(toolbar, graph, tool, tooltype)
       cell.geometry.setTerminalPoint(new mxPoint(180, 0), false); // target point
       cell.geometry.relative = true;
       cell.edge = true;
-      //graph.addCell(cell);
       graph.importCells([cell], x, y, parent);
-      //graph.fireEvent(new mxEventObject('cellsInserted', 'cells', cell));
     }
     finally
     {

@@ -12,7 +12,6 @@
 <script> mxBasePath = "{% static 'javascript/mxgraph-master/javascript/src' %}"</script>
 <script src="{% static 'javascript/mxgraph-master/javascript/src/js/mxClient.js' %}"></script>
 <script src="{% static 'javascript/main.js' %}"></script>
-<script src="{% static 'javascript/toolbar.js' %}"></script>
 
 <html style="height:100%;width:100%;">
 <head>
@@ -24,9 +23,11 @@
 <body onload="main(document.getElementById('graphContainer'), document.getElementById('sidebarContainer'))">
   <div id="graphContainer" style="background-image: url({% static 'logos/grid.gif' %})"></div>
   <div id="toolbarContainer" class="bg-light"></div>
+  
+  {% include '_messages.html' %}
+
   <div id="sidebarContainer" class="bg-light"></div>
 
-  {% include '_messages.html' %}
   {% include 'form_scaffold.html' %}
 </body>
 {% else %}
