@@ -149,16 +149,16 @@ function addToolbarIcon(toolbar, graph, tool, tooltype)
     var parent = graph.getDefaultParent();
     var model = graph.getModel();
     var cell = null;
-    var style = `endArrow=none;html=1;`;
+    var style = `strokeWidth=7;strokeColor=black;endArrow=none;html=1;`;
     model.beginUpdate();
     try
     {
-      cell = new mxCell('Test Cable', new mxGeometry(0, 0, 150, 150), style);
-      cell.geometry.setTerminalPoint(new mxPoint(0, 150), true);
-      cell.geometry.setTerminalPoint(new mxPoint(150, 0), false);
+      cell = new mxCell('Test Cable', new mxGeometry(0, 0, 150, 150), style); // last two values are height and width respectively
+      cell.geometry.setTerminalPoint(new mxPoint(0, 170), true); // source point
+      cell.geometry.setTerminalPoint(new mxPoint(180, 0), false); // target point
       cell.geometry.relative = true;
       cell.edge = true;
-      cell = graph.addCell(cell);
+      //graph.addCell(cell);
       graph.importCells([cell], x, y, parent);
       //graph.fireEvent(new mxEventObject('cellsInserted', 'cells', cell));
     }
