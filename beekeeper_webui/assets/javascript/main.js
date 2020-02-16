@@ -148,24 +148,25 @@ function addToolbarIcon(toolbar, graph, tool, tooltype)
   {
     var parent = graph.getDefaultParent();
     var model = graph.getModel();
+    var cell = null;
     var style = `endArrow=none;html=1;`;
     model.beginUpdate();
     try
     {
-      var cell = new mxCell('Test Cable', new mxGeometry(0, 0, 150, 150), style);
+      cell = new mxCell('Test Cable', new mxGeometry(0, 0, 150, 150), style);
       cell.geometry.setTerminalPoint(new mxPoint(0, 150), true);
       cell.geometry.setTerminalPoint(new mxPoint(150, 0), false);
       cell.geometry.relative = true;
       cell.edge = true;
       cell = graph.addCell(cell);
-      var select = graph.importCells([cell], x, y, parent);
-      graph.fireEvent(new mxEventObject('cellsInserted', 'cells', select));
+      graph.importCells([cell], x, y, parent);
+      //graph.fireEvent(new mxEventObject('cellsInserted', 'cells', cell));
     }
     finally
     {
       model.endUpdate();
     }
-    graph.setSelectionCell(cable);
+    graph.setSelectionCell(cell);
   }
 
   var icon = document.createElement('img');
