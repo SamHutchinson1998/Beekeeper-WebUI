@@ -10,20 +10,12 @@ function addToolbarIcon(toolbar, graph, tool, tooltype)
   {
     var parent = graph.getDefaultParent();
     var model = graph.getModel();
-    
-    var style = `curved=1;endArrow=classic;html=1;`;
+    var cable = null;
+    var style = `strokeColor=red;`;
     model.beginUpdate();
     try
     {
-      var cable = new mxCell('Test Cable', new mxGeometry(0,0,50,50), style);
-      cable.geometry.setTerminalPoint(new mxPoint(50,150), true);
-      cable.geometry.setTerminalPoint(new mxPoint(150,50), false);
-
-      cell.geometry.relative = true;
-      cell.edge = true;
-
-      cell = graph.addCell(cell);
-      graph.fireEvent(new mxEventObject('cellsInserted', 'cells', [cell]));
+      graph.insertEdge(parent, null, '', new mxPoint(x,y), new mxPoint(x, y+50));
     }
     finally
     {
