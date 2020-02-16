@@ -11,12 +11,19 @@ function addToolbarIcon(toolbar, graph, tool, tooltype)
     var parent = graph.getDefaultParent();
     var model = graph.getModel();
     
-    var style = ``;
+    var style = `curved=1;endArrow=classic;html=1;`;
     model.beginUpdate();
     try
     {
-      var cable = graph.insertEdge(parent, null, '', x, y+50, style);
-      cable.setConnectable(true);
+      var cable = new mxCell('Test Cable', new mxGeometry(0,0,50,50), style);
+      cable.geometry.setTerminalPoint(new mxPoint(50,150), true);
+      cable.geometry.setTerminalPoint(new mxPoint(150,50), false);
+
+      cell.geometry.relative = true;
+      cell.edge = true;
+
+      cell = graph.addCell(cell);
+      graph.fireEvent(new mxEventObject('cellsInserted', 'cells', [cell]));
     }
     finally
     {
