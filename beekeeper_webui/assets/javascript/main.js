@@ -33,6 +33,7 @@ function main(container, sidebar)
     new mxRubberband(graph);
     // Disable highlight of cells when dragging from toolbar
     graph.setDropEnabled(false);
+    graph.vertexLabelsMovable = true;
     graph.isCellSelectable = function(cable)
     {
       return !this.isCellLocked(cable);
