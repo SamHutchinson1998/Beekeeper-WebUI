@@ -33,9 +33,9 @@ function main(container, sidebar)
     new mxRubberband(graph);
     // Disable highlight of cells when dragging from toolbar
     graph.setDropEnabled(false);
-    graph.isCellSelectable = function(cell)
+    graph.isCellSelectable = function(cable)
     {
-      return !this.isCellLocked(cell);
+      return !this.isCellLocked(cable);
     };
 
     // Gets the default parent for inserting new cells. This
@@ -85,7 +85,7 @@ function graphListener(graph)
 function addSidebarIcon(sidebar, graph, disk_image, image_id)
 {
   var image = getVector(disk_image);
-  var funct = function(graph, evt, cell, x, y)
+  var funct = function(graph, evt, cable, x, y)
   {
     var parent = graph.getDefaultParent();
     var model = graph.getModel();
@@ -153,7 +153,15 @@ function addToolbarIcon(toolbar, graph, tool, tooltype)
     model.beginUpdate();
     try
     {
-      cable = graph.insertEdge(parent, null, '', new mxPoint(x,y), new mxPoint(x, y+50));
+      cable = new mxCell('your text', new mxGeometry(0, 0, 50, 50), 'curved=1;endArrow=classic;html=1;');
+      cable.geometry.setTerminalPoint(new mxPoint(50, 150), true);
+      cable.geometry.setTerminalPoint(new mxPoint(150, 50), false);
+    
+      cable.geometry.relative = true;
+      cable.edge = true;
+    
+      cable = graph.addCell(cable);
+      graph.fireEvent(new mxEventObject('cellsInserted', 'cells', [cable]));
     }
     finally
     {
