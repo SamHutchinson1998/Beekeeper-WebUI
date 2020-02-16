@@ -153,15 +153,7 @@ function addToolbarIcon(toolbar, graph, tool, tooltype)
     model.beginUpdate();
     try
     {
-      cable = new mxCell('your text', new mxGeometry(0, 0, 50, 50), 'curved=1;endArrow=classic;html=1;');
-      cable.geometry.setTerminalPoint(new mxPoint(50, 150), true);
-      cable.geometry.setTerminalPoint(new mxPoint(150, 50), false);
-    
-      cable.geometry.relative = true;
-      cable.edge = true;
-    
-      cable = graph.addCell(cable);
-      graph.fireEvent(new mxEventObject('cellsInserted', 'cells', [cable]));
+      
     }
     finally
     {
