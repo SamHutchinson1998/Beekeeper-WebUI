@@ -50,7 +50,7 @@ function addToolbarItem(toolbar, graph, tool, tooltype)
   var icon = document.createElement('img');
   icon.setAttribute('src', tool);
   icon.setAttribute('id', 'toolbarItem');
-  icon.title = 'Drag this onto the canvas to create a new ethernet cable';
+  icon.title = `Drag this onto the canvas to create a new ${tooltype}`;
   toolbar.appendChild(icon);
 
   var dragElement = document.createElement('div');
@@ -69,7 +69,7 @@ function addToolbarButton(toolbar, image, type)
   button.style.height = '25px';
   button.style.width = '25px';
   button.setAttribute('id', 'toolbarItem');
-
+  button.title = `${type} selected/all devices`;
   var img = document.createElement('img');
   img.setAttribute('src', image);
   img.style.width = '10px';
