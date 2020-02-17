@@ -62,7 +62,7 @@ function addToolbarItem(toolbar, graph, tool, tooltype)
   ds.setGuidesEnabled(true);
 }
 
-function addToolbarButton(toolbar, image, type)
+function addToolbarButton(toolbar, image, type, graph)
 {
   var button = document.createElement('button');
   button.setAttribute('class', 'btn btn-outline-secondary');
@@ -81,26 +81,28 @@ function addToolbarButton(toolbar, image, type)
   switch(type)
   {
     case 'start':
-      startVirtualMachines(button);
+      startVirtualMachines(button, graph);
     break;
     case 'stop':
-      stopVirtualMachines(button);
+      stopVirtualMachines(button, graph);
     break;
   }
   // click_function is a custom object passed through as a param in addToolbarButton
   toolbar.appendChild(button);
 }
 
-function startVirtualMachines(button)
+function startVirtualMachines(button, graph)
 {
   button.addEventListener("click", function(){
+    console.log(graph.getSelectionCells());
     console.log('Starting VMs');
   })
 }
 
-function stopVirtualMachines(button)
+function stopVirtualMachines(button, graph)
 {
   button.addEventListener("click", function(){
+    console.log(graph.getSelectionCells());
     console.log('Stopping VMs');
   })
 }
