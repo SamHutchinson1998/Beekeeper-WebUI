@@ -3,6 +3,8 @@ function populateToolbar(graph)
   var toolbar = document.getElementById('toolbarContainer');
   addToolbarItem(toolbar, graph, '../static/devices/ethernet_cable.svg', 'cable');
   addToolbarItem(toolbar, graph, '../static/devices/Label.svg', 'textbox');
+  addToolbarButton(toolbar, '../static/devices/start_button.svg',startVirtualMachines());
+  addToolbarButton(toolbar, '../static/devices/stop_button.svg', stopVirtualMachines());
 }
 
 function addToolbarItem(toolbar, graph, tool, tooltype)
@@ -66,8 +68,8 @@ function addToolbarButton(toolbar, image, click_function)
 
   var img = document.createElement('img');
   img.setAttribute('src', image);
-  img.style.width = '20px';
-  img.style.height = '20px';
+  img.style.width = '24px';
+  img.style.height = '24px';
   img.style.verticalAlign = 'middle';
   img.style.marginRight = '2px';
   button.appendChild(img);
