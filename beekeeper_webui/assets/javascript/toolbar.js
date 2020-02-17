@@ -2,7 +2,7 @@ function populateToolbar(graph)
 {
   var toolbar = document.getElementById('toolbarContainer');
   addToolbarItem(toolbar, graph, '../static/devices/ethernet_cable.svg', 'cable');
-  //addToolbarItem(toolbar, graph, '../static/devices/label.svg', 'textbox');
+  //addToolbarItem(toolbar, graph, '../static/devices/Label.svg', 'textbox');
 }
 
 function addToolbarItem(toolbar, graph, tool, tooltype)
@@ -15,13 +15,27 @@ function addToolbarItem(toolbar, graph, tool, tooltype)
     model.beginUpdate();
     try
     {
-      var style = `strokeWidth=7;strokeColor=black;endArrow=none;html=1;`;
-      cell = new mxCell('Test Cable', new mxGeometry(0, 0, 150, 150), style); // last two values are height and width respectively
-      cell.geometry.setTerminalPoint(new mxPoint(0, 170), true); // source point
-      cell.geometry.setTerminalPoint(new mxPoint(180, 0), false); // target point
-      cell.geometry.relative = true;
-      cell.edge = true;
-      graph.importCells([cell], x, y, parent);
+      switch(tooltype)
+      {
+        case 'cable':
+          var style = `strokeWidth=7;strokeColor=black;endArrow=none;html=1;`;
+          cell = new mxCell('Test Cable', new mxGeometry(0, 0, 150, 150), style); // last two values are height and width respectively
+          cell.geometry.setTerminalPoint(new mxPoint(0, 170), true); // source point
+          cell.geometry.setTerminalPoint(new mxPoint(180, 0), false); // target point
+          cell.geometry.relative = true;
+          cell.edge = true;
+          graph.importCells([cell], x, y, parent);
+        case 'textbox':
+          var style = `verticalLabelPosition=bottom;verticalAlign=top;labelHandleSize=10;`;
+          cell = new mxCell('Text Here', new mxGeometry(0, 0, 100, 100), style); // last two values are height and width respectively
+          cell.geometry.setTerminalPoint(new mxPoint(0, 100), true);
+          cell.geometry.setTerminalPoint(new mxPoint(100, 0), false);
+          cell.geometry.relative = true;
+          cell.edge = false;
+          graph.importCells([cell], x, y, parent);
+        default:
+          cell = null;
+      }
     }
     finally
     {
@@ -47,13 +61,7 @@ function addToolbarItem(toolbar, graph, tool, tooltype)
 
 function createTextBox()
 {
-  var style = `verticalLabelPosition=bottom;verticalAlign=top;labelHandleSize=10;`;
-  cell = new mxCell('Text Here', new mxGeometry(0, 0, 100, 100), style); // last two values are height and width respectively
-  cell.geometry.setTerminalPoint(new mxPoint(0, 100), true); // source point
-  cell.geometry.setTerminalPoint(new mxPoint(100, 0), false); // target point
-  cell.geometry.relative = true;
-  cell.edge = false;
-  return cell;
+
 }
 
 function addToolbarButton(toolbar, image, click_function)
