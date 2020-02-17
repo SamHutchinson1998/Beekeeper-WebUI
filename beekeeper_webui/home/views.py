@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.http import JsonResponse, HttpResponseRedirect, HttpResponse
 from django.core.serializers import serialize
-from .services import get_domains, create_virtual_machine, remove_machine
+from .services import get_domains, create_virtual_machine, remove_machine, turn_off_devices, turn_on_devices
 from .models import ImageForm, DiskImage, VirtualMachine, VirtualMachineForm
 import json
 # Create your views here.
@@ -83,5 +83,10 @@ class HomePageView(TemplateView):
         return JsonResponse({'result': 'success'},status = 200)
       else:
         return JsonResponse({'result': 'error'},status = 500)
-      # more code here
-      # code here to search the VirtualMachines table by Cell ID and remove a given record from the db
+  
+  def change_vm_state(request):
+    if request.is_ajax and request.method == "GET":
+      print(request)
+      turn_off_devices()
+      turn_on_devices()
+

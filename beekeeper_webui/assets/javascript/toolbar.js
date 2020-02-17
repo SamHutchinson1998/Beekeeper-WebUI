@@ -94,8 +94,19 @@ function addToolbarButton(toolbar, image, type, graph)
 function startVirtualMachines(button, graph)
 {
   button.addEventListener("click", function(){
-    console.log(graph.getSelectionCells());
+    var cells = graph.getSelectionCells();
+    console.log(cells);
     console.log('Starting VMs');
+    $.ajax({
+      url: 'change_vm_state',
+      data: {
+        'state': 'start',
+        'cells': cells
+      },
+      success: function(result){
+        // Do nothing, possibly alert?
+      }
+    });
   })
 }
 
@@ -104,5 +115,16 @@ function stopVirtualMachines(button, graph)
   button.addEventListener("click", function(){
     console.log(graph.getSelectionCells());
     console.log('Stopping VMs');
+    $.ajax({
+      url: 'change_vm_state',
+      data: {
+        'state': 'stop',
+        'cells': cells
+      },
+      success: function(result){
+        // Do nothing, possibly alert?
+      }
+    });
+  })
   })
 }

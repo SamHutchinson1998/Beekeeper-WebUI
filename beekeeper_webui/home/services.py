@@ -102,3 +102,9 @@ def remove_machine(virtual_machine):
   dom.destroy()
   print(f'domain {virtual_machine.name} destroyed')
   os.system(f'rm -rf /var/lib/libvirt/images/{virtual_machine.name}.img')
+
+def turn_off_devices():
+  print('devices turned off')
+
+def turn_on_devices():
+  print('devices turned on')
