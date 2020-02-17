@@ -2,7 +2,7 @@ function populateToolbar(graph)
 {
   var toolbar = document.getElementById('toolbarContainer');
   addToolbarItem(toolbar, graph, '../static/devices/ethernet_cable.svg', 'cable');
-  addToolbarItem(toolbar, graph, '../static/devices/label.svg', 'textbox')
+  //addToolbarItem(toolbar, graph, '../static/devices/label.svg', 'textbox');
 }
 
 function addToolbarItem(toolbar, graph, tool, tooltype)
@@ -15,13 +15,12 @@ function addToolbarItem(toolbar, graph, tool, tooltype)
     model.beginUpdate();
     try
     {
-      switch(tooltype)
-      {
-        case 'cable':
-          cell = createCable();
-        case 'textbox':
-          cell = createTextBox();
-      }
+      var style = `strokeWidth=7;strokeColor=black;endArrow=none;html=1;`;
+      cell = new mxCell('Test Cable', new mxGeometry(0, 0, 150, 150), style); // last two values are height and width respectively
+      cell.geometry.setTerminalPoint(new mxPoint(0, 170), true); // source point
+      cell.geometry.setTerminalPoint(new mxPoint(180, 0), false); // target point
+      cell.geometry.relative = true;
+      cell.edge = true;
       graph.importCells([cell], x, y, parent);
     }
     finally
@@ -44,17 +43,6 @@ function addToolbarItem(toolbar, graph, tool, tooltype)
 
   var ds = mxUtils.makeDraggable(icon,graph,funct,dragElement,0,0,true,true);
   ds.setGuidesEnabled(true);
-}
-
-function createCable()
-{
-  var style = `strokeWidth=7;strokeColor=black;endArrow=none;html=1;`;
-  cell = new mxCell('Test Cable', new mxGeometry(0, 0, 150, 150), style); // last two values are height and width respectively
-  cell.geometry.setTerminalPoint(new mxPoint(0, 170), true); // source point
-  cell.geometry.setTerminalPoint(new mxPoint(180, 0), false); // target point
-  cell.geometry.relative = true;
-  cell.edge = true;
-  return cell;
 }
 
 function createTextBox()
