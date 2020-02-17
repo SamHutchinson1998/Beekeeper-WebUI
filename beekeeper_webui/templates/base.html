@@ -23,11 +23,10 @@
 {% if user.is_authenticated %}
 <body onload="main(document.getElementById('graphContainer'), document.getElementById('sidebarContainer'))">
   <div id="graphContainer" style="background-image: url({% static 'logos/grid.gif' %})"></div>
+  <div id="sidebarContainer" class="bg-light"></div>
   <div id="toolbarContainer" class="bg-light"></div>
   
   {% include '_messages.html' %}
-
-  <div id="sidebarContainer" class="bg-light"></div>
 
   {% include 'form_scaffold.html' %}
 </body>

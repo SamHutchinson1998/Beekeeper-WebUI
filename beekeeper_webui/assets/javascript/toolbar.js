@@ -3,8 +3,8 @@ function populateToolbar(graph)
   var toolbar = document.getElementById('toolbarContainer');
   addToolbarItem(toolbar, graph, '../static/devices/ethernet_cable.svg', 'cable');
   addToolbarItem(toolbar, graph, '../static/devices/Label.svg', 'textbox');
-  addToolbarButton(toolbar, '../static/devices/start_button.svg',startVirtualMachines(), 'start');
-  addToolbarButton(toolbar, '../static/devices/stop_button.svg', stopVirtualMachines(), 'stop');
+  addToolbarButton(toolbar, '../static/devices/start_button.svg', 'start');
+  addToolbarButton(toolbar, '../static/devices/stop_button.svg', 'stop');
 }
 
 function addToolbarItem(toolbar, graph, tool, tooltype)
@@ -62,16 +62,20 @@ function addToolbarItem(toolbar, graph, tool, tooltype)
   ds.setGuidesEnabled(true);
 }
 
-function addToolbarButton(toolbar, image, click_function, type)
+function addToolbarButton(toolbar, image, type)
 {
   var button = document.createElement('button');
+  button.setAttribute('class', 'btn btn-outline-secondary');
+  button.style.height = '25px';
+  button.style.width = '25px';
+  button.setAttribute('id', 'toolbarItem');
 
   var img = document.createElement('img');
   img.setAttribute('src', image);
-  img.style.width = '20px';
-  img.style.height = '20px';
-  img.style.verticalAlign = 'middle';
-  img.style.marginRight = '2px';
+  img.style.width = '10px';
+  img.style.height = '10px';
+  img.style.Align = 'center';
+  //img.style.marginRight = '2px';
   button.appendChild(img);
 
   switch(type)
@@ -84,7 +88,7 @@ function addToolbarButton(toolbar, image, click_function, type)
     break;
   }
   // click_function is a custom object passed through as a param in addToolbarButton
-  toolbar.appendChild(button)
+  toolbar.appendChild(button);
 }
 
 function startVirtualMachines(button)
