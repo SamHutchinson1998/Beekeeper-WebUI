@@ -89,4 +89,4 @@ class HomePageView(TemplateView):
       print(request)
       turn_off_devices()
       turn_on_devices()
-
+    return JsonResponse({},status=200)
