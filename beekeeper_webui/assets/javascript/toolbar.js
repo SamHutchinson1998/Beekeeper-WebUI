@@ -3,8 +3,8 @@ function populateToolbar(graph)
   var toolbar = document.getElementById('toolbarContainer');
   addToolbarItem(toolbar, graph, '../static/devices/ethernet_cable.svg', 'cable');
   addToolbarItem(toolbar, graph, '../static/devices/Label.svg', 'textbox');
-  addToolbarButton(toolbar, '../static/devices/start_button.svg', 'start');
-  addToolbarButton(toolbar, '../static/devices/stop_button.svg', 'stop');
+  addToolbarButton(toolbar, '../static/devices/start_button.svg', 'start', graph);
+  addToolbarButton(toolbar, '../static/devices/stop_button.svg', 'stop', graph);
 }
 
 function addToolbarItem(toolbar, graph, tool, tooltype)
