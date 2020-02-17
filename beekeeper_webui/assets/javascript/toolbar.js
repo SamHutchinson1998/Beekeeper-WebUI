@@ -3,8 +3,8 @@ function populateToolbar(graph)
   var toolbar = document.getElementById('toolbarContainer');
   addToolbarItem(toolbar, graph, '../static/devices/ethernet_cable.svg', 'cable');
   addToolbarItem(toolbar, graph, '../static/devices/Label.svg', 'textbox');
-  addToolbarButton(toolbar, '../static/devices/start_button.svg',startVirtualMachines());
-  addToolbarButton(toolbar, '../static/devices/stop_button.svg', stopVirtualMachines());
+  addToolbarButton(toolbar, '../static/devices/start_button.svg',startVirtualMachines(), 'start');
+  addToolbarButton(toolbar, '../static/devices/stop_button.svg', stopVirtualMachines(), 'stop');
 }
 
 function addToolbarItem(toolbar, graph, tool, tooltype)
@@ -62,29 +62,41 @@ function addToolbarItem(toolbar, graph, tool, tooltype)
   ds.setGuidesEnabled(true);
 }
 
-function addToolbarButton(toolbar, image, click_function)
+function addToolbarButton(toolbar, image, click_function, type)
 {
   var button = document.createElement('button');
 
   var img = document.createElement('img');
   img.setAttribute('src', image);
-  img.style.width = '24px';
-  img.style.height = '24px';
+  img.style.width = '20px';
+  img.style.height = '20px';
   img.style.verticalAlign = 'middle';
   img.style.marginRight = '2px';
   button.appendChild(img);
 
+  switch(type)
+  {
+    case 'start':
+      startVirtualMachines(button);
+    break;
+    case 'stop':
+      stopVirtualMachines(button);
+    break;
+  }
   // click_function is a custom object passed through as a param in addToolbarButton
-  button.addEventListener("click", click_function)
   toolbar.appendChild(button)
 }
 
-function startVirtualMachines()
+function startVirtualMachines(button)
 {
-  console.log('Starting VMs')
+  button.addEventListener("click", function(){
+    console.log('Starting VMs');
+  })
 }
 
-function stopVirtualMachines()
+function stopVirtualMachines(button)
 {
-  console.log('Stopping VMs')
+  button.addEventListener("click", function(){
+    console.log('Stopping VMs');
+  })
 }
