@@ -12,23 +12,28 @@ function addToolbarItem(toolbar, graph, tool, tooltype)
     var parent = graph.getDefaultParent();
     var model = graph.getModel();
     var cell = null;
+    var style = null;
     model.beginUpdate();
     try
     {
       switch(tooltype)
       {
+        case 'textbox':
+          style = `verticalLabelPosition=center;verticalAlign=center;` +
+            `fontFamily=helvetica;fontStyle=1;fontColor=black;fontSize=20;` +
+            `strokeColor=none;fillColor=none;`;
+          cell = graph.insertVertex(parent, null, 'Text Here', x, y, 120, 30, style);
+          cell.setConnectable(false);
+        break;
         case 'cable':
-          var style = `strokeWidth=7;strokeColor=black;endArrow=none;html=1;`;
+          style = `strokeWidth=7;strokeColor=black;endArrow=none;html=1;`;
           cell = new mxCell('Test Cable', new mxGeometry(0, 0, 150, 150), style); // last two values are height and width respectively
           cell.geometry.setTerminalPoint(new mxPoint(0, 170), true); // source point
           cell.geometry.setTerminalPoint(new mxPoint(180, 0), false); // target point
           cell.geometry.relative = true;
           cell.edge = true;
           graph.importCells([cell], x, y, parent);
-        case 'textbox':
-          var style = `verticalLabelPosition=bottom;verticalAlign=top;labelHandleSize=10;`;
-          cell = graph.insertVertex(parent, null, disk_image.name, x, y, 100, 100, style);
-          cell.setConnectable(true);
+        break;
         default:
           cell = null;
       }
