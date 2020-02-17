@@ -77,8 +77,6 @@ function graphListener(graph)
     var encoder = new mxCodec();
     var result = encoder.encode(graph.getModel());
     var xml = mxUtils.getXml(result);
-    //console.log('xml', xml);
-    //console.log('raw_data', result)
     sendRequest(xml);
   });
 }
@@ -106,12 +104,10 @@ function addSidebarIcon(sidebar, graph, disk_image, image_id)
     }
     graph.setSelectionCell(device);
     cell_id = graph.getSelectionCell().getId();
-    console.log(cell_id);
     getDeviceModal(image_id, cell_id, graph);
   }
   var wrapper = document.createElement('div');
   wrapper.setAttribute('data-image-tags',`${disk_image.name},${disk_image.devicetype}`);
-
 
   var icon = document.createElement('img');
   icon.setAttribute('src', image);

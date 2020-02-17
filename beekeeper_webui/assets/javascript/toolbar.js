@@ -27,12 +27,8 @@ function addToolbarItem(toolbar, graph, tool, tooltype)
           graph.importCells([cell], x, y, parent);
         case 'textbox':
           var style = `verticalLabelPosition=bottom;verticalAlign=top;labelHandleSize=10;`;
-          cell = new mxCell('Text Here', new mxGeometry(0, 0, 100, 100), style); // last two values are height and width respectively
-          cell.geometry.setTerminalPoint(new mxPoint(0, 100), true);
-          cell.geometry.setTerminalPoint(new mxPoint(100, 0), false);
-          cell.geometry.relative = true;
-          cell.edge = false;
-          graph.importCells([cell], x, y, parent);
+          cell = graph.insertVertex(parent, null, disk_image.name, x, y, 100, 100, style);
+          cell.setConnectable(true);
         default:
           cell = null;
       }
@@ -57,11 +53,6 @@ function addToolbarItem(toolbar, graph, tool, tooltype)
 
   var ds = mxUtils.makeDraggable(icon,graph,funct,dragElement,0,0,true,true);
   ds.setGuidesEnabled(true);
-}
-
-function createTextBox()
-{
-
 }
 
 function addToolbarButton(toolbar, image, click_function)
