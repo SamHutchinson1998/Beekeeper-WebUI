@@ -2,7 +2,7 @@ function populateToolbar(graph)
 {
   var toolbar = document.getElementById('toolbarContainer');
   addToolbarItem(toolbar, graph, '../static/devices/ethernet_cable.svg', 'cable');
-  //addToolbarItem(toolbar, graph, '../static/devices/Label.svg', 'textbox');
+  addToolbarItem(toolbar, graph, '../static/devices/Label.svg', 'textbox');
 }
 
 function addToolbarItem(toolbar, graph, tool, tooltype)
