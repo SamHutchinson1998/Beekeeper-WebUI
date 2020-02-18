@@ -76,7 +76,7 @@ class HomePageView(TemplateView):
 
   def remove_device(request):
     if request.is_ajax and request.method == "GET":
-      retrieved_cell_id = request.GET.get('cell_id',None)
+      retrieved_cell_id = json.loads(request.GET.get('cell_id',None))
       vm_record = VirtualMachine.objects.get(cell_id=retrieved_cell_id)
       if vm_record.delete():
         remove_machine(vm_record)
@@ -86,8 +86,9 @@ class HomePageView(TemplateView):
   
   def change_vm_state(request):
     if request.is_ajax and request.method == "GET":
+      device_list = json.loads(request.GET.get('cells', None))
       if request.GET.get('state',None) == 'start':
-        turn_on_devices(request)
+        turn_on_devices(device_list)
       else:
-        turn_off_devices(request)
+        turn_off_devices(device_list)
     return JsonResponse({},status=200)

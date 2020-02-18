@@ -105,7 +105,7 @@ function startVirtualMachines(button, graph)
       url: 'change_vm_state',
       data: {
         'state': 'start',
-        'cells': cellArry
+        'cells': JSON.stringify(cellArry)
       },
       success: function(result){
         // Do nothing, possibly alert?
@@ -128,7 +128,7 @@ function stopVirtualMachines(button, graph)
       url: 'change_vm_state',
       data: {
         'state': 'stop',
-        'cells': cellArry
+        'cells': JSON.stringify(cellArry)
       },
       success: function(result){
         // Do nothing, possibly alert?

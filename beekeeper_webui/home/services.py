@@ -102,34 +102,36 @@ def remove_machine(virtual_machine):
   print(f'domain {virtual_machine.name} destroyed')
   os.system(f'rm -rf /var/lib/libvirt/images/{virtual_machine.name}.img')
 
-def turn_off_devices(request):
-  devices = request.GET.get('cells', None) # list of cell IDs
+def turn_off_devices(devices):
   conn = libvirt.open('qemu:///system')
   if len(devices) == 0:
     # shut off all devices
     domains = conn.listAllDomains(0)
     for domain in domains:
-      domain.destroy()
-    conn.close()
+      if domain.isActive(): # If device is not already turned off
+        domain.destroy()
   else:
     #shut off selected devices
     for device in devices:
       vm_name = VirtualMachine.objects.get(cell_id=device).name
       dom = conn.lookupByName(vm_name)
-      dom.destroy()
+      if dom.isActive(): # If device is not already turned off
+        dom.destroy()
+  conn.close()
 
-def turn_on_devices(request):
-  devices = request.GET.get('cells', None)
+def turn_on_devices(devices):
   conn = libvirt.open('qemu:///system')
   if len(devices) == 0:
     # turn on all devices
     domains = conn.listAllDomains(0)
     for domain in domains:
-      domain.create()
-    conn.close()
+      if domain.isActive() < 1: # If device is already turned on
+        domain.create()
   else:
     #turn on selected devices
     for device in devices:
       vm_name = VirtualMachine.objects.get(cell_id=device).name
       dom = conn.lookupByName(vm_name)
-      dom.create()
+      if dom.isActive() < 1: # If device is already turned on
+        dom.create()
+  conn.close()
