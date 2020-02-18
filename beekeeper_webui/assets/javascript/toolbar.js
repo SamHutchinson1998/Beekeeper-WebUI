@@ -1,10 +1,13 @@
-function populateToolbar(graph)
+function populateToolbar(editor, graph)
 {
   var toolbar = document.getElementById('toolbarContainer');
   addToolbarItem(toolbar, graph, '../static/devices/ethernet_cable.svg', 'cable');
   addToolbarItem(toolbar, graph, '../static/devices/Label.svg', 'textbox');
-  addToolbarButton(toolbar, '../static/devices/start_button.svg', 'start', graph);
-  addToolbarButton(toolbar, '../static/devices/stop_button.svg', 'stop', graph);
+  addToolbarButton(toolbar, '../static/devices/start_button.svg', 'start', graph, editor);
+  addToolbarButton(toolbar, '../static/devices/stop_button.svg', 'stop', graph, editor);
+  addToolbarButton(toolbar, '../static/devices/zoom_in.svg', 'Zoom In', graph, editor);
+  addToolbarButton(toolbar, '../static/devices/zoom_out.svg', 'Zoom Out', graph, editor);
+
 }
 
 function addToolbarItem(toolbar, graph, tool, tooltype)
@@ -62,7 +65,7 @@ function addToolbarItem(toolbar, graph, tool, tooltype)
   ds.setGuidesEnabled(true);
 }
 
-function addToolbarButton(toolbar, image, type, graph)
+function addToolbarButton(toolbar, image, type, graph, editor)
 {
   var button = document.createElement('button');
   button.setAttribute('class', 'btn btn-outline-secondary');
@@ -82,13 +85,25 @@ function addToolbarButton(toolbar, image, type, graph)
   {
     case 'start':
       startVirtualMachines(button, graph);
+      break;
     break;
     case 'stop':
       stopVirtualMachines(button, graph);
     break;
+    case 'Zoom Out':
+      zoomButtons(button, 'ZoomOut', editor)
+    case 'Zoom In':
+      zoomButtons(button, 'ZoomIn', editor)
+    break;
   }
-  // click_function is a custom object passed through as a param in addToolbarButton
   toolbar.appendChild(button);
+}
+
+function zoomButtons(button, action, editor)
+{
+  mxEvent.addListener(button, 'click', function(evt){
+    editor.execute(action);
+  });
 }
 
 function startVirtualMachines(button, graph)

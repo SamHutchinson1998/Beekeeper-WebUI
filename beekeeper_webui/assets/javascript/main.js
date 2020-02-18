@@ -32,7 +32,7 @@ function main(container, sidebar)
       addSidebarIcon(sidebar, graph, image, id);
     }
     // Populates toolbar
-    populateToolbar(graph);
+    populateToolbar(editor, graph);
     // Enables rubberband selection
     new mxRubberband(graph);
     // Disable highlight of cells when dragging from toolbar
