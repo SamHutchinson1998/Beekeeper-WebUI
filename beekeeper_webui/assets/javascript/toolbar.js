@@ -68,15 +68,16 @@ function addToolbarItem(toolbar, graph, tool, tooltype)
 function addToolbarButton(toolbar, image, type, graph, editor)
 {
   var button = document.createElement('button');
-  button.setAttribute('class', 'btn btn-outline-secondary');
+  button.style.background = 'transparent';
+  button.style.color = '#FFFFFF';
+  button.style.border = 'none';
   button.style.height = '25px';
   button.style.width = '25px';
   button.setAttribute('id', 'toolbarItem');
-  button.title = `${type} selected/all devices`;
   var img = document.createElement('img');
   img.setAttribute('src', image);
-  img.style.width = '10px';
-  img.style.height = '10px';
+  img.style.width = '15px';
+  img.style.height = '15px';
   img.style.Align = 'center';
   //img.style.marginRight = '2px';
   button.appendChild(img);
@@ -85,15 +86,19 @@ function addToolbarButton(toolbar, image, type, graph, editor)
   {
     case 'start':
       startVirtualMachines(button, graph);
-      break;
+      button.title = `${type} selected/all devices`;
+    break;
     break;
     case 'stop':
       stopVirtualMachines(button, graph);
+      button.title = `${type} selected/all devices`;
     break;
     case 'Zoom Out':
-      zoomButtons(button, 'ZoomOut', editor)
+      zoomButtons(button, 'zoomOut', editor);
+      button.title = `${type}`;
     case 'Zoom In':
-      zoomButtons(button, 'ZoomIn', editor)
+      zoomButtons(button, 'zoomIn', editor);
+      button.title = `${type}`;
     break;
   }
   toolbar.appendChild(button);
@@ -118,12 +123,13 @@ function startVirtualMachines(button, graph)
     }
     $.ajax({
       url: 'change_vm_state',
+      async: false,
       data: {
         'state': 'start',
         'cells': JSON.stringify(cellArry)
       },
       success: function(result){
-        // Do nothing, possibly alert?
+        alert('Devices successfully switched on');
       }
     });
   })
@@ -141,12 +147,13 @@ function stopVirtualMachines(button, graph)
     }
     $.ajax({
       url: 'change_vm_state',
+      async: false,
       data: {
         'state': 'stop',
         'cells': JSON.stringify(cellArry)
       },
       success: function(result){
-        // Do nothing, possibly alert?
+        alert('Devices successfully switched off');
       }
     });
   });
