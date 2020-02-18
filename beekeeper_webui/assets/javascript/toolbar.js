@@ -95,13 +95,19 @@ function startVirtualMachines(button, graph)
 {
   button.addEventListener("click", function(){
     var cells = graph.getSelectionCells();
-    console.log(cells);
+    var cellArry = [];
+    var i;
+    for(i = 0; i < cells.length; i++){
+      id = cells[i].getId();
+      cellArry.push(id);
+    }
+    console.log(cellArry);
     console.log('Starting VMs');
     $.ajax({
       url: 'change_vm_state',
       data: {
         'state': 'start',
-        'cells': JSON.stringify(cells)
+        'cells': cellArry
       },
       success: function(result){
         // Do nothing, possibly alert?
@@ -114,13 +120,19 @@ function stopVirtualMachines(button, graph)
 {
   button.addEventListener("click", function(){
     var cells = graph.getSelectionCells();
-    console.log(cells);
+    var cellArry = [];
+    var i;
+    for(i = 0; i < cells.length; i++){
+      id = cells[i].getId();
+      cellArry.push(id);
+    }
+    console.log(cellArry);
     console.log('Stopping VMs');
     $.ajax({
       url: 'change_vm_state',
       data: {
         'state': 'stop',
-        'cells': JSON.stringify(cells)
+        'cells': cellArry
       },
       success: function(result){
         // Do nothing, possibly alert?
