@@ -19,9 +19,9 @@ function main(container, sidebar)
     mxEvent.disableContextMenu(container);
 
     // Creates the graph inside the given container
-    var editor = new mxEditor()
+    var editor = new mxEditor();
     //var graph = new mxGraph(container);
-    var graph = editor.graph();
+    var graph = editor.graph;
     editor.setGraphContainer(container);
 
     var images_list = getDevices();
