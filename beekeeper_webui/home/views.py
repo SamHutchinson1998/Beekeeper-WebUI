@@ -86,7 +86,8 @@ class HomePageView(TemplateView):
   
   def change_vm_state(request):
     if request.is_ajax and request.method == "GET":
-      print(request)
-      turn_off_devices()
-      turn_on_devices()
+      if request.GET.get('state',None) == 'start':
+        turn_on_devices(request)
+      else:
+        turn_off_devices(request)
     return JsonResponse({},status=200)

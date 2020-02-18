@@ -28,7 +28,7 @@ function addToolbarItem(toolbar, graph, tool, tooltype)
           cell.setConnectable(false);
         break;
         case 'cable':
-          style = `strokeWidth=7;strokeColor=black;endArrow=none;html=1;`;
+          style = `strokeWidth=6;strokeColor=black;endArrow=none;html=1;`;
           cell = new mxCell('Test Cable', new mxGeometry(0, 0, 150, 150), style); // last two values are height and width respectively
           cell.geometry.setTerminalPoint(new mxPoint(0, 170), true); // source point
           cell.geometry.setTerminalPoint(new mxPoint(180, 0), false); // target point
@@ -101,8 +101,6 @@ function startVirtualMachines(button, graph)
       id = cells[i].getId();
       cellArry.push(id);
     }
-    console.log(cellArry);
-    console.log('Starting VMs');
     $.ajax({
       url: 'change_vm_state',
       data: {
@@ -126,8 +124,6 @@ function stopVirtualMachines(button, graph)
       id = cells[i].getId();
       cellArry.push(id);
     }
-    console.log(cellArry);
-    console.log('Stopping VMs');
     $.ajax({
       url: 'change_vm_state',
       data: {

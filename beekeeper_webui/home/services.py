@@ -1,7 +1,7 @@
 import libvirt
 import sys
 from xml.dom import minidom
-from .models import DiskImage
+from .models import DiskImage, VirtualMachine
 from django.conf import settings
 import os
 
@@ -82,7 +82,6 @@ def create_virtual_machine(request):
 
 def spawn_machine(disk_size, name, xml):
   config = xml
-  # Plan B is to use a shellscript to do it haha xd
   conn = libvirt.open('qemu:///system')
   dom = conn.defineXML(config)
   if dom == None:
@@ -103,8 +102,34 @@ def remove_machine(virtual_machine):
   print(f'domain {virtual_machine.name} destroyed')
   os.system(f'rm -rf /var/lib/libvirt/images/{virtual_machine.name}.img')
 
-def turn_off_devices():
-  print('devices turned off')
+def turn_off_devices(request):
+  devices = request.GET.get('cells', None) # list of cell IDs
+  conn = libvirt.open('qemu:///system')
+  if len(devices) == 0:
+    # shut off all devices
+    domains = conn.listAllDomains(0)
+    for domain in domains:
+      domain.destroy()
+    conn.close()
+  else:
+    #shut off selected devices
+    for device in devices:
+      vm_name = VirtualMachine.objects.get(cell_id=device).name
+      dom = conn.lookupByName(vm_name)
+      dom.destroy()
 
-def turn_on_devices():
-  print('devices turned on')
+def turn_on_devices(request):
+  devices = request.GET.get('cells', None)
+  conn = libvirt.open('qemu:///system')
+  if len(devices) == 0:
+    # turn on all devices
+    domains = conn.listAllDomains(0)
+    for domain in domains:
+      domain.create()
+    conn.close()
+  else:
+    #turn on selected devices
+    for device in devices:
+      vm_name = VirtualMachine.objects.get(cell_id=device).name
+      dom = conn.lookupByName(vm_name)
+      dom.create()
