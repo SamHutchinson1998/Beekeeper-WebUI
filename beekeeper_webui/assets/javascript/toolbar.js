@@ -76,10 +76,9 @@ function addToolbarButton(toolbar, image, type, graph, editor)
   button.setAttribute('id', 'toolbarItem');
   var img = document.createElement('img');
   img.setAttribute('src', image);
-  img.style.width = '15px';
-  img.style.height = '15px';
+  img.style.width = '18px';
+  img.style.height = '18px';
   img.style.Align = 'center';
-  //img.style.marginRight = '2px';
   button.appendChild(img);
 
   switch(type)
