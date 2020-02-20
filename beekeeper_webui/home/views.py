@@ -3,9 +3,12 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.http import JsonResponse, HttpResponseRedirect, HttpResponse
 from django.core.serializers import serialize
+from django.conf import settings
 from .services import get_domains, create_virtual_machine, remove_machine, turn_off_devices, turn_on_devices
 from .models import ImageForm, DiskImage, VirtualMachine, VirtualMachineForm
+import os
 import json
+
 # Create your views here.
 
 class HomePageView(TemplateView):
@@ -35,22 +38,25 @@ class HomePageView(TemplateView):
       messages.error(request, 'Unable to save Disk Image 2', extra_tags='alert-danger')
       return HttpResponseRedirect(next)
 
+  def retrieveXml(request):
+    if request.is_ajax and request.method == "GET":
+      xml_file_path = os.path.join(settings.STATIC_ROOT, 'graph.xml')
+      #xml_file = open(settings.GRAPH_FILE, "r")
+      xml_file = open(xml_file_path, 'r')
+      xml_string = xml_file.read()
+      xml_file.close()
+      return JsonResponse({"response":xml_string}, status = 200)
+
   def saveXml(request):
     if request.is_ajax and request.method == "GET":
       xml_string = request.GET.get("XML", None)
-      print(xml_string)
-      xml_file = open("graph.xml", "w")
+      xml_file_path = os.path.join(settings.STATIC_ROOT, 'graph.xml')
+      #xml_file = open("graph.xml", "w")
+      xml_file = open(xml_file_path, 'w')
       xml_file.write(xml_string)
       xml_file.close()
       return JsonResponse({"valid":True}, status = 200)
     return JsonResponse({"valid":False}, status = 200)
-
-  def retrieveXml(request):
-    if request.is_ajax and request.method == "GET":
-      xml_file = open("graph.xml", "r")
-      xml_string = xml_file.read()
-      xml_file.close()
-      return JsonResponse({"response":xml_string}, status = 200)
 
   def get_devices(request):
     if request.is_ajax and request.method == "GET":

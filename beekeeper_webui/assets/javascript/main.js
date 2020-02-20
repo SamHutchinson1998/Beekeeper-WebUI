@@ -211,6 +211,7 @@ function sendRequest(xml)
     url: "home",
     data: {'XML': xml},
     success: function(result){
+      console.log(result);
     }
   });
 }
@@ -221,10 +222,12 @@ function getXml()
   $.ajax({
     url: "retrieveXml",
     async: false,
+    dataType: "json",
     contentType: "text/xml",
     success: function(result){
       output = result["response"];
     }
-  })
+  });
+  console.log(output)
   return output;
 }

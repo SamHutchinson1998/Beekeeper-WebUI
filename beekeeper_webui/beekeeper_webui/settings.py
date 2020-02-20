@@ -25,9 +25,8 @@ SECRET_KEY = 'ofaynw4d$d=yv)-n8b&tga7kv_bw7jwi++y1maly7if*(q$ic9'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-if DEBUG:
-    import mimetypes
-    mimetypes.add_type("application/javascript", ".js", True)
+import mimetypes
+mimetypes.add_type("application/javascript", ".js", True)
 
 ALLOWED_HOSTS = ['*']
 
@@ -45,6 +44,8 @@ INSTALLED_APPS = [
     'crispy_forms',
     'widget_tweaks',
 ]
+
+
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
@@ -127,12 +128,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'assets'),  # Here you tell django to look for a folder named 'assets'
+    os.path.join(BASE_DIR, 'assets'), # Here you tell django to look for a folder named 'assets'
 ]
 
 STATIC_URL = '/static/'
+STATIC_ROOT = '/var/www/static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+GRAPH_FILE = os.path.join(BASE_DIR, 'graph.xml')
 
 LOGIN_REDIRECT_URL = 'home'
 
