@@ -1,7 +1,18 @@
+function getSearchBar(sidebar)
+{
+  var searchBar = document.createElement('input');
+  searchBar.setAttribute('type', 'text')
+  searchBar.setAttribute('class', 'form-control');
+  searchBar.setAttribute('placeholder', 'Search Devices e.g. Ubuntu, Router...');
+  searchBar.setAttribute('onkeyup', 'searchDevices()');
+  searchBar.style.height = '20px';
+  sidebar.appendChild(searchBar);
+}
+
 function searchDevices()
 {
   var sidebar = document.getElementById('sidebarContainer');
-  
+
 }
 
 function addSidebarIcon(sidebar, graph, disk_image, image_id)
