@@ -1,3 +1,9 @@
+function searchDevices()
+{
+  var sidebar = document.getElementById('sidebarContainer');
+  
+}
+
 function addSidebarIcon(sidebar, graph, disk_image, image_id)
 {
   var image = getVector(disk_image);
