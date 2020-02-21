@@ -24,7 +24,7 @@ function main(container, sidebar)
     var graph = editor.graph;
     editor.setGraphContainer(container);
 
-    getSearchBar(sidebar);
+    //getSearchBar(sidebar);
     var images_list = getDevices();
     var i;
     for(i = 0; i < images_list.length; i++){
