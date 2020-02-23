@@ -51,8 +51,9 @@ function main(container, sidebar)
     var xml_string = mxUtils.parseXml(string);
     var codec = new mxCodec(xml_string);
     codec.decode(xml_string.documentElement, graph.getModel());
-    keyBindings(graph)
-    graphListener(graph)
+    keyBindings(graph);
+    getDeviceMenu(graph);
+    graphListener(graph);
   }
 };
 
