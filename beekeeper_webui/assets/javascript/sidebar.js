@@ -48,6 +48,7 @@ function addSidebarIcon(sidebar, graph, disk_image, image_id)
   icon.setAttribute('data-image-name', disk_image.name);
   icon.setAttribute('data-image-id', image_id);
   icon.setAttribute('id', 'sidebarItem');
+  icon.setAttribute('align', 'center');
   icon.title = 'Drag this onto the canvas to create a new device';
   wrapper.appendChild(icon);
 
