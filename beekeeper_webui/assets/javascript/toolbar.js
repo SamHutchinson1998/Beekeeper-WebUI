@@ -1,14 +1,3 @@
-function getSearchBar(sidebar)
-{
-  var searchbar = document.createElement('input');
-  searchbar.setAttribute('type', 'text');
-  searchbar.setAttribute('class', 'form-control');
-  searchbar.setAttribute('placeholder', 'Search...');
-  sidebar.style.height = '100px';
-  sidebar.appendChild(searchbar);
-  console.log('appended searchbar');
-}
-
 function populateToolbar(editor, graph)
 {
   var toolbar = document.getElementById('toolbarContainer');
