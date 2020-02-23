@@ -74,19 +74,22 @@ function keyBindings(graph)
   var keyHandler = new mxKeyHandler(graph);
   keyHandler.bindKey(46, function(evt)
   {
-    if (graph.isEnabled())
-    {
-      var i;
-      var selected_cells = graph.getSelectionCells();
-      for(i = 0; i < selected_cells.length; i++){
-        cell_id = selected_cells[i].getId();
-        removeDevice(cell_id);
-      }
-      graph.removeCells();
-    }
+    removeDevices(graph);
   });
 }
-
+function removeDevices(graph)
+{
+  if (graph.isEnabled())
+  {
+    var i;
+    var selected_cells = graph.getSelectionCells();
+    for(i = 0; i < selected_cells.length; i++){
+      cell_id = selected_cells[i].getId();
+      removeDevice(cell_id);
+    }
+    graph.removeCells();
+  }
+}
 function getDevices()
 {
   var output = null;
