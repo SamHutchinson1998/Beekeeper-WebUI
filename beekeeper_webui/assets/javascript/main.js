@@ -67,6 +67,17 @@ function graphListener(graph)
   });
 }
 
+function getDeviceMenu(graph)
+{
+  graph.popupMenuHandler.factoryMethod = function(menu, cell, evt)
+  {
+    if(cell.edge){
+      menu.addItem('first option', null, function(){
+        alert('This does something');
+      });
+    }
+  }
+}
 
 function keyBindings(graph)
 {
