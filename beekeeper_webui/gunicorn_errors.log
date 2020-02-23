@@ -1599,3 +1599,4046 @@
 [2020-02-23 00:51:30 +0000] [44428] [DEBUG] GET /
 [2020-02-23 00:51:32 +0000] [44428] [DEBUG] GET /get_devices
 [2020-02-23 00:51:32 +0000] [44428] [DEBUG] GET /retrieveXml
+[2020-02-23 01:24:27 +0000] [44400] [INFO] Handling signal: term
+[2020-02-23 01:24:27 +0000] [44428] [INFO] Worker exiting (pid: 44428)
+[2020-02-23 01:24:27 +0000] [44430] [INFO] Worker exiting (pid: 44430)
+[2020-02-23 01:24:27 +0000] [44431] [INFO] Worker exiting (pid: 44431)
+[2020-02-23 01:24:28 +0000] [44400] [INFO] Shutting down: Master
+[2020-02-23 01:24:28 +0000] [44557] [DEBUG] Current configuration:
+  config: None
+  bind: ['unix:/run/gunicorn.sock']
+  backlog: 2048
+  workers: 3
+  worker_class: sync
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 600
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /home/529816/Beekeeper-WebUI/beekeeper_webui
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 33
+  group: 33
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: -
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: gunicorn_errors.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: beekeeper_webui.wsgi:application
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7f5cd6169598>
+  on_reload: <function OnReload.on_reload at 0x7f5cd61696a8>
+  when_ready: <function WhenReady.when_ready at 0x7f5cd61697b8>
+  pre_fork: <function Prefork.pre_fork at 0x7f5cd61698c8>
+  post_fork: <function Postfork.post_fork at 0x7f5cd61699d8>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7f5cd6169ae8>
+  worker_int: <function WorkerInt.worker_int at 0x7f5cd6169bf8>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7f5cd6169d08>
+  pre_exec: <function PreExec.pre_exec at 0x7f5cd6169e18>
+  pre_request: <function PreRequest.pre_request at 0x7f5cd6169f28>
+  post_request: <function PostRequest.post_request at 0x7f5cd6185048>
+  child_exit: <function ChildExit.child_exit at 0x7f5cd6185158>
+  worker_exit: <function WorkerExit.worker_exit at 0x7f5cd6185268>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7f5cd6185378>
+  on_exit: <function OnExit.on_exit at 0x7f5cd6185488>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+[2020-02-23 01:24:28 +0000] [44557] [INFO] Starting gunicorn 20.0.4
+[2020-02-23 01:24:28 +0000] [44557] [DEBUG] Arbiter booted
+[2020-02-23 01:24:28 +0000] [44557] [INFO] Listening at: unix:/run/gunicorn.sock (44557)
+[2020-02-23 01:24:28 +0000] [44557] [INFO] Using worker: sync
+[2020-02-23 01:24:28 +0000] [44610] [INFO] Booting worker with pid: 44610
+[2020-02-23 01:24:28 +0000] [44612] [INFO] Booting worker with pid: 44612
+[2020-02-23 01:24:28 +0000] [44614] [INFO] Booting worker with pid: 44614
+[2020-02-23 01:24:28 +0000] [44557] [DEBUG] 3 workers
+[2020-02-23 01:25:28 +0000] [44557] [INFO] Handling signal: term
+[2020-02-23 01:25:28 +0000] [44610] [INFO] Worker exiting (pid: 44610)
+[2020-02-23 01:25:28 +0000] [44614] [INFO] Worker exiting (pid: 44614)
+[2020-02-23 01:25:28 +0000] [44612] [INFO] Worker exiting (pid: 44612)
+[2020-02-23 01:25:28 +0000] [44557] [INFO] Shutting down: Master
+[2020-02-23 01:25:29 +0000] [44727] [DEBUG] Current configuration:
+  config: None
+  bind: ['unix:/run/gunicorn.sock']
+  backlog: 2048
+  workers: 3
+  worker_class: sync
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 600
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /home/529816/Beekeeper-WebUI/beekeeper_webui
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 33
+  group: 33
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: -
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: gunicorn_errors.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: beekeeper_webui.wsgi:application
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7fc8e0f88598>
+  on_reload: <function OnReload.on_reload at 0x7fc8e0f886a8>
+  when_ready: <function WhenReady.when_ready at 0x7fc8e0f887b8>
+  pre_fork: <function Prefork.pre_fork at 0x7fc8e0f888c8>
+  post_fork: <function Postfork.post_fork at 0x7fc8e0f889d8>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7fc8e0f88ae8>
+  worker_int: <function WorkerInt.worker_int at 0x7fc8e0f88bf8>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7fc8e0f88d08>
+  pre_exec: <function PreExec.pre_exec at 0x7fc8e0f88e18>
+  pre_request: <function PreRequest.pre_request at 0x7fc8e0f88f28>
+  post_request: <function PostRequest.post_request at 0x7fc8e0fa4048>
+  child_exit: <function ChildExit.child_exit at 0x7fc8e0fa4158>
+  worker_exit: <function WorkerExit.worker_exit at 0x7fc8e0fa4268>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7fc8e0fa4378>
+  on_exit: <function OnExit.on_exit at 0x7fc8e0fa4488>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+[2020-02-23 01:25:29 +0000] [44727] [INFO] Starting gunicorn 20.0.4
+[2020-02-23 01:25:29 +0000] [44727] [DEBUG] Arbiter booted
+[2020-02-23 01:25:29 +0000] [44727] [INFO] Listening at: unix:/run/gunicorn.sock (44727)
+[2020-02-23 01:25:29 +0000] [44727] [INFO] Using worker: sync
+[2020-02-23 01:25:29 +0000] [44749] [INFO] Booting worker with pid: 44749
+[2020-02-23 01:25:29 +0000] [44751] [INFO] Booting worker with pid: 44751
+[2020-02-23 01:25:29 +0000] [44752] [INFO] Booting worker with pid: 44752
+[2020-02-23 01:25:29 +0000] [44727] [DEBUG] 3 workers
+[2020-02-23 01:25:33 +0000] [44749] [INFO] Worker exiting (pid: 44749)
+[2020-02-23 01:25:33 +0000] [44727] [INFO] Handling signal: term
+[2020-02-23 01:25:33 +0000] [44752] [INFO] Worker exiting (pid: 44752)
+[2020-02-23 01:25:33 +0000] [44751] [INFO] Worker exiting (pid: 44751)
+[2020-02-23 01:25:33 +0000] [44727] [INFO] Shutting down: Master
+[2020-02-23 01:25:34 +0000] [44761] [DEBUG] Current configuration:
+  config: None
+  bind: ['unix:/run/gunicorn.sock']
+  backlog: 2048
+  workers: 3
+  worker_class: sync
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 600
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /home/529816/Beekeeper-WebUI/beekeeper_webui
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 33
+  group: 33
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: -
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: gunicorn_errors.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: beekeeper_webui.wsgi:application
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7fde50d81598>
+  on_reload: <function OnReload.on_reload at 0x7fde50d816a8>
+  when_ready: <function WhenReady.when_ready at 0x7fde50d817b8>
+  pre_fork: <function Prefork.pre_fork at 0x7fde50d818c8>
+  post_fork: <function Postfork.post_fork at 0x7fde50d819d8>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7fde50d81ae8>
+  worker_int: <function WorkerInt.worker_int at 0x7fde50d81bf8>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7fde50d81d08>
+  pre_exec: <function PreExec.pre_exec at 0x7fde50d81e18>
+  pre_request: <function PreRequest.pre_request at 0x7fde50d81f28>
+  post_request: <function PostRequest.post_request at 0x7fde50d9d048>
+  child_exit: <function ChildExit.child_exit at 0x7fde50d9d158>
+  worker_exit: <function WorkerExit.worker_exit at 0x7fde50d9d268>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7fde50d9d378>
+  on_exit: <function OnExit.on_exit at 0x7fde50d9d488>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+[2020-02-23 01:25:34 +0000] [44761] [INFO] Starting gunicorn 20.0.4
+[2020-02-23 01:25:34 +0000] [44761] [DEBUG] Arbiter booted
+[2020-02-23 01:25:34 +0000] [44761] [INFO] Listening at: unix:/run/gunicorn.sock (44761)
+[2020-02-23 01:25:34 +0000] [44761] [INFO] Using worker: sync
+[2020-02-23 01:25:34 +0000] [44788] [INFO] Booting worker with pid: 44788
+[2020-02-23 01:25:34 +0000] [44790] [INFO] Booting worker with pid: 44790
+[2020-02-23 01:25:34 +0000] [44791] [INFO] Booting worker with pid: 44791
+[2020-02-23 01:25:34 +0000] [44761] [DEBUG] 3 workers
+[2020-02-23 01:25:43 +0000] [44788] [DEBUG] GET /
+[2020-02-23 01:25:44 +0000] [44791] [DEBUG] GET /get_devices
+[2020-02-23 01:25:44 +0000] [44791] [DEBUG] GET /retrieveXml
+[2020-02-23 01:26:20 +0000] [44791] [DEBUG] GET /
+[2020-02-23 01:26:22 +0000] [44788] [DEBUG] GET /get_devices
+[2020-02-23 01:26:22 +0000] [44788] [DEBUG] GET /retrieveXml
+[2020-02-23 01:31:33 +0000] [44761] [INFO] Handling signal: term
+[2020-02-23 01:31:33 +0000] [44788] [INFO] Worker exiting (pid: 44788)
+[2020-02-23 01:31:33 +0000] [44790] [INFO] Worker exiting (pid: 44790)
+[2020-02-23 01:31:33 +0000] [44791] [INFO] Worker exiting (pid: 44791)
+[2020-02-23 01:31:33 +0000] [44761] [INFO] Shutting down: Master
+[2020-02-23 01:31:34 +0000] [44863] [DEBUG] Current configuration:
+  config: None
+  bind: ['unix:/run/gunicorn.sock']
+  backlog: 2048
+  workers: 3
+  worker_class: sync
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 600
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /home/529816/Beekeeper-WebUI/beekeeper_webui
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 33
+  group: 33
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: -
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: gunicorn_errors.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: beekeeper_webui.wsgi:application
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7fefd10d4598>
+  on_reload: <function OnReload.on_reload at 0x7fefd10d46a8>
+  when_ready: <function WhenReady.when_ready at 0x7fefd10d47b8>
+  pre_fork: <function Prefork.pre_fork at 0x7fefd10d48c8>
+  post_fork: <function Postfork.post_fork at 0x7fefd10d49d8>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7fefd10d4ae8>
+  worker_int: <function WorkerInt.worker_int at 0x7fefd10d4bf8>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7fefd10d4d08>
+  pre_exec: <function PreExec.pre_exec at 0x7fefd10d4e18>
+  pre_request: <function PreRequest.pre_request at 0x7fefd10d4f28>
+  post_request: <function PostRequest.post_request at 0x7fefd10f0048>
+  child_exit: <function ChildExit.child_exit at 0x7fefd10f0158>
+  worker_exit: <function WorkerExit.worker_exit at 0x7fefd10f0268>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7fefd10f0378>
+  on_exit: <function OnExit.on_exit at 0x7fefd10f0488>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+[2020-02-23 01:31:34 +0000] [44863] [INFO] Starting gunicorn 20.0.4
+[2020-02-23 01:31:34 +0000] [44863] [DEBUG] Arbiter booted
+[2020-02-23 01:31:34 +0000] [44863] [INFO] Listening at: unix:/run/gunicorn.sock (44863)
+[2020-02-23 01:31:34 +0000] [44863] [INFO] Using worker: sync
+[2020-02-23 01:31:34 +0000] [44889] [INFO] Booting worker with pid: 44889
+[2020-02-23 01:31:34 +0000] [44891] [INFO] Booting worker with pid: 44891
+[2020-02-23 01:31:34 +0000] [44892] [INFO] Booting worker with pid: 44892
+[2020-02-23 01:31:34 +0000] [44863] [DEBUG] 3 workers
+[2020-02-23 01:31:34 +0000] [44863] [INFO] Handling signal: term
+[2020-02-23 01:31:34 +0000] [44891] [INFO] Worker exiting (pid: 44891)
+[2020-02-23 01:31:34 +0000] [44889] [INFO] Worker exiting (pid: 44889)
+[2020-02-23 01:31:34 +0000] [44892] [INFO] Worker exiting (pid: 44892)
+[2020-02-23 01:31:34 +0000] [44863] [INFO] Shutting down: Master
+[2020-02-23 01:31:35 +0000] [44901] [DEBUG] Current configuration:
+  config: None
+  bind: ['unix:/run/gunicorn.sock']
+  backlog: 2048
+  workers: 3
+  worker_class: sync
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 600
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /home/529816/Beekeeper-WebUI/beekeeper_webui
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 33
+  group: 33
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: -
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: gunicorn_errors.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: beekeeper_webui.wsgi:application
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7f3ecd2dc598>
+  on_reload: <function OnReload.on_reload at 0x7f3ecd2dc6a8>
+  when_ready: <function WhenReady.when_ready at 0x7f3ecd2dc7b8>
+  pre_fork: <function Prefork.pre_fork at 0x7f3ecd2dc8c8>
+  post_fork: <function Postfork.post_fork at 0x7f3ecd2dc9d8>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7f3ecd2dcae8>
+  worker_int: <function WorkerInt.worker_int at 0x7f3ecd2dcbf8>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7f3ecd2dcd08>
+  pre_exec: <function PreExec.pre_exec at 0x7f3ecd2dce18>
+  pre_request: <function PreRequest.pre_request at 0x7f3ecd2dcf28>
+  post_request: <function PostRequest.post_request at 0x7f3ecd2f8048>
+  child_exit: <function ChildExit.child_exit at 0x7f3ecd2f8158>
+  worker_exit: <function WorkerExit.worker_exit at 0x7f3ecd2f8268>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7f3ecd2f8378>
+  on_exit: <function OnExit.on_exit at 0x7f3ecd2f8488>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+[2020-02-23 01:31:35 +0000] [44901] [INFO] Starting gunicorn 20.0.4
+[2020-02-23 01:31:35 +0000] [44901] [DEBUG] Arbiter booted
+[2020-02-23 01:31:35 +0000] [44901] [INFO] Listening at: unix:/run/gunicorn.sock (44901)
+[2020-02-23 01:31:35 +0000] [44901] [INFO] Using worker: sync
+[2020-02-23 01:31:35 +0000] [44923] [INFO] Booting worker with pid: 44923
+[2020-02-23 01:31:35 +0000] [44925] [INFO] Booting worker with pid: 44925
+[2020-02-23 01:31:35 +0000] [44928] [INFO] Booting worker with pid: 44928
+[2020-02-23 01:31:35 +0000] [44901] [DEBUG] 3 workers
+[2020-02-23 01:31:38 +0000] [44928] [DEBUG] GET /
+[2020-02-23 01:31:40 +0000] [44928] [DEBUG] GET /get_devices
+[2020-02-23 01:31:40 +0000] [44928] [DEBUG] GET /retrieveXml
+[2020-02-23 01:33:28 +0000] [44901] [INFO] Handling signal: term
+[2020-02-23 01:33:28 +0000] [44925] [INFO] Worker exiting (pid: 44925)
+[2020-02-23 01:33:28 +0000] [44923] [INFO] Worker exiting (pid: 44923)
+[2020-02-23 01:33:28 +0000] [44928] [INFO] Worker exiting (pid: 44928)
+[2020-02-23 01:33:28 +0000] [44901] [INFO] Shutting down: Master
+[2020-02-23 01:33:29 +0000] [44988] [DEBUG] Current configuration:
+  config: None
+  bind: ['unix:/run/gunicorn.sock']
+  backlog: 2048
+  workers: 3
+  worker_class: sync
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 600
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /home/529816/Beekeeper-WebUI/beekeeper_webui
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 33
+  group: 33
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: -
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: gunicorn_errors.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: beekeeper_webui.wsgi:application
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7fd5e5152598>
+  on_reload: <function OnReload.on_reload at 0x7fd5e51526a8>
+  when_ready: <function WhenReady.when_ready at 0x7fd5e51527b8>
+  pre_fork: <function Prefork.pre_fork at 0x7fd5e51528c8>
+  post_fork: <function Postfork.post_fork at 0x7fd5e51529d8>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7fd5e5152ae8>
+  worker_int: <function WorkerInt.worker_int at 0x7fd5e5152bf8>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7fd5e5152d08>
+  pre_exec: <function PreExec.pre_exec at 0x7fd5e5152e18>
+  pre_request: <function PreRequest.pre_request at 0x7fd5e5152f28>
+  post_request: <function PostRequest.post_request at 0x7fd5e516e048>
+  child_exit: <function ChildExit.child_exit at 0x7fd5e516e158>
+  worker_exit: <function WorkerExit.worker_exit at 0x7fd5e516e268>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7fd5e516e378>
+  on_exit: <function OnExit.on_exit at 0x7fd5e516e488>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+[2020-02-23 01:33:29 +0000] [44988] [INFO] Starting gunicorn 20.0.4
+[2020-02-23 01:33:29 +0000] [44988] [DEBUG] Arbiter booted
+[2020-02-23 01:33:29 +0000] [44988] [INFO] Listening at: unix:/run/gunicorn.sock (44988)
+[2020-02-23 01:33:29 +0000] [44988] [INFO] Using worker: sync
+[2020-02-23 01:33:29 +0000] [45011] [INFO] Booting worker with pid: 45011
+[2020-02-23 01:33:29 +0000] [45013] [INFO] Booting worker with pid: 45013
+[2020-02-23 01:33:29 +0000] [45014] [INFO] Booting worker with pid: 45014
+[2020-02-23 01:33:29 +0000] [44988] [DEBUG] 3 workers
+[2020-02-23 01:33:29 +0000] [44988] [INFO] Handling signal: term
+[2020-02-23 01:33:29 +0000] [45011] [INFO] Worker exiting (pid: 45011)
+[2020-02-23 01:33:29 +0000] [45013] [INFO] Worker exiting (pid: 45013)
+[2020-02-23 01:33:29 +0000] [45014] [INFO] Worker exiting (pid: 45014)
+[2020-02-23 01:33:30 +0000] [44988] [INFO] Shutting down: Master
+[2020-02-23 01:33:30 +0000] [45023] [DEBUG] Current configuration:
+  config: None
+  bind: ['unix:/run/gunicorn.sock']
+  backlog: 2048
+  workers: 3
+  worker_class: sync
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 600
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /home/529816/Beekeeper-WebUI/beekeeper_webui
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 33
+  group: 33
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: -
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: gunicorn_errors.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: beekeeper_webui.wsgi:application
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7fc12114c598>
+  on_reload: <function OnReload.on_reload at 0x7fc12114c6a8>
+  when_ready: <function WhenReady.when_ready at 0x7fc12114c7b8>
+  pre_fork: <function Prefork.pre_fork at 0x7fc12114c8c8>
+  post_fork: <function Postfork.post_fork at 0x7fc12114c9d8>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7fc12114cae8>
+  worker_int: <function WorkerInt.worker_int at 0x7fc12114cbf8>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7fc12114cd08>
+  pre_exec: <function PreExec.pre_exec at 0x7fc12114ce18>
+  pre_request: <function PreRequest.pre_request at 0x7fc12114cf28>
+  post_request: <function PostRequest.post_request at 0x7fc121168048>
+  child_exit: <function ChildExit.child_exit at 0x7fc121168158>
+  worker_exit: <function WorkerExit.worker_exit at 0x7fc121168268>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7fc121168378>
+  on_exit: <function OnExit.on_exit at 0x7fc121168488>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+[2020-02-23 01:33:30 +0000] [45023] [INFO] Starting gunicorn 20.0.4
+[2020-02-23 01:33:30 +0000] [45023] [DEBUG] Arbiter booted
+[2020-02-23 01:33:30 +0000] [45023] [INFO] Listening at: unix:/run/gunicorn.sock (45023)
+[2020-02-23 01:33:30 +0000] [45023] [INFO] Using worker: sync
+[2020-02-23 01:33:30 +0000] [45049] [INFO] Booting worker with pid: 45049
+[2020-02-23 01:33:30 +0000] [45052] [INFO] Booting worker with pid: 45052
+[2020-02-23 01:33:30 +0000] [45053] [INFO] Booting worker with pid: 45053
+[2020-02-23 01:33:30 +0000] [45023] [DEBUG] 3 workers
+[2020-02-23 01:33:36 +0000] [45049] [DEBUG] GET /
+[2020-02-23 01:33:38 +0000] [45049] [DEBUG] GET /get_devices
+[2020-02-23 01:33:38 +0000] [45049] [DEBUG] GET /retrieveXml
+[2020-02-23 01:35:11 +0000] [45049] [INFO] Worker exiting (pid: 45049)
+[2020-02-23 01:35:11 +0000] [45053] [INFO] Worker exiting (pid: 45053)
+[2020-02-23 01:35:11 +0000] [45052] [INFO] Worker exiting (pid: 45052)
+[2020-02-23 01:35:11 +0000] [45023] [INFO] Handling signal: term
+[2020-02-23 01:35:11 +0000] [45023] [INFO] Shutting down: Master
+[2020-02-23 01:35:12 +0000] [45126] [DEBUG] Current configuration:
+  config: None
+  bind: ['unix:/run/gunicorn.sock']
+  backlog: 2048
+  workers: 3
+  worker_class: sync
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 600
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /home/529816/Beekeeper-WebUI/beekeeper_webui
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 33
+  group: 33
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: -
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: gunicorn_errors.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: beekeeper_webui.wsgi:application
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7fa08091b598>
+  on_reload: <function OnReload.on_reload at 0x7fa08091b6a8>
+  when_ready: <function WhenReady.when_ready at 0x7fa08091b7b8>
+  pre_fork: <function Prefork.pre_fork at 0x7fa08091b8c8>
+  post_fork: <function Postfork.post_fork at 0x7fa08091b9d8>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7fa08091bae8>
+  worker_int: <function WorkerInt.worker_int at 0x7fa08091bbf8>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7fa08091bd08>
+  pre_exec: <function PreExec.pre_exec at 0x7fa08091be18>
+  pre_request: <function PreRequest.pre_request at 0x7fa08091bf28>
+  post_request: <function PostRequest.post_request at 0x7fa080937048>
+  child_exit: <function ChildExit.child_exit at 0x7fa080937158>
+  worker_exit: <function WorkerExit.worker_exit at 0x7fa080937268>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7fa080937378>
+  on_exit: <function OnExit.on_exit at 0x7fa080937488>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+[2020-02-23 01:35:12 +0000] [45126] [INFO] Starting gunicorn 20.0.4
+[2020-02-23 01:35:12 +0000] [45126] [DEBUG] Arbiter booted
+[2020-02-23 01:35:12 +0000] [45126] [INFO] Listening at: unix:/run/gunicorn.sock (45126)
+[2020-02-23 01:35:12 +0000] [45126] [INFO] Using worker: sync
+[2020-02-23 01:35:12 +0000] [45151] [INFO] Booting worker with pid: 45151
+[2020-02-23 01:35:12 +0000] [45153] [INFO] Booting worker with pid: 45153
+[2020-02-23 01:35:12 +0000] [45154] [INFO] Booting worker with pid: 45154
+[2020-02-23 01:35:12 +0000] [45126] [DEBUG] 3 workers
+[2020-02-23 01:35:12 +0000] [45126] [INFO] Handling signal: term
+[2020-02-23 01:35:12 +0000] [45151] [INFO] Worker exiting (pid: 45151)
+[2020-02-23 01:35:12 +0000] [45153] [INFO] Worker exiting (pid: 45153)
+[2020-02-23 01:35:12 +0000] [45154] [INFO] Worker exiting (pid: 45154)
+[2020-02-23 01:35:12 +0000] [45126] [INFO] Shutting down: Master
+[2020-02-23 01:35:13 +0000] [45163] [DEBUG] Current configuration:
+  config: None
+  bind: ['unix:/run/gunicorn.sock']
+  backlog: 2048
+  workers: 3
+  worker_class: sync
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 600
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /home/529816/Beekeeper-WebUI/beekeeper_webui
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 33
+  group: 33
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: -
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: gunicorn_errors.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: beekeeper_webui.wsgi:application
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7f0a20039598>
+  on_reload: <function OnReload.on_reload at 0x7f0a200396a8>
+  when_ready: <function WhenReady.when_ready at 0x7f0a200397b8>
+  pre_fork: <function Prefork.pre_fork at 0x7f0a200398c8>
+  post_fork: <function Postfork.post_fork at 0x7f0a200399d8>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7f0a20039ae8>
+  worker_int: <function WorkerInt.worker_int at 0x7f0a20039bf8>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7f0a20039d08>
+  pre_exec: <function PreExec.pre_exec at 0x7f0a20039e18>
+  pre_request: <function PreRequest.pre_request at 0x7f0a20039f28>
+  post_request: <function PostRequest.post_request at 0x7f0a20055048>
+  child_exit: <function ChildExit.child_exit at 0x7f0a20055158>
+  worker_exit: <function WorkerExit.worker_exit at 0x7f0a20055268>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7f0a20055378>
+  on_exit: <function OnExit.on_exit at 0x7f0a20055488>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+[2020-02-23 01:35:13 +0000] [45163] [INFO] Starting gunicorn 20.0.4
+[2020-02-23 01:35:13 +0000] [45163] [DEBUG] Arbiter booted
+[2020-02-23 01:35:13 +0000] [45163] [INFO] Listening at: unix:/run/gunicorn.sock (45163)
+[2020-02-23 01:35:13 +0000] [45163] [INFO] Using worker: sync
+[2020-02-23 01:35:13 +0000] [45189] [INFO] Booting worker with pid: 45189
+[2020-02-23 01:35:13 +0000] [45191] [INFO] Booting worker with pid: 45191
+[2020-02-23 01:35:13 +0000] [45193] [INFO] Booting worker with pid: 45193
+[2020-02-23 01:35:13 +0000] [45163] [DEBUG] 3 workers
+[2020-02-23 01:35:16 +0000] [45191] [DEBUG] GET /
+[2020-02-23 01:35:18 +0000] [45193] [DEBUG] GET /get_devices
+[2020-02-23 01:35:18 +0000] [45193] [DEBUG] GET /retrieveXml
+[2020-02-23 01:37:19 +0000] [45191] [INFO] Worker exiting (pid: 45191)
+[2020-02-23 01:37:19 +0000] [45189] [INFO] Worker exiting (pid: 45189)
+[2020-02-23 01:37:19 +0000] [45193] [INFO] Worker exiting (pid: 45193)
+[2020-02-23 01:37:19 +0000] [45163] [INFO] Handling signal: term
+[2020-02-23 01:37:19 +0000] [45163] [INFO] Shutting down: Master
+[2020-02-23 01:37:19 +0000] [45248] [DEBUG] Current configuration:
+  config: None
+  bind: ['unix:/run/gunicorn.sock']
+  backlog: 2048
+  workers: 3
+  worker_class: sync
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 600
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /home/529816/Beekeeper-WebUI/beekeeper_webui
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 33
+  group: 33
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: -
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: gunicorn_errors.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: beekeeper_webui.wsgi:application
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7f159da7c598>
+  on_reload: <function OnReload.on_reload at 0x7f159da7c6a8>
+  when_ready: <function WhenReady.when_ready at 0x7f159da7c7b8>
+  pre_fork: <function Prefork.pre_fork at 0x7f159da7c8c8>
+  post_fork: <function Postfork.post_fork at 0x7f159da7c9d8>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7f159da7cae8>
+  worker_int: <function WorkerInt.worker_int at 0x7f159da7cbf8>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7f159da7cd08>
+  pre_exec: <function PreExec.pre_exec at 0x7f159da7ce18>
+  pre_request: <function PreRequest.pre_request at 0x7f159da7cf28>
+  post_request: <function PostRequest.post_request at 0x7f159da98048>
+  child_exit: <function ChildExit.child_exit at 0x7f159da98158>
+  worker_exit: <function WorkerExit.worker_exit at 0x7f159da98268>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7f159da98378>
+  on_exit: <function OnExit.on_exit at 0x7f159da98488>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+[2020-02-23 01:37:19 +0000] [45248] [INFO] Starting gunicorn 20.0.4
+[2020-02-23 01:37:19 +0000] [45248] [DEBUG] Arbiter booted
+[2020-02-23 01:37:19 +0000] [45248] [INFO] Listening at: unix:/run/gunicorn.sock (45248)
+[2020-02-23 01:37:19 +0000] [45248] [INFO] Using worker: sync
+[2020-02-23 01:37:19 +0000] [45279] [INFO] Booting worker with pid: 45279
+[2020-02-23 01:37:19 +0000] [45280] [INFO] Booting worker with pid: 45280
+[2020-02-23 01:37:19 +0000] [45282] [INFO] Booting worker with pid: 45282
+[2020-02-23 01:37:19 +0000] [45248] [DEBUG] 3 workers
+[2020-02-23 01:37:20 +0000] [45248] [INFO] Handling signal: term
+[2020-02-23 01:37:20 +0000] [45279] [INFO] Worker exiting (pid: 45279)
+[2020-02-23 01:37:20 +0000] [45280] [INFO] Worker exiting (pid: 45280)
+[2020-02-23 01:37:20 +0000] [45282] [INFO] Worker exiting (pid: 45282)
+[2020-02-23 01:37:20 +0000] [45248] [INFO] Shutting down: Master
+[2020-02-23 01:37:20 +0000] [45292] [DEBUG] Current configuration:
+  config: None
+  bind: ['unix:/run/gunicorn.sock']
+  backlog: 2048
+  workers: 3
+  worker_class: sync
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 600
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /home/529816/Beekeeper-WebUI/beekeeper_webui
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 33
+  group: 33
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: -
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: gunicorn_errors.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: beekeeper_webui.wsgi:application
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7f69f09ac598>
+  on_reload: <function OnReload.on_reload at 0x7f69f09ac6a8>
+  when_ready: <function WhenReady.when_ready at 0x7f69f09ac7b8>
+  pre_fork: <function Prefork.pre_fork at 0x7f69f09ac8c8>
+  post_fork: <function Postfork.post_fork at 0x7f69f09ac9d8>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7f69f09acae8>
+  worker_int: <function WorkerInt.worker_int at 0x7f69f09acbf8>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7f69f09acd08>
+  pre_exec: <function PreExec.pre_exec at 0x7f69f09ace18>
+  pre_request: <function PreRequest.pre_request at 0x7f69f09acf28>
+  post_request: <function PostRequest.post_request at 0x7f69f09c8048>
+  child_exit: <function ChildExit.child_exit at 0x7f69f09c8158>
+  worker_exit: <function WorkerExit.worker_exit at 0x7f69f09c8268>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7f69f09c8378>
+  on_exit: <function OnExit.on_exit at 0x7f69f09c8488>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+[2020-02-23 01:37:20 +0000] [45292] [INFO] Starting gunicorn 20.0.4
+[2020-02-23 01:37:20 +0000] [45292] [DEBUG] Arbiter booted
+[2020-02-23 01:37:20 +0000] [45292] [INFO] Listening at: unix:/run/gunicorn.sock (45292)
+[2020-02-23 01:37:20 +0000] [45292] [INFO] Using worker: sync
+[2020-02-23 01:37:20 +0000] [45334] [INFO] Booting worker with pid: 45334
+[2020-02-23 01:37:20 +0000] [45337] [INFO] Booting worker with pid: 45337
+[2020-02-23 01:37:20 +0000] [45338] [INFO] Booting worker with pid: 45338
+[2020-02-23 01:37:20 +0000] [45292] [DEBUG] 3 workers
+[2020-02-23 01:37:25 +0000] [45334] [DEBUG] GET /
+[2020-02-23 01:37:26 +0000] [45338] [DEBUG] GET /get_devices
+[2020-02-23 01:37:27 +0000] [45338] [DEBUG] GET /retrieveXml
+[2020-02-23 01:38:14 +0000] [45292] [INFO] Handling signal: term
+[2020-02-23 01:38:14 +0000] [45334] [INFO] Worker exiting (pid: 45334)
+[2020-02-23 01:38:14 +0000] [45338] [INFO] Worker exiting (pid: 45338)
+[2020-02-23 01:38:14 +0000] [45337] [INFO] Worker exiting (pid: 45337)
+[2020-02-23 01:38:15 +0000] [45292] [INFO] Shutting down: Master
+[2020-02-23 01:38:15 +0000] [45392] [DEBUG] Current configuration:
+  config: None
+  bind: ['unix:/run/gunicorn.sock']
+  backlog: 2048
+  workers: 3
+  worker_class: sync
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 600
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /home/529816/Beekeeper-WebUI/beekeeper_webui
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 33
+  group: 33
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: -
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: gunicorn_errors.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: beekeeper_webui.wsgi:application
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7f52c78da598>
+  on_reload: <function OnReload.on_reload at 0x7f52c78da6a8>
+  when_ready: <function WhenReady.when_ready at 0x7f52c78da7b8>
+  pre_fork: <function Prefork.pre_fork at 0x7f52c78da8c8>
+  post_fork: <function Postfork.post_fork at 0x7f52c78da9d8>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7f52c78daae8>
+  worker_int: <function WorkerInt.worker_int at 0x7f52c78dabf8>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7f52c78dad08>
+  pre_exec: <function PreExec.pre_exec at 0x7f52c78dae18>
+  pre_request: <function PreRequest.pre_request at 0x7f52c78daf28>
+  post_request: <function PostRequest.post_request at 0x7f52c78f6048>
+  child_exit: <function ChildExit.child_exit at 0x7f52c78f6158>
+  worker_exit: <function WorkerExit.worker_exit at 0x7f52c78f6268>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7f52c78f6378>
+  on_exit: <function OnExit.on_exit at 0x7f52c78f6488>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+[2020-02-23 01:38:15 +0000] [45392] [INFO] Starting gunicorn 20.0.4
+[2020-02-23 01:38:15 +0000] [45392] [DEBUG] Arbiter booted
+[2020-02-23 01:38:15 +0000] [45392] [INFO] Listening at: unix:/run/gunicorn.sock (45392)
+[2020-02-23 01:38:15 +0000] [45392] [INFO] Using worker: sync
+[2020-02-23 01:38:15 +0000] [45422] [INFO] Booting worker with pid: 45422
+[2020-02-23 01:38:15 +0000] [45424] [INFO] Booting worker with pid: 45424
+[2020-02-23 01:38:15 +0000] [45425] [INFO] Booting worker with pid: 45425
+[2020-02-23 01:38:15 +0000] [45392] [DEBUG] 3 workers
+[2020-02-23 01:38:15 +0000] [45392] [INFO] Handling signal: term
+[2020-02-23 01:38:16 +0000] [45422] [INFO] Worker exiting (pid: 45422)
+[2020-02-23 01:38:16 +0000] [45424] [INFO] Worker exiting (pid: 45424)
+[2020-02-23 01:38:16 +0000] [45425] [INFO] Worker exiting (pid: 45425)
+[2020-02-23 01:38:16 +0000] [45392] [INFO] Shutting down: Master
+[2020-02-23 01:38:16 +0000] [45434] [DEBUG] Current configuration:
+  config: None
+  bind: ['unix:/run/gunicorn.sock']
+  backlog: 2048
+  workers: 3
+  worker_class: sync
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 600
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /home/529816/Beekeeper-WebUI/beekeeper_webui
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 33
+  group: 33
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: -
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: gunicorn_errors.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: beekeeper_webui.wsgi:application
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7f99169a6598>
+  on_reload: <function OnReload.on_reload at 0x7f99169a66a8>
+  when_ready: <function WhenReady.when_ready at 0x7f99169a67b8>
+  pre_fork: <function Prefork.pre_fork at 0x7f99169a68c8>
+  post_fork: <function Postfork.post_fork at 0x7f99169a69d8>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7f99169a6ae8>
+  worker_int: <function WorkerInt.worker_int at 0x7f99169a6bf8>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7f99169a6d08>
+  pre_exec: <function PreExec.pre_exec at 0x7f99169a6e18>
+  pre_request: <function PreRequest.pre_request at 0x7f99169a6f28>
+  post_request: <function PostRequest.post_request at 0x7f99169c2048>
+  child_exit: <function ChildExit.child_exit at 0x7f99169c2158>
+  worker_exit: <function WorkerExit.worker_exit at 0x7f99169c2268>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7f99169c2378>
+  on_exit: <function OnExit.on_exit at 0x7f99169c2488>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+[2020-02-23 01:38:16 +0000] [45434] [INFO] Starting gunicorn 20.0.4
+[2020-02-23 01:38:16 +0000] [45434] [DEBUG] Arbiter booted
+[2020-02-23 01:38:16 +0000] [45434] [INFO] Listening at: unix:/run/gunicorn.sock (45434)
+[2020-02-23 01:38:16 +0000] [45434] [INFO] Using worker: sync
+[2020-02-23 01:38:16 +0000] [45458] [INFO] Booting worker with pid: 45458
+[2020-02-23 01:38:16 +0000] [45460] [INFO] Booting worker with pid: 45460
+[2020-02-23 01:38:16 +0000] [45434] [DEBUG] 3 workers
+[2020-02-23 01:38:16 +0000] [45464] [INFO] Booting worker with pid: 45464
+[2020-02-23 01:38:19 +0000] [45464] [DEBUG] GET /
+[2020-02-23 01:38:20 +0000] [45458] [DEBUG] GET /get_devices
+[2020-02-23 01:38:20 +0000] [45458] [DEBUG] GET /retrieveXml
+[2020-02-23 01:41:16 +0000] [45434] [INFO] Handling signal: term
+[2020-02-23 01:41:16 +0000] [45458] [INFO] Worker exiting (pid: 45458)
+[2020-02-23 01:41:16 +0000] [45464] [INFO] Worker exiting (pid: 45464)
+[2020-02-23 01:41:16 +0000] [45460] [INFO] Worker exiting (pid: 45460)
+[2020-02-23 01:41:16 +0000] [45434] [INFO] Shutting down: Master
+[2020-02-23 01:41:16 +0000] [45522] [DEBUG] Current configuration:
+  config: None
+  bind: ['unix:/run/gunicorn.sock']
+  backlog: 2048
+  workers: 3
+  worker_class: sync
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 600
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /home/529816/Beekeeper-WebUI/beekeeper_webui
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 33
+  group: 33
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: -
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: gunicorn_errors.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: beekeeper_webui.wsgi:application
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7ffad1aa0598>
+  on_reload: <function OnReload.on_reload at 0x7ffad1aa06a8>
+  when_ready: <function WhenReady.when_ready at 0x7ffad1aa07b8>
+  pre_fork: <function Prefork.pre_fork at 0x7ffad1aa08c8>
+  post_fork: <function Postfork.post_fork at 0x7ffad1aa09d8>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7ffad1aa0ae8>
+  worker_int: <function WorkerInt.worker_int at 0x7ffad1aa0bf8>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7ffad1aa0d08>
+  pre_exec: <function PreExec.pre_exec at 0x7ffad1aa0e18>
+  pre_request: <function PreRequest.pre_request at 0x7ffad1aa0f28>
+  post_request: <function PostRequest.post_request at 0x7ffad1abc048>
+  child_exit: <function ChildExit.child_exit at 0x7ffad1abc158>
+  worker_exit: <function WorkerExit.worker_exit at 0x7ffad1abc268>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7ffad1abc378>
+  on_exit: <function OnExit.on_exit at 0x7ffad1abc488>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+[2020-02-23 01:41:16 +0000] [45522] [INFO] Starting gunicorn 20.0.4
+[2020-02-23 01:41:16 +0000] [45522] [DEBUG] Arbiter booted
+[2020-02-23 01:41:16 +0000] [45522] [INFO] Listening at: unix:/run/gunicorn.sock (45522)
+[2020-02-23 01:41:16 +0000] [45522] [INFO] Using worker: sync
+[2020-02-23 01:41:16 +0000] [45549] [INFO] Booting worker with pid: 45549
+[2020-02-23 01:41:16 +0000] [45551] [INFO] Booting worker with pid: 45551
+[2020-02-23 01:41:16 +0000] [45522] [DEBUG] 3 workers
+[2020-02-23 01:41:16 +0000] [45552] [INFO] Booting worker with pid: 45552
+[2020-02-23 01:41:17 +0000] [45522] [INFO] Handling signal: term
+[2020-02-23 01:41:17 +0000] [45549] [INFO] Worker exiting (pid: 45549)
+[2020-02-23 01:41:17 +0000] [45551] [INFO] Worker exiting (pid: 45551)
+[2020-02-23 01:41:17 +0000] [45552] [INFO] Worker exiting (pid: 45552)
+[2020-02-23 01:41:17 +0000] [45522] [INFO] Shutting down: Master
+[2020-02-23 01:41:18 +0000] [45561] [DEBUG] Current configuration:
+  config: None
+  bind: ['unix:/run/gunicorn.sock']
+  backlog: 2048
+  workers: 3
+  worker_class: sync
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 600
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /home/529816/Beekeeper-WebUI/beekeeper_webui
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 33
+  group: 33
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: -
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: gunicorn_errors.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: beekeeper_webui.wsgi:application
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7f0141021598>
+  on_reload: <function OnReload.on_reload at 0x7f01410216a8>
+  when_ready: <function WhenReady.when_ready at 0x7f01410217b8>
+  pre_fork: <function Prefork.pre_fork at 0x7f01410218c8>
+  post_fork: <function Postfork.post_fork at 0x7f01410219d8>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7f0141021ae8>
+  worker_int: <function WorkerInt.worker_int at 0x7f0141021bf8>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7f0141021d08>
+  pre_exec: <function PreExec.pre_exec at 0x7f0141021e18>
+  pre_request: <function PreRequest.pre_request at 0x7f0141021f28>
+  post_request: <function PostRequest.post_request at 0x7f014103d048>
+  child_exit: <function ChildExit.child_exit at 0x7f014103d158>
+  worker_exit: <function WorkerExit.worker_exit at 0x7f014103d268>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7f014103d378>
+  on_exit: <function OnExit.on_exit at 0x7f014103d488>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+[2020-02-23 01:41:18 +0000] [45561] [INFO] Starting gunicorn 20.0.4
+[2020-02-23 01:41:18 +0000] [45561] [DEBUG] Arbiter booted
+[2020-02-23 01:41:18 +0000] [45561] [INFO] Listening at: unix:/run/gunicorn.sock (45561)
+[2020-02-23 01:41:18 +0000] [45561] [INFO] Using worker: sync
+[2020-02-23 01:41:18 +0000] [45590] [INFO] Booting worker with pid: 45590
+[2020-02-23 01:41:18 +0000] [45592] [INFO] Booting worker with pid: 45592
+[2020-02-23 01:41:18 +0000] [45593] [INFO] Booting worker with pid: 45593
+[2020-02-23 01:41:18 +0000] [45561] [DEBUG] 3 workers
+[2020-02-23 01:41:22 +0000] [45592] [DEBUG] GET /
+[2020-02-23 01:41:24 +0000] [45590] [DEBUG] GET /get_devices
+[2020-02-23 01:41:24 +0000] [45590] [DEBUG] GET /retrieveXml
+[2020-02-23 01:42:46 +0000] [45590] [INFO] Worker exiting (pid: 45590)
+[2020-02-23 01:42:46 +0000] [45593] [INFO] Worker exiting (pid: 45593)
+[2020-02-23 01:42:46 +0000] [45592] [INFO] Worker exiting (pid: 45592)
+[2020-02-23 01:42:46 +0000] [45561] [INFO] Handling signal: term
+[2020-02-23 01:42:46 +0000] [45561] [INFO] Shutting down: Master
+[2020-02-23 01:42:47 +0000] [45643] [DEBUG] Current configuration:
+  config: None
+  bind: ['unix:/run/gunicorn.sock']
+  backlog: 2048
+  workers: 3
+  worker_class: sync
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 600
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /home/529816/Beekeeper-WebUI/beekeeper_webui
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 33
+  group: 33
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: -
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: gunicorn_errors.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: beekeeper_webui.wsgi:application
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7f1994b66598>
+  on_reload: <function OnReload.on_reload at 0x7f1994b666a8>
+  when_ready: <function WhenReady.when_ready at 0x7f1994b667b8>
+  pre_fork: <function Prefork.pre_fork at 0x7f1994b668c8>
+  post_fork: <function Postfork.post_fork at 0x7f1994b669d8>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7f1994b66ae8>
+  worker_int: <function WorkerInt.worker_int at 0x7f1994b66bf8>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7f1994b66d08>
+  pre_exec: <function PreExec.pre_exec at 0x7f1994b66e18>
+  pre_request: <function PreRequest.pre_request at 0x7f1994b66f28>
+  post_request: <function PostRequest.post_request at 0x7f1994b82048>
+  child_exit: <function ChildExit.child_exit at 0x7f1994b82158>
+  worker_exit: <function WorkerExit.worker_exit at 0x7f1994b82268>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7f1994b82378>
+  on_exit: <function OnExit.on_exit at 0x7f1994b82488>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+[2020-02-23 01:42:47 +0000] [45643] [INFO] Starting gunicorn 20.0.4
+[2020-02-23 01:42:47 +0000] [45643] [DEBUG] Arbiter booted
+[2020-02-23 01:42:47 +0000] [45643] [INFO] Listening at: unix:/run/gunicorn.sock (45643)
+[2020-02-23 01:42:47 +0000] [45643] [INFO] Using worker: sync
+[2020-02-23 01:42:47 +0000] [45672] [INFO] Booting worker with pid: 45672
+[2020-02-23 01:42:47 +0000] [45674] [INFO] Booting worker with pid: 45674
+[2020-02-23 01:42:47 +0000] [45675] [INFO] Booting worker with pid: 45675
+[2020-02-23 01:42:47 +0000] [45643] [DEBUG] 3 workers
+[2020-02-23 01:42:47 +0000] [45643] [INFO] Handling signal: term
+[2020-02-23 01:42:48 +0000] [45672] [INFO] Worker exiting (pid: 45672)
+[2020-02-23 01:42:48 +0000] [45675] [INFO] Worker exiting (pid: 45675)
+[2020-02-23 01:42:48 +0000] [45674] [INFO] Worker exiting (pid: 45674)
+[2020-02-23 01:42:48 +0000] [45643] [INFO] Shutting down: Master
+[2020-02-23 01:42:48 +0000] [45684] [DEBUG] Current configuration:
+  config: None
+  bind: ['unix:/run/gunicorn.sock']
+  backlog: 2048
+  workers: 3
+  worker_class: sync
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 600
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /home/529816/Beekeeper-WebUI/beekeeper_webui
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 33
+  group: 33
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: -
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: gunicorn_errors.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: beekeeper_webui.wsgi:application
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7f589bc5e598>
+  on_reload: <function OnReload.on_reload at 0x7f589bc5e6a8>
+  when_ready: <function WhenReady.when_ready at 0x7f589bc5e7b8>
+  pre_fork: <function Prefork.pre_fork at 0x7f589bc5e8c8>
+  post_fork: <function Postfork.post_fork at 0x7f589bc5e9d8>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7f589bc5eae8>
+  worker_int: <function WorkerInt.worker_int at 0x7f589bc5ebf8>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7f589bc5ed08>
+  pre_exec: <function PreExec.pre_exec at 0x7f589bc5ee18>
+  pre_request: <function PreRequest.pre_request at 0x7f589bc5ef28>
+  post_request: <function PostRequest.post_request at 0x7f589bc7a048>
+  child_exit: <function ChildExit.child_exit at 0x7f589bc7a158>
+  worker_exit: <function WorkerExit.worker_exit at 0x7f589bc7a268>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7f589bc7a378>
+  on_exit: <function OnExit.on_exit at 0x7f589bc7a488>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+[2020-02-23 01:42:48 +0000] [45684] [INFO] Starting gunicorn 20.0.4
+[2020-02-23 01:42:48 +0000] [45684] [DEBUG] Arbiter booted
+[2020-02-23 01:42:48 +0000] [45684] [INFO] Listening at: unix:/run/gunicorn.sock (45684)
+[2020-02-23 01:42:48 +0000] [45684] [INFO] Using worker: sync
+[2020-02-23 01:42:48 +0000] [45713] [INFO] Booting worker with pid: 45713
+[2020-02-23 01:42:48 +0000] [45714] [INFO] Booting worker with pid: 45714
+[2020-02-23 01:42:48 +0000] [45716] [INFO] Booting worker with pid: 45716
+[2020-02-23 01:42:48 +0000] [45684] [DEBUG] 3 workers
+[2020-02-23 01:42:52 +0000] [45713] [DEBUG] GET /
+[2020-02-23 01:42:53 +0000] [45714] [DEBUG] GET /get_devices
+[2020-02-23 01:42:53 +0000] [45714] [DEBUG] GET /retrieveXml
+[2020-02-23 01:45:27 +0000] [45684] [INFO] Handling signal: term
+[2020-02-23 01:45:27 +0000] [45713] [INFO] Worker exiting (pid: 45713)
+[2020-02-23 01:45:27 +0000] [45714] [INFO] Worker exiting (pid: 45714)
+[2020-02-23 01:45:27 +0000] [45716] [INFO] Worker exiting (pid: 45716)
+[2020-02-23 01:45:28 +0000] [45684] [INFO] Shutting down: Master
+[2020-02-23 01:45:28 +0000] [45768] [DEBUG] Current configuration:
+  config: None
+  bind: ['unix:/run/gunicorn.sock']
+  backlog: 2048
+  workers: 3
+  worker_class: sync
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 600
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /home/529816/Beekeeper-WebUI/beekeeper_webui
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 33
+  group: 33
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: -
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: gunicorn_errors.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: beekeeper_webui.wsgi:application
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7f14f43ef598>
+  on_reload: <function OnReload.on_reload at 0x7f14f43ef6a8>
+  when_ready: <function WhenReady.when_ready at 0x7f14f43ef7b8>
+  pre_fork: <function Prefork.pre_fork at 0x7f14f43ef8c8>
+  post_fork: <function Postfork.post_fork at 0x7f14f43ef9d8>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7f14f43efae8>
+  worker_int: <function WorkerInt.worker_int at 0x7f14f43efbf8>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7f14f43efd08>
+  pre_exec: <function PreExec.pre_exec at 0x7f14f43efe18>
+  pre_request: <function PreRequest.pre_request at 0x7f14f43eff28>
+  post_request: <function PostRequest.post_request at 0x7f14f440b048>
+  child_exit: <function ChildExit.child_exit at 0x7f14f440b158>
+  worker_exit: <function WorkerExit.worker_exit at 0x7f14f440b268>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7f14f440b378>
+  on_exit: <function OnExit.on_exit at 0x7f14f440b488>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+[2020-02-23 01:45:28 +0000] [45768] [INFO] Starting gunicorn 20.0.4
+[2020-02-23 01:45:28 +0000] [45768] [DEBUG] Arbiter booted
+[2020-02-23 01:45:28 +0000] [45768] [INFO] Listening at: unix:/run/gunicorn.sock (45768)
+[2020-02-23 01:45:28 +0000] [45768] [INFO] Using worker: sync
+[2020-02-23 01:45:28 +0000] [45796] [INFO] Booting worker with pid: 45796
+[2020-02-23 01:45:28 +0000] [45798] [INFO] Booting worker with pid: 45798
+[2020-02-23 01:45:28 +0000] [45799] [INFO] Booting worker with pid: 45799
+[2020-02-23 01:45:28 +0000] [45768] [DEBUG] 3 workers
+[2020-02-23 01:45:29 +0000] [45768] [INFO] Handling signal: term
+[2020-02-23 01:45:29 +0000] [45796] [INFO] Worker exiting (pid: 45796)
+[2020-02-23 01:45:29 +0000] [45798] [INFO] Worker exiting (pid: 45798)
+[2020-02-23 01:45:29 +0000] [45799] [INFO] Worker exiting (pid: 45799)
+[2020-02-23 01:45:29 +0000] [45768] [INFO] Shutting down: Master
+[2020-02-23 01:45:30 +0000] [45808] [DEBUG] Current configuration:
+  config: None
+  bind: ['unix:/run/gunicorn.sock']
+  backlog: 2048
+  workers: 3
+  worker_class: sync
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 600
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /home/529816/Beekeeper-WebUI/beekeeper_webui
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 33
+  group: 33
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: -
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: gunicorn_errors.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: beekeeper_webui.wsgi:application
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7fd6ebf48598>
+  on_reload: <function OnReload.on_reload at 0x7fd6ebf486a8>
+  when_ready: <function WhenReady.when_ready at 0x7fd6ebf487b8>
+  pre_fork: <function Prefork.pre_fork at 0x7fd6ebf488c8>
+  post_fork: <function Postfork.post_fork at 0x7fd6ebf489d8>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7fd6ebf48ae8>
+  worker_int: <function WorkerInt.worker_int at 0x7fd6ebf48bf8>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7fd6ebf48d08>
+  pre_exec: <function PreExec.pre_exec at 0x7fd6ebf48e18>
+  pre_request: <function PreRequest.pre_request at 0x7fd6ebf48f28>
+  post_request: <function PostRequest.post_request at 0x7fd6ebf64048>
+  child_exit: <function ChildExit.child_exit at 0x7fd6ebf64158>
+  worker_exit: <function WorkerExit.worker_exit at 0x7fd6ebf64268>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7fd6ebf64378>
+  on_exit: <function OnExit.on_exit at 0x7fd6ebf64488>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+[2020-02-23 01:45:30 +0000] [45808] [INFO] Starting gunicorn 20.0.4
+[2020-02-23 01:45:30 +0000] [45808] [DEBUG] Arbiter booted
+[2020-02-23 01:45:30 +0000] [45808] [INFO] Listening at: unix:/run/gunicorn.sock (45808)
+[2020-02-23 01:45:30 +0000] [45808] [INFO] Using worker: sync
+[2020-02-23 01:45:30 +0000] [45833] [INFO] Booting worker with pid: 45833
+[2020-02-23 01:45:30 +0000] [45835] [INFO] Booting worker with pid: 45835
+[2020-02-23 01:45:30 +0000] [45836] [INFO] Booting worker with pid: 45836
+[2020-02-23 01:45:30 +0000] [45808] [DEBUG] 3 workers
+[2020-02-23 01:45:33 +0000] [45835] [DEBUG] GET /
+[2020-02-23 01:45:35 +0000] [45836] [DEBUG] GET /get_devices
+[2020-02-23 01:45:35 +0000] [45836] [DEBUG] GET /retrieveXml
+[2020-02-23 01:46:13 +0000] [45808] [INFO] Handling signal: term
+[2020-02-23 01:46:13 +0000] [45833] [INFO] Worker exiting (pid: 45833)
+[2020-02-23 01:46:13 +0000] [45836] [INFO] Worker exiting (pid: 45836)
+[2020-02-23 01:46:13 +0000] [45835] [INFO] Worker exiting (pid: 45835)
+[2020-02-23 01:46:14 +0000] [45808] [INFO] Shutting down: Master
+[2020-02-23 01:46:14 +0000] [45886] [DEBUG] Current configuration:
+  config: None
+  bind: ['unix:/run/gunicorn.sock']
+  backlog: 2048
+  workers: 3
+  worker_class: sync
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 600
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /home/529816/Beekeeper-WebUI/beekeeper_webui
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 33
+  group: 33
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: -
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: gunicorn_errors.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: beekeeper_webui.wsgi:application
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7fcbe4490598>
+  on_reload: <function OnReload.on_reload at 0x7fcbe44906a8>
+  when_ready: <function WhenReady.when_ready at 0x7fcbe44907b8>
+  pre_fork: <function Prefork.pre_fork at 0x7fcbe44908c8>
+  post_fork: <function Postfork.post_fork at 0x7fcbe44909d8>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7fcbe4490ae8>
+  worker_int: <function WorkerInt.worker_int at 0x7fcbe4490bf8>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7fcbe4490d08>
+  pre_exec: <function PreExec.pre_exec at 0x7fcbe4490e18>
+  pre_request: <function PreRequest.pre_request at 0x7fcbe4490f28>
+  post_request: <function PostRequest.post_request at 0x7fcbe44ac048>
+  child_exit: <function ChildExit.child_exit at 0x7fcbe44ac158>
+  worker_exit: <function WorkerExit.worker_exit at 0x7fcbe44ac268>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7fcbe44ac378>
+  on_exit: <function OnExit.on_exit at 0x7fcbe44ac488>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+[2020-02-23 01:46:14 +0000] [45886] [INFO] Starting gunicorn 20.0.4
+[2020-02-23 01:46:14 +0000] [45886] [DEBUG] Arbiter booted
+[2020-02-23 01:46:14 +0000] [45886] [INFO] Listening at: unix:/run/gunicorn.sock (45886)
+[2020-02-23 01:46:14 +0000] [45886] [INFO] Using worker: sync
+[2020-02-23 01:46:14 +0000] [45914] [INFO] Booting worker with pid: 45914
+[2020-02-23 01:46:14 +0000] [45916] [INFO] Booting worker with pid: 45916
+[2020-02-23 01:46:14 +0000] [45917] [INFO] Booting worker with pid: 45917
+[2020-02-23 01:46:14 +0000] [45886] [DEBUG] 3 workers
+[2020-02-23 01:46:15 +0000] [45886] [INFO] Handling signal: term
+[2020-02-23 01:46:15 +0000] [45914] [INFO] Worker exiting (pid: 45914)
+[2020-02-23 01:46:15 +0000] [45916] [INFO] Worker exiting (pid: 45916)
+[2020-02-23 01:46:15 +0000] [45917] [INFO] Worker exiting (pid: 45917)
+[2020-02-23 01:46:15 +0000] [45886] [INFO] Shutting down: Master
+[2020-02-23 01:46:15 +0000] [45926] [DEBUG] Current configuration:
+  config: None
+  bind: ['unix:/run/gunicorn.sock']
+  backlog: 2048
+  workers: 3
+  worker_class: sync
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 600
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /home/529816/Beekeeper-WebUI/beekeeper_webui
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 33
+  group: 33
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: -
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: gunicorn_errors.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: beekeeper_webui.wsgi:application
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7f30314d5598>
+  on_reload: <function OnReload.on_reload at 0x7f30314d56a8>
+  when_ready: <function WhenReady.when_ready at 0x7f30314d57b8>
+  pre_fork: <function Prefork.pre_fork at 0x7f30314d58c8>
+  post_fork: <function Postfork.post_fork at 0x7f30314d59d8>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7f30314d5ae8>
+  worker_int: <function WorkerInt.worker_int at 0x7f30314d5bf8>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7f30314d5d08>
+  pre_exec: <function PreExec.pre_exec at 0x7f30314d5e18>
+  pre_request: <function PreRequest.pre_request at 0x7f30314d5f28>
+  post_request: <function PostRequest.post_request at 0x7f30314f1048>
+  child_exit: <function ChildExit.child_exit at 0x7f30314f1158>
+  worker_exit: <function WorkerExit.worker_exit at 0x7f30314f1268>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7f30314f1378>
+  on_exit: <function OnExit.on_exit at 0x7f30314f1488>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+[2020-02-23 01:46:15 +0000] [45926] [INFO] Starting gunicorn 20.0.4
+[2020-02-23 01:46:15 +0000] [45926] [DEBUG] Arbiter booted
+[2020-02-23 01:46:15 +0000] [45926] [INFO] Listening at: unix:/run/gunicorn.sock (45926)
+[2020-02-23 01:46:15 +0000] [45926] [INFO] Using worker: sync
+[2020-02-23 01:46:16 +0000] [45953] [INFO] Booting worker with pid: 45953
+[2020-02-23 01:46:16 +0000] [45955] [INFO] Booting worker with pid: 45955
+[2020-02-23 01:46:16 +0000] [45956] [INFO] Booting worker with pid: 45956
+[2020-02-23 01:46:16 +0000] [45926] [DEBUG] 3 workers
+[2020-02-23 01:46:25 +0000] [45953] [DEBUG] GET /
+[2020-02-23 01:46:26 +0000] [45953] [DEBUG] GET /get_devices
+[2020-02-23 01:46:26 +0000] [45953] [DEBUG] GET /retrieveXml
+[2020-02-23 01:50:46 +0000] [45953] [INFO] Worker exiting (pid: 45953)
+[2020-02-23 01:50:46 +0000] [45955] [INFO] Worker exiting (pid: 45955)
+[2020-02-23 01:50:46 +0000] [45956] [INFO] Worker exiting (pid: 45956)
+[2020-02-23 01:50:46 +0000] [45926] [INFO] Handling signal: term
+[2020-02-23 01:50:46 +0000] [45926] [INFO] Shutting down: Master
+[2020-02-23 01:50:47 +0000] [46013] [DEBUG] Current configuration:
+  config: None
+  bind: ['unix:/run/gunicorn.sock']
+  backlog: 2048
+  workers: 3
+  worker_class: sync
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 600
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /home/529816/Beekeeper-WebUI/beekeeper_webui
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 33
+  group: 33
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: -
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: gunicorn_errors.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: beekeeper_webui.wsgi:application
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7f4a7e07e598>
+  on_reload: <function OnReload.on_reload at 0x7f4a7e07e6a8>
+  when_ready: <function WhenReady.when_ready at 0x7f4a7e07e7b8>
+  pre_fork: <function Prefork.pre_fork at 0x7f4a7e07e8c8>
+  post_fork: <function Postfork.post_fork at 0x7f4a7e07e9d8>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7f4a7e07eae8>
+  worker_int: <function WorkerInt.worker_int at 0x7f4a7e07ebf8>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7f4a7e07ed08>
+  pre_exec: <function PreExec.pre_exec at 0x7f4a7e07ee18>
+  pre_request: <function PreRequest.pre_request at 0x7f4a7e07ef28>
+  post_request: <function PostRequest.post_request at 0x7f4a7e09a048>
+  child_exit: <function ChildExit.child_exit at 0x7f4a7e09a158>
+  worker_exit: <function WorkerExit.worker_exit at 0x7f4a7e09a268>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7f4a7e09a378>
+  on_exit: <function OnExit.on_exit at 0x7f4a7e09a488>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+[2020-02-23 01:50:47 +0000] [46013] [INFO] Starting gunicorn 20.0.4
+[2020-02-23 01:50:47 +0000] [46013] [DEBUG] Arbiter booted
+[2020-02-23 01:50:47 +0000] [46013] [INFO] Listening at: unix:/run/gunicorn.sock (46013)
+[2020-02-23 01:50:47 +0000] [46013] [INFO] Using worker: sync
+[2020-02-23 01:50:47 +0000] [46039] [INFO] Booting worker with pid: 46039
+[2020-02-23 01:50:47 +0000] [46042] [INFO] Booting worker with pid: 46042
+[2020-02-23 01:50:47 +0000] [46043] [INFO] Booting worker with pid: 46043
+[2020-02-23 01:50:47 +0000] [46013] [DEBUG] 3 workers
+[2020-02-23 01:50:47 +0000] [46039] [INFO] Worker exiting (pid: 46039)
+[2020-02-23 01:50:47 +0000] [46042] [INFO] Worker exiting (pid: 46042)
+[2020-02-23 01:50:47 +0000] [46013] [INFO] Handling signal: term
+[2020-02-23 01:50:47 +0000] [46043] [INFO] Worker exiting (pid: 46043)
+[2020-02-23 01:50:47 +0000] [46013] [INFO] Shutting down: Master
+[2020-02-23 01:50:48 +0000] [46052] [DEBUG] Current configuration:
+  config: None
+  bind: ['unix:/run/gunicorn.sock']
+  backlog: 2048
+  workers: 3
+  worker_class: sync
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 600
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /home/529816/Beekeeper-WebUI/beekeeper_webui
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 33
+  group: 33
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: -
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: gunicorn_errors.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: beekeeper_webui.wsgi:application
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7f129bdee598>
+  on_reload: <function OnReload.on_reload at 0x7f129bdee6a8>
+  when_ready: <function WhenReady.when_ready at 0x7f129bdee7b8>
+  pre_fork: <function Prefork.pre_fork at 0x7f129bdee8c8>
+  post_fork: <function Postfork.post_fork at 0x7f129bdee9d8>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7f129bdeeae8>
+  worker_int: <function WorkerInt.worker_int at 0x7f129bdeebf8>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7f129bdeed08>
+  pre_exec: <function PreExec.pre_exec at 0x7f129bdeee18>
+  pre_request: <function PreRequest.pre_request at 0x7f129bdeef28>
+  post_request: <function PostRequest.post_request at 0x7f129be0a048>
+  child_exit: <function ChildExit.child_exit at 0x7f129be0a158>
+  worker_exit: <function WorkerExit.worker_exit at 0x7f129be0a268>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7f129be0a378>
+  on_exit: <function OnExit.on_exit at 0x7f129be0a488>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+[2020-02-23 01:50:48 +0000] [46052] [INFO] Starting gunicorn 20.0.4
+[2020-02-23 01:50:48 +0000] [46052] [DEBUG] Arbiter booted
+[2020-02-23 01:50:48 +0000] [46052] [INFO] Listening at: unix:/run/gunicorn.sock (46052)
+[2020-02-23 01:50:48 +0000] [46052] [INFO] Using worker: sync
+[2020-02-23 01:50:48 +0000] [46081] [INFO] Booting worker with pid: 46081
+[2020-02-23 01:50:48 +0000] [46083] [INFO] Booting worker with pid: 46083
+[2020-02-23 01:50:48 +0000] [46084] [INFO] Booting worker with pid: 46084
+[2020-02-23 01:50:48 +0000] [46052] [DEBUG] 3 workers
+[2020-02-23 01:50:51 +0000] [46084] [DEBUG] GET /
+[2020-02-23 01:50:53 +0000] [46084] [DEBUG] GET /get_devices
+[2020-02-23 01:50:53 +0000] [46083] [DEBUG] GET /retrieveXml
+[2020-02-23 01:51:36 +0000] [46052] [INFO] Handling signal: term
+[2020-02-23 01:51:36 +0000] [46083] [INFO] Worker exiting (pid: 46083)
+[2020-02-23 01:51:36 +0000] [46081] [INFO] Worker exiting (pid: 46081)
+[2020-02-23 01:51:36 +0000] [46084] [INFO] Worker exiting (pid: 46084)
+[2020-02-23 01:51:36 +0000] [46052] [INFO] Shutting down: Master
+[2020-02-23 01:51:36 +0000] [46140] [DEBUG] Current configuration:
+  config: None
+  bind: ['unix:/run/gunicorn.sock']
+  backlog: 2048
+  workers: 3
+  worker_class: sync
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 600
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /home/529816/Beekeeper-WebUI/beekeeper_webui
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 33
+  group: 33
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: -
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: gunicorn_errors.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: beekeeper_webui.wsgi:application
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7fa742ef7598>
+  on_reload: <function OnReload.on_reload at 0x7fa742ef76a8>
+  when_ready: <function WhenReady.when_ready at 0x7fa742ef77b8>
+  pre_fork: <function Prefork.pre_fork at 0x7fa742ef78c8>
+  post_fork: <function Postfork.post_fork at 0x7fa742ef79d8>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7fa742ef7ae8>
+  worker_int: <function WorkerInt.worker_int at 0x7fa742ef7bf8>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7fa742ef7d08>
+  pre_exec: <function PreExec.pre_exec at 0x7fa742ef7e18>
+  pre_request: <function PreRequest.pre_request at 0x7fa742ef7f28>
+  post_request: <function PostRequest.post_request at 0x7fa742f13048>
+  child_exit: <function ChildExit.child_exit at 0x7fa742f13158>
+  worker_exit: <function WorkerExit.worker_exit at 0x7fa742f13268>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7fa742f13378>
+  on_exit: <function OnExit.on_exit at 0x7fa742f13488>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+[2020-02-23 01:51:36 +0000] [46140] [INFO] Starting gunicorn 20.0.4
+[2020-02-23 01:51:36 +0000] [46140] [DEBUG] Arbiter booted
+[2020-02-23 01:51:36 +0000] [46140] [INFO] Listening at: unix:/run/gunicorn.sock (46140)
+[2020-02-23 01:51:36 +0000] [46140] [INFO] Using worker: sync
+[2020-02-23 01:51:36 +0000] [46168] [INFO] Booting worker with pid: 46168
+[2020-02-23 01:51:36 +0000] [46170] [INFO] Booting worker with pid: 46170
+[2020-02-23 01:51:36 +0000] [46171] [INFO] Booting worker with pid: 46171
+[2020-02-23 01:51:36 +0000] [46140] [DEBUG] 3 workers
+[2020-02-23 01:51:37 +0000] [46140] [INFO] Handling signal: term
+[2020-02-23 01:51:37 +0000] [46168] [INFO] Worker exiting (pid: 46168)
+[2020-02-23 01:51:37 +0000] [46170] [INFO] Worker exiting (pid: 46170)
+[2020-02-23 01:51:37 +0000] [46171] [INFO] Worker exiting (pid: 46171)
+[2020-02-23 01:51:37 +0000] [46140] [INFO] Shutting down: Master
+[2020-02-23 01:51:37 +0000] [46180] [DEBUG] Current configuration:
+  config: None
+  bind: ['unix:/run/gunicorn.sock']
+  backlog: 2048
+  workers: 3
+  worker_class: sync
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 600
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /home/529816/Beekeeper-WebUI/beekeeper_webui
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 33
+  group: 33
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: -
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: gunicorn_errors.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: beekeeper_webui.wsgi:application
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7f56b3906598>
+  on_reload: <function OnReload.on_reload at 0x7f56b39066a8>
+  when_ready: <function WhenReady.when_ready at 0x7f56b39067b8>
+  pre_fork: <function Prefork.pre_fork at 0x7f56b39068c8>
+  post_fork: <function Postfork.post_fork at 0x7f56b39069d8>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7f56b3906ae8>
+  worker_int: <function WorkerInt.worker_int at 0x7f56b3906bf8>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7f56b3906d08>
+  pre_exec: <function PreExec.pre_exec at 0x7f56b3906e18>
+  pre_request: <function PreRequest.pre_request at 0x7f56b3906f28>
+  post_request: <function PostRequest.post_request at 0x7f56b3922048>
+  child_exit: <function ChildExit.child_exit at 0x7f56b3922158>
+  worker_exit: <function WorkerExit.worker_exit at 0x7f56b3922268>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7f56b3922378>
+  on_exit: <function OnExit.on_exit at 0x7f56b3922488>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+[2020-02-23 01:51:37 +0000] [46180] [INFO] Starting gunicorn 20.0.4
+[2020-02-23 01:51:37 +0000] [46180] [DEBUG] Arbiter booted
+[2020-02-23 01:51:37 +0000] [46180] [INFO] Listening at: unix:/run/gunicorn.sock (46180)
+[2020-02-23 01:51:37 +0000] [46180] [INFO] Using worker: sync
+[2020-02-23 01:51:37 +0000] [46206] [INFO] Booting worker with pid: 46206
+[2020-02-23 01:51:38 +0000] [46209] [INFO] Booting worker with pid: 46209
+[2020-02-23 01:51:38 +0000] [46210] [INFO] Booting worker with pid: 46210
+[2020-02-23 01:51:38 +0000] [46180] [DEBUG] 3 workers
+[2020-02-23 01:51:41 +0000] [46210] [DEBUG] GET /
+[2020-02-23 01:51:43 +0000] [46210] [DEBUG] GET /get_devices
+[2020-02-23 01:51:43 +0000] [46210] [DEBUG] GET /retrieveXml
+[2020-02-23 01:53:09 +0000] [46210] [INFO] Worker exiting (pid: 46210)
+[2020-02-23 01:53:09 +0000] [46209] [INFO] Worker exiting (pid: 46209)
+[2020-02-23 01:53:09 +0000] [46206] [INFO] Worker exiting (pid: 46206)
+[2020-02-23 01:53:09 +0000] [46180] [INFO] Handling signal: term
+[2020-02-23 01:53:09 +0000] [46180] [INFO] Shutting down: Master
+[2020-02-23 01:53:10 +0000] [46262] [DEBUG] Current configuration:
+  config: None
+  bind: ['unix:/run/gunicorn.sock']
+  backlog: 2048
+  workers: 3
+  worker_class: sync
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 600
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /home/529816/Beekeeper-WebUI/beekeeper_webui
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 33
+  group: 33
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: -
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: gunicorn_errors.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: beekeeper_webui.wsgi:application
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7f01dcc60598>
+  on_reload: <function OnReload.on_reload at 0x7f01dcc606a8>
+  when_ready: <function WhenReady.when_ready at 0x7f01dcc607b8>
+  pre_fork: <function Prefork.pre_fork at 0x7f01dcc608c8>
+  post_fork: <function Postfork.post_fork at 0x7f01dcc609d8>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7f01dcc60ae8>
+  worker_int: <function WorkerInt.worker_int at 0x7f01dcc60bf8>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7f01dcc60d08>
+  pre_exec: <function PreExec.pre_exec at 0x7f01dcc60e18>
+  pre_request: <function PreRequest.pre_request at 0x7f01dcc60f28>
+  post_request: <function PostRequest.post_request at 0x7f01dcc7c048>
+  child_exit: <function ChildExit.child_exit at 0x7f01dcc7c158>
+  worker_exit: <function WorkerExit.worker_exit at 0x7f01dcc7c268>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7f01dcc7c378>
+  on_exit: <function OnExit.on_exit at 0x7f01dcc7c488>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+[2020-02-23 01:53:10 +0000] [46262] [INFO] Starting gunicorn 20.0.4
+[2020-02-23 01:53:10 +0000] [46262] [DEBUG] Arbiter booted
+[2020-02-23 01:53:10 +0000] [46262] [INFO] Listening at: unix:/run/gunicorn.sock (46262)
+[2020-02-23 01:53:10 +0000] [46262] [INFO] Using worker: sync
+[2020-02-23 01:53:10 +0000] [46291] [INFO] Booting worker with pid: 46291
+[2020-02-23 01:53:10 +0000] [46293] [INFO] Booting worker with pid: 46293
+[2020-02-23 01:53:10 +0000] [46294] [INFO] Booting worker with pid: 46294
+[2020-02-23 01:53:10 +0000] [46262] [DEBUG] 3 workers
+[2020-02-23 01:53:11 +0000] [46291] [INFO] Worker exiting (pid: 46291)
+[2020-02-23 01:53:11 +0000] [46293] [INFO] Worker exiting (pid: 46293)
+[2020-02-23 01:53:11 +0000] [46262] [INFO] Handling signal: term
+[2020-02-23 01:53:11 +0000] [46294] [INFO] Worker exiting (pid: 46294)
+[2020-02-23 01:53:11 +0000] [46262] [INFO] Shutting down: Master
+[2020-02-23 01:53:12 +0000] [46303] [DEBUG] Current configuration:
+  config: None
+  bind: ['unix:/run/gunicorn.sock']
+  backlog: 2048
+  workers: 3
+  worker_class: sync
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 600
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /home/529816/Beekeeper-WebUI/beekeeper_webui
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 33
+  group: 33
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: -
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: gunicorn_errors.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: beekeeper_webui.wsgi:application
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7f9dee4bc598>
+  on_reload: <function OnReload.on_reload at 0x7f9dee4bc6a8>
+  when_ready: <function WhenReady.when_ready at 0x7f9dee4bc7b8>
+  pre_fork: <function Prefork.pre_fork at 0x7f9dee4bc8c8>
+  post_fork: <function Postfork.post_fork at 0x7f9dee4bc9d8>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7f9dee4bcae8>
+  worker_int: <function WorkerInt.worker_int at 0x7f9dee4bcbf8>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7f9dee4bcd08>
+  pre_exec: <function PreExec.pre_exec at 0x7f9dee4bce18>
+  pre_request: <function PreRequest.pre_request at 0x7f9dee4bcf28>
+  post_request: <function PostRequest.post_request at 0x7f9dee4d8048>
+  child_exit: <function ChildExit.child_exit at 0x7f9dee4d8158>
+  worker_exit: <function WorkerExit.worker_exit at 0x7f9dee4d8268>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7f9dee4d8378>
+  on_exit: <function OnExit.on_exit at 0x7f9dee4d8488>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+[2020-02-23 01:53:12 +0000] [46303] [INFO] Starting gunicorn 20.0.4
+[2020-02-23 01:53:12 +0000] [46303] [DEBUG] Arbiter booted
+[2020-02-23 01:53:12 +0000] [46303] [INFO] Listening at: unix:/run/gunicorn.sock (46303)
+[2020-02-23 01:53:12 +0000] [46303] [INFO] Using worker: sync
+[2020-02-23 01:53:12 +0000] [46331] [INFO] Booting worker with pid: 46331
+[2020-02-23 01:53:12 +0000] [46333] [INFO] Booting worker with pid: 46333
+[2020-02-23 01:53:12 +0000] [46334] [INFO] Booting worker with pid: 46334
+[2020-02-23 01:53:12 +0000] [46303] [DEBUG] 3 workers
+[2020-02-23 01:53:16 +0000] [46331] [DEBUG] GET /
+[2020-02-23 01:53:18 +0000] [46331] [DEBUG] GET /get_devices
+[2020-02-23 01:53:18 +0000] [46331] [DEBUG] GET /retrieveXml
+[2020-02-23 01:55:47 +0000] [46303] [INFO] Handling signal: term
+[2020-02-23 01:55:47 +0000] [46331] [INFO] Worker exiting (pid: 46331)
+[2020-02-23 01:55:47 +0000] [46333] [INFO] Worker exiting (pid: 46333)
+[2020-02-23 01:55:47 +0000] [46334] [INFO] Worker exiting (pid: 46334)
+[2020-02-23 01:55:47 +0000] [46303] [INFO] Shutting down: Master
+[2020-02-23 01:55:47 +0000] [46388] [DEBUG] Current configuration:
+  config: None
+  bind: ['unix:/run/gunicorn.sock']
+  backlog: 2048
+  workers: 3
+  worker_class: sync
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 600
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /home/529816/Beekeeper-WebUI/beekeeper_webui
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 33
+  group: 33
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: -
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: gunicorn_errors.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: beekeeper_webui.wsgi:application
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7f6596b4d598>
+  on_reload: <function OnReload.on_reload at 0x7f6596b4d6a8>
+  when_ready: <function WhenReady.when_ready at 0x7f6596b4d7b8>
+  pre_fork: <function Prefork.pre_fork at 0x7f6596b4d8c8>
+  post_fork: <function Postfork.post_fork at 0x7f6596b4d9d8>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7f6596b4dae8>
+  worker_int: <function WorkerInt.worker_int at 0x7f6596b4dbf8>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7f6596b4dd08>
+  pre_exec: <function PreExec.pre_exec at 0x7f6596b4de18>
+  pre_request: <function PreRequest.pre_request at 0x7f6596b4df28>
+  post_request: <function PostRequest.post_request at 0x7f6596b69048>
+  child_exit: <function ChildExit.child_exit at 0x7f6596b69158>
+  worker_exit: <function WorkerExit.worker_exit at 0x7f6596b69268>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7f6596b69378>
+  on_exit: <function OnExit.on_exit at 0x7f6596b69488>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+[2020-02-23 01:55:47 +0000] [46388] [INFO] Starting gunicorn 20.0.4
+[2020-02-23 01:55:48 +0000] [46388] [DEBUG] Arbiter booted
+[2020-02-23 01:55:48 +0000] [46388] [INFO] Listening at: unix:/run/gunicorn.sock (46388)
+[2020-02-23 01:55:48 +0000] [46388] [INFO] Using worker: sync
+[2020-02-23 01:55:48 +0000] [46413] [INFO] Booting worker with pid: 46413
+[2020-02-23 01:55:48 +0000] [46415] [INFO] Booting worker with pid: 46415
+[2020-02-23 01:55:48 +0000] [46416] [INFO] Booting worker with pid: 46416
+[2020-02-23 01:55:48 +0000] [46388] [DEBUG] 3 workers
+[2020-02-23 01:55:48 +0000] [46413] [INFO] Worker exiting (pid: 46413)
+[2020-02-23 01:55:48 +0000] [46388] [INFO] Handling signal: term
+[2020-02-23 01:55:48 +0000] [46416] [INFO] Worker exiting (pid: 46416)
+[2020-02-23 01:55:48 +0000] [46415] [INFO] Worker exiting (pid: 46415)
+[2020-02-23 01:55:48 +0000] [46388] [INFO] Shutting down: Master
+[2020-02-23 01:55:49 +0000] [46425] [DEBUG] Current configuration:
+  config: None
+  bind: ['unix:/run/gunicorn.sock']
+  backlog: 2048
+  workers: 3
+  worker_class: sync
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 600
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /home/529816/Beekeeper-WebUI/beekeeper_webui
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 33
+  group: 33
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: -
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: gunicorn_errors.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: beekeeper_webui.wsgi:application
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7f5259b1b598>
+  on_reload: <function OnReload.on_reload at 0x7f5259b1b6a8>
+  when_ready: <function WhenReady.when_ready at 0x7f5259b1b7b8>
+  pre_fork: <function Prefork.pre_fork at 0x7f5259b1b8c8>
+  post_fork: <function Postfork.post_fork at 0x7f5259b1b9d8>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7f5259b1bae8>
+  worker_int: <function WorkerInt.worker_int at 0x7f5259b1bbf8>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7f5259b1bd08>
+  pre_exec: <function PreExec.pre_exec at 0x7f5259b1be18>
+  pre_request: <function PreRequest.pre_request at 0x7f5259b1bf28>
+  post_request: <function PostRequest.post_request at 0x7f5259b37048>
+  child_exit: <function ChildExit.child_exit at 0x7f5259b37158>
+  worker_exit: <function WorkerExit.worker_exit at 0x7f5259b37268>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7f5259b37378>
+  on_exit: <function OnExit.on_exit at 0x7f5259b37488>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+[2020-02-23 01:55:49 +0000] [46425] [INFO] Starting gunicorn 20.0.4
+[2020-02-23 01:55:49 +0000] [46425] [DEBUG] Arbiter booted
+[2020-02-23 01:55:49 +0000] [46425] [INFO] Listening at: unix:/run/gunicorn.sock (46425)
+[2020-02-23 01:55:49 +0000] [46425] [INFO] Using worker: sync
+[2020-02-23 01:55:49 +0000] [46450] [INFO] Booting worker with pid: 46450
+[2020-02-23 01:55:49 +0000] [46453] [INFO] Booting worker with pid: 46453
+[2020-02-23 01:55:49 +0000] [46454] [INFO] Booting worker with pid: 46454
+[2020-02-23 01:55:49 +0000] [46425] [DEBUG] 3 workers
+[2020-02-23 01:55:54 +0000] [46453] [DEBUG] GET /
+[2020-02-23 01:55:56 +0000] [46450] [DEBUG] GET /get_devices
+[2020-02-23 01:55:56 +0000] [46450] [DEBUG] GET /retrieveXml
+[2020-02-23 01:57:01 +0000] [46425] [INFO] Handling signal: term
+[2020-02-23 01:57:01 +0000] [46450] [INFO] Worker exiting (pid: 46450)
+[2020-02-23 01:57:01 +0000] [46453] [INFO] Worker exiting (pid: 46453)
+[2020-02-23 01:57:01 +0000] [46454] [INFO] Worker exiting (pid: 46454)
+[2020-02-23 01:57:01 +0000] [46425] [INFO] Shutting down: Master
+[2020-02-23 01:57:01 +0000] [46517] [DEBUG] Current configuration:
+  config: None
+  bind: ['unix:/run/gunicorn.sock']
+  backlog: 2048
+  workers: 3
+  worker_class: sync
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 600
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /home/529816/Beekeeper-WebUI/beekeeper_webui
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 33
+  group: 33
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: -
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: gunicorn_errors.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: beekeeper_webui.wsgi:application
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7f928501e598>
+  on_reload: <function OnReload.on_reload at 0x7f928501e6a8>
+  when_ready: <function WhenReady.when_ready at 0x7f928501e7b8>
+  pre_fork: <function Prefork.pre_fork at 0x7f928501e8c8>
+  post_fork: <function Postfork.post_fork at 0x7f928501e9d8>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7f928501eae8>
+  worker_int: <function WorkerInt.worker_int at 0x7f928501ebf8>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7f928501ed08>
+  pre_exec: <function PreExec.pre_exec at 0x7f928501ee18>
+  pre_request: <function PreRequest.pre_request at 0x7f928501ef28>
+  post_request: <function PostRequest.post_request at 0x7f928503a048>
+  child_exit: <function ChildExit.child_exit at 0x7f928503a158>
+  worker_exit: <function WorkerExit.worker_exit at 0x7f928503a268>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7f928503a378>
+  on_exit: <function OnExit.on_exit at 0x7f928503a488>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+[2020-02-23 01:57:01 +0000] [46517] [INFO] Starting gunicorn 20.0.4
+[2020-02-23 01:57:01 +0000] [46517] [DEBUG] Arbiter booted
+[2020-02-23 01:57:01 +0000] [46517] [INFO] Listening at: unix:/run/gunicorn.sock (46517)
+[2020-02-23 01:57:01 +0000] [46517] [INFO] Using worker: sync
+[2020-02-23 01:57:01 +0000] [46546] [INFO] Booting worker with pid: 46546
+[2020-02-23 01:57:01 +0000] [46548] [INFO] Booting worker with pid: 46548
+[2020-02-23 01:57:01 +0000] [46549] [INFO] Booting worker with pid: 46549
+[2020-02-23 01:57:02 +0000] [46517] [DEBUG] 3 workers
+[2020-02-23 01:57:02 +0000] [46517] [INFO] Handling signal: term
+[2020-02-23 01:57:02 +0000] [46546] [INFO] Worker exiting (pid: 46546)
+[2020-02-23 01:57:02 +0000] [46548] [INFO] Worker exiting (pid: 46548)
+[2020-02-23 01:57:02 +0000] [46549] [INFO] Worker exiting (pid: 46549)
+[2020-02-23 01:57:02 +0000] [46517] [INFO] Shutting down: Master
+[2020-02-23 01:57:03 +0000] [46558] [DEBUG] Current configuration:
+  config: None
+  bind: ['unix:/run/gunicorn.sock']
+  backlog: 2048
+  workers: 3
+  worker_class: sync
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 600
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /home/529816/Beekeeper-WebUI/beekeeper_webui
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 33
+  group: 33
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: -
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: gunicorn_errors.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: beekeeper_webui.wsgi:application
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7ff707a1a598>
+  on_reload: <function OnReload.on_reload at 0x7ff707a1a6a8>
+  when_ready: <function WhenReady.when_ready at 0x7ff707a1a7b8>
+  pre_fork: <function Prefork.pre_fork at 0x7ff707a1a8c8>
+  post_fork: <function Postfork.post_fork at 0x7ff707a1a9d8>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7ff707a1aae8>
+  worker_int: <function WorkerInt.worker_int at 0x7ff707a1abf8>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7ff707a1ad08>
+  pre_exec: <function PreExec.pre_exec at 0x7ff707a1ae18>
+  pre_request: <function PreRequest.pre_request at 0x7ff707a1af28>
+  post_request: <function PostRequest.post_request at 0x7ff707a36048>
+  child_exit: <function ChildExit.child_exit at 0x7ff707a36158>
+  worker_exit: <function WorkerExit.worker_exit at 0x7ff707a36268>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7ff707a36378>
+  on_exit: <function OnExit.on_exit at 0x7ff707a36488>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+[2020-02-23 01:57:03 +0000] [46558] [INFO] Starting gunicorn 20.0.4
+[2020-02-23 01:57:03 +0000] [46558] [DEBUG] Arbiter booted
+[2020-02-23 01:57:03 +0000] [46558] [INFO] Listening at: unix:/run/gunicorn.sock (46558)
+[2020-02-23 01:57:03 +0000] [46558] [INFO] Using worker: sync
+[2020-02-23 01:57:03 +0000] [46582] [INFO] Booting worker with pid: 46582
+[2020-02-23 01:57:03 +0000] [46584] [INFO] Booting worker with pid: 46584
+[2020-02-23 01:57:03 +0000] [46586] [INFO] Booting worker with pid: 46586
+[2020-02-23 01:57:03 +0000] [46558] [DEBUG] 3 workers
+[2020-02-23 01:57:07 +0000] [46586] [DEBUG] GET /
+[2020-02-23 01:57:09 +0000] [46586] [DEBUG] GET /get_devices
+[2020-02-23 01:57:09 +0000] [46584] [DEBUG] GET /retrieveXml
+[2020-02-23 01:58:36 +0000] [46558] [INFO] Handling signal: term
+[2020-02-23 01:58:36 +0000] [46584] [INFO] Worker exiting (pid: 46584)
+[2020-02-23 01:58:36 +0000] [46582] [INFO] Worker exiting (pid: 46582)
+[2020-02-23 01:58:36 +0000] [46586] [INFO] Worker exiting (pid: 46586)
+[2020-02-23 01:58:37 +0000] [46558] [INFO] Shutting down: Master
+[2020-02-23 01:58:37 +0000] [46647] [DEBUG] Current configuration:
+  config: None
+  bind: ['unix:/run/gunicorn.sock']
+  backlog: 2048
+  workers: 3
+  worker_class: sync
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 600
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /home/529816/Beekeeper-WebUI/beekeeper_webui
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 33
+  group: 33
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: -
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: gunicorn_errors.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: beekeeper_webui.wsgi:application
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7f3c3e2dd598>
+  on_reload: <function OnReload.on_reload at 0x7f3c3e2dd6a8>
+  when_ready: <function WhenReady.when_ready at 0x7f3c3e2dd7b8>
+  pre_fork: <function Prefork.pre_fork at 0x7f3c3e2dd8c8>
+  post_fork: <function Postfork.post_fork at 0x7f3c3e2dd9d8>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7f3c3e2ddae8>
+  worker_int: <function WorkerInt.worker_int at 0x7f3c3e2ddbf8>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7f3c3e2ddd08>
+  pre_exec: <function PreExec.pre_exec at 0x7f3c3e2dde18>
+  pre_request: <function PreRequest.pre_request at 0x7f3c3e2ddf28>
+  post_request: <function PostRequest.post_request at 0x7f3c3e2f9048>
+  child_exit: <function ChildExit.child_exit at 0x7f3c3e2f9158>
+  worker_exit: <function WorkerExit.worker_exit at 0x7f3c3e2f9268>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7f3c3e2f9378>
+  on_exit: <function OnExit.on_exit at 0x7f3c3e2f9488>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+[2020-02-23 01:58:37 +0000] [46647] [INFO] Starting gunicorn 20.0.4
+[2020-02-23 01:58:37 +0000] [46647] [DEBUG] Arbiter booted
+[2020-02-23 01:58:37 +0000] [46647] [INFO] Listening at: unix:/run/gunicorn.sock (46647)
+[2020-02-23 01:58:37 +0000] [46647] [INFO] Using worker: sync
+[2020-02-23 01:58:37 +0000] [46677] [INFO] Booting worker with pid: 46677
+[2020-02-23 01:58:37 +0000] [46679] [INFO] Booting worker with pid: 46679
+[2020-02-23 01:58:37 +0000] [46680] [INFO] Booting worker with pid: 46680
+[2020-02-23 01:58:37 +0000] [46647] [DEBUG] 3 workers
+[2020-02-23 01:58:38 +0000] [46647] [INFO] Handling signal: term
+[2020-02-23 01:58:38 +0000] [46677] [INFO] Worker exiting (pid: 46677)
+[2020-02-23 01:58:38 +0000] [46679] [INFO] Worker exiting (pid: 46679)
+[2020-02-23 01:58:38 +0000] [46680] [INFO] Worker exiting (pid: 46680)
+[2020-02-23 01:58:38 +0000] [46647] [INFO] Shutting down: Master
+[2020-02-23 01:58:39 +0000] [46689] [DEBUG] Current configuration:
+  config: None
+  bind: ['unix:/run/gunicorn.sock']
+  backlog: 2048
+  workers: 3
+  worker_class: sync
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 600
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /home/529816/Beekeeper-WebUI/beekeeper_webui
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 33
+  group: 33
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: -
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: gunicorn_errors.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: beekeeper_webui.wsgi:application
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7f215bba1598>
+  on_reload: <function OnReload.on_reload at 0x7f215bba16a8>
+  when_ready: <function WhenReady.when_ready at 0x7f215bba17b8>
+  pre_fork: <function Prefork.pre_fork at 0x7f215bba18c8>
+  post_fork: <function Postfork.post_fork at 0x7f215bba19d8>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7f215bba1ae8>
+  worker_int: <function WorkerInt.worker_int at 0x7f215bba1bf8>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7f215bba1d08>
+  pre_exec: <function PreExec.pre_exec at 0x7f215bba1e18>
+  pre_request: <function PreRequest.pre_request at 0x7f215bba1f28>
+  post_request: <function PostRequest.post_request at 0x7f215bbbd048>
+  child_exit: <function ChildExit.child_exit at 0x7f215bbbd158>
+  worker_exit: <function WorkerExit.worker_exit at 0x7f215bbbd268>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7f215bbbd378>
+  on_exit: <function OnExit.on_exit at 0x7f215bbbd488>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+[2020-02-23 01:58:39 +0000] [46689] [INFO] Starting gunicorn 20.0.4
+[2020-02-23 01:58:39 +0000] [46689] [DEBUG] Arbiter booted
+[2020-02-23 01:58:39 +0000] [46689] [INFO] Listening at: unix:/run/gunicorn.sock (46689)
+[2020-02-23 01:58:39 +0000] [46689] [INFO] Using worker: sync
+[2020-02-23 01:58:39 +0000] [46718] [INFO] Booting worker with pid: 46718
+[2020-02-23 01:58:39 +0000] [46720] [INFO] Booting worker with pid: 46720
+[2020-02-23 01:58:39 +0000] [46721] [INFO] Booting worker with pid: 46721
+[2020-02-23 01:58:39 +0000] [46689] [DEBUG] 3 workers
+[2020-02-23 01:58:42 +0000] [46721] [DEBUG] GET /
+[2020-02-23 01:58:43 +0000] [46721] [DEBUG] GET /get_devices
+[2020-02-23 01:58:43 +0000] [46721] [DEBUG] GET /retrieveXml
+[2020-02-23 01:58:55 +0000] [46721] [DEBUG] GET /
+[2020-02-23 01:58:55 +0000] [46718] [DEBUG] GET /get_devices
+[2020-02-23 01:58:56 +0000] [46718] [DEBUG] GET /retrieveXml
+[2020-02-23 02:00:09 +0000] [46689] [INFO] Handling signal: term
+[2020-02-23 02:00:09 +0000] [46718] [INFO] Worker exiting (pid: 46718)
+[2020-02-23 02:00:09 +0000] [46721] [INFO] Worker exiting (pid: 46721)
+[2020-02-23 02:00:09 +0000] [46720] [INFO] Worker exiting (pid: 46720)
+[2020-02-23 02:00:09 +0000] [46689] [INFO] Shutting down: Master
+[2020-02-23 02:00:10 +0000] [46777] [DEBUG] Current configuration:
+  config: None
+  bind: ['unix:/run/gunicorn.sock']
+  backlog: 2048
+  workers: 3
+  worker_class: sync
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 600
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /home/529816/Beekeeper-WebUI/beekeeper_webui
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 33
+  group: 33
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: -
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: gunicorn_errors.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: beekeeper_webui.wsgi:application
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7f26c3a8a598>
+  on_reload: <function OnReload.on_reload at 0x7f26c3a8a6a8>
+  when_ready: <function WhenReady.when_ready at 0x7f26c3a8a7b8>
+  pre_fork: <function Prefork.pre_fork at 0x7f26c3a8a8c8>
+  post_fork: <function Postfork.post_fork at 0x7f26c3a8a9d8>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7f26c3a8aae8>
+  worker_int: <function WorkerInt.worker_int at 0x7f26c3a8abf8>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7f26c3a8ad08>
+  pre_exec: <function PreExec.pre_exec at 0x7f26c3a8ae18>
+  pre_request: <function PreRequest.pre_request at 0x7f26c3a8af28>
+  post_request: <function PostRequest.post_request at 0x7f26c3aa6048>
+  child_exit: <function ChildExit.child_exit at 0x7f26c3aa6158>
+  worker_exit: <function WorkerExit.worker_exit at 0x7f26c3aa6268>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7f26c3aa6378>
+  on_exit: <function OnExit.on_exit at 0x7f26c3aa6488>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+[2020-02-23 02:00:10 +0000] [46777] [INFO] Starting gunicorn 20.0.4
+[2020-02-23 02:00:10 +0000] [46777] [DEBUG] Arbiter booted
+[2020-02-23 02:00:10 +0000] [46777] [INFO] Listening at: unix:/run/gunicorn.sock (46777)
+[2020-02-23 02:00:10 +0000] [46777] [INFO] Using worker: sync
+[2020-02-23 02:00:10 +0000] [46806] [INFO] Booting worker with pid: 46806
+[2020-02-23 02:00:10 +0000] [46808] [INFO] Booting worker with pid: 46808
+[2020-02-23 02:00:10 +0000] [46809] [INFO] Booting worker with pid: 46809
+[2020-02-23 02:00:10 +0000] [46777] [DEBUG] 3 workers
+[2020-02-23 02:00:10 +0000] [46777] [INFO] Handling signal: term
+[2020-02-23 02:00:10 +0000] [46806] [INFO] Worker exiting (pid: 46806)
+[2020-02-23 02:00:11 +0000] [46808] [INFO] Worker exiting (pid: 46808)
+[2020-02-23 02:00:11 +0000] [46809] [INFO] Worker exiting (pid: 46809)
+[2020-02-23 02:00:11 +0000] [46777] [INFO] Shutting down: Master
+[2020-02-23 02:00:11 +0000] [46818] [DEBUG] Current configuration:
+  config: None
+  bind: ['unix:/run/gunicorn.sock']
+  backlog: 2048
+  workers: 3
+  worker_class: sync
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 600
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /home/529816/Beekeeper-WebUI/beekeeper_webui
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 33
+  group: 33
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: -
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: gunicorn_errors.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: beekeeper_webui.wsgi:application
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7f10ae50b598>
+  on_reload: <function OnReload.on_reload at 0x7f10ae50b6a8>
+  when_ready: <function WhenReady.when_ready at 0x7f10ae50b7b8>
+  pre_fork: <function Prefork.pre_fork at 0x7f10ae50b8c8>
+  post_fork: <function Postfork.post_fork at 0x7f10ae50b9d8>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7f10ae50bae8>
+  worker_int: <function WorkerInt.worker_int at 0x7f10ae50bbf8>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7f10ae50bd08>
+  pre_exec: <function PreExec.pre_exec at 0x7f10ae50be18>
+  pre_request: <function PreRequest.pre_request at 0x7f10ae50bf28>
+  post_request: <function PostRequest.post_request at 0x7f10ae527048>
+  child_exit: <function ChildExit.child_exit at 0x7f10ae527158>
+  worker_exit: <function WorkerExit.worker_exit at 0x7f10ae527268>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7f10ae527378>
+  on_exit: <function OnExit.on_exit at 0x7f10ae527488>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+[2020-02-23 02:00:11 +0000] [46818] [INFO] Starting gunicorn 20.0.4
+[2020-02-23 02:00:11 +0000] [46818] [DEBUG] Arbiter booted
+[2020-02-23 02:00:11 +0000] [46818] [INFO] Listening at: unix:/run/gunicorn.sock (46818)
+[2020-02-23 02:00:11 +0000] [46818] [INFO] Using worker: sync
+[2020-02-23 02:00:11 +0000] [46840] [INFO] Booting worker with pid: 46840
+[2020-02-23 02:00:11 +0000] [46842] [INFO] Booting worker with pid: 46842
+[2020-02-23 02:00:11 +0000] [46843] [INFO] Booting worker with pid: 46843
+[2020-02-23 02:00:11 +0000] [46818] [DEBUG] 3 workers
+[2020-02-23 02:00:15 +0000] [46842] [DEBUG] GET /
+[2020-02-23 02:00:17 +0000] [46843] [DEBUG] GET /get_devices
+[2020-02-23 02:00:17 +0000] [46843] [DEBUG] GET /retrieveXml
+[2020-02-23 02:02:35 +0000] [46818] [INFO] Handling signal: term
+[2020-02-23 02:02:35 +0000] [46842] [INFO] Worker exiting (pid: 46842)
+[2020-02-23 02:02:35 +0000] [46840] [INFO] Worker exiting (pid: 46840)
+[2020-02-23 02:02:35 +0000] [46843] [INFO] Worker exiting (pid: 46843)
+[2020-02-23 02:02:36 +0000] [46818] [INFO] Shutting down: Master
+[2020-02-23 02:02:36 +0000] [46902] [DEBUG] Current configuration:
+  config: None
+  bind: ['unix:/run/gunicorn.sock']
+  backlog: 2048
+  workers: 3
+  worker_class: sync
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 600
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /home/529816/Beekeeper-WebUI/beekeeper_webui
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 33
+  group: 33
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: -
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: gunicorn_errors.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: beekeeper_webui.wsgi:application
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7fae8e29c598>
+  on_reload: <function OnReload.on_reload at 0x7fae8e29c6a8>
+  when_ready: <function WhenReady.when_ready at 0x7fae8e29c7b8>
+  pre_fork: <function Prefork.pre_fork at 0x7fae8e29c8c8>
+  post_fork: <function Postfork.post_fork at 0x7fae8e29c9d8>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7fae8e29cae8>
+  worker_int: <function WorkerInt.worker_int at 0x7fae8e29cbf8>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7fae8e29cd08>
+  pre_exec: <function PreExec.pre_exec at 0x7fae8e29ce18>
+  pre_request: <function PreRequest.pre_request at 0x7fae8e29cf28>
+  post_request: <function PostRequest.post_request at 0x7fae8e2b8048>
+  child_exit: <function ChildExit.child_exit at 0x7fae8e2b8158>
+  worker_exit: <function WorkerExit.worker_exit at 0x7fae8e2b8268>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7fae8e2b8378>
+  on_exit: <function OnExit.on_exit at 0x7fae8e2b8488>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+[2020-02-23 02:02:36 +0000] [46902] [INFO] Starting gunicorn 20.0.4
+[2020-02-23 02:02:36 +0000] [46902] [DEBUG] Arbiter booted
+[2020-02-23 02:02:36 +0000] [46902] [INFO] Listening at: unix:/run/gunicorn.sock (46902)
+[2020-02-23 02:02:36 +0000] [46902] [INFO] Using worker: sync
+[2020-02-23 02:02:36 +0000] [46926] [INFO] Booting worker with pid: 46926
+[2020-02-23 02:02:36 +0000] [46927] [INFO] Booting worker with pid: 46927
+[2020-02-23 02:02:36 +0000] [46929] [INFO] Booting worker with pid: 46929
+[2020-02-23 02:02:36 +0000] [46902] [DEBUG] 3 workers
+[2020-02-23 02:02:37 +0000] [46926] [INFO] Worker exiting (pid: 46926)
+[2020-02-23 02:02:37 +0000] [46927] [INFO] Worker exiting (pid: 46927)
+[2020-02-23 02:02:37 +0000] [46902] [INFO] Handling signal: term
+[2020-02-23 02:02:37 +0000] [46929] [INFO] Worker exiting (pid: 46929)
+[2020-02-23 02:02:37 +0000] [46902] [INFO] Shutting down: Master
+[2020-02-23 02:02:37 +0000] [46938] [DEBUG] Current configuration:
+  config: None
+  bind: ['unix:/run/gunicorn.sock']
+  backlog: 2048
+  workers: 3
+  worker_class: sync
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 600
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /home/529816/Beekeeper-WebUI/beekeeper_webui
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 33
+  group: 33
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: -
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: gunicorn_errors.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: beekeeper_webui.wsgi:application
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7f9e90977598>
+  on_reload: <function OnReload.on_reload at 0x7f9e909776a8>
+  when_ready: <function WhenReady.when_ready at 0x7f9e909777b8>
+  pre_fork: <function Prefork.pre_fork at 0x7f9e909778c8>
+  post_fork: <function Postfork.post_fork at 0x7f9e909779d8>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7f9e90977ae8>
+  worker_int: <function WorkerInt.worker_int at 0x7f9e90977bf8>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7f9e90977d08>
+  pre_exec: <function PreExec.pre_exec at 0x7f9e90977e18>
+  pre_request: <function PreRequest.pre_request at 0x7f9e90977f28>
+  post_request: <function PostRequest.post_request at 0x7f9e90993048>
+  child_exit: <function ChildExit.child_exit at 0x7f9e90993158>
+  worker_exit: <function WorkerExit.worker_exit at 0x7f9e90993268>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7f9e90993378>
+  on_exit: <function OnExit.on_exit at 0x7f9e90993488>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+[2020-02-23 02:02:37 +0000] [46938] [INFO] Starting gunicorn 20.0.4
+[2020-02-23 02:02:37 +0000] [46938] [DEBUG] Arbiter booted
+[2020-02-23 02:02:37 +0000] [46938] [INFO] Listening at: unix:/run/gunicorn.sock (46938)
+[2020-02-23 02:02:37 +0000] [46938] [INFO] Using worker: sync
+[2020-02-23 02:02:37 +0000] [46966] [INFO] Booting worker with pid: 46966
+[2020-02-23 02:02:38 +0000] [46968] [INFO] Booting worker with pid: 46968
+[2020-02-23 02:02:38 +0000] [46969] [INFO] Booting worker with pid: 46969
+[2020-02-23 02:02:38 +0000] [46938] [DEBUG] 3 workers
+[2020-02-23 02:02:42 +0000] [46969] [DEBUG] GET /
+[2020-02-23 02:02:44 +0000] [46966] [DEBUG] GET /get_devices
+[2020-02-23 02:02:44 +0000] [46966] [DEBUG] GET /retrieveXml
+[2020-02-23 02:05:06 +0000] [46966] [INFO] Worker exiting (pid: 46966)
+[2020-02-23 02:05:06 +0000] [46968] [INFO] Worker exiting (pid: 46968)
+[2020-02-23 02:05:06 +0000] [46969] [INFO] Worker exiting (pid: 46969)
+[2020-02-23 02:05:06 +0000] [46938] [INFO] Handling signal: term
+[2020-02-23 02:05:06 +0000] [46938] [INFO] Shutting down: Master
+[2020-02-23 02:05:06 +0000] [47020] [DEBUG] Current configuration:
+  config: None
+  bind: ['unix:/run/gunicorn.sock']
+  backlog: 2048
+  workers: 3
+  worker_class: sync
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 600
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /home/529816/Beekeeper-WebUI/beekeeper_webui
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 33
+  group: 33
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: -
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: gunicorn_errors.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: beekeeper_webui.wsgi:application
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7fecb90ac598>
+  on_reload: <function OnReload.on_reload at 0x7fecb90ac6a8>
+  when_ready: <function WhenReady.when_ready at 0x7fecb90ac7b8>
+  pre_fork: <function Prefork.pre_fork at 0x7fecb90ac8c8>
+  post_fork: <function Postfork.post_fork at 0x7fecb90ac9d8>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7fecb90acae8>
+  worker_int: <function WorkerInt.worker_int at 0x7fecb90acbf8>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7fecb90acd08>
+  pre_exec: <function PreExec.pre_exec at 0x7fecb90ace18>
+  pre_request: <function PreRequest.pre_request at 0x7fecb90acf28>
+  post_request: <function PostRequest.post_request at 0x7fecb90c8048>
+  child_exit: <function ChildExit.child_exit at 0x7fecb90c8158>
+  worker_exit: <function WorkerExit.worker_exit at 0x7fecb90c8268>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7fecb90c8378>
+  on_exit: <function OnExit.on_exit at 0x7fecb90c8488>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+[2020-02-23 02:05:06 +0000] [47020] [INFO] Starting gunicorn 20.0.4
+[2020-02-23 02:05:06 +0000] [47020] [DEBUG] Arbiter booted
+[2020-02-23 02:05:06 +0000] [47020] [INFO] Listening at: unix:/run/gunicorn.sock (47020)
+[2020-02-23 02:05:06 +0000] [47020] [INFO] Using worker: sync
+[2020-02-23 02:05:06 +0000] [47046] [INFO] Booting worker with pid: 47046
+[2020-02-23 02:05:06 +0000] [47048] [INFO] Booting worker with pid: 47048
+[2020-02-23 02:05:06 +0000] [47049] [INFO] Booting worker with pid: 47049
+[2020-02-23 02:05:07 +0000] [47020] [DEBUG] 3 workers
+[2020-02-23 02:05:07 +0000] [47020] [INFO] Handling signal: term
+[2020-02-23 02:05:07 +0000] [47046] [INFO] Worker exiting (pid: 47046)
+[2020-02-23 02:05:07 +0000] [47048] [INFO] Worker exiting (pid: 47048)
+[2020-02-23 02:05:07 +0000] [47049] [INFO] Worker exiting (pid: 47049)
+[2020-02-23 02:05:07 +0000] [47020] [INFO] Shutting down: Master
+[2020-02-23 02:05:07 +0000] [47058] [DEBUG] Current configuration:
+  config: None
+  bind: ['unix:/run/gunicorn.sock']
+  backlog: 2048
+  workers: 3
+  worker_class: sync
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 600
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /home/529816/Beekeeper-WebUI/beekeeper_webui
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 33
+  group: 33
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: -
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: gunicorn_errors.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: beekeeper_webui.wsgi:application
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7fd3abe44598>
+  on_reload: <function OnReload.on_reload at 0x7fd3abe446a8>
+  when_ready: <function WhenReady.when_ready at 0x7fd3abe447b8>
+  pre_fork: <function Prefork.pre_fork at 0x7fd3abe448c8>
+  post_fork: <function Postfork.post_fork at 0x7fd3abe449d8>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7fd3abe44ae8>
+  worker_int: <function WorkerInt.worker_int at 0x7fd3abe44bf8>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7fd3abe44d08>
+  pre_exec: <function PreExec.pre_exec at 0x7fd3abe44e18>
+  pre_request: <function PreRequest.pre_request at 0x7fd3abe44f28>
+  post_request: <function PostRequest.post_request at 0x7fd3abe60048>
+  child_exit: <function ChildExit.child_exit at 0x7fd3abe60158>
+  worker_exit: <function WorkerExit.worker_exit at 0x7fd3abe60268>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7fd3abe60378>
+  on_exit: <function OnExit.on_exit at 0x7fd3abe60488>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+[2020-02-23 02:05:07 +0000] [47058] [INFO] Starting gunicorn 20.0.4
+[2020-02-23 02:05:07 +0000] [47058] [DEBUG] Arbiter booted
+[2020-02-23 02:05:07 +0000] [47058] [INFO] Listening at: unix:/run/gunicorn.sock (47058)
+[2020-02-23 02:05:07 +0000] [47058] [INFO] Using worker: sync
+[2020-02-23 02:05:07 +0000] [47085] [INFO] Booting worker with pid: 47085
+[2020-02-23 02:05:07 +0000] [47087] [INFO] Booting worker with pid: 47087
+[2020-02-23 02:05:08 +0000] [47090] [INFO] Booting worker with pid: 47090
+[2020-02-23 02:05:08 +0000] [47058] [DEBUG] 3 workers
+[2020-02-23 02:05:12 +0000] [47087] [DEBUG] GET /
+[2020-02-23 02:05:13 +0000] [47090] [DEBUG] GET /get_devices
+[2020-02-23 02:05:13 +0000] [47090] [DEBUG] GET /retrieveXml
+[2020-02-23 02:07:19 +0000] [47058] [INFO] Handling signal: term
+[2020-02-23 02:07:19 +0000] [47087] [INFO] Worker exiting (pid: 47087)
+[2020-02-23 02:07:19 +0000] [47090] [INFO] Worker exiting (pid: 47090)
+[2020-02-23 02:07:19 +0000] [47085] [INFO] Worker exiting (pid: 47085)
+[2020-02-23 02:07:19 +0000] [47058] [INFO] Shutting down: Master
+[2020-02-23 02:07:20 +0000] [47143] [DEBUG] Current configuration:
+  config: None
+  bind: ['unix:/run/gunicorn.sock']
+  backlog: 2048
+  workers: 3
+  worker_class: sync
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 600
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /home/529816/Beekeeper-WebUI/beekeeper_webui
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 33
+  group: 33
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: -
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: gunicorn_errors.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: beekeeper_webui.wsgi:application
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7f5b5b190598>
+  on_reload: <function OnReload.on_reload at 0x7f5b5b1906a8>
+  when_ready: <function WhenReady.when_ready at 0x7f5b5b1907b8>
+  pre_fork: <function Prefork.pre_fork at 0x7f5b5b1908c8>
+  post_fork: <function Postfork.post_fork at 0x7f5b5b1909d8>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7f5b5b190ae8>
+  worker_int: <function WorkerInt.worker_int at 0x7f5b5b190bf8>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7f5b5b190d08>
+  pre_exec: <function PreExec.pre_exec at 0x7f5b5b190e18>
+  pre_request: <function PreRequest.pre_request at 0x7f5b5b190f28>
+  post_request: <function PostRequest.post_request at 0x7f5b5b1ac048>
+  child_exit: <function ChildExit.child_exit at 0x7f5b5b1ac158>
+  worker_exit: <function WorkerExit.worker_exit at 0x7f5b5b1ac268>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7f5b5b1ac378>
+  on_exit: <function OnExit.on_exit at 0x7f5b5b1ac488>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+[2020-02-23 02:07:20 +0000] [47143] [INFO] Starting gunicorn 20.0.4
+[2020-02-23 02:07:20 +0000] [47143] [DEBUG] Arbiter booted
+[2020-02-23 02:07:20 +0000] [47143] [INFO] Listening at: unix:/run/gunicorn.sock (47143)
+[2020-02-23 02:07:20 +0000] [47143] [INFO] Using worker: sync
+[2020-02-23 02:07:20 +0000] [47172] [INFO] Booting worker with pid: 47172
+[2020-02-23 02:07:20 +0000] [47174] [INFO] Booting worker with pid: 47174
+[2020-02-23 02:07:20 +0000] [47175] [INFO] Booting worker with pid: 47175
+[2020-02-23 02:07:20 +0000] [47143] [DEBUG] 3 workers
+[2020-02-23 02:07:20 +0000] [47143] [INFO] Handling signal: term
+[2020-02-23 02:07:20 +0000] [47172] [INFO] Worker exiting (pid: 47172)
+[2020-02-23 02:07:20 +0000] [47174] [INFO] Worker exiting (pid: 47174)
+[2020-02-23 02:07:20 +0000] [47175] [INFO] Worker exiting (pid: 47175)
+[2020-02-23 02:07:21 +0000] [47143] [INFO] Shutting down: Master
+[2020-02-23 02:07:21 +0000] [47184] [DEBUG] Current configuration:
+  config: None
+  bind: ['unix:/run/gunicorn.sock']
+  backlog: 2048
+  workers: 3
+  worker_class: sync
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 600
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /home/529816/Beekeeper-WebUI/beekeeper_webui
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 33
+  group: 33
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: -
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: gunicorn_errors.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: beekeeper_webui.wsgi:application
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7f1c7c548598>
+  on_reload: <function OnReload.on_reload at 0x7f1c7c5486a8>
+  when_ready: <function WhenReady.when_ready at 0x7f1c7c5487b8>
+  pre_fork: <function Prefork.pre_fork at 0x7f1c7c5488c8>
+  post_fork: <function Postfork.post_fork at 0x7f1c7c5489d8>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7f1c7c548ae8>
+  worker_int: <function WorkerInt.worker_int at 0x7f1c7c548bf8>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7f1c7c548d08>
+  pre_exec: <function PreExec.pre_exec at 0x7f1c7c548e18>
+  pre_request: <function PreRequest.pre_request at 0x7f1c7c548f28>
+  post_request: <function PostRequest.post_request at 0x7f1c7c564048>
+  child_exit: <function ChildExit.child_exit at 0x7f1c7c564158>
+  worker_exit: <function WorkerExit.worker_exit at 0x7f1c7c564268>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7f1c7c564378>
+  on_exit: <function OnExit.on_exit at 0x7f1c7c564488>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+[2020-02-23 02:07:21 +0000] [47184] [INFO] Starting gunicorn 20.0.4
+[2020-02-23 02:07:21 +0000] [47184] [DEBUG] Arbiter booted
+[2020-02-23 02:07:21 +0000] [47184] [INFO] Listening at: unix:/run/gunicorn.sock (47184)
+[2020-02-23 02:07:21 +0000] [47184] [INFO] Using worker: sync
+[2020-02-23 02:07:21 +0000] [47213] [INFO] Booting worker with pid: 47213
+[2020-02-23 02:07:21 +0000] [47215] [INFO] Booting worker with pid: 47215
+[2020-02-23 02:07:21 +0000] [47216] [INFO] Booting worker with pid: 47216
+[2020-02-23 02:07:21 +0000] [47184] [DEBUG] 3 workers
+[2020-02-23 02:07:25 +0000] [47215] [DEBUG] GET /
+[2020-02-23 02:07:27 +0000] [47215] [DEBUG] GET /get_devices
+[2020-02-23 02:07:27 +0000] [47215] [DEBUG] GET /retrieveXml

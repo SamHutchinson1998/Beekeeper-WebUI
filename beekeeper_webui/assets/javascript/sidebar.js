@@ -1,9 +1,10 @@
 function searchDevices()
 {
-  var value = document.getElementById('searchBar').value;
+  var value = document.getElementById('searchBar').value.toLowerCase();
   var sidebar = document.getElementById('sidebarContainer');
   //console.log('searching sidebar...')
   var children = sidebar.childNodes;
+  console.log(children);
   hideSidebarChildNodes(children, value);
 }
 
@@ -13,12 +14,14 @@ function hideSidebarChildNodes(children, value)
   for(i = 0; i < children.length; i++){
     var child = children[i];
     var id = child.id;
-    var tags = child.attr('data-image-tags');
-    if (id == 'sidebarItem' && !(tags.includes(value)) && !(value == "")){
-      child.style.visibility = 'hidden';
-    }
-    else{
-      child.style.visibility = 'visible';
+    if (id == 'deviceItem'){
+      var tags = $(child).attr('data-image-tags');
+      if (!(tags.includes(value) && value.length >= 0)){
+        child.style.display = 'none';
+      }
+      else{
+        child.style.display = 'inline';
+      }
     }
   }
 }
@@ -49,7 +52,9 @@ function addSidebarIcon(sidebar, graph, disk_image, image_id)
     getDeviceModal(image_id, cell_id, graph);
   }
   var wrapper = document.createElement('div');
-  wrapper.setAttribute('data-image-tags',`${disk_image.name},${disk_image.devicetype}`);
+  wrapper.setAttribute('data-image-tags',`${disk_image.name.toLowerCase()},${disk_image.devicetype.toLowerCase()}`);
+  wrapper.setAttribute('id', 'deviceItem')
+  wrapper.style.display = 'inline';
 
   var icon = document.createElement('img');
   icon.setAttribute('src', image);
