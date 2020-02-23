@@ -1,7 +1,26 @@
 function searchDevices()
 {
+  var value = document.getElementById('searchBar').value;
   var sidebar = document.getElementById('sidebarContainer');
-  console.log('searching sidebar...')
+  //console.log('searching sidebar...')
+  var children = sidebar.childNodes;
+  hideSidebarChildNodes(children, value);
+}
+
+function hideSidebarChildNodes(children, value)
+{
+  var i;
+  for(i = 0; i < children.length; i++){
+    var child = children[i];
+    var id = child.id;
+    var tags = child.getAttribute('data-image-tags');
+    if (id == 'sidebarItem' && !(tags.includes(value)) && !(value == "")){
+      child.style.visibility = 'hidden';
+    }
+    else{
+      child.style.visibility = 'visible';
+    }
+  }
 }
 
 function addSidebarIcon(sidebar, graph, disk_image, image_id)

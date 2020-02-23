@@ -31,7 +31,7 @@
   padding: 1px;  
 }
 
-#sidebarItem, #searchbar {
+#sidebarItem {
   margin: auto;
   height: 100px;
   margin-left: 50px;
