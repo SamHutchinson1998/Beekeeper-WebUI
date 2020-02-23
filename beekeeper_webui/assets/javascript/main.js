@@ -36,6 +36,7 @@ function main(container, sidebar)
     // Enables rubberband selection
     new mxRubberband(graph);
     // Disable highlight of cells when dragging from toolbar
+
     graph.setDropEnabled(false);
     graph.vertexLabelsMovable = true;
     graph.isCellSelectable = function(cable)
@@ -72,7 +73,7 @@ function getDeviceMenu(graph)
 {
   graph.popupMenuHandler.factoryMethod = function(menu, cell, evt)
   {
-    if(cell.edge){
+    if(cell.isVertex()){
       menu.addItem('first option', null, function(){
         alert('This does something');
       });
