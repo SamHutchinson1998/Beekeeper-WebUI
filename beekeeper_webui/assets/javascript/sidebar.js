@@ -13,7 +13,7 @@ function hideSidebarChildNodes(children, value)
   for(i = 0; i < children.length; i++){
     var child = children[i];
     var id = child.id;
-    var tags = child.getAttribute('data-image-tags');
+    var tags = child.attr('data-image-tags');
     if (id == 'sidebarItem' && !(tags.includes(value)) && !(value == "")){
       child.style.visibility = 'hidden';
     }
