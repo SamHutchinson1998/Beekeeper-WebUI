@@ -26,7 +26,8 @@ function getSSH()
 function getVNC(cell)
 {
   var id = cell.getId();
-  window.location = '/get_device_vnc?cell_id='+id
+  //window.location = '/get_device_vnc?cell_id='+id
+  window.open( '/get_device_vnc?cell_id='+id, '_blank');
 }
 
 function get_device_vnc(cell_id)
