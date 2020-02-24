@@ -4,8 +4,10 @@ from django.views.generic import TemplateView
 from django.http import JsonResponse, HttpResponseRedirect, HttpResponse
 from django.core.serializers import serialize
 from django.conf import settings
+from django.urls import reverse
 from .services import get_domains, create_virtual_machine, remove_machine, turn_off_devices, turn_on_devices
 from .models import ImageForm, DiskImage, VirtualMachine, VirtualMachineForm
+from urllib.parse import urlencode
 import os
 import json
 
@@ -98,3 +100,14 @@ class HomePageView(TemplateView):
       else:
         turn_off_devices(device_list)
     return JsonResponse({},status=200)
+
+  def get_device_vnc(request):
+    base_url = reverse('load_device_vnc')
+    cell_id = request.GET.get('cell_id',None)
+    query_string = urlencode({'cell_id':cell_id})
+    url = '{}?{}'.format(base_url, query_string)
+    return redirect(url)
+
+  def load_device_vnc(request):
+    cell_id = request.GET.get('cell_id', None)
+    return render(vnc.html)
