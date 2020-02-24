@@ -7,7 +7,7 @@ function getDeviceMenu(graph)
         alert('SSH');
       });
       menu.addItem('VNC (in progress)', null, function(){
-        getVNC(graph);
+        getVNC(cell);
       });
       menu.addItem('Delete', null, function(){
         removeDevices(graph);
@@ -22,23 +22,12 @@ function getSSH()
 {
 
 }
-function getVNC(graph)
+function getVNC(cell)
 {
-  var i;
-  var selected_cells = graph.getSelectionCells();
-  for(i = 0; i < selected_cells.length; i++){
-    // openVNC method?
-    // for each device, open a new vnc tab?
-    var id = selected_cells[i].getId();
-    get_device_vnc(cell_id);
-  }
-}
-
-function get_device_vnc(cell_id)
-{
+  var id = cell.getId();
   $.ajax({
     url: 'get_device_vnc',
-    data: {'cell_id':cell_id},
+    data: {'cell_id':id},
     success: function(result){
       if(result.status == 200){ // if the task was successful
         console.log('success', result);
@@ -49,6 +38,11 @@ function get_device_vnc(cell_id)
       }
     }  
   });
+}
+
+function get_device_vnc(cell_id)
+{
+
 }
 
 function deployDevice()
