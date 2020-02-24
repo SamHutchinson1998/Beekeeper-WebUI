@@ -106,8 +106,8 @@ class HomePageView(TemplateView):
     cell_id = request.GET.get('cell_id',None)
     query_string = urlencode({'cell_id':cell_id})
     url = '{}?{}'.format(base_url, query_string)
-    return redirect(url)
+    return HttpResponseRedirect(url)
 
   def load_device_vnc(request):
     cell_id = request.GET.get('cell_id', None)
-    return render('vnc.html')
+    return render(request, 'vnc.html')
