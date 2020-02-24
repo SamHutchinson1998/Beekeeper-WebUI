@@ -6,8 +6,8 @@ function getDeviceMenu(graph)
       menu.addItem('SSH (to be completed)', null, function(){
         alert('SSH');
       });
-      menu.addItem('VNC ( progress)', null, function(){
-        getVNC(graph)
+      menu.addItem('VNC (in progress)', null, function(){
+        getVNC(graph);
       });
       menu.addItem('Delete', null, function(){
         removeDevices(graph);
@@ -25,12 +25,12 @@ function getSSH()
 function getVNC(graph)
 {
   var i;
-  var selected_cells = graph.selectionCells();
+  var selected_cells = graph.getSelectionCells();
   for(i = 0; i < selected_cells.length; i++){
     // openVNC method?
     // for each device, open a new vnc tab?
     var id = selected_cells[i].getId();
-    get_device_vnc(cell_id)
+    get_device_vnc(cell_id);
   }
 }
 
@@ -39,7 +39,6 @@ function get_device_vnc(cell_id)
   $.ajax({
     url: 'get_device_vnc',
     data: {'cell_id':cell_id},
-    async: false,
     success: function(result){
       if(result.status == 200){ // if the task was successful
         console.log('success', result);

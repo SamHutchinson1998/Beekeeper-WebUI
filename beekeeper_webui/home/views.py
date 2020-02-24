@@ -110,4 +110,4 @@ class HomePageView(TemplateView):
 
   def load_device_vnc(request):
     cell_id = request.GET.get('cell_id', None)
-    return render(vnc.html)
+    return render('vnc.html')
