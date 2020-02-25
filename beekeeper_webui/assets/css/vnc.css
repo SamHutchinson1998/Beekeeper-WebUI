@@ -1,4 +1,6 @@
 body {
+  background-color: black;
+
   margin: 0;
   height: 100%;
   display: flex;
@@ -6,5 +8,4 @@ body {
 }
 html {
   height: 100%;
-  background-color: black;
 }
