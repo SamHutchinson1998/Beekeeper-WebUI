@@ -9,3 +9,8 @@ body {
 html {
   height: 100%;
 }
+
+#screen {
+  flex: 1;
+  overflow: hidden;
+}
