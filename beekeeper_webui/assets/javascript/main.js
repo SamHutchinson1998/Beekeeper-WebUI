@@ -53,10 +53,28 @@ function main(container, sidebar)
     var codec = new mxCodec(xml_string);
     codec.decode(xml_string.documentElement, graph.getModel());
     keyBindings(graph);
+    addMouseWheelZoom(graph)
     getDeviceMenu(graph);
     graphListener(graph);
   }
 };
+
+function addMouseWheelZoom(graph)
+{
+  mxEvent.addMouseWheelListener(function(evt, up)
+  {
+    if (up)
+    {
+      graph.zoomIn();
+    }
+    else
+    {
+      graph.zoomOut();
+    }
+
+    mxEvent.consume(evt);
+  });
+}
 
 function graphListener(graph)
 {

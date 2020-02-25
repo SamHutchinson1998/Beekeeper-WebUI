@@ -5,27 +5,27 @@ from .models import DiskImage, VirtualMachine
 from django.conf import settings
 import os
 
-
-def get_domains():
-  domain_list = []
+def lookup_domain(cell_id):
   conn = libvirt.open('qemu:///system')
-  domains = conn.listAllDomains(0)
-  for domain in domains:
-    domain_list.append(domain.name())
-    port = get_domain_port(domain)
-    domain_list.append(port)
+  vm_record = VirtualMachine.objects.get(cell_id=cell_id)
+  dom = conn.lookupByName(vm_record.name)
   conn.close()
-  return domain_list
+  return dom
 
 # Can still be useful for another day, maybe when a user decides to VNC into a VM? 
-def get_domain_port(domain):
-  port = 5900 #first port a domain attaches to if there are no other domains
+def get_domain_vnc_socket(domain):
+  host_and_port = []
+  port = 5900 # default port
+  host = '127.0.0.1' # default host
   raw_xml = domain.XMLDesc(0)
   xml = minidom.parseString(raw_xml)
   graphicsTypes = xml.getElementsByTagName('graphics')
   for graphicsType in graphicsTypes:
     port = graphicsType.getAttribute('port')
-  return port
+    host = graphicsType.getAttribute('listen')
+  host_and_port.append(host)
+  host_and_port.append(port)
+  return host_and_port
 
 def create_virtual_machine(request):
   # create a .img file first then use that as the hard disk for the VM.

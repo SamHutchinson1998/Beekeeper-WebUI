@@ -5,7 +5,7 @@ from django.http import JsonResponse, HttpResponseRedirect, HttpResponse
 from django.core.serializers import serialize
 from django.conf import settings
 from django.urls import reverse
-from .services import get_domains, create_virtual_machine, remove_machine, turn_off_devices, turn_on_devices
+from .services import lookup_domain, get_domain_vnc_socket, create_virtual_machine, remove_machine, turn_off_devices, turn_on_devices
 from .models import ImageForm, DiskImage, VirtualMachine, VirtualMachineForm
 from urllib.parse import urlencode
 import os
@@ -102,13 +102,17 @@ class HomePageView(TemplateView):
     return JsonResponse({},status=200)
 
   def get_device_vnc(request):
+    # Use this method here to get the VM object associated with the cell ID, then get VNC port and host off libvirt and then add it to the query string
     base_url = reverse('load_device_vnc')
     cell_id = request.GET.get('cell_id',None)
-    query_string = urlencode({'cell_id':cell_id})
+    domain = lookup_domain(cell_id)
+    domain_vnc_socket = get_domain_vnc_socket(domain)
+    query_string = urlencode({'host':domain_vnc_socket[0],'port':domain_vnc_socket[1]})
     url = '{}?{}'.format(base_url, query_string)
     return HttpResponseRedirect(url)
 
   def load_device_vnc(request):
-    cell_id = request.GET.get('cell_id', None)
-    print(cell_id)
+    host = request.GET.get('host', None)
+    port = request.GET.get('port', None)
+    print('Host: {}\nPort: {}'.format(host, port))
     return render(request, 'vnc.html')
