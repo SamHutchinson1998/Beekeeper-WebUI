@@ -18,7 +18,6 @@ class HomePageView(TemplateView):
 
   def get_context_data(self, *args, **kwargs):
     context = {
-      'domains' : get_domains(),
       'form': ImageForm(),
       'device_form': VirtualMachineForm()
     }
