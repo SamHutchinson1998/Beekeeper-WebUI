@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 
-{% load static %}
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-<link rel="stylesheet" href="{% static 'css/vnc.css' %}"/>
-<script type="module" crossorigin="anonymous" src="{% static 'javascript/vnc.js' %}"></script>
+<link rel="stylesheet" href='./css/vnc.css'/>
+<script type="module" crossorigin="anonymous" src='./javascript/vnc.js'></script>
 
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
@@ -13,7 +12,12 @@
 <head>
   <meta charset="utf-8">
   <title>{% block title %} VNC {% endblock %}</title>
-  {% include '_vncheader.html' %}
+  <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand">
+      <img src='./logos/uoh-white.svg' width="90" height="40" alt=""> 
+    </a>
+    <button class="btn btn-outline-warning"> Send ctrl-alt-del</button>
+  </nav>  
 </head>
 <body>
   <div id="screen">
