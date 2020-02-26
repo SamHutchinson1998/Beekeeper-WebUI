@@ -1,2 +1,0 @@
-#!/bin/sh
-exec "$SNAP/bin/bash" "$SNAP/utils/launch.sh" "$@"
