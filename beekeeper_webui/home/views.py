@@ -103,11 +103,6 @@ class HomePageView(TemplateView):
   def get_device_vnc(request):
     # Use this method here to get the VM object associated with the cell ID, then get VNC port and host off libvirt and then add it to the query string
     base_url = reverse('load_device_vnc')
-    #cell_id = request.GET.get('cell_id',None)
-    #domain = lookup_domain(cell_id)
-    #domain_vnc_socket = get_domain_vnc_socket(domain)
-    
-    #query string should also contain token next time? 
     token = 'token1' # example token
     path = urlencode({'path':'websockify'})
     token = urlencode({'token':token})

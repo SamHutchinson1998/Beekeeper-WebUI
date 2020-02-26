@@ -1,5 +1,6 @@
 from django.db import models
 from django import forms
+from secrets import token_urlsafe
 
 # Create your models here.
 
@@ -9,22 +10,6 @@ DEVICE_TYPES = (
   ('switch','switch'),
   ('mlswitch','multi-layer switch'),
   ('server', 'server')
-)
-
-RAM_SIZES = (
-  ('256','256mb'),
-  ('512','512mb'),
-  ('1024','1024mb'),
-  ('1536','1536mb'),
-  ('2048','2048mb'),
-  ('4096','4096mb')
-)
-
-CPU_LIST = (
-  ('1','1'),
-  ('2','2'),
-  ('3','3'),
-  ('4','4')
 )
 
 class DiskImage(models.Model):
@@ -39,6 +24,7 @@ class VirtualMachine(models.Model):
   cpus = models.IntegerField()
   cell_id = models.IntegerField(default='0')
   disk_image = models.ForeignKey(DiskImage, on_delete=models.CASCADE)
+  token = models.CharField(max_length=22,default=token_urlsafe(16))
 
 class ImageForm(forms.ModelForm):
   class Meta:
