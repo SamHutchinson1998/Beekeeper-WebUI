@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
+    {% load static %}
     <!--
     noVNC example: lightweight example using minimal UI and features
 
@@ -14,6 +14,10 @@
     Connect parameters are provided in query string:
         http://example.com/?host=HOST&port=PORT&scale=true
     -->
+
+    <script src="{% static /javascript/novnc/3/vendor/promise.js %}"></script>
+    <script src="{% static /javascript/novnc/3/core/rfb.js %}"></script>
+    
     <title>noVNC</title>
 
     <meta charset="utf-8">
