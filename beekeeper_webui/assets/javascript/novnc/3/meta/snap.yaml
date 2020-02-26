@@ -1,0 +1,28 @@
+name: novnc
+version: latest-20190813
+summary: Open Source VNC client using HTML5 (WebSockets, Canvas)
+description: |
+  Open Source VNC client using HTML5 (WebSockets, Canvas).
+  noVNC is both a VNC client JavaScript library as well as an application built on top of that library. noVNC runs well in any modern browser including mobile browsers (iOS and Android).
+base: core18
+architectures:
+- amd64
+confinement: strict
+grade: stable
+hooks:
+  configure:
+    plugs:
+    - network
+    - network-bind
+apps:
+  novnc:
+    command: snap/command-chain/snapcraft-runner $SNAP/command-novnc.wrapper
+    plugs:
+    - network
+    - network-bind
+  novncsvc:
+    command: snap/command-chain/snapcraft-runner $SNAP/command-novncsvc.wrapper
+    daemon: forking
+    plugs:
+    - network
+    - network-bind
