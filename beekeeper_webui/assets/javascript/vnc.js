@@ -34,14 +34,6 @@ function updateDesktopName(e) {
     desktopName = e.detail.name;
 }
 
-// Since most operating systems will catch Ctrl+Alt+Del
-// before they get a chance to be intercepted by the browser,
-// we provide a way to emulate this key sequence.
-function sendCtrlAltDel() {
-    rfb.sendCtrlAltDel();
-    return false;
-}
-
 // Show a status text in the top bar
 function status(text) {
     document.getElementById('status').textContent = text;
@@ -66,9 +58,6 @@ function readQueryVariable(name, defaultValue) {
 
     return defaultValue;
 }
-
-document.getElementById('sendCtrlAltDelButton')
-    .onclick = sendCtrlAltDel;
 
 // Read parameters specified in the URL query string
 // By default, use the host and port of server that served this file
@@ -112,4 +101,3 @@ rfb.addEventListener("desktopname", updateDesktopName);
 // Set parameters that can be changed on an active connection
 rfb.viewOnly = readQueryVariable('view_only', false);
 rfb.scaleViewport = readQueryVariable('scale', false);
-}
