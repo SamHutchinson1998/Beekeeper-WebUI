@@ -62,7 +62,7 @@
     </style>
 
     <!-- Promise polyfill for IE11 -->
-    <script src="vendor/promise.js"></script>
+    <!-- <script src="vendor/promise.js"></script> -->
 
     <!-- ES2015/ES6 modules polyfill -->
     <script type="module">
@@ -81,8 +81,6 @@
     <!-- actual script modules -->
     <script type="module" crossorigin="anonymous">
         // RFB holds the API to connect and communicate with a VNC server
-        import RFB from './core/rfb.js';
-
         let rfb;
         let desktopName;
 
