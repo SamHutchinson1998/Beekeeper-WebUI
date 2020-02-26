@@ -113,4 +113,4 @@ class HomePageView(TemplateView):
     return HttpResponseRedirect(url)
 
   def load_device_vnc(request):
-    return render(request, 'vnc_lite.html')
+    return render(request, 'vnc.html')
