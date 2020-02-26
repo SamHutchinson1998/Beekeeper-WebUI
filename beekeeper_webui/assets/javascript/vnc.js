@@ -5,7 +5,7 @@ let desktopName;
 
 try
 {
-  rfb = new RFB(document.getElementById('screen'), 'ws://150.237.94.18:5901');
+  rfb = new RFB(document.getElementById('screen'), 'ws://150.237.94.18:5901/websockify');
 }
 catch(err)
 {
