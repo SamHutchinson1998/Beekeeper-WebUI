@@ -27,7 +27,7 @@ def get_domain_vnc_socket(domain):
   host_and_port.append(port)
   return host_and_port
 
-def create_virtual_machine(request):
+def create_virtual_machine(request, token):
   # create a .img file first then use that as the hard disk for the VM.
   # disk image goes into the cdrom compartment of the XML.
   name = request.POST.get('name',None)
@@ -35,7 +35,6 @@ def create_virtual_machine(request):
   disk_size = request.POST.get('disk_size',None)
   cpus = request.POST.get('cpus',None)
   disk_image = DiskImage.objects.get(pk=request.POST.get('disk_image',None)).disk_image
-  
   xml = f"""
   <domain type='kvm'>
     <name>{name}</name>
@@ -78,9 +77,9 @@ def create_virtual_machine(request):
     </devices>
   </domain>"""
   #print(xml)
-  spawn_machine(disk_size, name, xml)
+  spawn_machine(disk_size, name, xml, token)
 
-def spawn_machine(disk_size, name, xml):
+def spawn_machine(disk_size, name, xml, token):
   config = xml
   conn = libvirt.open('qemu:///system')
   dom = conn.defineXML(config)
@@ -92,7 +91,14 @@ def spawn_machine(disk_size, name, xml):
       print('Can not boot guest domain.', file=sys.stderr)
     else:
       print('Guest '+dom.name()+' has booted', file=sys.stderr)
+      socket = get_domain_vnc_socket(dom)
+      create_device_token(socket, token)
   conn.close()
+
+def create_device_token(socket, token):
+  token_mapping = "{}: {}{}".format(token, socket[0], socket[1])
+  cmd = f"echo '{token_mapping}' >{settings.BASE_DIR}/beekeeper_webui/assets/javascript/novnc/vnc_tokens/{token}.ini"
+  os.system(cmd)
 
 def remove_machine(virtual_machine):
   conn = libvirt.open('qemu:///system')
@@ -101,6 +107,7 @@ def remove_machine(virtual_machine):
   dom.destroy()
   print(f'domain {virtual_machine.name} destroyed')
   os.system(f'rm -rf /var/lib/libvirt/images/{virtual_machine.name}.img')
+  os.system(f"rm -rf {settings.BASE_DIR}/beekeeper_webui/assets/javascript/novnc/vnc_tokens/{virtual_machine.token}.ini")
 
 def turn_off_devices(devices):
   conn = libvirt.open('qemu:///system')

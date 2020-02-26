@@ -26,6 +26,7 @@ class VirtualMachine(models.Model):
   disk_image = models.ForeignKey(DiskImage, on_delete=models.CASCADE)
   token = models.CharField(max_length=22,default=token_urlsafe(16))
 
+
 class ImageForm(forms.ModelForm):
   class Meta:
     model = DiskImage
@@ -35,3 +36,4 @@ class VirtualMachineForm(forms.ModelForm):
   class Meta:
     model = VirtualMachine
     fields = ['name','ram', 'disk_size', 'cpus', 'cell_id','disk_image']
+

@@ -65,13 +65,14 @@ class HomePageView(TemplateView):
       disk_images = json.loads(serialize('json', DiskImage.objects.all()))
       return JsonResponse({"disk_images":disk_images}, status = 200)
  
-  def post_device_form(request):
+  def create_device(request):
     next = request.POST.get('next', '/')
     if request.method == "POST":
       form = VirtualMachineForm(request.POST)
       if form.is_valid():
         if form.save():
-          create_virtual_machine(request)
+          token = form.cleaned_data['token']
+          create_virtual_machine(request, token)
           messages.success(request, 'Successfully added device', extra_tags='alert-success')
         else:
           messages.error(request, 'Unable to add device', extra_tags='alert-danger')
@@ -101,9 +102,9 @@ class HomePageView(TemplateView):
     return JsonResponse({},status=200)
 
   def get_device_vnc(request):
-    # Use this method here to get the VM object associated with the cell ID, then get VNC port and host off libvirt and then add it to the query string
+    cell_id = request.GET.get('cell_id', None)
+    token = VirtualMachine.objects.get(cell_id=cell_id).token
     base_url = reverse('load_device_vnc')
-    token = 'token1' # example token
     path = urlencode({'path':'websockify'})
     token = urlencode({'token':token})
     url = '{}?{}?{}'.format(base_url,path,token)
