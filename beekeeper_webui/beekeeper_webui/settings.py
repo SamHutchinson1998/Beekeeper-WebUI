@@ -136,6 +136,9 @@ STATIC_ROOT = '/var/www/static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = '/var/www/media'
 
+WEBSOCKET_HOST = '127.0.0.1'
+WEBSOCKET_PORT = 6080
+
 LOGIN_REDIRECT_URL = 'home'
 
 LOGOUT_REDIRECT_URL = 'home'
