@@ -4,7 +4,10 @@ import RFB from './novnc/3/core/rfb.js';
 let rfb;
 let desktopName;
 
+
+// credit to noVNC for this method https://github.com/novnc/noVNC/blob/master/vnc_lite.html
 function readQueryVariable(name, defaultValue) {
+  
   // A URL with a query parameter can look like this:
   // https://www.example.com?myqueryparam=myvalue
   //

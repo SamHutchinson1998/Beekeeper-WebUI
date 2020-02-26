@@ -108,8 +108,10 @@ class HomePageView(TemplateView):
     #domain_vnc_socket = get_domain_vnc_socket(domain)
     
     #query string should also contain token next time? 
-    query_string = urlencode({'host':settings.WEBSOCKET_HOST,'port':settings.WEBSOCKET_PORT,'token':'token1'})
-    url = '{}?{}'.format(base_url, query_string)
+    token = 'token1' # example token
+    path = urlencode({'path':'websockify'})
+    token = urlencode({'token':token})
+    url = '{}?{}?{}'.format(base_url,path,token)
     return HttpResponseRedirect(url)
 
   def load_device_vnc(request):
