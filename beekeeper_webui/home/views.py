@@ -113,5 +113,4 @@ class HomePageView(TemplateView):
   def load_device_vnc(request):
     host = request.GET.get('host', None)
     port = request.GET.get('port', None)
-    print('Host: {}\nPort: {}'.format(host, port))
     return render(request, 'vnc.html')
