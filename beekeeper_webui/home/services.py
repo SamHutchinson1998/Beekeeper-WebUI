@@ -31,7 +31,7 @@ def create_virtual_machine(request):
   # create a .img file first then use that as the hard disk for the VM.
   # disk image goes into the cdrom compartment of the XML.
   name = request.POST.get('name',None)
-  name = name.replace(' ', '_')# Libvirt and file dirs don't like some names with spaces in, lul
+  name.replace(' ', '_')# Libvirt and file dirs don't like some names with spaces in, lul
   memory = request.POST.get('ram',None)
   disk_size = request.POST.get('disk_size',None)
   cpus = request.POST.get('cpus',None)
