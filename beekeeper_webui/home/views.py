@@ -68,11 +68,11 @@ class HomePageView(TemplateView):
   def create_device(request):
     next = request.POST.get('next', '/')
     if request.method == "POST":
-      request = create_device_req(request)
-      form = VirtualMachineForm(request)
+      modified_request = create_device_req(request)
+      form = VirtualMachineForm(modified_request)
       if form.is_valid():
         if form.save():
-          create_virtual_machine(request)
+          create_virtual_machine(modified_request)
           messages.success(request, 'Successfully added device', extra_tags='alert-success')
         else:
           messages.error(request, 'Unable to add device', extra_tags='alert-danger')
