@@ -48,6 +48,8 @@ if(port) {
 }
 url += '/' + path;
 
+createRfbConnection();
+
 document.getElementById('ctrlAltDelbtn').onclick = sendCtrlAltDel();
 document.getElementById('reconnectbtn').onclick = createRfbConnection();
 
@@ -56,8 +58,6 @@ function sendCtrlAltDel()
 {
   rfb.sendCtrlAltDel();
 }
-
-createRfbConnection();
 
 function createRfbConnection()
 {
