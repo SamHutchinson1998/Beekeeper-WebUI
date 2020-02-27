@@ -101,7 +101,7 @@ def spawn_machine(disk_size, name, xml, token):
 
 def create_device_token(socket, token):
   token_mapping = "{}: {}{}".format(token, socket[0], socket[1])
-  cmd = f"echo '{token_mapping}' >{settings.BASE_DIR}/beekeeper_webui/assets/javascript/novnc/vnc_tokens/{token}.ini"
+  cmd = f"echo '{token_mapping}' >{settings.STATIC_ROOT}/javascript/novnc/vnc_tokens/{token}.ini"
   os.system(cmd)
 
 def remove_machine(virtual_machine):
@@ -111,7 +111,7 @@ def remove_machine(virtual_machine):
   dom.destroy()
   print(f'domain {virtual_machine.name} destroyed')
   os.system(f'rm -rf /var/lib/libvirt/images/{virtual_machine.name}.img')
-  os.system(f"rm -rf {settings.BASE_DIR}/beekeeper_webui/assets/javascript/novnc/vnc_tokens/{virtual_machine.token}.ini")
+  os.system(f"rm -rf {settings.STATIC_ROOT}/javascript/novnc/vnc_tokens/{virtual_machine.token}.ini")
 
 def turn_off_devices(devices):
   conn = libvirt.open('qemu:///system')
