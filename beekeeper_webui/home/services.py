@@ -101,7 +101,7 @@ def spawn_machine(disk_size, name, xml, token):
 
 def create_device_token(socket, token):
   token_mapping = "{}: {}:{}".format(token, socket[0], socket[1])
-  token_filepath = os.path.join(settings.STATIC_ROOT, f'javascript/novnc/vnc_tokens/{token}.ini')
+  token_filepath = os.path.join(settings.BASE_DIR, f'beekeeper_webui/assets/javascript/novnc/vnc_tokens/{token}.ini')
   token_file = open(token_filepath, 'w')
   token_file.write(token_mapping)
   token_file.close
@@ -117,7 +117,7 @@ def remove_machine(virtual_machine):
   os.system(f'rm -rf /var/lib/libvirt/images/{virtual_machine.name}.img')
 
   # remove the VNC token too
-  token_filepath = os.path.join(settings.STATIC_ROOT, f'javascript/novnc/vnc_tokens/{virtual_machine.token}.ini')
+  token_filepath = os.path.join(settings.BASE_DIR, f'beekeeper_webui/assets/javascript/novnc/vnc_tokens/{virtual_machine.token}.ini')
   os.remove(token_filepath)
 
 def turn_off_devices(devices):
