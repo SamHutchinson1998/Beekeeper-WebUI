@@ -30,13 +30,12 @@ def get_domain_vnc_socket(domain):
 def create_virtual_machine(request):
   # create a .img file first then use that as the hard disk for the VM.
   # disk image goes into the cdrom compartment of the XML.
-  name = request.POST.get('name',None)
-  name.replace(' ', '_')# Libvirt and file dirs don't like some names with spaces in, lul
-  memory = request.POST.get('ram',None)
-  disk_size = request.POST.get('disk_size',None)
-  cpus = request.POST.get('cpus',None)
-  disk_image = DiskImage.objects.get(pk=request.POST.get('disk_image',None)).disk_image
-  cell_id = request.POST.get('cell_id', None)
+  name = request['name']
+  memory = request['ram']
+  disk_size = request['disk_size']
+  cpus = request['cpus']
+  disk_image = DiskImage.objects.get(pk=request['disk_image']).disk_image
+  cell_id = request['cell_id']
   # Have to make another DB call just to get the auto generated token
   token = VirtualMachine.objects.get(cell_id=cell_id).token
   
