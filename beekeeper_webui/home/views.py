@@ -67,7 +67,6 @@ class HomePageView(TemplateView):
  
   def create_device(request):
     next = request.POST.get('next', '/')
-    request.POST.get('name', None).replace(' ', '_') # Libvirt doesn't like some names with spaces in, lul
     if request.method == "POST":
       form = VirtualMachineForm(request.POST)
       if form.is_valid():
