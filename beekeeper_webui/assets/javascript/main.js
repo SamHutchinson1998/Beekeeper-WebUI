@@ -55,6 +55,30 @@ function main(container, sidebar)
     keyBindings(graph);
     addMouseWheelZoom(graph)
     getDeviceMenu(graph);
+
+    var legend = document.createElement('div');
+    legend.style.position = 'absolute';
+    legend.style.overflow = 'hidden';
+    legend.style.width = '230px';
+    legend.style.bottom = '56px';
+    legend.style.height = '76px';
+    legend.style.right = '20px';
+    
+    legend.style.background = 'black';
+    legend.style.color = 'white';
+    //legend.style.fontFamily = 'Arial';
+    legend.style.fontSize = '10px';
+    legend.style.padding = '4px';
+
+    mxUtils.setOpacity(legend, 50);
+    
+    mxUtils.writeln(legend, '- Drag an image from the sidebar to the canvas');
+    mxUtils.writeln(legend, '- Drag an ethernet cable/textbox from the toolbar to the canvas');
+    mxUtils.writeln(legend, '- Rightclick and drag on canvas for panning');
+    mxUtils.writeln(legend, '- Rightclick on selected device for device-specific options');
+    mxUtils.writeln(legend, '- Click and drag a device to move and connect');
+    document.body.appendChild(legend);
+
     graphListener(graph);
   }
 };
