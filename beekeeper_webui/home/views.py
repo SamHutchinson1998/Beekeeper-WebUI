@@ -68,7 +68,8 @@ class HomePageView(TemplateView):
   def create_device(request):
     next = request.POST.get('next', '/')
     if request.method == "POST":
-      form = VirtualMachineForm(request.POST)
+      request = modify_create_device_req(request)
+      form = VirtualMachineForm(request)
       if form.is_valid():
         if form.save():
           create_virtual_machine(request)
@@ -80,6 +81,13 @@ class HomePageView(TemplateView):
     else:
       messages.error(request, 'Unable to add device', extra_tags='alert-danger')
     return HttpResponseRedirect(next)
+
+  def modify_create_device_req(request):
+    if request.method == 'POST':
+      update_request = request.POST.copy()
+      name = update_request.POST.get('name', None).replace(" ", '_') # ensure spaces in the name are replaced with underscores
+      update_request.update({'name':name})
+      return update_request
 
   def remove_device(request):
     if request.is_ajax and request.method == "GET":
