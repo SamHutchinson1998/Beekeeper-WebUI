@@ -100,7 +100,7 @@ def spawn_machine(disk_size, name, xml, token):
   conn.close()
 
 def create_device_token(socket, token):
-  token_mapping = "{}: {}{}".format(token, socket[0], socket[1])
+  token_mapping = "{}: {}:{}".format(token, socket[0], socket[1])
   token_filepath = os.path.join(settings.STATIC_ROOT, f'javascript/novnc/vnc_tokens/{token}.ini')
   token_file = open(token_filepath, 'w')
   token_file.write(token_mapping)
