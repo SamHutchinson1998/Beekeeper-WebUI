@@ -68,7 +68,7 @@ class HomePageView(TemplateView):
   def create_device(request):
     next = request.POST.get('next', '/')
     if request.method == "POST":
-      request = modify_create_device_req(request)
+      request = create_device_req(request)
       form = VirtualMachineForm(request)
       if form.is_valid():
         if form.save():
@@ -82,7 +82,7 @@ class HomePageView(TemplateView):
       messages.error(request, 'Unable to add device', extra_tags='alert-danger')
     return HttpResponseRedirect(next)
 
-  def modify_create_device_req(request):
+  def create_device_req(request):
     if request.method == 'POST':
       update_request = request.POST.copy()
       name = update_request.POST.get('name', None).replace(" ", '_') # ensure spaces in the name are replaced with underscores
