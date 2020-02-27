@@ -154,3 +154,11 @@ def turn_on_devices(devices):
       if dom.isActive() < 1: # If device is already turned on
         dom.create()
   conn.close()
+
+
+def create_device_req(request):
+  if request.method == 'POST':
+    update_request = request.POST.copy()
+    name = update_request.POST.get('name', None).replace(" ", '_') # ensure spaces in the name are replaced with underscores
+    update_request.update({'name':name})
+    return update_request

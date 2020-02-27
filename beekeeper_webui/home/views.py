@@ -5,7 +5,7 @@ from django.http import JsonResponse, HttpResponseRedirect, HttpResponse
 from django.core.serializers import serialize
 from django.conf import settings
 from django.urls import reverse
-from .services import lookup_domain, get_domain_vnc_socket, create_virtual_machine, remove_machine, turn_off_devices, turn_on_devices
+from .services import create_device_req, lookup_domain, get_domain_vnc_socket, create_virtual_machine, remove_machine, turn_off_devices, turn_on_devices
 from .models import ImageForm, DiskImage, VirtualMachine, VirtualMachineForm
 from urllib.parse import urlencode
 import os
@@ -81,13 +81,6 @@ class HomePageView(TemplateView):
     else:
       messages.error(request, 'Unable to add device', extra_tags='alert-danger')
     return HttpResponseRedirect(next)
-
-  def create_device_req(request):
-    if request.method == 'POST':
-      update_request = request.POST.copy()
-      name = update_request.POST.get('name', None).replace(" ", '_') # ensure spaces in the name are replaced with underscores
-      update_request.update({'name':name})
-      return update_request
 
   def remove_device(request):
     if request.is_ajax and request.method == "GET":
