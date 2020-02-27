@@ -159,6 +159,6 @@ def turn_on_devices(devices):
 def create_device_req(request):
   if request.method == 'POST':
     update_request = request.POST.copy()
-    name = update_request.POST.get('name', None).replace(" ", '_') # ensure spaces in the name are replaced with underscores
+    name = update_request['name'].replace(" ", '_') # ensure spaces in the name are replaced with underscores
     update_request.update({'name':name})
     return update_request
