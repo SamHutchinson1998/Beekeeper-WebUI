@@ -23,7 +23,7 @@ function getDeviceMenu(graph)
 
 function getSSH()
 {
-
+  
 }
 
 function getVNC(cell)

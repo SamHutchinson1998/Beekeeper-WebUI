@@ -42,7 +42,7 @@ function addSidebarIcon(sidebar, graph, disk_image, image_id)
     {
       device = graph.insertVertex(parent, null, disk_image.name, x, y, 100, 100, stylesheet);
       device.setConnectable(true);
-      device.setAttribute('type', 'vertex');
+      device.setAttribute('type', 'vertex'); // Not working!
     }
     finally
     {

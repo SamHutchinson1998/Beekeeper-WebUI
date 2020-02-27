@@ -29,7 +29,7 @@ function addToolbarItem(toolbar, graph, tool, tooltype)
             `strokeColor=none;fillColor=none;`;
           cell = graph.insertVertex(parent, null, 'Text Here', x, y, 120, 30, style);
           cell.setConnectable(false);
-          cell.setAttribute('type', 'textbox');
+          cell.setAttribute('type', 'textbox'); // Not working!
         break;
         case 'cable':
           style = `strokeWidth=6;strokeColor=black;endArrow=none;html=1;`;
@@ -38,7 +38,7 @@ function addToolbarItem(toolbar, graph, tool, tooltype)
           cell.geometry.setTerminalPoint(new mxPoint(180, 0), false); // target point
           cell.geometry.relative = true;
           cell.edge = true;
-          cell.setAttribute('type', 'cable');
+          cell.setAttribute('type', 'cable'); // Not working!
           graph.importCells([cell], x, y, parent);
         break;
         default:
