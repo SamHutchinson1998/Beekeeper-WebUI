@@ -36,4 +36,7 @@ class VirtualMachineForm(forms.ModelForm):
   class Meta:
     model = VirtualMachine
     fields = ['name','ram', 'disk_size', 'cpus', 'cell_id','disk_image']
-
+    labels = {
+      'ram': 'RAM (MB)',
+      'disk_size': 'Disk Size (GB)'
+    }
