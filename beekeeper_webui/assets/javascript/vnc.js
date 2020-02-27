@@ -48,11 +48,23 @@ if(port) {
 }
 url += '/' + path;
 
-// Creating a new RFB object will start a new connection
-rfb = new RFB(document.getElementById('screen'), url,
-              { credentials: { password: password } });
+document.getElementById('ctrlAltDelbtn').onclick = sendCtrlAltDel();
+document.getElementById('reconnectbtn').onclick = createRfbConnection();
 
-// Set parameters that can be changed on an active connection
+
+function sendCtrlAltDel()
+{
+  rfb.sendCtrlAltDel();
+}
+
+createRfbConnection();
+
+function createRfbConnection()
+{
+  // Creating a new RFB object will start a new connection
+  rfb = new RFB(document.getElementById('screen'), url,
+              { credentials: { password: password } });
+}
 
 // keep these around for later
 
