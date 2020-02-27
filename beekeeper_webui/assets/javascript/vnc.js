@@ -57,6 +57,7 @@ document.getElementById('reconnectbtn').onclick = createRfbConnection();
 function sendCtrlAltDel()
 {
   rfb.sendCtrlAltDel();
+  console.log('CtrlAltDel button pressed')
 }
 
 function createRfbConnection()
