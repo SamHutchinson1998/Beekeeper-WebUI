@@ -71,8 +71,7 @@ class HomePageView(TemplateView):
       form = VirtualMachineForm(request.POST)
       if form.is_valid():
         if form.save():
-          token = form.cleaned_data['token']
-          create_virtual_machine(request, token)
+          create_virtual_machine(request)
           messages.success(request, 'Successfully added device', extra_tags='alert-success')
         else:
           messages.error(request, 'Unable to add device', extra_tags='alert-danger')

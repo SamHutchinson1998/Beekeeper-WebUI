@@ -27,7 +27,7 @@ def get_domain_vnc_socket(domain):
   host_and_port.append(port)
   return host_and_port
 
-def create_virtual_machine(request, token):
+def create_virtual_machine(request):
   # create a .img file first then use that as the hard disk for the VM.
   # disk image goes into the cdrom compartment of the XML.
   name = request.POST.get('name',None)
@@ -35,6 +35,10 @@ def create_virtual_machine(request, token):
   disk_size = request.POST.get('disk_size',None)
   cpus = request.POST.get('cpus',None)
   disk_image = DiskImage.objects.get(pk=request.POST.get('disk_image',None)).disk_image
+  
+  # Have to make another DB call just to get the auto generated token
+  token = VirtualMachine.objects.get(cell_id=request.POST.get('cell_id', None)).token
+  
   xml = f"""
   <domain type='kvm'>
     <name>{name}</name>
