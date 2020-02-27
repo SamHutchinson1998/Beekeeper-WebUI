@@ -35,9 +35,9 @@ def create_virtual_machine(request):
   disk_size = request.POST.get('disk_size',None)
   cpus = request.POST.get('cpus',None)
   disk_image = DiskImage.objects.get(pk=request.POST.get('disk_image',None)).disk_image
-  
+  cell_id = request.POST.get('cell_id', None)
   # Have to make another DB call just to get the auto generated token
-  token = VirtualMachine.objects.get(cell_id=request.POST.get('cell_id', None)).token
+  token = VirtualMachine.objects.get(cell_id=cell_id).token
   
   xml = f"""
   <domain type='kvm'>
@@ -101,8 +101,10 @@ def spawn_machine(disk_size, name, xml, token):
 
 def create_device_token(socket, token):
   token_mapping = "{}: {}{}".format(token, socket[0], socket[1])
-  cmd = f"echo '{token_mapping}' >{settings.STATIC_ROOT}/javascript/novnc/vnc_tokens/{token}.ini"
-  os.system(cmd)
+  token_filepath = os.path.join(settings.STATIC_ROOT, f'javascript/novnc/vnc_tokens/{token}.ini')
+  token_file = open(token_filepath, 'w')
+  token_file.write(token_mapping)
+  token_file.close
 
 def remove_machine(virtual_machine):
   conn = libvirt.open('qemu:///system')
@@ -110,8 +112,13 @@ def remove_machine(virtual_machine):
   dom.undefine()
   dom.destroy()
   print(f'domain {virtual_machine.name} destroyed')
+
+  # remove img associated with the VM
   os.system(f'rm -rf /var/lib/libvirt/images/{virtual_machine.name}.img')
-  os.system(f"rm -rf {settings.STATIC_ROOT}/javascript/novnc/vnc_tokens/{virtual_machine.token}.ini")
+
+  # remove the VNC token too
+  token_filepath = os.path.join(settings.STATIC_ROOT, f'javascript/novnc/vnc_tokens/{virtual_machine.token}.ini')
+  os.remove(token_filepath)
 
 def turn_off_devices(devices):
   conn = libvirt.open('qemu:///system')
