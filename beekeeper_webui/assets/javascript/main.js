@@ -61,7 +61,7 @@ function main(container, sidebar)
     legend.style.overflow = 'hidden';
     legend.style.width = '230px';
     legend.style.bottom = '56px';
-    legend.style.height = '76px';
+    legend.style.height = '100px';
     legend.style.right = '20px';
     
     legend.style.background = 'black';
