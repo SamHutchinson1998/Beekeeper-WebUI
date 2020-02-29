@@ -215,6 +215,7 @@ function getStatusLight(cell_id)
   $.ajax({
     url: 'get_device_status',
     data: {'cell_id': cell_id},
+    async: false,
     success: function(result){
       var device_status = result['device_status'];
       output = getVector(device_status); // getVector is in sidebar.js
