@@ -9,7 +9,10 @@ def lookup_domain(cell_id):
   conn = libvirt.open('qemu:///system')
   print(cell_id)
   vm_record = VirtualMachine.objects.get(cell_id=cell_id)
-  dom = conn.lookupByName(vm_record.name)
+  if vm_record is not None:
+    dom = conn.lookupByName(vm_record.name)
+  else:
+    dom = None
   conn.close()
   return dom
 

@@ -3,9 +3,9 @@ function populateToolbar(editor, graph)
   var toolbar = document.getElementById('toolbarContainer');
   addToolbarItem(toolbar, graph, '../static/devices/ethernet_cable.svg', 'cable');
   addToolbarItem(toolbar, graph, '../static/devices/Label.svg', 'textbox');
-  addToolbarButton(toolbar, '../static/devices/refresh.svg', 'refresh')
   addToolbarButton(toolbar, '../static/devices/start_button.svg', 'start', graph, editor);
   addToolbarButton(toolbar, '../static/devices/stop_button.svg', 'stop', graph, editor);
+  addToolbarButton(toolbar, '../static/devices/refresh.svg', 'refresh');
   addToolbarButton(toolbar, '../static/devices/zoom_in.svg', 'Zoom In', graph, editor);
   addToolbarButton(toolbar, '../static/devices/zoom_out.svg', 'Zoom Out', graph, editor);
 
@@ -28,7 +28,7 @@ function addToolbarItem(toolbar, graph, tool, tooltype)
           style = `verticalLabelPosition=center;verticalAlign=center;` +
             `fontFamily=helvetica;fontStyle=1;fontColor=black;fontSize=20;` +
             `strokeColor=none;fillColor=none;`;
-          cell = graph.insertVertex(parent, null, node, x, y, 120, 30, style);
+          cell = graph.insertVertex(parent, null, 'Text Here', x, y, 120, 30, style);
           cell.setConnectable(false);
         break;
         case 'cable':
