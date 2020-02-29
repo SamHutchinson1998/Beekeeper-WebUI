@@ -4,6 +4,8 @@ from xml.dom import minidom
 from .models import DiskImage, VirtualMachine
 from django.conf import settings
 import os
+import uuid
+
 
 def lookup_domain(cell_id):
   dom = None
@@ -41,9 +43,14 @@ def create_virtual_machine(request):
   cpus = request['cpus']
   disk_image = DiskImage.objects.get(pk=request['disk_image']).disk_image
   cell_id = request['cell_id']
-  # Have to make another DB call just to get the auto generated token
-  token = VirtualMachine.objects.get(cell_id=cell_id).token
-  
+
+  # token generation happens here
+
+  token = str(uuid.uuid4())
+  vm = VirtualMachine.objects.get(cell_id=cell_id)
+  vm.token = token
+  vm.save()
+
   xml = f"""
   <domain type='kvm'>
     <name>{name}</name>
