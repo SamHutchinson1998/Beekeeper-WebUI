@@ -28,7 +28,7 @@ function hideSidebarChildNodes(children, value)
 
 function addSidebarIcon(sidebar, graph, disk_image, image_id)
 {
-  var image = getVector(disk_image);
+  var image = getVector(disk_image.devicetype);
   var funct = function(graph, evt, cell, x, y)
   {
     var parent = graph.getDefaultParent();
@@ -90,7 +90,7 @@ function addSidebarIcon(sidebar, graph, disk_image, image_id)
 function getVector(device)
 {
   var filepath = '../static/devices/';
-  switch(device.devicetype)
+  switch(device)
   {
     case "pc":
       return `${filepath}computer.svg`;
