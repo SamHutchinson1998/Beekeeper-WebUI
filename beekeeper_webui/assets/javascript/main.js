@@ -56,8 +56,8 @@ function main(container, sidebar)
     addMouseWheelZoom(graph)
     getDeviceMenu(graph);
     getLegend();
-    graphListener(graph);
     insertStatusLights(graph);
+    graphListener(graph);
   }
 };
 
