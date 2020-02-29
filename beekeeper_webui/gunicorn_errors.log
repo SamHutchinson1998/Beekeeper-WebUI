@@ -16259,3 +16259,280 @@
 [2020-02-29 18:49:53 +0000] [81279] [DEBUG] GET /null.svg
 [2020-02-29 18:49:59 +0000] [81279] [DEBUG] GET /home
 [2020-02-29 18:50:00 +0000] [81277] [DEBUG] GET /home
+[2020-02-29 23:09:40 +0000] [88688] [DEBUG] Current configuration:
+  config: None
+  bind: ['unix:/run/gunicorn.sock']
+  backlog: 2048
+  workers: 3
+  worker_class: sync
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 600
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /home/529816/Beekeeper-WebUI/beekeeper_webui
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 33
+  group: 33
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: -
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: gunicorn_errors.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: beekeeper_webui.wsgi:application
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7f8ae78d06a8>
+  on_reload: <function OnReload.on_reload at 0x7f8ae78d07b8>
+  when_ready: <function WhenReady.when_ready at 0x7f8ae78d08c8>
+  pre_fork: <function Prefork.pre_fork at 0x7f8ae78d09d8>
+  post_fork: <function Postfork.post_fork at 0x7f8ae78d0ae8>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7f8ae78d0bf8>
+  worker_int: <function WorkerInt.worker_int at 0x7f8ae78d0d08>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7f8ae78d0e18>
+  pre_exec: <function PreExec.pre_exec at 0x7f8ae78d0f28>
+  pre_request: <function PreRequest.pre_request at 0x7f8ae78ec0d0>
+  post_request: <function PostRequest.post_request at 0x7f8ae78ec158>
+  child_exit: <function ChildExit.child_exit at 0x7f8ae78ec268>
+  worker_exit: <function WorkerExit.worker_exit at 0x7f8ae78ec378>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7f8ae78ec488>
+  on_exit: <function OnExit.on_exit at 0x7f8ae78ec598>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+[2020-02-29 23:09:40 +0000] [88688] [INFO] Starting gunicorn 20.0.4
+[2020-02-29 23:09:40 +0000] [88688] [DEBUG] Arbiter booted
+[2020-02-29 23:09:40 +0000] [88688] [INFO] Listening at: unix:/run/gunicorn.sock (88688)
+[2020-02-29 23:09:40 +0000] [88688] [INFO] Using worker: sync
+[2020-02-29 23:09:40 +0000] [88714] [INFO] Booting worker with pid: 88714
+[2020-02-29 23:09:40 +0000] [88716] [INFO] Booting worker with pid: 88716
+[2020-02-29 23:09:40 +0000] [88718] [INFO] Booting worker with pid: 88718
+[2020-02-29 23:09:40 +0000] [88688] [DEBUG] 3 workers
+[2020-02-29 23:09:46 +0000] [88716] [DEBUG] GET /
+[2020-02-29 23:09:48 +0000] [88716] [DEBUG] GET /get_devices
+[2020-02-29 23:09:48 +0000] [88716] [DEBUG] GET /retrieveXml
+[2020-02-29 23:09:48 +0000] [88716] [DEBUG] GET /get_device_status
+[2020-02-29 23:10:04 +0000] [88718] [DEBUG] GET /get_device_status
+[2020-02-29 23:10:17 +0000] [88714] [DEBUG] GET /
+[2020-02-29 23:10:18 +0000] [88718] [DEBUG] GET /get_devices
+[2020-02-29 23:10:18 +0000] [88718] [DEBUG] GET /retrieveXml
+[2020-02-29 23:10:18 +0000] [88718] [DEBUG] GET /get_device_status
+[2020-02-29 23:12:03 +0000] [88716] [DEBUG] GET /get_device_status
+[2020-02-29 23:12:11 +0000] [88716] [DEBUG] GET /home
+[2020-02-29 23:12:19 +0000] [88716] [DEBUG] POST /post_device_form
+[2020-02-29 23:12:20 +0000] [88714] [DEBUG] GET /
+[2020-02-29 23:12:20 +0000] [88714] [DEBUG] GET /get_devices
+[2020-02-29 23:12:20 +0000] [88714] [DEBUG] GET /retrieveXml
+[2020-02-29 23:12:21 +0000] [88718] [DEBUG] GET /get_device_status
+[2020-02-29 23:12:21 +0000] [88718] [DEBUG] GET /get_device_status
+[2020-02-29 23:12:21 +0000] [88718] [DEBUG] GET /get_device_status
+[2020-02-29 23:12:28 +0000] [88714] [DEBUG] GET /
+[2020-02-29 23:12:28 +0000] [88716] [DEBUG] GET /get_devices
+[2020-02-29 23:12:28 +0000] [88716] [DEBUG] GET /retrieveXml
+[2020-02-29 23:12:28 +0000] [88716] [DEBUG] GET /get_device_status
+[2020-02-29 23:12:29 +0000] [88716] [DEBUG] GET /get_device_status
+[2020-02-29 23:12:29 +0000] [88716] [DEBUG] GET /get_device_status
+[2020-02-29 23:12:36 +0000] [88716] [DEBUG] GET /get_device_vnc
+[2020-02-29 23:13:46 +0000] [88714] [DEBUG] GET /remove_device
+[2020-02-29 23:13:46 +0000] [88716] [DEBUG] GET /home
+[2020-02-29 23:14:18 +0000] [88716] [DEBUG] GET /
+[2020-02-29 23:14:19 +0000] [88716] [DEBUG] GET /get_devices
+[2020-02-29 23:14:19 +0000] [88718] [DEBUG] GET /retrieveXml
+[2020-02-29 23:14:19 +0000] [88718] [DEBUG] GET /get_device_status
+[2020-02-29 23:14:19 +0000] [88718] [DEBUG] GET /get_device_status
+[2020-02-29 23:14:41 +0000] [88716] [DEBUG] GET /
+[2020-02-29 23:14:42 +0000] [88714] [DEBUG] GET /get_devices
+[2020-02-29 23:14:42 +0000] [88714] [DEBUG] GET /retrieveXml
+[2020-02-29 23:14:42 +0000] [88714] [DEBUG] GET /get_device_status
+[2020-02-29 23:14:42 +0000] [88714] [DEBUG] GET /get_device_status
+[2020-02-29 23:14:58 +0000] [88714] [DEBUG] GET /home
+[2020-02-29 23:15:06 +0000] [88714] [DEBUG] POST /post_device_form
+[2020-02-29 23:15:07 +0000] [88716] [DEBUG] GET /
+[2020-02-29 23:15:08 +0000] [88716] [DEBUG] GET /get_devices
+[2020-02-29 23:15:08 +0000] [88716] [DEBUG] GET /retrieveXml
+[2020-02-29 23:15:08 +0000] [88718] [DEBUG] GET /get_device_status
+[2020-02-29 23:15:08 +0000] [88718] [DEBUG] GET /get_device_status
+[2020-02-29 23:15:08 +0000] [88718] [DEBUG] GET /get_device_status
+[2020-02-29 23:15:11 +0000] [88716] [DEBUG] GET /get_device_vnc
+[2020-02-29 23:15:11 +0000] [88716] [DEBUG] GET /load_device_vnc
+[2020-02-29 23:15:17 +0000] [88718] [DEBUG] GET /get_device_vnc
+[2020-02-29 23:15:21 +0000] [88718] [DEBUG] GET /remove_device
+[2020-02-29 23:15:21 +0000] [88718] [DEBUG] GET /home
+[2020-02-29 23:15:22 +0000] [88716] [DEBUG] GET /remove_device
+[2020-02-29 23:15:22 +0000] [88716] [DEBUG] GET /home
+[2020-02-29 23:15:23 +0000] [88718] [DEBUG] GET /home
+[2020-02-29 23:15:25 +0000] [88716] [DEBUG] GET /home
+[2020-02-29 23:15:32 +0000] [88714] [DEBUG] POST /post_device_form
+[2020-02-29 23:15:39 +0000] [88716] [DEBUG] GET /
+[2020-02-29 23:15:40 +0000] [88718] [DEBUG] GET /get_devices
+[2020-02-29 23:15:40 +0000] [88718] [DEBUG] GET /retrieveXml
+[2020-02-29 23:15:40 +0000] [88714] [DEBUG] GET /get_device_status
+[2020-02-29 23:15:40 +0000] [88714] [DEBUG] GET /get_device_status
+[2020-02-29 23:15:41 +0000] [88714] [DEBUG] GET /remove_device
+[2020-02-29 23:15:41 +0000] [88716] [DEBUG] GET /home
+[2020-02-29 23:15:42 +0000] [88718] [DEBUG] GET /home
+[2020-02-29 23:16:18 +0000] [88714] [DEBUG] GET /remove_device
+[2020-02-29 23:16:19 +0000] [88714] [DEBUG] GET /home
+[2020-02-29 23:16:37 +0000] [88716] [DEBUG] GET /
+[2020-02-29 23:16:38 +0000] [88716] [DEBUG] GET /get_devices
+[2020-02-29 23:16:38 +0000] [88716] [DEBUG] GET /retrieveXml
+[2020-02-29 23:16:39 +0000] [88716] [DEBUG] GET /home
+[2020-02-29 23:16:46 +0000] [88718] [DEBUG] POST /post_device_form
+[2020-02-29 23:16:47 +0000] [88714] [DEBUG] GET /
+[2020-02-29 23:16:48 +0000] [88718] [DEBUG] GET /get_devices
+[2020-02-29 23:16:48 +0000] [88718] [DEBUG] GET /retrieveXml
+[2020-02-29 23:16:48 +0000] [88714] [DEBUG] GET /get_device_status
+[2020-02-29 23:16:51 +0000] [88714] [DEBUG] GET /home
+[2020-02-29 23:16:52 +0000] [88718] [DEBUG] GET /
+[2020-02-29 23:16:53 +0000] [88714] [DEBUG] GET /get_devices
+[2020-02-29 23:16:53 +0000] [88714] [DEBUG] GET /retrieveXml
+[2020-02-29 23:16:53 +0000] [88718] [DEBUG] GET /get_device_status
+[2020-02-29 23:16:55 +0000] [88714] [DEBUG] GET /
+[2020-02-29 23:16:56 +0000] [88716] [DEBUG] GET /get_devices
+[2020-02-29 23:16:56 +0000] [88718] [DEBUG] GET /retrieveXml
+[2020-02-29 23:16:56 +0000] [88718] [DEBUG] GET /get_device_status
+[2020-02-29 23:16:58 +0000] [88714] [DEBUG] GET /change_vm_state
+[2020-02-29 23:17:02 +0000] [88718] [DEBUG] GET /
+[2020-02-29 23:17:03 +0000] [88716] [DEBUG] GET /get_devices
+[2020-02-29 23:17:03 +0000] [88716] [DEBUG] GET /retrieveXml
+[2020-02-29 23:17:03 +0000] [88716] [DEBUG] GET /get_device_status
+[2020-02-29 23:17:04 +0000] [88718] [DEBUG] GET /
+[2020-02-29 23:17:05 +0000] [88716] [DEBUG] GET /get_devices
+[2020-02-29 23:17:05 +0000] [88716] [DEBUG] GET /retrieveXml
+[2020-02-29 23:17:05 +0000] [88718] [DEBUG] GET /get_device_status
+[2020-02-29 23:17:05 +0000] [88716] [DEBUG] GET /
+[2020-02-29 23:17:06 +0000] [88716] [DEBUG] GET /get_devices
+[2020-02-29 23:17:06 +0000] [88716] [DEBUG] GET /retrieveXml
+[2020-02-29 23:17:06 +0000] [88716] [DEBUG] GET /get_device_status
+[2020-02-29 23:17:07 +0000] [88718] [DEBUG] GET /
+[2020-02-29 23:17:08 +0000] [88718] [DEBUG] GET /get_devices
+[2020-02-29 23:17:08 +0000] [88718] [DEBUG] GET /retrieveXml
+[2020-02-29 23:17:08 +0000] [88718] [DEBUG] GET /get_device_status
+[2020-02-29 23:17:10 +0000] [88718] [DEBUG] GET /
+[2020-02-29 23:17:11 +0000] [88714] [DEBUG] GET /get_devices
+[2020-02-29 23:17:11 +0000] [88718] [DEBUG] GET /retrieveXml
+[2020-02-29 23:17:11 +0000] [88718] [DEBUG] GET /get_device_status
+[2020-02-29 23:17:11 +0000] [88718] [DEBUG] GET /
+[2020-02-29 23:17:12 +0000] [88718] [DEBUG] GET /get_devices
+[2020-02-29 23:17:12 +0000] [88718] [DEBUG] GET /retrieveXml
+[2020-02-29 23:17:12 +0000] [88718] [DEBUG] GET /get_device_status
+[2020-02-29 23:17:13 +0000] [88716] [DEBUG] GET /
+[2020-02-29 23:17:14 +0000] [88718] [DEBUG] GET /get_devices
+[2020-02-29 23:17:14 +0000] [88718] [DEBUG] GET /retrieveXml
+[2020-02-29 23:17:14 +0000] [88718] [DEBUG] GET /get_device_status
+[2020-02-29 23:17:15 +0000] [88718] [DEBUG] GET /
+[2020-02-29 23:17:16 +0000] [88718] [DEBUG] GET /get_devices
+[2020-02-29 23:17:16 +0000] [88718] [DEBUG] GET /retrieveXml
+[2020-02-29 23:17:16 +0000] [88718] [DEBUG] GET /get_device_status
+[2020-02-29 23:17:17 +0000] [88716] [DEBUG] GET /
+[2020-02-29 23:17:18 +0000] [88716] [DEBUG] GET /get_devices
+[2020-02-29 23:17:18 +0000] [88716] [DEBUG] GET /retrieveXml
+[2020-02-29 23:17:18 +0000] [88716] [DEBUG] GET /get_device_status
+[2020-02-29 23:17:19 +0000] [88716] [DEBUG] GET /
+[2020-02-29 23:17:19 +0000] [88718] [DEBUG] GET /get_devices
+[2020-02-29 23:17:20 +0000] [88718] [DEBUG] GET /retrieveXml
+[2020-02-29 23:17:20 +0000] [88714] [DEBUG] GET /get_device_status
+[2020-02-29 23:17:20 +0000] [88714] [DEBUG] GET /
+[2020-02-29 23:17:21 +0000] [88714] [DEBUG] GET /get_devices
+[2020-02-29 23:17:21 +0000] [88714] [DEBUG] GET /retrieveXml
+[2020-02-29 23:17:21 +0000] [88718] [DEBUG] GET /get_device_status
+[2020-02-29 23:17:22 +0000] [88716] [DEBUG] GET /
+[2020-02-29 23:17:23 +0000] [88716] [DEBUG] GET /get_devices
+[2020-02-29 23:17:23 +0000] [88716] [DEBUG] GET /retrieveXml
+[2020-02-29 23:17:23 +0000] [88716] [DEBUG] GET /get_device_status
+[2020-02-29 23:17:23 +0000] [88714] [DEBUG] GET /
+[2020-02-29 23:17:24 +0000] [88714] [DEBUG] GET /get_devices
+[2020-02-29 23:17:24 +0000] [88714] [DEBUG] GET /retrieveXml
+[2020-02-29 23:17:25 +0000] [88714] [DEBUG] GET /get_device_status
+[2020-02-29 23:17:25 +0000] [88716] [DEBUG] GET /
+[2020-02-29 23:17:26 +0000] [88714] [DEBUG] GET /get_devices
+[2020-02-29 23:17:26 +0000] [88714] [DEBUG] GET /retrieveXml
+[2020-02-29 23:17:26 +0000] [88714] [DEBUG] GET /get_device_status
+[2020-02-29 23:17:40 +0000] [88718] [DEBUG] GET /
+[2020-02-29 23:17:41 +0000] [88716] [DEBUG] GET /get_devices
+[2020-02-29 23:17:41 +0000] [88716] [DEBUG] GET /retrieveXml
+[2020-02-29 23:17:41 +0000] [88716] [DEBUG] GET /get_device_status
+[2020-02-29 23:18:44 +0000] [88716] [DEBUG] GET /
+[2020-02-29 23:18:45 +0000] [88714] [DEBUG] GET /get_devices
+[2020-02-29 23:18:45 +0000] [88714] [DEBUG] GET /retrieveXml
+[2020-02-29 23:18:45 +0000] [88714] [DEBUG] GET /get_device_status
+[2020-02-29 23:19:19 +0000] [88716] [DEBUG] GET /
+[2020-02-29 23:19:20 +0000] [88716] [DEBUG] GET /get_devices
+[2020-02-29 23:19:20 +0000] [88716] [DEBUG] GET /retrieveXml
+[2020-02-29 23:19:20 +0000] [88716] [DEBUG] GET /get_device_status
+[2020-02-29 23:24:19 +0000] [88716] [DEBUG] GET /
+[2020-02-29 23:24:20 +0000] [88716] [DEBUG] GET /get_devices
+[2020-02-29 23:24:20 +0000] [88716] [DEBUG] GET /retrieveXml
+[2020-02-29 23:24:20 +0000] [88716] [DEBUG] GET /get_device_status
+[2020-02-29 23:24:33 +0000] [88716] [DEBUG] GET /home
+[2020-02-29 23:24:35 +0000] [88716] [DEBUG] GET /change_vm_state
+[2020-02-29 23:24:40 +0000] [88714] [DEBUG] GET /
+[2020-02-29 23:24:41 +0000] [88716] [DEBUG] GET /get_devices
+[2020-02-29 23:24:41 +0000] [88714] [DEBUG] GET /retrieveXml
+[2020-02-29 23:24:41 +0000] [88714] [DEBUG] GET /get_device_status
+[2020-02-29 23:24:43 +0000] [88714] [DEBUG] GET /change_vm_state
+[2020-02-29 23:24:46 +0000] [88718] [DEBUG] GET /
+[2020-02-29 23:24:47 +0000] [88714] [DEBUG] GET /get_devices
+[2020-02-29 23:24:47 +0000] [88718] [DEBUG] GET /retrieveXml
+[2020-02-29 23:24:47 +0000] [88718] [DEBUG] GET /get_device_status
+[2020-02-29 23:24:52 +0000] [88716] [DEBUG] GET /home
+[2020-02-29 23:24:53 +0000] [88714] [DEBUG] GET /home
+[2020-02-29 23:24:54 +0000] [88716] [DEBUG] GET /home
+[2020-02-29 23:25:03 +0000] [88716] [DEBUG] POST /post_device_form
+[2020-02-29 23:25:04 +0000] [88716] [DEBUG] GET /
+[2020-02-29 23:25:05 +0000] [88714] [DEBUG] GET /get_devices
+[2020-02-29 23:25:05 +0000] [88714] [DEBUG] GET /retrieveXml
+[2020-02-29 23:25:05 +0000] [88714] [DEBUG] GET /get_device_status
+[2020-02-29 23:25:05 +0000] [88714] [DEBUG] GET /get_device_status
+[2020-02-29 23:25:07 +0000] [88718] [DEBUG] GET /home
+[2020-02-29 23:25:14 +0000] [88716] [DEBUG] POST /post_device_form
+[2020-02-29 23:25:15 +0000] [88714] [DEBUG] GET /
+[2020-02-29 23:25:16 +0000] [88716] [DEBUG] GET /get_devices
+[2020-02-29 23:25:16 +0000] [88716] [DEBUG] GET /retrieveXml
+[2020-02-29 23:25:16 +0000] [88718] [DEBUG] GET /get_device_status
+[2020-02-29 23:25:16 +0000] [88718] [DEBUG] GET /get_device_status
+[2020-02-29 23:25:16 +0000] [88718] [DEBUG] GET /get_device_status
+[2020-02-29 23:25:17 +0000] [88716] [DEBUG] GET /home

@@ -205,7 +205,7 @@ function insertStatusLights(graph)
       style = `port;shape=image;image=${light};spacingLeft=18;`;
     }
     if(children){ // If the cell is a textbox, cable or anything that doesn't have a status light
-      children[0].setStyle(style);
+      graph.getModel().setStyle(children[0], style);
     }
     /*
     var status_light = graph.insertVertex(cell, null, '', 1, 0.15, 16, 16,
