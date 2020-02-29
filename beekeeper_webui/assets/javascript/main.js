@@ -197,13 +197,11 @@ function insertStatusLights(graph)
   var i = 0;
   for(i = 0; i < cells.length; i++){
     var cell = cells[i];
-    cell.remove(0) // removes the existing status light
+    children = cell.children;
     var id = cell.getId();
     var light = getStatusLight(id);
     style = `port;shape=image;image=${light}.svg;spacingLeft=18;`;
-    children = cell.getChildVertices(cell); // get the status light of the device
-    children[0].setStyle(style); // replace the existing status light for the device
-
+    children[0].setStyle(style);
     /*
     var status_light = graph.insertVertex(cell, null, '', 1, 0.15, 16, 16,
     style, true);
