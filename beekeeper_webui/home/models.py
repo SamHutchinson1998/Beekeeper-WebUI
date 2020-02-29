@@ -1,6 +1,7 @@
 from django.db import models
 from django import forms
 from secrets import token_urlsafe
+import uuid
 
 # Create your models here.
 
@@ -24,7 +25,7 @@ class VirtualMachine(models.Model):
   cpus = models.IntegerField()
   cell_id = models.IntegerField(default='0')
   disk_image = models.ForeignKey(DiskImage, on_delete=models.CASCADE)
-  token = models.CharField(max_length=22,default=token_urlsafe(16))
+  token = models.CharField(max_length=64,default=str(uuid.uuid4()) #token_urlsafe(16))
 
 
 class ImageForm(forms.ModelForm):

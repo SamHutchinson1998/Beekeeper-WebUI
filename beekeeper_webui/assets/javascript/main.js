@@ -204,7 +204,9 @@ function insertStatusLights(graph)
     if(light != null){
       var style = `port;shape=image;image=${light};spacingLeft=18;`;
     }
-    children[0].setStyle(style);
+    if(children){ // If the cell is a textbox, cable or anything that doesn't have a status light
+      children[0].setStyle(style);
+    }
     /*
     var status_light = graph.insertVertex(cell, null, '', 1, 0.15, 16, 16,
     style, true);

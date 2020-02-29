@@ -64,7 +64,7 @@ class HomePageView(TemplateView):
       print(request)
       disk_images = json.loads(serialize('json', DiskImage.objects.all()))
       return JsonResponse({"disk_images":disk_images}, status = 200)
- 
+  
   def create_device(request):
     next = request.POST.get('next', '/')
     if request.method == "POST":
