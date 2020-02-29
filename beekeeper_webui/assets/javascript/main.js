@@ -202,7 +202,7 @@ function insertStatusLights(graph)
     var light = getStatusLight(id);
     var style = ''
     if(light != null){
-      var style = `port;shape=image;image=${light}.svg;spacingLeft=18;`;
+      var style = `port;shape=image;image=${light};spacingLeft=18;`;
     }
     children[0].setStyle(style);
     /*
