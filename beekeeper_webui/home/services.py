@@ -162,7 +162,6 @@ def create_device_req(request):
     return update_request
 
 def get_vm_status(cell_id):
-  vm = VirtualMachine.objects.get(cell_id=cell_id).name
   vm = lookup_domain(cell_id)
   if vm is None:
     return 'status_unknown'
