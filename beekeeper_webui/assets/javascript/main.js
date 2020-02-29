@@ -198,8 +198,9 @@ function insertStatusLights(graph)
   cells = graph.getChildVertices(graph.getDefaultParent());
   var i = 0;
   for(i = 0; i < cells.length; i++){
-    cell = cells[i];
-    var light = getStatusLight(cell.getId());
+    var cell = cells[i];
+    var id = cell.getId();
+    var light = getStatusLight(id);
     style = `port;shape=image;image=${status_light};spacingLeft=18;`;
     var status_light = graph.insertVertex(cell, null, '', 1, 0.15, 16, 16,
     style, true);
@@ -209,6 +210,7 @@ function insertStatusLights(graph)
 
 function getStatusLight(cell_id)
 {
+  console.log(cell_id);
   var output = null;
   $.ajax({
     url: 'get_device_status',
@@ -217,5 +219,6 @@ function getStatusLight(cell_id)
       output = getVector(result['status']); // getVector is in sidebar.js
     }
   })
+  //console.log(output);
   return output
 }

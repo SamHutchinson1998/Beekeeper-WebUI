@@ -13278,3 +13278,238 @@
 [2020-02-27 00:34:46 +0000] [66880] [DEBUG] GET /load_device_vnc
 [2020-02-27 00:42:06 +0000] [66881] [DEBUG] GET /load_device_vnc
 [2020-02-27 00:43:11 +0000] [66877] [DEBUG] GET /load_device_vnc
+[2020-02-29 16:24:52 +0000] [78224] [DEBUG] Current configuration:
+  config: None
+  bind: ['unix:/run/gunicorn.sock']
+  backlog: 2048
+  workers: 3
+  worker_class: sync
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 600
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /home/529816/Beekeeper-WebUI/beekeeper_webui
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 33
+  group: 33
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: -
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: gunicorn_errors.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: beekeeper_webui.wsgi:application
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7fb135ca46a8>
+  on_reload: <function OnReload.on_reload at 0x7fb135ca47b8>
+  when_ready: <function WhenReady.when_ready at 0x7fb135ca48c8>
+  pre_fork: <function Prefork.pre_fork at 0x7fb135ca49d8>
+  post_fork: <function Postfork.post_fork at 0x7fb135ca4ae8>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7fb135ca4bf8>
+  worker_int: <function WorkerInt.worker_int at 0x7fb135ca4d08>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7fb135ca4e18>
+  pre_exec: <function PreExec.pre_exec at 0x7fb135ca4f28>
+  pre_request: <function PreRequest.pre_request at 0x7fb135cc00d0>
+  post_request: <function PostRequest.post_request at 0x7fb135cc0158>
+  child_exit: <function ChildExit.child_exit at 0x7fb135cc0268>
+  worker_exit: <function WorkerExit.worker_exit at 0x7fb135cc0378>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7fb135cc0488>
+  on_exit: <function OnExit.on_exit at 0x7fb135cc0598>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+[2020-02-29 16:24:52 +0000] [78224] [INFO] Starting gunicorn 20.0.4
+[2020-02-29 16:24:52 +0000] [78224] [DEBUG] Arbiter booted
+[2020-02-29 16:24:52 +0000] [78224] [INFO] Listening at: unix:/run/gunicorn.sock (78224)
+[2020-02-29 16:24:52 +0000] [78224] [INFO] Using worker: sync
+[2020-02-29 16:24:52 +0000] [78286] [INFO] Booting worker with pid: 78286
+[2020-02-29 16:24:52 +0000] [78288] [INFO] Booting worker with pid: 78288
+[2020-02-29 16:24:52 +0000] [78289] [INFO] Booting worker with pid: 78289
+[2020-02-29 16:24:52 +0000] [78224] [DEBUG] 3 workers
+[2020-02-29 16:24:53 +0000] [78224] [INFO] Handling signal: term
+[2020-02-29 16:24:53 +0000] [78286] [INFO] Worker exiting (pid: 78286)
+[2020-02-29 16:24:53 +0000] [78289] [INFO] Worker exiting (pid: 78289)
+[2020-02-29 16:24:53 +0000] [78288] [INFO] Worker exiting (pid: 78288)
+[2020-02-29 16:24:53 +0000] [78224] [INFO] Shutting down: Master
+[2020-02-29 16:24:54 +0000] [78309] [DEBUG] Current configuration:
+  config: None
+  bind: ['unix:/run/gunicorn.sock']
+  backlog: 2048
+  workers: 3
+  worker_class: sync
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 600
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /home/529816/Beekeeper-WebUI/beekeeper_webui
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 33
+  group: 33
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: -
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: gunicorn_errors.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: beekeeper_webui.wsgi:application
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7f80e87506a8>
+  on_reload: <function OnReload.on_reload at 0x7f80e87507b8>
+  when_ready: <function WhenReady.when_ready at 0x7f80e87508c8>
+  pre_fork: <function Prefork.pre_fork at 0x7f80e87509d8>
+  post_fork: <function Postfork.post_fork at 0x7f80e8750ae8>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7f80e8750bf8>
+  worker_int: <function WorkerInt.worker_int at 0x7f80e8750d08>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7f80e8750e18>
+  pre_exec: <function PreExec.pre_exec at 0x7f80e8750f28>
+  pre_request: <function PreRequest.pre_request at 0x7f80e876c0d0>
+  post_request: <function PostRequest.post_request at 0x7f80e876c158>
+  child_exit: <function ChildExit.child_exit at 0x7f80e876c268>
+  worker_exit: <function WorkerExit.worker_exit at 0x7f80e876c378>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7f80e876c488>
+  on_exit: <function OnExit.on_exit at 0x7f80e876c598>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+[2020-02-29 16:24:54 +0000] [78309] [INFO] Starting gunicorn 20.0.4
+[2020-02-29 16:24:54 +0000] [78309] [DEBUG] Arbiter booted
+[2020-02-29 16:24:54 +0000] [78309] [INFO] Listening at: unix:/run/gunicorn.sock (78309)
+[2020-02-29 16:24:54 +0000] [78309] [INFO] Using worker: sync
+[2020-02-29 16:24:54 +0000] [78354] [INFO] Booting worker with pid: 78354
+[2020-02-29 16:24:54 +0000] [78356] [INFO] Booting worker with pid: 78356
+[2020-02-29 16:24:54 +0000] [78359] [INFO] Booting worker with pid: 78359
+[2020-02-29 16:24:54 +0000] [78309] [DEBUG] 3 workers
+[2020-02-29 16:24:56 +0000] [78356] [DEBUG] GET /
+[2020-02-29 16:24:58 +0000] [78356] [DEBUG] GET /get_devices
+[2020-02-29 16:24:58 +0000] [78356] [DEBUG] GET /retrieveXml
+[2020-02-29 16:24:58 +0000] [78356] [DEBUG] GET /get_device_status
+[2020-02-29 16:24:58 +0000] [78354] [DEBUG] GET /undefined
+[2020-02-29 16:25:00 +0000] [78354] [DEBUG] GET /undefined
+[2020-02-29 16:25:21 +0000] [78354] [DEBUG] GET /
+[2020-02-29 16:25:22 +0000] [78359] [DEBUG] GET /get_devices
+[2020-02-29 16:25:22 +0000] [78359] [DEBUG] GET /retrieveXml
+[2020-02-29 16:25:22 +0000] [78359] [DEBUG] GET /get_device_status
+[2020-02-29 16:25:22 +0000] [78356] [DEBUG] GET /undefined
+[2020-02-29 16:26:37 +0000] [78359] [DEBUG] GET /home
+[2020-02-29 16:26:46 +0000] [78356] [DEBUG] POST /post_device_form
+[2020-02-29 16:26:47 +0000] [78356] [DEBUG] GET /
+[2020-02-29 16:26:47 +0000] [78356] [DEBUG] GET /get_devices
+[2020-02-29 16:26:47 +0000] [78356] [DEBUG] GET /retrieveXml
+[2020-02-29 16:26:47 +0000] [78354] [DEBUG] GET /get_device_status
+[2020-02-29 16:26:47 +0000] [78356] [DEBUG] GET /get_device_status
+[2020-02-29 16:26:47 +0000] [78354] [DEBUG] GET /undefined
+[2020-02-29 16:26:47 +0000] [78359] [DEBUG] GET /[object%20Object]
+[2020-02-29 16:27:44 +0000] [78354] [DEBUG] GET /undefined
+[2020-02-29 16:27:44 +0000] [78356] [DEBUG] GET /[object%20Object]
+[2020-02-29 16:27:45 +0000] [78356] [DEBUG] GET /home
+[2020-02-29 16:27:46 +0000] [78356] [DEBUG] GET /undefined
+[2020-02-29 16:27:46 +0000] [78356] [DEBUG] GET /home
+[2020-02-29 16:27:47 +0000] [78354] [DEBUG] GET /undefined
+[2020-02-29 16:27:47 +0000] [78356] [DEBUG] GET /[object%20Object]
+[2020-02-29 16:27:48 +0000] [78359] [DEBUG] GET /undefined
+[2020-02-29 16:27:48 +0000] [78356] [DEBUG] GET /[object%20Object]
+[2020-02-29 16:27:49 +0000] [78354] [DEBUG] GET /undefined
+[2020-02-29 16:27:49 +0000] [78356] [DEBUG] GET /[object%20Object]
+[2020-02-29 16:27:50 +0000] [78359] [DEBUG] GET /undefined
+[2020-02-29 16:27:50 +0000] [78356] [DEBUG] GET /[object%20Object]
+[2020-02-29 16:27:50 +0000] [78356] [DEBUG] GET /undefined
+[2020-02-29 16:27:50 +0000] [78359] [DEBUG] GET /[object%20Object]
+[2020-02-29 16:27:53 +0000] [78354] [DEBUG] GET /undefined
+[2020-02-29 16:27:53 +0000] [78359] [DEBUG] GET /[object%20Object]
+[2020-02-29 16:27:59 +0000] [78359] [DEBUG] GET /
+[2020-02-29 16:28:02 +0000] [78356] [DEBUG] GET /get_devices
+[2020-02-29 16:28:02 +0000] [78356] [DEBUG] GET /retrieveXml
+[2020-02-29 16:28:02 +0000] [78356] [DEBUG] GET /undefined
+[2020-02-29 16:28:02 +0000] [78356] [DEBUG] GET /[object%20Object]
+[2020-02-29 16:28:02 +0000] [78359] [DEBUG] GET /get_device_status
+[2020-02-29 16:28:02 +0000] [78354] [DEBUG] GET /get_device_status
+[2020-02-29 16:28:12 +0000] [78356] [DEBUG] GET /undefined
+[2020-02-29 16:28:12 +0000] [78356] [DEBUG] GET /[object%20Object]

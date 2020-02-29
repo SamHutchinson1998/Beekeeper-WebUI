@@ -114,6 +114,6 @@ class HomePageView(TemplateView):
     return render(request, 'vnc.html')
 
   def get_device_status(request):
-    cell_id = request.POST.get('cell_id',None)
-    status = get_vm_status(cell_id)
-    return JsonResponse({'status':status},status=200)
+    cell_id = request.GET.get('cell_id',None)
+    device_status = get_vm_status(cell_id)
+    return JsonResponse({'device_status':device_status},status=200)
