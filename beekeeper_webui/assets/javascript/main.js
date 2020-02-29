@@ -197,7 +197,7 @@ function insertStatusLights(graph)
 {
   cells = graph.getChildVertices(graph.getDefaultParent());
   var i = 0;
-  for(i = 0; i < cells; i++){
+  for(i = 0; i < cells.length; i++){
     cell = cells[i];
     var light = getStatusLight(cell.getId());
     style = `port;shape=image;image=${status_light};spacingLeft=18;`;
