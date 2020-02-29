@@ -216,7 +216,9 @@ function getStatusLight(cell_id)
     url: 'get_device_status',
     data: {'cell_id': cell_id},
     async: false,
+    dataType: "json",
     success: function(result){
+      console.log(result);
       var device_status = result['device_status'];
       output = getVector(device_status); // getVector is in sidebar.js
     }
