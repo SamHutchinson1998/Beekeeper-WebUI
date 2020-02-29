@@ -54,10 +54,10 @@ function main(container, sidebar)
     codec.decode(xml_string.documentElement, graph.getModel());
     keyBindings(graph);
     addMouseWheelZoom(graph)
-    insertStatusLights(graph);
     getDeviceMenu(graph);
     getLegend();
     graphListener(graph);
+    insertStatusLights(graph);
   }
 };
 
