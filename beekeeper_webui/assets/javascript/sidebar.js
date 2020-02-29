@@ -103,11 +103,11 @@ function getVector(device)
     case 'status_unknown':
       return `${filepath}status_unknown.svg`;
     case 'status_offline':
-      return `${filepath}status_offline`;
+      return `${filepath}status_offline.svg`;
     case 'status_suspended':
-      return `${filepath}status_suspended`;
+      return `${filepath}status_suspended.svg`;
     case 'status_online':
-      return `${filepath}status_online`;
+      return `${filepath}status_online.svg`;
     case "mlswitch":
     default:
       return `${filepath}computer.svg`;

@@ -8,7 +8,6 @@ import os
 def lookup_domain(cell_id):
   dom = None
   conn = libvirt.open('qemu:///system')
-  print(cell_id)
   try:
     vm_record = VirtualMachine.objects.get(cell_id=cell_id)
     dom = conn.lookupByName(vm_record.name)
