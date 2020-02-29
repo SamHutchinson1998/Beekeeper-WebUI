@@ -101,7 +101,7 @@ function addToolbarButton(toolbar, image, type, graph, editor)
       zoomButtons(button, 'zoomIn', editor);
       button.title = `${type}`;
     case 'refresh':
-      $('#graphBody').load(" #graphBody > *");
+      //$('#graphBody').load(" #graphBody > *");
     break;
   }
   toolbar.appendChild(button);
