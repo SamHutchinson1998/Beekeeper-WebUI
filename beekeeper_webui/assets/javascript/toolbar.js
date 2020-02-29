@@ -100,7 +100,7 @@ function addToolbarButton(toolbar, image, type, graph, editor)
       zoomButtons(button, 'zoomIn', editor);
       button.title = `${type}`;
     case 'refresh':
-      //$('#graphBody').load(" #graphBody > *");
+      refreshGraph(button);
     break;
   }
   toolbar.appendChild(button);
@@ -111,6 +111,13 @@ function zoomButtons(button, action, editor)
   mxEvent.addListener(button, 'click', function(evt){
     editor.execute(action);
   });
+}
+
+function refreshGraph(button)
+{
+  button.addEventListener("click", function(){
+    $('#graphBody').load(window.location.href + "#graphBody");
+  })
 }
 
 function startVirtualMachines(button, graph)
