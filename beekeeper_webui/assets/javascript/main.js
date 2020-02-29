@@ -172,7 +172,6 @@ function sendRequest(xml)
     url: "home",
     data: {'XML': xml},
     success: function(result){
-      console.log(result);
     }
   });
 }
@@ -189,7 +188,6 @@ function getXml()
       output = result["response"];
     }
   });
-  console.log(output)
   return output;
 }
 
@@ -202,19 +200,19 @@ function insertStatusLights(graph)
     cell.remove(0) // removes the existing status light
     var id = cell.getId();
     var light = getStatusLight(id);
-    cell.remove(0); // replace the existing status light for the device
-
     style = `port;shape=image;image=${light}.svg;spacingLeft=18;`;
+    cell.setStyle(style); // replace the existing status light for the device
 
+    /*
     var status_light = graph.insertVertex(cell, null, '', 1, 0.15, 16, 16,
     style, true);
     status_light.geometry.offset = new mxPoint(-8, -8);
+    */
   }
 }
 
 function getStatusLight(cell_id)
 {
-  console.log(cell_id);
   var output = null;
   $.ajax({
     url: 'get_device_status',
@@ -222,7 +220,6 @@ function getStatusLight(cell_id)
     async: false,
     dataType: "json",
     success: function(result){
-      console.log(result);
       var device_status = result['device_status'];
       output = getVector(device_status); // getVector is in sidebar.js
     }
