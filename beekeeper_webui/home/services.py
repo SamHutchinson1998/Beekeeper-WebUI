@@ -11,8 +11,11 @@ def lookup_domain(cell_id):
   print(cell_id)
   try:
     vm_record = VirtualMachine.objects.get(cell_id=cell_id)
-    dom = conn.lookupByName(vm_record.name)    
-  conn.close()
+    dom = conn.lookupByName(vm_record.name)
+  except:
+    dom = None
+  finally:
+    conn.close()
   return dom
 
 # Can still be useful for another day, maybe when a user decides to VNC into a VM? 
