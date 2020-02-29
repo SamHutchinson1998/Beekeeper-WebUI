@@ -29,7 +29,7 @@ function hideSidebarChildNodes(children, value)
 function addSidebarIcon(sidebar, graph, disk_image, image_id)
 {
   var image = getVector(disk_image);
-  var funct = function(graph, evt, cable, x, y)
+  var funct = function(graph, evt, cell, x, y)
   {
     var parent = graph.getDefaultParent();
     var model = graph.getModel();
@@ -86,21 +86,31 @@ function addSidebarIcon(sidebar, graph, disk_image, image_id)
   ds.setGuidesEnabled(true);
 }
 
+
 function getVector(device)
 {
+  var filepath = '../static/devices/';
   switch(device.devicetype)
   {
     case "pc":
-      return '../static/devices/computer.svg';
+      return `${filepath}computer.svg`;
     case "switch":
-      return '../static/devices/switch.svg';
+      return `${filepath}switch.svg`;
     case "router":
-      return '../static/devices/router.svg';
+      return `${filepath}router.svg`;
     case 'server':
-      return '../static/devices/server.svg';
+      return `${filepath}server.svg`;
+    case 'status_unknown':
+      return `${filepath}status_unknown.svg`;
+    case 'status_offline':
+      return `${filepath}status_offline`;
+    case 'status_suspended':
+      return `${filepath}status_suspended`;
+    case 'status_online':
+      return `${filepath}status_online`;
     case "mlswitch":
     default:
-      return '../static/devices/computer.svg';
+      return `${filepath}computer.svg`;
   }
 }
 

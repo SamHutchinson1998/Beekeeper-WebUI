@@ -54,33 +54,37 @@ function main(container, sidebar)
     codec.decode(xml_string.documentElement, graph.getModel());
     keyBindings(graph);
     addMouseWheelZoom(graph)
+    insertStatusLights(graph);
     getDeviceMenu(graph);
-
-    var legend = document.createElement('div');
-    legend.style.position = 'absolute';
-    legend.style.overflow = 'hidden';
-    legend.style.width = '230px';
-    legend.style.bottom = '56px';
-    legend.style.height = '130px';
-    legend.style.right = '20px';
-    
-    legend.style.background = 'black';
-    legend.style.color = 'white';
-    legend.style.fontSize = '10px';
-    legend.style.padding = '4px';
-
-    mxUtils.setOpacity(legend, 50);
-    
-    mxUtils.writeln(legend, '- Drag an image from the sidebar to the canvas to create a device');
-    mxUtils.writeln(legend, '- Drag an ethernet cable/textbox from the toolbar to the canvas');
-    mxUtils.writeln(legend, '- Rightclick and drag on canvas for panning');
-    mxUtils.writeln(legend, '- Rightclick on selected device for device-specific options');
-    mxUtils.writeln(legend, '- Click and drag a device to move and connect');
-    document.body.appendChild(legend);
-
+    getLegend();
     graphListener(graph);
   }
 };
+
+function getLegend()
+{
+  var legend = document.createElement('div');
+  legend.style.position = 'absolute';
+  legend.style.overflow = 'hidden';
+  legend.style.width = '230px';
+  legend.style.bottom = '56px';
+  legend.style.height = '130px';
+  legend.style.right = '20px';
+  
+  legend.style.background = 'black';
+  legend.style.color = 'white';
+  legend.style.fontSize = '10px';
+  legend.style.padding = '4px';
+
+  mxUtils.setOpacity(legend, 50);
+  
+  mxUtils.writeln(legend, '- Drag an image from the sidebar to the canvas to create a device');
+  mxUtils.writeln(legend, '- Drag an ethernet cable/textbox from the toolbar to the canvas');
+  mxUtils.writeln(legend, '- Rightclick and drag on canvas for panning');
+  mxUtils.writeln(legend, '- Rightclick on selected device for device-specific options');
+  mxUtils.writeln(legend, '- Click and drag a device to move and connect');
+  document.body.appendChild(legend);
+}
 
 function addMouseWheelZoom(graph)
 {
@@ -187,4 +191,31 @@ function getXml()
   });
   console.log(output)
   return output;
+}
+
+function insertStatusLights(graph)
+{
+  cells = graph.getChildVertices(graph.getDefaultParent());
+  var i = 0;
+  for(i = 0; i < cells; i++){
+    cell = cells[i];
+    var light = getStatusLight(cell.getId());
+    style = `port;shape=image;image=${status_light};spacingLeft=18;`;
+    var status_light = graph.insertVertex(cell, null, '', 1, 0.15, 16, 16,
+    style, true);
+    status_light.geometry.offset = new mxPoint(-8, -8);
+  }
+}
+
+function getStatusLight(cell_id)
+{
+  var output = null;
+  $.ajax({
+    url: 'get_device_status',
+    data: {'cell_id': cell_id},
+    success: function(result){
+      output = getVector(result['status']); // getVector is in sidebar.js
+    }
+  })
+  return output
 }

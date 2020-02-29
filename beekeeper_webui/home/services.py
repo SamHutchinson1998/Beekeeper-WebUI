@@ -154,10 +154,20 @@ def turn_on_devices(devices):
         dom.create()
   conn.close()
 
-
 def create_device_req(request):
   if request.method == 'POST':
     update_request = request.POST.copy()
     name = update_request['name'].replace(" ", '_') # ensure spaces in the name are replaced with underscores
     update_request.update({'name':name})
     return update_request
+
+def get_vm_status(cell_id):
+  vm = VirtualMachine.objects.get(cell_id=cell_id).name
+  vm = lookup_domain(cell_id)
+  if vm is None:
+    return 'status_unknown'
+  else:
+    if vm.isActive():
+      return 'status_online'
+    if vm.isActive() < 1:
+      return 'status_offline'
