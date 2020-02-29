@@ -45,7 +45,7 @@ function addSidebarIcon(sidebar, graph, disk_image, image_id)
       device.setAttribute('type', 'vertex'); // Not working!
 
       var status_light = graph.insertVertex(device, null, '', 1, 0.15, 16, 16,
-        'port;image=../static/devices/status_unknown.svg;spacingLeft=18', true);
+        'port;shape=image;image=../static/devices/status_unknown.svg;spacingLeft=18', true);
       status_light.geometry.offset = new mxPoint(-8, -8);
     }
     finally
