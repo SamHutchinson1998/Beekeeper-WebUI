@@ -25,6 +25,7 @@ function addToolbarItem(toolbar, graph, tool, tooltype)
       switch(tooltype)
       {
         case 'textbox':
+          var doc = mxUtils.createXmlDocument();
           var node = doc.createElement('textbox');
           node.setAttribute('label', 'Text Here');
           node.setAttribute('type', 'textbox');

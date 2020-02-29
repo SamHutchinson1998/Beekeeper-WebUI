@@ -40,6 +40,7 @@ function addSidebarIcon(sidebar, graph, disk_image, image_id)
     model.beginUpdate();
     try
     {
+      var doc = mxUtils.createXmlDocument();
       var node = doc.createElement('vertex');
       node.setAttribute('label', disk_image.name);
       node.setAttribute('type', 'device');
@@ -47,6 +48,7 @@ function addSidebarIcon(sidebar, graph, disk_image, image_id)
       device = graph.insertVertex(parent, null, node, x, y, 100, 100, stylesheet);
       device.setConnectable(true);
 
+      var doc = mxUtils.createXmlDocument();
       var node = doc.createElement('statuslight');
       node.setAttribute('label', '');
       node.setAttribute('type', 'status_light');
