@@ -25,12 +25,15 @@ function addToolbarItem(toolbar, graph, tool, tooltype)
       switch(tooltype)
       {
         case 'textbox':
+          var node = doc.createElement('textbox');
+          node.setAttribute('label', 'Text Here');
+          node.setAttribute('type', 'textbox');
+    
           style = `verticalLabelPosition=center;verticalAlign=center;` +
             `fontFamily=helvetica;fontStyle=1;fontColor=black;fontSize=20;` +
             `strokeColor=none;fillColor=none;`;
-          cell = graph.insertVertex(parent, null, 'Text Here', x, y, 120, 30, style);
+          cell = graph.insertVertex(parent, null, node, x, y, 120, 30, style);
           cell.setConnectable(false);
-          cell.setAttribute('type', 'textbox'); // Not working!
         break;
         case 'cable':
           style = `strokeWidth=6;strokeColor=black;endArrow=none;html=1;`;

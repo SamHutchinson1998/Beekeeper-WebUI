@@ -14,6 +14,7 @@ function getDeviceMenu(graph)
           alert('Deploy');
         });
       }
+      if(cell.getAttribute('type', '') != 'status_light')
       menu.addItem('Delete', null, function(){
         removeDevices(graph);
       });

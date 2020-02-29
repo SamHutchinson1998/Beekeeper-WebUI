@@ -202,10 +202,17 @@ function insertStatusLights(graph)
     cell.remove(0) // removes the existing status light
     var id = cell.getId();
     var light = getStatusLight(id);
+    status_light = cell.getChildAt(0); // status light for the device
+    style = `port;shape=image;image=${light}.svg;spacingLeft=18;`;
+    status_light.setStyle(style);
+
+    /*
+
     style = `port;shape=image;image=${light}.svg;spacingLeft=18;`;
     var status_light = graph.insertVertex(cell, null, '', 1, 0.15, 16, 16,
     style, true);
     status_light.geometry.offset = new mxPoint(-8, -8);
+    */
   }
 }
 
