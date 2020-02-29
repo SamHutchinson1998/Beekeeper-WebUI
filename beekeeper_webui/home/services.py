@@ -6,13 +6,12 @@ from django.conf import settings
 import os
 
 def lookup_domain(cell_id):
+  dom = None
   conn = libvirt.open('qemu:///system')
   print(cell_id)
-  vm_record = VirtualMachine.objects.get(cell_id=cell_id)
-  if vm_record is not None:
-    dom = conn.lookupByName(vm_record.name)
-  else:
-    dom = None
+  try:
+    vm_record = VirtualMachine.objects.get(cell_id=cell_id)
+    dom = conn.lookupByName(vm_record.name)    
   conn.close()
   return dom
 
