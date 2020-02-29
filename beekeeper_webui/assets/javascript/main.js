@@ -199,6 +199,7 @@ function insertStatusLights(graph)
   var i = 0;
   for(i = 0; i < cells.length; i++){
     var cell = cells[i];
+    cell.remove(0) // removes the existing status light
     var id = cell.getId();
     var light = getStatusLight(id);
     style = `port;shape=image;image=${light}.svg;spacingLeft=18;`;

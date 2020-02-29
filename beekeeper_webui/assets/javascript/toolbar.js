@@ -3,6 +3,7 @@ function populateToolbar(editor, graph)
   var toolbar = document.getElementById('toolbarContainer');
   addToolbarItem(toolbar, graph, '../static/devices/ethernet_cable.svg', 'cable');
   addToolbarItem(toolbar, graph, '../static/devices/Label.svg', 'textbox');
+  addToolbarButton(toolbar, '../static/devices/refresh.svg', 'refresh')
   addToolbarButton(toolbar, '../static/devices/start_button.svg', 'start', graph, editor);
   addToolbarButton(toolbar, '../static/devices/stop_button.svg', 'stop', graph, editor);
   addToolbarButton(toolbar, '../static/devices/zoom_in.svg', 'Zoom In', graph, editor);
@@ -89,7 +90,6 @@ function addToolbarButton(toolbar, image, type, graph, editor)
       startVirtualMachines(button, graph);
       button.title = `${type} selected/all devices`;
     break;
-    break;
     case 'stop':
       stopVirtualMachines(button, graph);
       button.title = `${type} selected/all devices`;
@@ -100,6 +100,8 @@ function addToolbarButton(toolbar, image, type, graph, editor)
     case 'Zoom In':
       zoomButtons(button, 'zoomIn', editor);
       button.title = `${type}`;
+    case 'refresh':
+      $('#graphBody').load(" #graphBody > *");
     break;
   }
   toolbar.appendChild(button);
