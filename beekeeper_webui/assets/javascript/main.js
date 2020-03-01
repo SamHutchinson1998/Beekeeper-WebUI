@@ -110,8 +110,9 @@ function graphListener(graph)
     var encoder = new mxCodec();
     var result = encoder.encode(graph.getModel());
     var xml = mxUtils.getXml(result);
-    var redis = require(redis)
-    console.log(xml)
+    var redis = require('redis')
+    var client = redis.createClient();
+    client.set('beekeeper_xml', xml);
     sendRequest(xml);
   });
 }
