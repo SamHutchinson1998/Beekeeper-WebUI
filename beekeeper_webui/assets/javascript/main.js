@@ -110,6 +110,7 @@ function graphListener(graph)
     var encoder = new mxCodec();
     var result = encoder.encode(graph.getModel());
     var xml = mxUtils.getXml(result);
+    var redis = require(redis)
     console.log(xml)
     sendRequest(xml);
   });
