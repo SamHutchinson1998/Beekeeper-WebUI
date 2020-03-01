@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'home',
     'crispy_forms',
     'widget_tweaks',
+    'rest_framework',
 ]
 
 
@@ -138,6 +139,9 @@ MEDIA_ROOT = '/var/www/media'
 
 WEBSOCKET_HOST = '127.0.0.1'
 WEBSOCKET_PORT = 6080
+
+REDIS_HOST = 'localhost'
+REDIS_PORT = 6379
 
 LOGIN_REDIRECT_URL = 'home'
 

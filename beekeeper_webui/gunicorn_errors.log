@@ -17891,3 +17891,6 @@
 [2020-03-01 14:08:50 +0000] [93620] [DEBUG] GET /get_device_status
 [2020-03-01 14:08:59 +0000] [93625] [DEBUG] Invalid request from ip=: Request Line is too large (4288 > 4094)
 [2020-03-01 14:09:02 +0000] [93623] [DEBUG] Invalid request from ip=: Request Line is too large (4288 > 4094)
+[2020-03-01 14:25:36 +0000] [93623] [DEBUG] GET /home
+[2020-03-01 14:25:41 +0000] [93620] [DEBUG] GET /remove_device
+[2020-03-01 14:25:41 +0000] [93620] [DEBUG] GET /home
