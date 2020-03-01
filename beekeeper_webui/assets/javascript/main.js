@@ -175,7 +175,7 @@ function sendRequest(xml)
   $.ajax({
     url: "home",
     async: false,
-    data: {'key': 'beekeeper_xml'},
+    data: {'XML': xml},
     success: function(result){
       console.log(result)
     }
@@ -184,14 +184,17 @@ function sendRequest(xml)
 
 function getXml()
 {
+  var output = "";
   $.ajax({
-    url: "retrieveXml", // get graph XML from redis through a light nodeJS server
+    url: "retrieveXml",
+    async: false,
+    dataType: "json",
     contentType: "text/xml",
-    data: {'key': 'beekeeper_xml'},
     success: function(result){
-      console.log(result);
+      output = result["response"];
     }
   });
+  return output;
 }
 
 function insertStatusLights(graph)

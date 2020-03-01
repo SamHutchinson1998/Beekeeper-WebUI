@@ -41,25 +41,16 @@ class HomePageView(TemplateView):
       return HttpResponseRedirect(next)
 
   def retrieveXml(request):
-    r = requests.get('http://localhost:3000/get')
-    print(r)
     if request.is_ajax and request.method == "GET":
-      xml_key = request.GET.get('key', None)
-      redis_instance = redis.StrictRedis(host=settings.REDIS_HOST, port=settings.REDIS_PORT, db=0)
       xml_file_path = os.path.join(settings.STATIC_ROOT, 'graph.xml')
-      #xml_file = open(settings.GRAPH_FILE, "r")
       xml_file = open(xml_file_path, 'r')
       xml_string = xml_file.read()
       xml_file.close()
-      redis_instance.set(xml_key, xml_string)
-      return JsonResponse({"saved":True}, status = 200)
+      return JsonResponse({"response":xml_string}, status = 200)
 
   def saveXml(request):
     if request.is_ajax and request.method == "GET":
-      xml_key = request.GET.get('key', None)
-      redis_instance = redis.StrictRedis(host=settings.REDIS_HOST, port=settings.REDIS_PORT, db=0)
-      xml_string = redis_instance.get(xml_key)
-      #xml_string = request.GET.get("XML", None)
+      xml_string = request.GET.get("XML", None)
       xml_file_path = os.path.join(settings.STATIC_ROOT, 'graph.xml')
       xml_file = open(xml_file_path, 'w')
       xml_file.write(xml_string)
