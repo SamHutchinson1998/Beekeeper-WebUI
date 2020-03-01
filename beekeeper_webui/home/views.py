@@ -10,6 +10,7 @@ from .models import ImageForm, DiskImage, VirtualMachine, VirtualMachineForm
 from urllib.parse import urlencode
 import os
 import json
+import redis
 
 # Create your views here.
 
@@ -41,23 +42,28 @@ class HomePageView(TemplateView):
 
   def retrieveXml(request):
     if request.is_ajax and request.method == "GET":
+      xml_key = request.GET.get('key', None)
+      redis_instance = redis.StrictRedis(host=settings.REDIS_HOST, port=settings.REDIS_PORT. db=0)
       xml_file_path = os.path.join(settings.STATIC_ROOT, 'graph.xml')
       #xml_file = open(settings.GRAPH_FILE, "r")
       xml_file = open(xml_file_path, 'r')
       xml_string = xml_file.read()
       xml_file.close()
-      return JsonResponse({"response":xml_string}, status = 200)
+      redis_instance.set(xml_key, xml_string)
+      return JsonResponse({"saved":True}, status = 200)
 
   def saveXml(request):
     if request.is_ajax and request.method == "GET":
-      xml_string = request.GET.get("XML", None)
+      xml_key = request.GET.get('key', None)
+      redis_instance = redis.StrictRedis(host=settings.REDIS_HOST, port=settings.REDIS_PORT. db=0)
+      xml_string = redis_instance.get(xml_key)
+      #xml_string = request.GET.get("XML", None)
       xml_file_path = os.path.join(settings.STATIC_ROOT, 'graph.xml')
-      #xml_file = open("graph.xml", "w")
       xml_file = open(xml_file_path, 'w')
       xml_file.write(xml_string)
       xml_file.close()
-      return JsonResponse({"valid":True}, status = 200)
-    return JsonResponse({"valid":False}, status = 200)
+      return JsonResponse({"saved":True}, status = 200)
+    return JsonResponse({"saved":False}, status = 200)
 
   def get_devices(request):
     if request.is_ajax and request.method == "GET":

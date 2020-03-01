@@ -174,7 +174,7 @@ function sendRequest(xml)
   $.ajax({
     url: "home",
     async: false,
-    data: {'XML': xml},
+    data: {'key': 'beekeeper_xml'},
     success: function(result){
       console.log(result)
     }
@@ -187,6 +187,7 @@ function getXml()
   $.ajax({
     url: "retrieveXml",
     async: false,
+    data: {'key': 'beekeeper_xml'},
     dataType: "json",
     contentType: "text/xml",
     success: function(result){
