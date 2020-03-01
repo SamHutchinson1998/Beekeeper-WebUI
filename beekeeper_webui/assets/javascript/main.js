@@ -110,6 +110,7 @@ function graphListener(graph)
     var encoder = new mxCodec();
     var result = encoder.encode(graph.getModel());
     var xml = mxUtils.getXml(result);
+    console.log(xml)
     sendRequest(xml);
   });
 }
@@ -130,7 +131,9 @@ function removeDevices(graph)
     var selected_cells = graph.getSelectionCells();
     for(i = 0; i < selected_cells.length; i++){
       cell_id = selected_cells[i].getId();
-      removeDevice(cell_id);
+      if(selected_cells[i].isVertex()){
+        removeDevice(cell_id);
+      }
     }
     graph.removeCells();
   }
@@ -170,8 +173,10 @@ function sendRequest(xml)
 {
   $.ajax({
     url: "home",
+    async: false,
     data: {'XML': xml},
     success: function(result){
+      console.log(result)
     }
   });
 }

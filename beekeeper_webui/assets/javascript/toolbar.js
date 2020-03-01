@@ -32,13 +32,12 @@ function addToolbarItem(toolbar, graph, tool, tooltype)
           cell.setConnectable(false);
         break;
         case 'cable':
-          style = `strokeWidth=6;strokeColor=black;endArrow=none;html=1;`;
+          style = `strokeWidth=5;strokeColor=black;endArrow=none;html=1;`;
           cell = new mxCell('Test Cable', new mxGeometry(0, 0, 150, 150), style); // last two values are height and width respectively
           cell.geometry.setTerminalPoint(new mxPoint(0, 170), true); // source point
           cell.geometry.setTerminalPoint(new mxPoint(180, 0), false); // target point
           cell.geometry.relative = true;
           cell.edge = true;
-          cell.setAttribute('type', 'cable'); // Not working!
           graph.importCells([cell], x, y, parent);
         break;
         default:
