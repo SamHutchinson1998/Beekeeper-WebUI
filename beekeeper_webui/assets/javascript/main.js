@@ -1,6 +1,9 @@
 // Program starts here. Creates a sample graph in the
 // DOM node with the specified ID. This function is invoked
 // from the onLoad event handler of the document (see below).
+
+var redis = require('redis');
+
 function main(container, sidebar)
 {
   // Checks if the browser is supported
@@ -44,10 +47,13 @@ function main(container, sidebar)
       return !this.isCellLocked(cable);
     };
 
+    getXml();
     // Gets the default parent for inserting new cells. This
     // is normally the first child of the root (ie. layer 0).
     var parent = graph.getDefaultParent();
-    var string = getXml();
+    var client = redis.createClient();
+    var string = client.get('beekeeper_xml');
+    console.log(string);
     //console.log(string);
     var xml_string = mxUtils.parseXml(string);
     var codec = new mxCodec(xml_string);
@@ -110,7 +116,6 @@ function graphListener(graph)
     var encoder = new mxCodec();
     var result = encoder.encode(graph.getModel());
     var xml = mxUtils.getXml(result);
-    var redis = require('redis')
     var client = redis.createClient();
     client.set('beekeeper_xml', xml);
     sendRequest(xml);
@@ -185,18 +190,13 @@ function sendRequest(xml)
 
 function getXml()
 {
-  var output = "";
   $.ajax({
     url: "retrieveXml",
-    async: false,
     data: {'key': 'beekeeper_xml'},
-    dataType: "json",
     contentType: "text/xml",
     success: function(result){
-      output = result["response"];
     }
   });
-  return output;
 }
 
 function insertStatusLights(graph)

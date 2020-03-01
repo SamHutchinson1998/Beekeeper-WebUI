@@ -43,7 +43,7 @@ class HomePageView(TemplateView):
   def retrieveXml(request):
     if request.is_ajax and request.method == "GET":
       xml_key = request.GET.get('key', None)
-      redis_instance = redis.StrictRedis(host=settings.REDIS_HOST, port=settings.REDIS_PORT. db=0)
+      redis_instance = redis.StrictRedis(host=settings.REDIS_HOST, port=settings.REDIS_PORT, db=0)
       xml_file_path = os.path.join(settings.STATIC_ROOT, 'graph.xml')
       #xml_file = open(settings.GRAPH_FILE, "r")
       xml_file = open(xml_file_path, 'r')
@@ -55,7 +55,7 @@ class HomePageView(TemplateView):
   def saveXml(request):
     if request.is_ajax and request.method == "GET":
       xml_key = request.GET.get('key', None)
-      redis_instance = redis.StrictRedis(host=settings.REDIS_HOST, port=settings.REDIS_PORT. db=0)
+      redis_instance = redis.StrictRedis(host=settings.REDIS_HOST, port=settings.REDIS_PORT, db=0)
       xml_string = redis_instance.get(xml_key)
       #xml_string = request.GET.get("XML", None)
       xml_file_path = os.path.join(settings.STATIC_ROOT, 'graph.xml')
