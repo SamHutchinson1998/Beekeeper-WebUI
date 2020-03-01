@@ -1,5 +1,13 @@
-var http = require('http');
+// nodeJS libraries
+var express = require('express');
+var redis = require('redis');
 
-http.createServer(function (req, res) {
+var client = redis.createClient();
+var app = express();
 
-}).listen(3000);
+app.get('/get', function(req, res){
+  var xml_string = client.get('beekeeper_xml')
+  res.json({xml:xml_string})
+});
+
+app.listen(3000);
