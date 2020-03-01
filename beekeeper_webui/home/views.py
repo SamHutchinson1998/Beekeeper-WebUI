@@ -41,6 +41,8 @@ class HomePageView(TemplateView):
       return HttpResponseRedirect(next)
 
   def retrieveXml(request):
+    r = requests.get('http://localhost:3000/get')
+    print(r)
     if request.is_ajax and request.method == "GET":
       xml_key = request.GET.get('key', None)
       redis_instance = redis.StrictRedis(host=settings.REDIS_HOST, port=settings.REDIS_PORT, db=0)

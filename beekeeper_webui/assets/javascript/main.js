@@ -2,8 +2,6 @@
 // DOM node with the specified ID. This function is invoked
 // from the onLoad event handler of the document (see below).
 
-var redis = require('redis');
-
 function main(container, sidebar)
 {
   // Checks if the browser is supported
@@ -47,14 +45,10 @@ function main(container, sidebar)
       return !this.isCellLocked(cable);
     };
 
-    getXml();
+    var string = getXml();
     // Gets the default parent for inserting new cells. This
     // is normally the first child of the root (ie. layer 0).
     var parent = graph.getDefaultParent();
-    var client = redis.createClient();
-    var string = client.get('beekeeper_xml');
-    console.log(string);
-    //console.log(string);
     var xml_string = mxUtils.parseXml(string);
     var codec = new mxCodec(xml_string);
     codec.decode(xml_string.documentElement, graph.getModel());
@@ -191,10 +185,11 @@ function sendRequest(xml)
 function getXml()
 {
   $.ajax({
-    url: "retrieveXml",
-    data: {'key': 'beekeeper_xml'},
+    url: "retrieveXml", // get graph XML from redis through a light nodeJS server
     contentType: "text/xml",
+    data: {'key': 'beekeeper_xml'},
     success: function(result){
+      console.log(result);
     }
   });
 }
