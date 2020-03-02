@@ -61,6 +61,36 @@ function main(container, sidebar)
   }
 };
 
+// displayGraph gets called when the user clicks the refresh button
+function displayGraph()
+{
+  var container = document.getElementById('graphContainer')
+  var editor = new mxEditor();
+  //var graph = new mxGraph(container);
+  var graph = editor.graph;
+  editor.setGraphContainer(container);
+  graph.setDropEnabled(false);
+    graph.vertexLabelsMovable = true;
+    graph.isCellSelectable = function(cable)
+    {
+      return !this.isCellLocked(cable);
+    };
+    var string = getXml();
+    // Gets the default parent for inserting new cells. This
+    // is normally the first child of the root (ie. layer 0).
+    var parent = graph.getDefaultParent();
+    var xml_string = mxUtils.parseXml(string);
+    var codec = new mxCodec(xml_string);
+    codec.decode(xml_string.documentElement, graph.getModel());
+    keyBindings(graph);
+    addMouseWheelZoom(graph)
+    getDeviceMenu(graph);
+    getLegend();
+    insertStatusLights(graph);
+    graphListener(graph);
+}
+
+
 function getLegend()
 {
   var legend = document.createElement('div');
