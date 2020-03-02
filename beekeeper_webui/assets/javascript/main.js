@@ -58,9 +58,11 @@ function main(container, sidebar)
     getLegend();
     insertStatusLights(graph);
     graphListener(graph);
+    window.setInterval(function(){
+      displayGraph();
+    }, 1000); // update the graph every second
   }
 };
-
 // displayGraph gets called when the user clicks the refresh button
 function displayGraph()
 {
@@ -82,12 +84,8 @@ function displayGraph()
     var xml_string = mxUtils.parseXml(string);
     var codec = new mxCodec(xml_string);
     codec.decode(xml_string.documentElement, graph.getModel());
-    keyBindings(graph);
-    addMouseWheelZoom(graph)
     getDeviceMenu(graph);
-    getLegend();
     insertStatusLights(graph);
-    graphListener(graph);
 }
 
 

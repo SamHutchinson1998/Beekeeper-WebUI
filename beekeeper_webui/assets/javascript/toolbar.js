@@ -5,7 +5,7 @@ function populateToolbar(editor, graph)
   addToolbarItem(toolbar, graph, '../static/devices/Label.svg', 'textbox');
   addToolbarButton(toolbar, '../static/devices/start_button.svg', 'start', graph, editor);
   addToolbarButton(toolbar, '../static/devices/stop_button.svg', 'stop', graph, editor);
-  addToolbarButton(toolbar, '../static/devices/refresh.svg', 'refresh');
+  //addToolbarButton(toolbar, '../static/devices/refresh.svg', 'refresh');
   addToolbarButton(toolbar, '../static/devices/zoom_in.svg', 'Zoom In', graph, editor);
   addToolbarButton(toolbar, '../static/devices/zoom_out.svg', 'Zoom Out', graph, editor);
 
@@ -119,7 +119,7 @@ function refreshGraph(button)
     //$("#graphBody").load('reload_body');
     //$('#graphBody').load(window.location.href + "#graphBody");
     //main(document.getElementById('graphContainer'), document.getElementById('sidebarContainer'));
-  })
+  });
 }
 
 function startVirtualMachines(button, graph)
