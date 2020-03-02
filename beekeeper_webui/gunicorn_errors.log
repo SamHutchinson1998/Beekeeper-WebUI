@@ -25020,3 +25020,15 @@ ModuleNotFoundError: No module named 'corsheaders'
 [2020-03-02 13:35:02 +0000] [105714] [DEBUG] GET /get_device_status
 [2020-03-02 13:35:02 +0000] [105709] [DEBUG] GET /get_device_status
 [2020-03-02 13:35:13 +0000] [105709] [DEBUG] GET /get_device_vnc
+[2020-03-02 14:11:01 +0000] [105703] [DEBUG] GET /
+[2020-03-02 14:15:36 +0000] [105709] [DEBUG] GET /
+[2020-03-02 14:16:16 +0000] [105703] [DEBUG] GET /
+[2020-03-02 14:16:43 +0000] [105714] [DEBUG] GET /
+[2020-03-02 14:16:45 +0000] [105709] [DEBUG] GET /get_devices
+[2020-03-02 14:16:45 +0000] [105709] [DEBUG] GET /retrieveXml
+[2020-03-02 14:16:45 +0000] [105709] [DEBUG] GET /get_device_status
+[2020-03-02 14:16:45 +0000] [105714] [DEBUG] GET /get_device_status
+[2020-03-02 14:16:45 +0000] [105714] [DEBUG] GET /get_device_status
+[2020-03-02 14:16:45 +0000] [105709] [DEBUG] GET /get_device_status
+[2020-03-02 14:16:45 +0000] [105714] [DEBUG] GET /get_device_status
+[2020-03-02 14:16:45 +0000] [105703] [DEBUG] GET /get_device_status
