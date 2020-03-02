@@ -25,7 +25,7 @@
 </head>
 {% if user.is_authenticated %}
 <body id="graphBody" onload="main(document.getElementById('graphContainer'), document.getElementById('sidebarContainer'))">
-  {% _body.html %}
+  {% include _body.html %}
 </body>
 {% else %}
   {% include 'logout.html' %}
