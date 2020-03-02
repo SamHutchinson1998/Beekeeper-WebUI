@@ -24500,3 +24500,523 @@ ModuleNotFoundError: No module named 'corsheaders'
 [2020-03-01 20:52:42 +0000] [103149] [DEBUG] GET /get_devices
 [2020-03-01 20:53:03 +0000] [103142] [DEBUG] GET /
 [2020-03-01 20:53:04 +0000] [103147] [DEBUG] GET /get_devices
+[2020-03-01 21:15:51 +0000] [103147] [INFO] Worker exiting (pid: 103147)
+[2020-03-01 21:15:51 +0000] [103142] [INFO] Worker exiting (pid: 103142)
+[2020-03-01 21:15:51 +0000] [103062] [INFO] Handling signal: term
+[2020-03-01 21:15:51 +0000] [103149] [INFO] Worker exiting (pid: 103149)
+[2020-03-01 21:15:51 +0000] [103062] [INFO] Shutting down: Master
+[2020-03-01 21:15:51 +0000] [103262] [DEBUG] Current configuration:
+  config: None
+  bind: ['unix:/run/gunicorn.sock']
+  backlog: 2048
+  workers: 3
+  worker_class: sync
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 600
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 0
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /home/529816/Beekeeper-WebUI/beekeeper_webui
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 33
+  group: 33
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: -
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: gunicorn_errors.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: beekeeper_webui.wsgi:application
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7fa8a44f7730>
+  on_reload: <function OnReload.on_reload at 0x7fa8a44f7840>
+  when_ready: <function WhenReady.when_ready at 0x7fa8a44f7950>
+  pre_fork: <function Prefork.pre_fork at 0x7fa8a44f7a60>
+  post_fork: <function Postfork.post_fork at 0x7fa8a44f7b70>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7fa8a44f7c80>
+  worker_int: <function WorkerInt.worker_int at 0x7fa8a44f7d90>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7fa8a44f7ea0>
+  pre_exec: <function PreExec.pre_exec at 0x7fa8a4514048>
+  pre_request: <function PreRequest.pre_request at 0x7fa8a4514158>
+  post_request: <function PostRequest.post_request at 0x7fa8a45141e0>
+  child_exit: <function ChildExit.child_exit at 0x7fa8a45142f0>
+  worker_exit: <function WorkerExit.worker_exit at 0x7fa8a4514400>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7fa8a4514510>
+  on_exit: <function OnExit.on_exit at 0x7fa8a4514620>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+[2020-03-01 21:15:51 +0000] [103262] [INFO] Starting gunicorn 20.0.4
+[2020-03-01 21:15:51 +0000] [103262] [DEBUG] Arbiter booted
+[2020-03-01 21:15:51 +0000] [103262] [INFO] Listening at: unix:/run/gunicorn.sock (103262)
+[2020-03-01 21:15:51 +0000] [103262] [INFO] Using worker: sync
+[2020-03-01 21:15:51 +0000] [103325] [INFO] Booting worker with pid: 103325
+[2020-03-01 21:15:51 +0000] [103332] [INFO] Booting worker with pid: 103332
+[2020-03-01 21:15:51 +0000] [103334] [INFO] Booting worker with pid: 103334
+[2020-03-01 21:15:51 +0000] [103262] [DEBUG] 3 workers
+[2020-03-01 21:15:58 +0000] [103325] [DEBUG] GET /
+[2020-03-01 21:16:00 +0000] [103325] [DEBUG] GET /get_devices
+[2020-03-01 21:16:00 +0000] [103325] [DEBUG] GET /retrieveXml
+[2020-03-01 21:16:00 +0000] [103325] [DEBUG] GET /get_device_status
+[2020-03-01 21:16:00 +0000] [103325] [DEBUG] GET /get_device_status
+[2020-03-01 21:16:00 +0000] [103325] [DEBUG] GET /get_device_status
+[2020-03-01 21:24:21 +0000] [103332] [DEBUG] GET /
+[2020-03-01 21:24:23 +0000] [103325] [DEBUG] GET /get_devices
+[2020-03-01 21:24:23 +0000] [103325] [DEBUG] GET /retrieveXml
+[2020-03-01 21:24:23 +0000] [103334] [DEBUG] GET /get_device_status
+[2020-03-01 21:24:23 +0000] [103334] [DEBUG] GET /get_device_status
+[2020-03-01 21:24:23 +0000] [103334] [DEBUG] GET /get_device_status
+[2020-03-01 22:13:38 +0000] [103334] [DEBUG] GET /
+[2020-03-01 22:13:40 +0000] [103334] [DEBUG] GET /get_devices
+[2020-03-01 22:13:40 +0000] [103334] [DEBUG] GET /retrieveXml
+[2020-03-01 22:13:40 +0000] [103334] [DEBUG] GET /get_device_status
+[2020-03-01 22:13:40 +0000] [103334] [DEBUG] GET /get_device_status
+[2020-03-01 22:13:40 +0000] [103334] [DEBUG] GET /get_device_status
+[2020-03-01 22:15:35 +0000] [103332] [DEBUG] GET /
+[2020-03-01 22:15:36 +0000] [103332] [DEBUG] GET /get_devices
+[2020-03-01 22:15:36 +0000] [103332] [DEBUG] GET /retrieveXml
+[2020-03-01 22:15:36 +0000] [103332] [DEBUG] GET /get_device_status
+[2020-03-01 22:15:36 +0000] [103332] [DEBUG] GET /get_device_status
+[2020-03-01 22:15:36 +0000] [103332] [DEBUG] GET /get_device_status
+[2020-03-01 22:15:58 +0000] [103325] [DEBUG] GET /
+[2020-03-01 22:15:59 +0000] [103325] [DEBUG] GET /get_devices
+[2020-03-01 22:15:59 +0000] [103325] [DEBUG] GET /retrieveXml
+[2020-03-01 22:15:59 +0000] [103334] [DEBUG] GET /get_device_status
+[2020-03-01 22:15:59 +0000] [103334] [DEBUG] GET /get_device_status
+[2020-03-01 22:15:59 +0000] [103334] [DEBUG] GET /get_device_status
+[2020-03-01 22:18:37 +0000] [103334] [DEBUG] GET /
+[2020-03-01 22:18:38 +0000] [103334] [DEBUG] GET /get_devices
+[2020-03-01 22:18:38 +0000] [103325] [DEBUG] GET /retrieveXml
+[2020-03-01 22:18:38 +0000] [103325] [DEBUG] GET /get_device_status
+[2020-03-01 22:18:38 +0000] [103325] [DEBUG] GET /get_device_status
+[2020-03-01 22:18:38 +0000] [103325] [DEBUG] GET /get_device_status
+[2020-03-01 22:35:27 +0000] [103334] [DEBUG] GET /
+[2020-03-01 22:36:05 +0000] [103334] [DEBUG] GET /
+[2020-03-01 22:36:07 +0000] [103332] [DEBUG] GET /get_devices
+[2020-03-01 22:36:07 +0000] [103332] [DEBUG] GET /retrieveXml
+[2020-03-01 22:36:07 +0000] [103332] [DEBUG] GET /get_device_status
+[2020-03-01 22:36:07 +0000] [103332] [DEBUG] GET /get_device_status
+[2020-03-01 22:36:07 +0000] [103332] [DEBUG] GET /get_device_status
+[2020-03-01 22:37:27 +0000] [103325] [DEBUG] GET /
+[2020-03-01 22:37:28 +0000] [103325] [DEBUG] GET /get_devices
+[2020-03-01 22:37:28 +0000] [103325] [DEBUG] GET /retrieveXml
+[2020-03-01 22:37:28 +0000] [103325] [DEBUG] GET /get_device_status
+[2020-03-01 22:37:28 +0000] [103325] [DEBUG] GET /get_device_status
+[2020-03-01 22:37:28 +0000] [103325] [DEBUG] GET /get_device_status
+[2020-03-01 22:37:30 +0000] [103334] [DEBUG] GET /home
+[2020-03-01 22:37:35 +0000] [103334] [DEBUG] GET /
+[2020-03-01 22:37:36 +0000] [103325] [DEBUG] GET /get_devices
+[2020-03-01 22:37:36 +0000] [103325] [DEBUG] GET /retrieveXml
+[2020-03-01 22:37:36 +0000] [103325] [DEBUG] GET /get_device_status
+[2020-03-01 22:37:36 +0000] [103325] [DEBUG] GET /get_device_status
+[2020-03-01 22:37:36 +0000] [103334] [DEBUG] GET /get_device_status
+[2020-03-01 22:37:39 +0000] [103325] [DEBUG] GET /home
+[2020-03-01 22:37:55 +0000] [103332] [DEBUG] GET /home
+[2020-03-01 22:38:04 +0000] [103332] [DEBUG] GET /home
+[2020-03-01 22:38:06 +0000] [103334] [DEBUG] GET /home
+[2020-03-01 22:38:08 +0000] [103334] [DEBUG] GET /home
+[2020-03-01 22:38:12 +0000] [103334] [DEBUG] GET /home
+[2020-03-01 22:38:14 +0000] [103332] [DEBUG] GET /home
+[2020-03-01 22:38:17 +0000] [103334] [DEBUG] GET /home
+[2020-03-01 22:38:20 +0000] [103325] [DEBUG] GET /home
+[2020-03-01 22:38:20 +0000] [103325] [DEBUG] GET /home
+[2020-03-01 22:38:40 +0000] [103332] [DEBUG] GET /home
+[2020-03-01 22:38:44 +0000] [103325] [DEBUG] GET /home
+[2020-03-01 22:38:48 +0000] [103334] [DEBUG] GET /
+[2020-03-01 22:38:50 +0000] [103334] [DEBUG] GET /get_devices
+[2020-03-01 22:38:50 +0000] [103334] [DEBUG] GET /retrieveXml
+[2020-03-01 22:38:50 +0000] [103332] [DEBUG] GET /get_device_status
+[2020-03-01 22:38:50 +0000] [103332] [DEBUG] GET /get_device_status
+[2020-03-01 22:38:50 +0000] [103332] [DEBUG] GET /get_device_status
+[2020-03-01 22:38:53 +0000] [103325] [DEBUG] GET /home
+[2020-03-01 22:41:34 +0000] [103334] [DEBUG] GET /
+[2020-03-01 22:41:34 +0000] [103334] [DEBUG] GET /home
+[2020-03-01 22:41:35 +0000] [103325] [DEBUG] GET /get_devices
+[2020-03-01 22:41:35 +0000] [103325] [DEBUG] GET /retrieveXml
+[2020-03-01 22:41:35 +0000] [103325] [DEBUG] GET /get_device_status
+[2020-03-01 22:41:35 +0000] [103325] [DEBUG] GET /get_device_status
+[2020-03-01 22:41:35 +0000] [103325] [DEBUG] GET /get_device_status
+[2020-03-01 22:44:12 +0000] [103325] [DEBUG] GET /
+[2020-03-01 22:44:12 +0000] [103325] [DEBUG] GET /home
+[2020-03-01 22:44:51 +0000] [103332] [DEBUG] GET /
+[2020-03-01 22:44:53 +0000] [103332] [DEBUG] GET /get_devices
+[2020-03-01 22:44:53 +0000] [103332] [DEBUG] GET /retrieveXml
+[2020-03-01 22:44:53 +0000] [103332] [DEBUG] GET /get_device_status
+[2020-03-01 22:44:53 +0000] [103332] [DEBUG] GET /get_device_status
+[2020-03-01 22:44:53 +0000] [103325] [DEBUG] GET /get_device_status
+[2020-03-01 22:46:57 +0000] [103325] [DEBUG] GET /
+[2020-03-01 22:46:59 +0000] [103334] [DEBUG] GET /get_devices
+[2020-03-01 22:46:59 +0000] [103334] [DEBUG] GET /retrieveXml
+[2020-03-01 22:46:59 +0000] [103334] [DEBUG] GET /get_device_status
+[2020-03-01 22:46:59 +0000] [103334] [DEBUG] GET /get_device_status
+[2020-03-01 22:46:59 +0000] [103332] [DEBUG] GET /get_device_status
+[2020-03-01 22:47:08 +0000] [103325] [DEBUG] GET /home
+[2020-03-01 22:50:18 +0000] [103325] [DEBUG] GET /
+[2020-03-01 22:50:20 +0000] [103325] [DEBUG] GET /get_devices
+[2020-03-01 22:50:20 +0000] [103325] [DEBUG] GET /retrieveXml
+[2020-03-01 22:50:20 +0000] [103325] [DEBUG] GET /get_device_status
+[2020-03-01 22:50:20 +0000] [103334] [DEBUG] GET /get_device_status
+[2020-03-01 22:50:20 +0000] [103332] [DEBUG] GET /get_device_status
+[2020-03-01 22:56:37 +0000] [103332] [DEBUG] GET /
+[2020-03-01 22:56:37 +0000] [103332] [DEBUG] GET /home
+[2020-03-01 22:56:39 +0000] [103332] [DEBUG] GET /get_devices
+[2020-03-01 22:56:39 +0000] [103332] [DEBUG] GET /retrieveXml
+[2020-03-01 22:56:39 +0000] [103332] [DEBUG] GET /get_device_status
+[2020-03-01 22:56:39 +0000] [103332] [DEBUG] GET /get_device_status
+[2020-03-01 22:56:39 +0000] [103332] [DEBUG] GET /get_device_status
+[2020-03-01 22:56:52 +0000] [103334] [DEBUG] GET /home
+[2020-03-01 23:00:33 +0000] [103334] [DEBUG] GET /
+[2020-03-01 23:00:34 +0000] [103332] [DEBUG] GET /get_devices
+[2020-03-01 23:00:34 +0000] [103332] [DEBUG] GET /retrieveXml
+[2020-03-01 23:00:34 +0000] [103332] [DEBUG] GET /get_device_status
+[2020-03-01 23:00:34 +0000] [103332] [DEBUG] GET /get_device_status
+[2020-03-01 23:00:34 +0000] [103332] [DEBUG] GET /get_device_status
+[2020-03-01 23:00:41 +0000] [103332] [DEBUG] GET /home
+[2020-03-02 00:50:25 +0000] [103325] [DEBUG] GET /home
+[2020-03-02 00:50:27 +0000] [103325] [DEBUG] GET /home
+[2020-03-02 00:50:29 +0000] [103332] [DEBUG] GET /home
+[2020-03-02 00:50:32 +0000] [103334] [DEBUG] GET /home
+[2020-03-02 00:50:33 +0000] [103334] [DEBUG] GET /home
+[2020-03-02 01:13:58 +0000] [103334] [DEBUG] GET /home
+[2020-03-02 10:52:04 +0000] [103332] [DEBUG] GET /get_devices
+[2020-03-02 10:52:04 +0000] [103332] [DEBUG] GET /retrieveXml
+[2020-03-02 10:52:05 +0000] [103332] [DEBUG] GET /get_device_status
+[2020-03-02 10:52:05 +0000] [103332] [DEBUG] GET /get_device_status
+[2020-03-02 10:52:05 +0000] [103332] [DEBUG] GET /get_device_status
+[2020-03-02 10:54:30 +0000] [103332] [DEBUG] GET /
+[2020-03-02 10:54:41 +0000] [103332] [DEBUG] GET /sdfsdf
+[2020-03-02 11:03:23 +0000] [103334] [DEBUG] GET /
+[2020-03-02 11:03:24 +0000] [103334] [DEBUG] GET /get_devices
+[2020-03-02 11:03:24 +0000] [103325] [DEBUG] GET /retrieveXml
+[2020-03-02 11:03:24 +0000] [103334] [DEBUG] GET /get_device_status
+[2020-03-02 11:03:24 +0000] [103334] [DEBUG] GET /get_device_status
+[2020-03-02 11:03:24 +0000] [103325] [DEBUG] GET /get_device_status
+[2020-03-02 11:03:44 +0000] [103325] [DEBUG] GET /
+[2020-03-02 11:03:45 +0000] [103325] [DEBUG] GET /get_devices
+[2020-03-02 11:03:45 +0000] [103332] [DEBUG] GET /retrieveXml
+[2020-03-02 11:03:45 +0000] [103332] [DEBUG] GET /get_device_status
+[2020-03-02 11:03:45 +0000] [103332] [DEBUG] GET /get_device_status
+[2020-03-02 11:03:45 +0000] [103332] [DEBUG] GET /get_device_status
+[2020-03-02 11:04:42 +0000] [103332] [DEBUG] GET /
+[2020-03-02 11:04:42 +0000] [103332] [DEBUG] GET /home
+[2020-03-02 11:04:43 +0000] [103334] [DEBUG] GET /get_devices
+[2020-03-02 11:04:44 +0000] [103332] [DEBUG] GET /retrieveXml
+[2020-03-02 11:04:44 +0000] [103332] [DEBUG] GET /get_device_status
+[2020-03-02 11:04:44 +0000] [103332] [DEBUG] GET /get_device_status
+[2020-03-02 11:04:44 +0000] [103332] [DEBUG] GET /get_device_status
+[2020-03-02 11:06:16 +0000] [103325] [DEBUG] GET /
+[2020-03-02 11:06:16 +0000] [103325] [DEBUG] GET /home
+[2020-03-02 11:06:17 +0000] [103332] [DEBUG] GET /get_devices
+[2020-03-02 11:06:17 +0000] [103325] [DEBUG] GET /retrieveXml
+[2020-03-02 11:06:17 +0000] [103334] [DEBUG] GET /get_device_status
+[2020-03-02 11:06:17 +0000] [103334] [DEBUG] GET /get_device_status
+[2020-03-02 11:06:17 +0000] [103334] [DEBUG] GET /get_device_status
+[2020-03-02 11:07:47 +0000] [103332] [DEBUG] GET /get_devices
+[2020-03-02 11:07:47 +0000] [103334] [DEBUG] GET /retrieveXml
+[2020-03-02 11:07:47 +0000] [103334] [DEBUG] GET /get_device_status
+[2020-03-02 11:07:47 +0000] [103334] [DEBUG] GET /get_device_status
+[2020-03-02 11:07:47 +0000] [103334] [DEBUG] GET /get_device_status
+[2020-03-02 11:08:32 +0000] [103332] [DEBUG] GET /
+[2020-03-02 11:08:32 +0000] [103332] [DEBUG] GET /home
+[2020-03-02 11:08:34 +0000] [103332] [DEBUG] GET /get_devices
+[2020-03-02 11:08:34 +0000] [103325] [DEBUG] GET /retrieveXml
+[2020-03-02 11:08:34 +0000] [103332] [DEBUG] GET /get_device_status
+[2020-03-02 11:08:34 +0000] [103332] [DEBUG] GET /get_device_status
+[2020-03-02 11:08:34 +0000] [103332] [DEBUG] GET /get_device_status
+[2020-03-02 11:08:50 +0000] [103332] [DEBUG] GET /home
+[2020-03-02 11:08:54 +0000] [103332] [DEBUG] GET /home
+[2020-03-02 11:09:10 +0000] [103334] [DEBUG] GET /home
+[2020-03-02 11:15:14 +0000] [103334] [DEBUG] GET /
+[2020-03-02 11:15:16 +0000] [103332] [DEBUG] GET /get_devices
+[2020-03-02 11:15:16 +0000] [103332] [DEBUG] GET /retrieveXml
+[2020-03-02 11:15:16 +0000] [103332] [DEBUG] GET /get_device_status
+[2020-03-02 11:15:16 +0000] [103332] [DEBUG] GET /get_device_status
+[2020-03-02 11:15:16 +0000] [103325] [DEBUG] GET /get_device_status
+[2020-03-02 11:15:17 +0000] [103325] [DEBUG] GET /home
+[2020-03-02 11:15:19 +0000] [103325] [DEBUG] GET /home
+[2020-03-02 11:15:21 +0000] [103325] [DEBUG] GET /
+[2020-03-02 11:15:22 +0000] [103334] [DEBUG] GET /get_devices
+[2020-03-02 11:15:22 +0000] [103334] [DEBUG] GET /retrieveXml
+[2020-03-02 11:15:22 +0000] [103334] [DEBUG] GET /get_device_status
+[2020-03-02 11:15:22 +0000] [103334] [DEBUG] GET /get_device_status
+[2020-03-02 11:15:22 +0000] [103334] [DEBUG] GET /get_device_status
+[2020-03-02 11:22:41 +0000] [103325] [DEBUG] GET /
+[2020-03-02 11:22:43 +0000] [103325] [DEBUG] GET /get_devices
+[2020-03-02 11:22:43 +0000] [103332] [DEBUG] GET /retrieveXml
+[2020-03-02 11:22:43 +0000] [103334] [DEBUG] GET /get_device_status
+[2020-03-02 11:22:43 +0000] [103334] [DEBUG] GET /get_device_status
+[2020-03-02 11:22:43 +0000] [103334] [DEBUG] GET /get_device_status
+[2020-03-02 11:22:44 +0000] [103334] [DEBUG] GET /home
+[2020-03-02 11:22:45 +0000] [103334] [DEBUG] GET /home
+[2020-03-02 11:22:46 +0000] [103325] [DEBUG] GET /
+[2020-03-02 11:22:47 +0000] [103325] [DEBUG] GET /get_devices
+[2020-03-02 11:22:47 +0000] [103325] [DEBUG] GET /retrieveXml
+[2020-03-02 11:22:47 +0000] [103325] [DEBUG] GET /get_device_status
+[2020-03-02 11:22:47 +0000] [103325] [DEBUG] GET /get_device_status
+[2020-03-02 11:22:47 +0000] [103325] [DEBUG] GET /get_device_status
+[2020-03-02 11:22:48 +0000] [103325] [DEBUG] GET /home
+[2020-03-02 11:22:50 +0000] [103325] [DEBUG] GET /home
+[2020-03-02 11:22:53 +0000] [103325] [DEBUG] GET /home
+[2020-03-02 11:22:55 +0000] [103325] [DEBUG] GET /
+[2020-03-02 11:22:56 +0000] [103334] [DEBUG] GET /get_devices
+[2020-03-02 11:22:56 +0000] [103334] [DEBUG] GET /retrieveXml
+[2020-03-02 11:22:56 +0000] [103334] [DEBUG] GET /get_device_status
+[2020-03-02 11:22:56 +0000] [103334] [DEBUG] GET /get_device_status
+[2020-03-02 11:22:56 +0000] [103334] [DEBUG] GET /get_device_status
+[2020-03-02 11:22:57 +0000] [103334] [DEBUG] GET /home
+[2020-03-02 12:33:42 +0000] [103332] [DEBUG] GET /
+[2020-03-02 12:33:43 +0000] [103325] [DEBUG] GET /get_devices
+[2020-03-02 12:33:43 +0000] [103325] [DEBUG] GET /retrieveXml
+[2020-03-02 12:33:43 +0000] [103325] [DEBUG] GET /get_device_status
+[2020-03-02 12:33:43 +0000] [103325] [DEBUG] GET /get_device_status
+[2020-03-02 12:33:43 +0000] [103325] [DEBUG] GET /get_device_status
+[2020-03-02 13:08:46 +0000] [103332] [INFO] Worker exiting (pid: 103332)
+[2020-03-02 13:08:46 +0000] [103325] [INFO] Worker exiting (pid: 103325)
+[2020-03-02 13:08:46 +0000] [103334] [INFO] Worker exiting (pid: 103334)
+[2020-03-02 13:08:46 +0000] [103262] [INFO] Handling signal: term
+[2020-03-02 13:08:46 +0000] [103262] [INFO] Shutting down: Master
+[2020-03-02 13:08:46 +0000] [105629] [DEBUG] Current configuration:
+  config: None
+  bind: ['unix:/run/gunicorn.sock']
+  backlog: 2048
+  workers: 3
+  worker_class: sync
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 600
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 0
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /home/529816/Beekeeper-WebUI/beekeeper_webui
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 33
+  group: 33
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: -
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: gunicorn_errors.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: beekeeper_webui.wsgi:application
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7f4cb4161730>
+  on_reload: <function OnReload.on_reload at 0x7f4cb4161840>
+  when_ready: <function WhenReady.when_ready at 0x7f4cb4161950>
+  pre_fork: <function Prefork.pre_fork at 0x7f4cb4161a60>
+  post_fork: <function Postfork.post_fork at 0x7f4cb4161b70>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7f4cb4161c80>
+  worker_int: <function WorkerInt.worker_int at 0x7f4cb4161d90>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7f4cb4161ea0>
+  pre_exec: <function PreExec.pre_exec at 0x7f4cb417e048>
+  pre_request: <function PreRequest.pre_request at 0x7f4cb417e158>
+  post_request: <function PostRequest.post_request at 0x7f4cb417e1e0>
+  child_exit: <function ChildExit.child_exit at 0x7f4cb417e2f0>
+  worker_exit: <function WorkerExit.worker_exit at 0x7f4cb417e400>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7f4cb417e510>
+  on_exit: <function OnExit.on_exit at 0x7f4cb417e620>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+[2020-03-02 13:08:46 +0000] [105629] [INFO] Starting gunicorn 20.0.4
+[2020-03-02 13:08:46 +0000] [105629] [DEBUG] Arbiter booted
+[2020-03-02 13:08:46 +0000] [105629] [INFO] Listening at: unix:/run/gunicorn.sock (105629)
+[2020-03-02 13:08:46 +0000] [105629] [INFO] Using worker: sync
+[2020-03-02 13:08:46 +0000] [105703] [INFO] Booting worker with pid: 105703
+[2020-03-02 13:08:46 +0000] [105709] [INFO] Booting worker with pid: 105709
+[2020-03-02 13:08:47 +0000] [105714] [INFO] Booting worker with pid: 105714
+[2020-03-02 13:08:47 +0000] [105629] [DEBUG] 3 workers
+[2020-03-02 13:08:56 +0000] [105714] [DEBUG] GET /
+[2020-03-02 13:08:59 +0000] [105714] [DEBUG] GET /get_devices
+[2020-03-02 13:08:59 +0000] [105709] [DEBUG] GET /retrieveXml
+[2020-03-02 13:08:59 +0000] [105709] [DEBUG] GET /get_device_status
+[2020-03-02 13:08:59 +0000] [105709] [DEBUG] GET /get_device_status
+[2020-03-02 13:08:59 +0000] [105709] [DEBUG] GET /get_device_status
+[2020-03-02 13:09:03 +0000] [105703] [DEBUG] GET /home
+[2020-03-02 13:09:06 +0000] [105703] [DEBUG] GET /
+[2020-03-02 13:09:09 +0000] [105703] [DEBUG] GET /get_devices
+[2020-03-02 13:09:09 +0000] [105703] [DEBUG] GET /retrieveXml
+[2020-03-02 13:09:09 +0000] [105714] [DEBUG] GET /get_device_status
+[2020-03-02 13:09:09 +0000] [105714] [DEBUG] GET /get_device_status
+[2020-03-02 13:09:09 +0000] [105714] [DEBUG] GET /get_device_status
+[2020-03-02 13:09:16 +0000] [105709] [DEBUG] GET /home
+[2020-03-02 13:09:24 +0000] [105714] [DEBUG] POST /post_device_form
+[2020-03-02 13:09:24 +0000] [105714] [DEBUG] GET /
+[2020-03-02 13:09:25 +0000] [105709] [DEBUG] GET /get_devices
+[2020-03-02 13:09:25 +0000] [105709] [DEBUG] GET /retrieveXml
+[2020-03-02 13:09:25 +0000] [105709] [DEBUG] GET /get_device_status
+[2020-03-02 13:09:25 +0000] [105714] [DEBUG] GET /get_device_status
+[2020-03-02 13:09:25 +0000] [105714] [DEBUG] GET /get_device_status
+[2020-03-02 13:09:25 +0000] [105714] [DEBUG] GET /get_device_status
+[2020-03-02 13:09:45 +0000] [105709] [DEBUG] GET /remove_device
+[2020-03-02 13:09:45 +0000] [105709] [DEBUG] GET /home
+[2020-03-02 13:09:49 +0000] [105714] [DEBUG] GET /home
+[2020-03-02 13:11:00 +0000] [105714] [DEBUG] POST /post_device_form
+[2020-03-02 13:11:01 +0000] [105703] [DEBUG] GET /
+[2020-03-02 13:11:02 +0000] [105703] [DEBUG] GET /get_devices
+[2020-03-02 13:11:02 +0000] [105709] [DEBUG] GET /retrieveXml
+[2020-03-02 13:11:02 +0000] [105709] [DEBUG] GET /get_device_status
+[2020-03-02 13:11:02 +0000] [105709] [DEBUG] GET /get_device_status
+[2020-03-02 13:11:02 +0000] [105709] [DEBUG] GET /get_device_status
+[2020-03-02 13:11:02 +0000] [105714] [DEBUG] GET /get_device_status
+[2020-03-02 13:11:06 +0000] [105703] [DEBUG] GET /home
+[2020-03-02 13:11:11 +0000] [105703] [DEBUG] GET /home
+[2020-03-02 13:11:14 +0000] [105703] [DEBUG] GET /home
+[2020-03-02 13:11:17 +0000] [105709] [DEBUG] GET /home
+[2020-03-02 13:11:19 +0000] [105709] [DEBUG] GET /home
+[2020-03-02 13:11:22 +0000] [105703] [DEBUG] GET /home
+[2020-03-02 13:11:27 +0000] [105714] [DEBUG] GET /home
+[2020-03-02 13:11:36 +0000] [105714] [DEBUG] POST /post_device_form
+[2020-03-02 13:11:38 +0000] [105703] [DEBUG] GET /
+[2020-03-02 13:11:38 +0000] [105714] [DEBUG] GET /get_devices
+[2020-03-02 13:11:38 +0000] [105709] [DEBUG] GET /retrieveXml
+[2020-03-02 13:11:38 +0000] [105709] [DEBUG] GET /get_device_status
+[2020-03-02 13:11:38 +0000] [105714] [DEBUG] GET /get_device_status
+[2020-03-02 13:11:38 +0000] [105709] [DEBUG] GET /get_device_status
+[2020-03-02 13:11:38 +0000] [105703] [DEBUG] GET /get_device_status
+[2020-03-02 13:11:38 +0000] [105714] [DEBUG] GET /get_device_status
+[2020-03-02 13:11:44 +0000] [105709] [DEBUG] GET /home
+[2020-03-02 13:11:48 +0000] [105703] [DEBUG] GET /home
+[2020-03-02 13:11:51 +0000] [105709] [DEBUG] GET /home
+[2020-03-02 13:11:52 +0000] [105714] [DEBUG] GET /home
+[2020-03-02 13:11:56 +0000] [105703] [DEBUG] GET /home
+[2020-03-02 13:12:06 +0000] [105709] [DEBUG] POST /post_device_form
+[2020-03-02 13:12:07 +0000] [105703] [DEBUG] GET /
+[2020-03-02 13:12:08 +0000] [105714] [DEBUG] GET /get_devices
+[2020-03-02 13:12:08 +0000] [105714] [DEBUG] GET /retrieveXml
+[2020-03-02 13:12:08 +0000] [105714] [DEBUG] GET /get_device_status
+[2020-03-02 13:12:08 +0000] [105709] [DEBUG] GET /get_device_status
+[2020-03-02 13:12:08 +0000] [105714] [DEBUG] GET /get_device_status
+[2020-03-02 13:12:08 +0000] [105714] [DEBUG] GET /get_device_status
+[2020-03-02 13:12:08 +0000] [105714] [DEBUG] GET /get_device_status
+[2020-03-02 13:12:08 +0000] [105714] [DEBUG] GET /get_device_status
+[2020-03-02 13:12:10 +0000] [105703] [DEBUG] GET /home
+[2020-03-02 13:12:11 +0000] [105714] [DEBUG] GET /home
+[2020-03-02 13:12:15 +0000] [105703] [DEBUG] GET /home
+[2020-03-02 13:12:18 +0000] [105714] [DEBUG] GET /home
+[2020-03-02 13:12:22 +0000] [105709] [DEBUG] GET /home
+[2020-03-02 13:12:29 +0000] [105714] [DEBUG] GET /home
+[2020-03-02 13:12:31 +0000] [105703] [DEBUG] GET /home
+[2020-03-02 13:12:35 +0000] [105709] [DEBUG] GET /home
+[2020-03-02 13:12:40 +0000] [105703] [DEBUG] GET /home
+[2020-03-02 13:12:41 +0000] [105714] [DEBUG] GET /home
+[2020-03-02 13:12:47 +0000] [105709] [DEBUG] GET /home
+[2020-03-02 13:13:01 +0000] [105703] [DEBUG] GET /change_vm_state
+[2020-03-02 13:13:05 +0000] [105714] [DEBUG] GET /
+[2020-03-02 13:13:07 +0000] [105703] [DEBUG] GET /get_devices
+[2020-03-02 13:13:07 +0000] [105703] [DEBUG] GET /retrieveXml
+[2020-03-02 13:13:08 +0000] [105709] [DEBUG] GET /get_device_status
+[2020-03-02 13:13:08 +0000] [105709] [DEBUG] GET /get_device_status
+[2020-03-02 13:13:08 +0000] [105703] [DEBUG] GET /get_device_status
+[2020-03-02 13:13:08 +0000] [105714] [DEBUG] GET /get_device_status
+[2020-03-02 13:13:08 +0000] [105709] [DEBUG] GET /get_device_status
+[2020-03-02 13:13:08 +0000] [105709] [DEBUG] GET /get_device_status
+[2020-03-02 13:29:17 +0000] [105703] [DEBUG] GET /
+[2020-03-02 13:29:18 +0000] [105709] [DEBUG] GET /get_devices
+[2020-03-02 13:29:19 +0000] [105714] [DEBUG] GET /retrieveXml
+[2020-03-02 13:29:19 +0000] [105714] [DEBUG] GET /get_device_status
+[2020-03-02 13:29:19 +0000] [105709] [DEBUG] GET /get_device_status
+[2020-03-02 13:29:19 +0000] [105709] [DEBUG] GET /get_device_status
+[2020-03-02 13:29:19 +0000] [105709] [DEBUG] GET /get_device_status
+[2020-03-02 13:29:19 +0000] [105714] [DEBUG] GET /get_device_status
+[2020-03-02 13:29:19 +0000] [105709] [DEBUG] GET /get_device_status
+[2020-03-02 13:30:27 +0000] [105703] [DEBUG] GET /home
+[2020-03-02 13:30:32 +0000] [105703] [DEBUG] GET /home
+[2020-03-02 13:30:54 +0000] [105714] [DEBUG] GET /home
+[2020-03-02 13:34:28 +0000] [105709] [DEBUG] GET /home
+[2020-03-02 13:34:29 +0000] [105709] [DEBUG] GET /home
+[2020-03-02 13:34:38 +0000] [105703] [DEBUG] GET /get_device_vnc
+[2020-03-02 13:35:01 +0000] [105703] [DEBUG] GET /
+[2020-03-02 13:35:01 +0000] [105714] [DEBUG] GET /get_devices
+[2020-03-02 13:35:01 +0000] [105709] [DEBUG] GET /retrieveXml
+[2020-03-02 13:35:02 +0000] [105714] [DEBUG] GET /get_device_status
+[2020-03-02 13:35:02 +0000] [105714] [DEBUG] GET /get_device_status
+[2020-03-02 13:35:02 +0000] [105714] [DEBUG] GET /get_device_status
+[2020-03-02 13:35:02 +0000] [105714] [DEBUG] GET /get_device_status
+[2020-03-02 13:35:02 +0000] [105714] [DEBUG] GET /get_device_status
+[2020-03-02 13:35:02 +0000] [105709] [DEBUG] GET /get_device_status
+[2020-03-02 13:35:13 +0000] [105709] [DEBUG] GET /get_device_vnc

@@ -109,9 +109,23 @@ function graphListener(graph)
   graph.getModel().addListener('change', function(){
     var encoder = new mxCodec();
     var result = encoder.encode(graph.getModel());
+    // work on making Redis server requests here?
+    /*
+    $.ajax({ 
+      url: 'redis',
+      dataType: 'json',
+      contentType: 'application/json; charset=utf-8',
+      async: false,
+      method: 'GET',
+      success: function(response){
+        console.log(response);
+      },
+      error: function(xhr, status, error) {
+        var err = eval("(" + xhr.responseText + ")");
+      }
+    });
+    */
     var xml = mxUtils.getXml(result);
-    var client = redis.createClient();
-    client.set('beekeeper_xml', xml);
     sendRequest(xml);
   });
 }
