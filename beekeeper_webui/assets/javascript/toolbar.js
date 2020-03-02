@@ -115,7 +115,7 @@ function zoomButtons(button, action, editor)
 function refreshGraph(button)
 {
   button.addEventListener("click", function(){
-    $("#graphBody").load('reload_body');
+    //$("#graphBody").load('reload_body');
     //$('#graphBody').load(window.location.href + "#graphBody");
     //main(document.getElementById('graphContainer'), document.getElementById('sidebarContainer'));
   })

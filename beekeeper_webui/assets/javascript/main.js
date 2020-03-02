@@ -111,7 +111,7 @@ function graphListener(graph)
     var result = encoder.encode(graph.getModel());
     // work on making Redis server requests here?
     /*
-    $.ajax({ 
+    $.ajax({
       url: 'redis',
       dataType: 'json',
       contentType: 'application/json; charset=utf-8',

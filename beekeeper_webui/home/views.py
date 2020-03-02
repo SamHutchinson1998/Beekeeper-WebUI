@@ -5,6 +5,7 @@ from django.http import JsonResponse, HttpResponseRedirect, HttpResponse
 from django.core.serializers import serialize
 from django.conf import settings
 from django.urls import reverse
+from django.template import Context, Template
 from .services import get_vm_status, create_device_req, lookup_domain, get_domain_vnc_socket, create_virtual_machine, remove_machine, turn_off_devices, turn_on_devices
 from .models import ImageForm, DiskImage, VirtualMachine, VirtualMachineForm
 from urllib.parse import urlencode
@@ -118,6 +119,10 @@ class HomePageView(TemplateView):
     return JsonResponse({'device_status':device_status},status=200)
 
   def reload_body(request):
-    if request.is_ajax and request.method == 'GET':
-      return render('_body.html')
-    return JsonResponse({}, status=200)
+    if request.method == 'GET':
+      context = {
+        'form': ImageForm(),
+        'device_form': VirtualMachineForm()
+      }
+      return render(request, '_body.html', context)
+    return JsonResponse({},status=200)
