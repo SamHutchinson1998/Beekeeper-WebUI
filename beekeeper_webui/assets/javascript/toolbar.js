@@ -164,8 +164,25 @@ function stopVirtualMachines(button, graph)
         'cells': JSON.stringify(cellArry)
       },
       success: function(result){
+        status_offline_vector = getVector('status_offline');
+        for(i = 0; i < cells.length; i++){
+          cell = cells[i];
+          amendStatusLight(cell, status_offline_vector, graph);
+        }
         alert('Devices successfully switched off');
       }
     });
   });
+}
+
+function amendStatusLight(cell, light, graph)
+{
+  var children = cell.children
+  var style = ''
+  if(light != null){
+    style = `port;shape=image;image=${light};spacingLeft=18;`;
+  }
+  if(children){ // If the cell is a textbox, cable or anything that doesn't have a status light
+    graph.getModel().setStyle(children[0], style);
+  }
 }

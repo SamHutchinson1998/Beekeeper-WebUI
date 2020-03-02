@@ -245,21 +245,21 @@ function insertStatusLights(graph)
   var i = 0;
   for(i = 0; i < cells.length; i++){
     var cell = cells[i];
-    children = cell.children;
-    var id = cell.getId();
-    var light = getStatusLight(id);
-    var style = ''
-    if(light != null){
-      style = `port;shape=image;image=${light};spacingLeft=18;`;
-    }
-    if(children){ // If the cell is a textbox, cable or anything that doesn't have a status light
-      graph.getModel().setStyle(children[0], style);
-    }
-    /*
-    var status_light = graph.insertVertex(cell, null, '', 1, 0.15, 16, 16,
-    style, true);
-    status_light.geometry.offset = new mxPoint(-8, -8);
-    */
+    insertStatusLight(cell);
+  }
+}
+
+function insertStatusLight(cell)
+{
+  children = cell.children;
+  var id = cell.getId();
+  var light = getStatusLight(id);
+  var style = ''
+  if(light != null){
+    style = `port;shape=image;image=${light};spacingLeft=18;`;
+  }
+  if(children){ // If the cell is a textbox, cable or anything that doesn't have a status light
+    graph.getModel().setStyle(children[0], style);
   }
 }
 
