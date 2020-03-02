@@ -116,3 +116,8 @@ class HomePageView(TemplateView):
     cell_id = request.GET.get('cell_id',None)
     device_status = get_vm_status(cell_id)
     return JsonResponse({'device_status':device_status},status=200)
+
+  def reload_body(request):
+    if request.is_ajax and request.method == 'GET':
+      return render('_body.html')
+    return JsonResponse({}, status=200)
