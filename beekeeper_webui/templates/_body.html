@@ -1,0 +1,9 @@
+<div id="graphContainer" style="background-image: url({% static 'logos/grid.gif' %})"></div>
+<div id="sidebarContainer" class="bg-light">
+  <input id="searchBar" onkeyup="searchDevices()" class="form-control" type="text" placeholder="Device Name, type e.g. Cisco, Router">
+</div>
+<div id="toolbarContainer" class="bg-light"></div>
+
+{% include '_messages.html' %}
+
+{% include 'add_device.html' %}
