@@ -58,20 +58,12 @@ function main(container, sidebar)
     getLegend();
     insertStatusLights(graph);
     graphListener(graph);
-    window.setInterval(function(){
-      displayGraph(graph);
-    }, 2000); // update the graph every second
+    window.setInterval(function(){ displayGraph(graph); }, 2000); // update the graph every second
   }
 };
 // displayGraph gets called when the user clicks the refresh button
 function displayGraph(graph)
 {
-  //var string = getXml();
-  //var parent = graph.getDefaultParent();
-  //var xml_string = mxUtils.parseXml(string);
-  //var codec = new mxCodec(xml_string);
-  //codec.decode(xml_string.documentElement, graph.getModel());
-  //getDeviceMenu(graph);
   insertStatusLights(graph);
 }
 
@@ -232,11 +224,11 @@ function insertStatusLights(graph)
   var i = 0;
   for(i = 0; i < cells.length; i++){
     var cell = cells[i];
-    insertStatusLight(cell);
+    insertStatusLight(graph, cell);
   }
 }
 
-function insertStatusLight(cell)
+function insertStatusLight(graph, cell)
 {
   children = cell.children;
   var id = cell.getId();
