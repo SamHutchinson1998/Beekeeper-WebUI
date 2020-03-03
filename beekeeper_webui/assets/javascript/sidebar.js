@@ -148,7 +148,11 @@ function getDeviceModal(image_id, cell_id, graph)
 function handleDeviceFormSubmit()
 {
   $('#device_form').on('submit', function(e){
+    // remove submit button behaviours django puts in there
     e.preventDefault();
+    return false;
+  });
+  $("#submit_device").click(function() {
     var name = document.getElementById('device_name_id').value;
     var ram = document.getElementById('ramSlider').value;
     var disk_size = document.getElementById('diskSizeSlider').value;
@@ -176,6 +180,5 @@ function handleDeviceFormSubmit()
       },
     });
     $('messagesContainer').addClass('show');
-    return false;
   });
 }

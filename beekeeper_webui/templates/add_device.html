@@ -42,7 +42,7 @@
             {{ device_form.cell_id|attr:"id:cell_id"|attr:"value:0"|as_crispy_field}}
           </div>
           <input type="hidden" name="next" value="{{ request.path }}"/>
-          <input type="submit" value="Submit" class="btn btn-primary"/>
+          <input id="submit_device" type="submit" value="Submit" class="btn btn-primary"/>
       </form>
       </div>
       <div class="modal-footer">
