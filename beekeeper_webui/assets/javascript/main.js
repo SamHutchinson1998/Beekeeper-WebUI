@@ -4,9 +4,8 @@
 
 function main(container, sidebar)
 {
+  handleDeviceFormSubmit(graph);
   // Toastr options for displaying the toast
-
-  
   toastr.options = {
     "closeButton": true,
     "debug": false,
@@ -277,4 +276,43 @@ function getStatusLight(cell_id)
   })
   //console.log(output);
   return output
+}
+
+function handleDeviceFormSubmit(graph)
+{
+  $("#device_form").on('submit', function(e) {
+    e.preventDefault();
+    var name = document.getElementById('device_name_id').value;
+    var ram = document.getElementById('ramSlider').value;
+    var disk_size = document.getElementById('diskSizeSlider').value;
+    var cpus = document.getElementById('cpusSlider').value;
+    var disk_image = document.getElementById('disk_image_id').value;
+    var cell_id = document.getElementById('cell_id').value;
+    var csrf = $('input[name=csrfmiddlewaretoken]').val();
+    $.ajax({
+      url: 'post_device_form',
+      type: 'POST',
+      data: {
+        name: name,
+        ram: ram,
+        disk_size: disk_size,
+        cpus: cpus,
+        disk_image: disk_image,
+        cell_id: cell_id,
+        csrfmiddlewaretoken: csrf
+      },
+      success: function(result){
+        if(result['response'] == 'error'){
+          // remove the cell if there is an error in database submission or VM creation
+          if (graph.isEnabled()){ graph.removeCells(); }
+          // perhaps get error messages from django here for more specialised messages?
+          toastr.error('Error adding device');
+        }
+        if(result['response'] == 'success'){
+          toastr.success('Device added successfully');
+        }
+        $('#device_modal').modal('hide');
+      },
+    });
+  });
 }
