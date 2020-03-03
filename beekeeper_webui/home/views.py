@@ -11,7 +11,6 @@ from .models import ImageForm, DiskImage, VirtualMachine, VirtualMachineForm
 from urllib.parse import urlencode
 import os
 import json
-import redis
 
 # Create your views here.
 
@@ -70,19 +69,20 @@ class HomePageView(TemplateView):
     if request.method == "POST":
       modified_request = create_device_req(request)
       form = VirtualMachineForm(modified_request)
+      print(modified_request)
       if form.is_valid():
         if form.save():
           create_virtual_machine(modified_request)
           messages.success(request, 'Successfully added device', extra_tags='alert-success')
           return JsonResponse({'response':'success'}, status=200)
         else:
-          messages.error(request, 'Unable to add device', extra_tags='alert-danger')
+          messages.error(request, 'Unable to add device: Unable to save Device in the database', extra_tags='alert-danger')
           return JsonResponse({'response':'error'}, status=200)
       else:
-        messages.error(request, "Unable to add device", extra_tags='alert-danger')
+        messages.error(request, "Unable to add device: Data entered is not valid ", extra_tags='alert-danger')
         return JsonResponse({'response':'error'}, status=200)
     else:
-      messages.error(request, 'Unable to add device', extra_tags='alert-danger')
+      messages.error(request, 'Unable to add device: Wrong HTTP request', extra_tags='alert-danger')
       return JsonResponse({'response':'error'}, status=200)
     #return HttpResponseRedirect(next)
 

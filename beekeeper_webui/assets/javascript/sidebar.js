@@ -123,7 +123,7 @@ function getDeviceModal(image_id, cell_id, graph)
     var cell_id_string = cell_id.toString();
     document.getElementById('disk_image_id').value = id_string;
     document.getElementById('cell_id').value = cell_id_string;
-    handleDeviceFormSubmit()
+    handleDeviceFormSubmit(graph)
   });
 
 
@@ -145,40 +145,38 @@ function getDeviceModal(image_id, cell_id, graph)
   */
 }
 
-function handleDeviceFormSubmit()
+function handleDeviceFormSubmit(graph)
 {
-  $('#device_form').on('submit', function(e){
-    // remove submit button behaviours django puts in there
+  $("#device_form").on('submit', function(e) {
     e.preventDefault();
-    return false;
-  });
-  $("#submit_device").click(function() {
     var name = document.getElementById('device_name_id').value;
     var ram = document.getElementById('ramSlider').value;
     var disk_size = document.getElementById('diskSizeSlider').value;
     var cpus = document.getElementById('cpusSlider').value;
     var disk_image = document.getElementById('disk_image_id').value;
     var cell_id = document.getElementById('cell_id').value;
-
-    $('#device_modal').modal('hide');
+    var csrf = $('input[name=csrfmiddlewaretoken]').val();
     $.ajax({
       url: 'post_device_form',
-      //type: 'POST',
+      type: 'POST',
       data: {
         name: name,
         ram: ram,
         disk_size: disk_size,
         cpus: cpus,
         disk_image: disk_image,
-        cell_id: cell_id
+        cell_id: cell_id,
+        csrfmiddlewaretoken: csrf
       },
       success: function(result){
         if(result['response'] == 'error'){
           // remove the cell if there is an error in database submission or VM creation
           if (graph.isEnabled()){ graph.removeCells(); } 
+          console.log(result['form']);
         }
+        $('#device_modal').modal('hide');
+        $('#messagesContainer').addClass('show');
       },
     });
-    $('messagesContainer').addClass('show');
   });
 }
