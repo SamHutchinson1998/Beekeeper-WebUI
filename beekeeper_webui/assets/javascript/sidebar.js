@@ -117,6 +117,17 @@ function getVector(device)
 function getDeviceModal(image_id, cell_id, graph)
 {
   $('#device_modal').modal('show');
+
+  $('#device_modal').on("shown.bs.modal", function(event){
+    var id_string = image_id.toString();
+    var cell_id_string = cell_id.toString();
+    document.getElementById('disk_image_id').value = id_string;
+    document.getElementById('cell_id').value = cell_id_string;
+    handleDeviceFormSubmit()
+  });
+
+
+  /*
   $(document).ready(function(){
     $('#device_modal').on("hide.bs.modal", function () {
       if (graph.isEnabled())
@@ -130,5 +141,39 @@ function getDeviceModal(image_id, cell_id, graph)
       document.getElementById('disk_image_id').value = id_string;
       document.getElementById('cell_id').value = cell_id_string;
     });
+  });
+  */
+}
+
+function handleDeviceFormSubmit()
+{
+  $('#device_form').on('submit', function(e){
+    var name = document.getElementById('device_name_id').value;
+    var ram = document.getElementById('ramSlider').value;
+    var disk_size = document.getElementById('diskSizeSlider').value;
+    var cpus = document.getElementById('cpusSlider').value;
+    var disk_image = document.getElementById('disk_image_id').value;
+    var cell_id = document.getElementById('cell_id').value;
+
+    $('#device_modal').modal('hide');
+    $.ajax({
+      url: 'post_device_form',
+      type: 'POST',
+      data: {
+        name: name,
+        ram: ram,
+        disk_size: disk_size,
+        cpus: cpus,
+        disk_image: disk_image,
+        cell_id: cell_id
+      },
+      success: function(result){
+        if(result['response'] == 'error'){
+          // remove the cell if there is an error in database submission or VM creation
+          if (graph.isEnabled()){ graph.removeCells(); } 
+        }
+      },
+    });
+    $('messagesContainer').addClass('show');
   });
 }

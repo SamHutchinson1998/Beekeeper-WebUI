@@ -66,7 +66,7 @@ class HomePageView(TemplateView):
       return JsonResponse({"disk_images":disk_images}, status = 200)
   
   def create_device(request):
-    next = request.POST.get('next', '/')
+    #next = request.POST.get('next', '/')
     if request.method == "POST":
       modified_request = create_device_req(request)
       form = VirtualMachineForm(modified_request)
@@ -74,13 +74,17 @@ class HomePageView(TemplateView):
         if form.save():
           create_virtual_machine(modified_request)
           messages.success(request, 'Successfully added device', extra_tags='alert-success')
+          return JsonResponse({'response':'success'}, status=200)
         else:
           messages.error(request, 'Unable to add device', extra_tags='alert-danger')
+          return JsonResponse({'response':'error'}, status=200)
       else:
         messages.error(request, "Unable to add device", extra_tags='alert-danger')
+        return JsonResponse({'response':'error'}, status=200)
     else:
       messages.error(request, 'Unable to add device', extra_tags='alert-danger')
-    return HttpResponseRedirect(next)
+      return JsonResponse({'response':'error'}, status=200)
+    #return HttpResponseRedirect(next)
 
   def remove_device(request):
     if request.is_ajax and request.method == "GET":
