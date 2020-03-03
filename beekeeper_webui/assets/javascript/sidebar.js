@@ -118,13 +118,17 @@ function getDeviceModal(image_id, cell_id, graph)
 {
   $('#device_modal').modal('show');
 
+  $('#device_modal').on('hidden.bs.modal', function () {
+    $('#device_form').trigger('reset');
+  });
+
   $('#device_modal').on("shown.bs.modal", function(event){
     var id_string = image_id.toString();
     var cell_id_string = cell_id.toString();
     document.getElementById('disk_image_id').value = id_string;
     document.getElementById('cell_id').value = cell_id_string;
-    handleDeviceFormSubmit(graph)
   });
+  handleDeviceFormSubmit(graph);
 }
 
 function handleDeviceFormSubmit(graph)
