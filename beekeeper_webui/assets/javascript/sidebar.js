@@ -125,24 +125,6 @@ function getDeviceModal(image_id, cell_id, graph)
     document.getElementById('cell_id').value = cell_id_string;
     handleDeviceFormSubmit(graph)
   });
-
-
-  /*
-  $(document).ready(function(){
-    $('#device_modal').on("hide.bs.modal", function () {
-      if (graph.isEnabled())
-      {
-        graph.removeCells();
-      }
-    });
-    $('#device_modal').on("shown.bs.modal", function(event){
-      var id_string = image_id.toString();
-      var cell_id_string = cell_id.toString();
-      document.getElementById('disk_image_id').value = id_string;
-      document.getElementById('cell_id').value = cell_id_string;
-    });
-  });
-  */
 }
 
 function handleDeviceFormSubmit(graph)
@@ -171,11 +153,14 @@ function handleDeviceFormSubmit(graph)
       success: function(result){
         if(result['response'] == 'error'){
           // remove the cell if there is an error in database submission or VM creation
-          if (graph.isEnabled()){ graph.removeCells(); } 
-          console.log(result['form']);
+          if (graph.isEnabled()){ graph.removeCells(); }
+          // perhaps get error messages from django here for more specialised messages?
+          toastr.error('Error adding device');
+        }
+        if(result['response'] == 'success'){
+          toastr.success('Device added successfully');
         }
         $('#device_modal').modal('hide');
-        $('messagesToast').toast('show');
       },
     });
   });
