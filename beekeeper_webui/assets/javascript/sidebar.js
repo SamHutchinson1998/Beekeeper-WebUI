@@ -175,7 +175,7 @@ function handleDeviceFormSubmit(graph)
           console.log(result['form']);
         }
         $('#device_modal').modal('hide');
-        $('#messagesContainer').addClass('show');
+        $('messagesToast').toast('show');
       },
     });
   });
