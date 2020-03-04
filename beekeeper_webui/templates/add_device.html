@@ -37,6 +37,15 @@
                <input type="text" onkeyup="updateLabel(this.value,'cpusSlider')" style="margin-top:25px;margin-left:10px;"class="form-control" id="cpusValue">
             </th>
           </table>
+          <table>
+            <th style="width:85%;font-weight:normal;"class="sliderColumn">
+              <label for="ethernetSlider">No. of Ethernet Ports</label>
+              <input type="range" id="ethernetSlider" class="custom-range" onchange="updateLabel(this.value,'ethernetValue')" min="1" max="96"></input>
+            </th>
+            <th>
+               <input type="text" onkeyup="updateLabel(this.value,'ethernetSlider')" style="margin-top:25px;margin-left:10px;"class="form-control" id="ethernetValue">
+            </th>
+          </table>
           <div hidden>
             {{ device_form.disk_image|attr:"id:disk_image_id"|attr:"value:0"|as_crispy_field}}
             {{ device_form.cell_id|attr:"id:cell_id"|attr:"value:0"|as_crispy_field}}

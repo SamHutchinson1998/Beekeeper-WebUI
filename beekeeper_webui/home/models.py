@@ -1,7 +1,5 @@
 from django.db import models
 from django import forms
-from secrets import token_urlsafe
-import uuid
 
 # Create your models here.
 
@@ -25,7 +23,12 @@ class VirtualMachine(models.Model):
   cpus = models.IntegerField()
   cell_id = models.IntegerField(default='0')
   disk_image = models.ForeignKey(DiskImage, on_delete=models.CASCADE)
-  token = models.CharField(max_length=64,default='0') #token_urlsafe(16))
+  token = models.CharField(max_length=64,default='0')
+
+class EthernetPorts(models.Model):
+  virtual_machine = models.ForeignKey(VirtualMachine, on_delete=models.CASCADE)
+  connected_to = models.CharField(max_length=10)
+
 
 class ImageForm(forms.ModelForm):
   class Meta:
