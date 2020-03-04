@@ -74,7 +74,7 @@ class HomePageView(TemplateView):
         if form.save():
           ethernet_ports = int(modified_request.get('ethernetports', None))
           if create_ethernet_ports(cell_id, ethernet_ports):
-            create_virtual_machine(modified_request)
+            create_virtual_machine(cell_id)
             return JsonResponse({'response':'success'}, status=200)
           else:
             return generate_error_message('Unable to create ethernet ports for device', cell_id)

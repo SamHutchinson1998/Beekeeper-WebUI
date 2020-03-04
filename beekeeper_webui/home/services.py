@@ -34,22 +34,22 @@ def get_domain_vnc_socket(domain):
   host_and_port.append(port)
   return host_and_port
 
-def create_virtual_machine(request):
+def create_virtual_machine(cell_id):
   # create a .img file first then use that as the hard disk for the VM.
   # disk image goes into the cdrom compartment of the XML.
-  name = request['name']
-  memory = request['ram']
-  disk_size = request['disk_size']
-  cpus = request['cpus']
-  disk_image = DiskImage.objects.get(pk=request['disk_image']).disk_image
-  cell_id = request['cell_id']
+  # x.ethernetports_set.all()
 
   # token generation happens here
-
   token = str(uuid.uuid4())
   vm = VirtualMachine.objects.get(cell_id=cell_id)
   vm.token = token
   vm.save()
+
+  name = vm.name
+  memory = vm.ram
+  disk_size = vm.disk_size
+  cpus = vm.cpus
+  disk_image = vm.disk_image.disk_image
 
   xml = f"""
   <domain type='kvm'>
