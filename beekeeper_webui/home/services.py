@@ -34,6 +34,17 @@ def get_domain_vnc_socket(domain):
   host_and_port.append(port)
   return host_and_port
 
+
+def create_device_ethernet_ports(cell_id, ethernet_ports):
+  vm = VirtualMachine.objects.get(cell_id=cell_id)
+  for port in ethernet_ports:
+    form = EthernetPortsForm(virtual_machine=vm,connected_to='none')
+    if form.is_valid():
+      continue
+    else:
+      return False
+  return True
+
 def create_virtual_machine(request):
   # create a .img file first then use that as the hard disk for the VM.
   # disk image goes into the cdrom compartment of the XML.

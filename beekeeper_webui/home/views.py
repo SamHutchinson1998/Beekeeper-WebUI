@@ -6,7 +6,7 @@ from django.core.serializers import serialize
 from django.conf import settings
 from django.urls import reverse
 from django.template import Context, Template
-from .services import get_vm_status, create_device_req, lookup_domain, get_domain_vnc_socket, create_virtual_machine, remove_machine, turn_off_devices, turn_on_devices
+from .services import create_device_ethernet_ports, get_vm_status, create_device_req, lookup_domain, get_domain_vnc_socket, create_virtual_machine, remove_machine, turn_off_devices, turn_on_devices
 from .models import EthernetPorts, EthernetPortsForm, ImageForm, DiskImage, VirtualMachine, VirtualMachineForm
 from urllib.parse import urlencode
 import os
@@ -92,16 +92,6 @@ class HomePageView(TemplateView):
       remove_machine(vm)
     finally:
       return JsonResponse({'response':'error', 'message': message}, status=200)
-
-  def create_device_ethernet_ports(cell_id, ethernet_ports):
-    vm = VirtualMachine.objects.get(cell_id=cell_id)
-    for port in ethernet_ports:
-      form = EthernetPortsForm(virtual_machine=vm,connected_to='none')
-      if form.is_valid():
-        continue
-      else:
-        return False
-    return True
 
   def remove_device(request):
     if request.is_ajax and request.method == "GET":
