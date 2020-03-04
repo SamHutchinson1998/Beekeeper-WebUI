@@ -72,7 +72,7 @@ class HomePageView(TemplateView):
       print(modified_request)
       if form.is_valid():
         if form.save():
-          ethernet_ports = modified_request.get('ethernetports', None)
+          ethernet_ports = int(modified_request.get('ethernetports', None))
           if create_ethernet_ports(cell_id, ethernet_ports):
             create_virtual_machine(modified_request)
             return JsonResponse({'response':'success'}, status=200)

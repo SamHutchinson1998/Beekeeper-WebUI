@@ -1,6 +1,6 @@
 from django.http import JsonResponse
 from xml.dom import minidom
-from .models import DiskImage, VirtualMachine, EthernetPortsForm
+from .models import DiskImage, VirtualMachine, EthernetPorts
 from django.conf import settings
 import os
 import uuid
@@ -113,12 +113,9 @@ def spawn_machine(disk_size, name, xml, token):
 
 def create_ethernet_ports(cell_id, ethernet_ports):
   vm = VirtualMachine.objects.get(cell_id=cell_id)
-  for port in ethernet_ports:
-    form = EthernetPortsForm(virtual_machine=vm)
-    if form.is_valid():
-      form.save()
-    else:
-      return False
+  for port in range(ethernet_ports):
+    ethernet_port = EthernetPorts(virtual_machine=vm)
+    ethernet_port.save()
   return True
 
 def generate_error_message(message, cell_id):
