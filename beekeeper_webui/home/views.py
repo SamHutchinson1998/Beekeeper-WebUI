@@ -6,7 +6,7 @@ from django.core.serializers import serialize
 from django.conf import settings
 from django.urls import reverse
 from django.template import Context, Template
-from .services import get_vm_status, create_device_req, lookup_domain, get_domain_vnc_socket, create_virtual_machine, remove_machine, turn_off_devices, turn_on_devices
+from .services import create_ethernet_ports, generate_error_message, get_vm_status, create_device_req, lookup_domain, get_domain_vnc_socket, create_virtual_machine, remove_machine, turn_off_devices, turn_on_devices
 from .models import EthernetPorts, EthernetPortsForm, ImageForm, DiskImage, VirtualMachine, VirtualMachineForm
 from urllib.parse import urlencode
 import os
@@ -17,7 +17,7 @@ import json
 class HomePageView(TemplateView):
   template_name = 'home.html'
 
-  def get_context_data(self, *args, **kwargs):
+  def get_context_data( *args, **kwargs):
     context = {
       'form': ImageForm(),
       'device_form': VirtualMachineForm()
@@ -64,23 +64,6 @@ class HomePageView(TemplateView):
       disk_images = json.loads(serialize('json', DiskImage.objects.all()))
       return JsonResponse({"disk_images":disk_images}, status = 200)
 
-  def create_ethernet_ports(self, cell_id, ethernet_ports):
-    vm = VirtualMachine.objects.get(cell_id=cell_id)
-    for port in ethernet_ports:
-      form = EthernetPortsForm(virtual_machine=vm)
-      if form.is_valid():
-        form.save()
-      else:
-        return False
-    return True
-
-  def generate_error_message(self, message, cell_id):
-    try:
-      vm = VirtualMachine.objects.get(cell_id=cell_id)
-      remove_machine(vm)
-    finally:
-      return JsonResponse({'response':'error', 'message': message}, status=200)
-
   def create_device(request):
     if request.method == "POST":
       modified_request = create_device_req(request)
@@ -94,13 +77,13 @@ class HomePageView(TemplateView):
             create_virtual_machine(modified_request)
             return JsonResponse({'response':'success'}, status=200)
           else:
-            return self.generate_error_message('Unable to create ethernet ports for device', cell_id)
+            return generate_error_message('Unable to create ethernet ports for device', cell_id)
         else:
-          return self.generate_error_message('Unable to add device: Unable to save Device in the database', cell_id)
+          return generate_error_message('Unable to add device: Unable to save Device in the database', cell_id)
       else:
-        return self.generate_error_message('Unable to add device: Data entered is not valid', cell_id)
+        return generate_error_message('Unable to add device: Data entered is not valid', cell_id)
     else:
-      return self.generate_error_message('Unable to add device: Wrong HTTP request', cell_id)
+      return generate_error_message('Unable to add device: Wrong HTTP request', cell_id)
 
   def remove_device(request):
     if request.is_ajax and request.method == "GET":

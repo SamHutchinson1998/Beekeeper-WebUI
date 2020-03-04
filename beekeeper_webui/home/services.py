@@ -1,10 +1,11 @@
-import libvirt
-import sys
+from django.http import JsonResponse
 from xml.dom import minidom
-from .models import DiskImage, VirtualMachine
+from .models import DiskImage, VirtualMachine, EthernetPortsForm
 from django.conf import settings
 import os
 import uuid
+import libvirt
+import sys
 
 def lookup_domain(cell_id):
   dom = None
@@ -109,6 +110,23 @@ def spawn_machine(disk_size, name, xml, token):
       socket = get_domain_vnc_socket(dom)
       create_device_token(socket, token)
   conn.close()
+
+def create_ethernet_ports(cell_id, ethernet_ports):
+  vm = VirtualMachine.objects.get(cell_id=cell_id)
+  for port in ethernet_ports:
+    form = EthernetPortsForm(virtual_machine=vm)
+    if form.is_valid():
+      form.save()
+    else:
+      return False
+  return True
+
+def generate_error_message(message, cell_id):
+  try:
+    vm = VirtualMachine.objects.get(cell_id=cell_id)
+    remove_machine(vm)
+  finally:
+    return JsonResponse({'response':'error', 'message': message}, status=200)
 
 def create_device_token(socket, token):
   token_mapping = "{}: {}:{}".format(token, socket[0], socket[1])
