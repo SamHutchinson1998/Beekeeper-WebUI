@@ -15,7 +15,6 @@
 {% if user.is_authenticated %}
 <body id="graphBody" onload="main(document.getElementById('graphContainer'), document.getElementById('sidebarContainer'))">
   {% include '_body.html' %}
-  <!--{% include '_messages.html' %}-->
 
 <script> mxBasePath = "{% static 'javascript/mxgraph-master/javascript/src' %}"</script>
 <script src="{% static 'javascript/mxgraph-master/javascript/src/js/mxClient.js' %}"></script>

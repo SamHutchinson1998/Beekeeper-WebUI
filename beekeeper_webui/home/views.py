@@ -6,7 +6,7 @@ from django.core.serializers import serialize
 from django.conf import settings
 from django.urls import reverse
 from django.template import Context, Template
-from .services import create_device_ethernet_ports, get_vm_status, create_device_req, lookup_domain, get_domain_vnc_socket, create_virtual_machine, remove_machine, turn_off_devices, turn_on_devices
+from .services import get_vm_status, create_device_req, lookup_domain, get_domain_vnc_socket, create_virtual_machine, remove_machine, turn_off_devices, turn_on_devices
 from .models import EthernetPorts, EthernetPortsForm, ImageForm, DiskImage, VirtualMachine, VirtualMachineForm
 from urllib.parse import urlencode
 import os
@@ -73,7 +73,8 @@ class HomePageView(TemplateView):
       if form.is_valid():
         if form.save():
           ethernet_ports = modified_request.POST.get('ethernetports', None)
-          if create_device_ethernet_ports(cell_id, ethernet_ports):
+          ports_created = create_ethernet_ports(cell_id, ethernet_ports)
+          if ports_created:
             create_virtual_machine(modified_request)
             messages.success(request, 'Successfully added device', extra_tags='alert-success')
             return JsonResponse({'response':'success'}, status=200)
@@ -85,6 +86,16 @@ class HomePageView(TemplateView):
         return generate_error_message('Unable to add device: Data entered is not valid', cell_id)
     else:
       return generate_error_message('Unable to add device: Wrong HTTP request', cell_id)
+
+  def create_ethernet_ports(cell_id, ethernet_ports):
+    vm = VirtualMachine.objects.get(cell_id=cell_id)
+    for port in ethernet_ports:
+      form = EthernetPortsForm(virtual_machine=vm)
+      if form.is_valid():
+        continue
+      else:
+        return False
+    return True
 
   def generate_error_message(message, cell_id):
     try:

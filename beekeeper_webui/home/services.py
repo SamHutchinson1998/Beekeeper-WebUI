@@ -6,7 +6,6 @@ from django.conf import settings
 import os
 import uuid
 
-
 def lookup_domain(cell_id):
   dom = None
   conn = libvirt.open('qemu:///system')
@@ -33,17 +32,6 @@ def get_domain_vnc_socket(domain):
   host_and_port.append(host)
   host_and_port.append(port)
   return host_and_port
-
-
-def create_device_ethernet_ports(cell_id, ethernet_ports):
-  vm = VirtualMachine.objects.get(cell_id=cell_id)
-  for port in ethernet_ports:
-    form = EthernetPortsForm(virtual_machine=vm,connected_to='none')
-    if form.is_valid():
-      continue
-    else:
-      return False
-  return True
 
 def create_virtual_machine(request):
   # create a .img file first then use that as the hard disk for the VM.
@@ -87,7 +75,7 @@ def create_virtual_machine(request):
     <devices>
       <emulator>/usr/bin/kvm-spice</emulator>
       <disk type='file' device='disk'>
-        <source file='/var/lib/libvirt/images/{name}.img'/>
+        <source file='/var/lib/libvirt/images/{name}.qcow2'/>
         <backingstore/>
         <driver name='qemu' type='raw'/>
         <target dev='vda' bus='virtio'/>
@@ -113,7 +101,7 @@ def spawn_machine(disk_size, name, xml, token):
   if dom == None:
     print('Failed to define a domain from an XML definition.', file=sys.stderr)
   else:
-    os.system(f'qemu-img create -f raw /var/lib/libvirt/images/{name}.img {disk_size}G')
+    os.system(f'qemu-img create -f raw /var/lib/libvirt/images/{name}.qcow2 {disk_size}G')
     if dom.create() < 0:
       print('Can not boot guest domain.', file=sys.stderr)
     else:
@@ -137,7 +125,7 @@ def remove_machine(virtual_machine):
   print(f'domain {virtual_machine.name} destroyed')
 
   # remove img associated with the VM
-  os.system(f'rm -rf /var/lib/libvirt/images/{virtual_machine.name}.img')
+  os.system(f'rm -rf /var/lib/libvirt/images/{virtual_machine.name}.qcow2')
 
   # remove the VNC token too
   token_filepath = os.path.join(settings.BASE_DIR, f'assets/javascript/novnc/vnc_tokens/{virtual_machine.token}.ini')
