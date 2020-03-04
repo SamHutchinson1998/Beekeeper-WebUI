@@ -63,46 +63,44 @@ class HomePageView(TemplateView):
       print(request)
       disk_images = json.loads(serialize('json', DiskImage.objects.all()))
       return JsonResponse({"disk_images":disk_images}, status = 200)
-  
-  def create_device(request):
-    if request.method == "POST":
-      modified_request = create_device_req(request)
-      cell_id = modified_request.POST.get('cell_id', None)
-      form = VirtualMachineForm(modified_request)
-      print(modified_request)
-      if form.is_valid():
-        if form.save():
-          ethernet_ports = modified_request.POST.get('ethernetports', None)
-          ports_created = create_ethernet_ports(cell_id, ethernet_ports)
-          if ports_created:
-            create_virtual_machine(modified_request)
-            messages.success(request, 'Successfully added device', extra_tags='alert-success')
-            return JsonResponse({'response':'success'}, status=200)
-          else:
-            generate_error_message('Unable to save ethernet ports', cell_id)
-        else:
-          generate_error_message('Unable to add device: Unable to save Device in the database', cell_id)
-      else:
-        return generate_error_message('Unable to add device: Data entered is not valid', cell_id)
-    else:
-      return generate_error_message('Unable to add device: Wrong HTTP request', cell_id)
 
-  def create_ethernet_ports(cell_id, ethernet_ports):
+  def create_ethernet_ports(self, cell_id, ethernet_ports):
     vm = VirtualMachine.objects.get(cell_id=cell_id)
     for port in ethernet_ports:
       form = EthernetPortsForm(virtual_machine=vm)
       if form.is_valid():
-        continue
+        form.save()
       else:
         return False
     return True
 
-  def generate_error_message(message, cell_id):
+  def generate_error_message(self, message, cell_id):
     try:
       vm = VirtualMachine.objects.get(cell_id=cell_id)
       remove_machine(vm)
     finally:
       return JsonResponse({'response':'error', 'message': message}, status=200)
+
+  def create_device(request):
+    if request.method == "POST":
+      modified_request = create_device_req(request)
+      cell_id = modified_request.get('cell_id', None)
+      form = VirtualMachineForm(modified_request)
+      print(modified_request)
+      if form.is_valid():
+        if form.save():
+          ethernet_ports = modified_request.get('ethernetports', None)
+          if create_ethernet_ports(cell_id, ethernet_ports):
+            create_virtual_machine(modified_request)
+            return JsonResponse({'response':'success'}, status=200)
+          else:
+            return self.generate_error_message('Unable to create ethernet ports for device', cell_id)
+        else:
+          return self.generate_error_message('Unable to add device: Unable to save Device in the database', cell_id)
+      else:
+        return self.generate_error_message('Unable to add device: Data entered is not valid', cell_id)
+    else:
+      return self.generate_error_message('Unable to add device: Wrong HTTP request', cell_id)
 
   def remove_device(request):
     if request.is_ajax and request.method == "GET":
