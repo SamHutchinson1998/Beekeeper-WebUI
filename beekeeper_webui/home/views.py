@@ -7,7 +7,7 @@ from django.conf import settings
 from django.urls import reverse
 from django.template import Context, Template
 from .services import get_vm_status, create_device_req, lookup_domain, get_domain_vnc_socket, create_virtual_machine, remove_machine, turn_off_devices, turn_on_devices
-from .models import ImageForm, DiskImage, VirtualMachine, VirtualMachineForm
+from .models import EthernetPorts, EthernetPortsForm, ImageForm, DiskImage, VirtualMachine, VirtualMachineForm
 from urllib.parse import urlencode
 import os
 import json
@@ -65,26 +65,43 @@ class HomePageView(TemplateView):
       return JsonResponse({"disk_images":disk_images}, status = 200)
   
   def create_device(request):
-    #next = request.POST.get('next', '/')
     if request.method == "POST":
       modified_request = create_device_req(request)
+      cell_id = modified_request.POST.get('cell_id', None)
       form = VirtualMachineForm(modified_request)
       print(modified_request)
       if form.is_valid():
         if form.save():
-          create_virtual_machine(modified_request)
-          messages.success(request, 'Successfully added device', extra_tags='alert-success')
-          return JsonResponse({'response':'success'}, status=200)
+          ethernet_ports = modified_request.POST.get('ethernetports', None)
+          if create_device_ethernet_ports(cell_id, ethernet_ports):
+            create_virtual_machine(modified_request)
+            messages.success(request, 'Successfully added device', extra_tags='alert-success')
+            return JsonResponse({'response':'success'}, status=200)
+          else:
+            generate_error_message('Unable to save ethernet ports', cell_id)
         else:
-          messages.error(request, 'Unable to add device: Unable to save Device in the database', extra_tags='alert-danger')
-          return JsonResponse({'response':'error'}, status=200)
+          generate_error_message('Unable to add device: Unable to save Device in the database', cell_id)
       else:
-        messages.error(request, "Unable to add device: Data entered is not valid ", extra_tags='alert-danger')
-        return JsonResponse({'response':'error'}, status=200)
+        return generate_error_message('Unable to add device: Data entered is not valid', cell_id)
     else:
-      messages.error(request, 'Unable to add device: Wrong HTTP request', extra_tags='alert-danger')
-      return JsonResponse({'response':'error'}, status=200)
-    #return HttpResponseRedirect(next)
+      return generate_error_message('Unable to add device: Wrong HTTP request', cell_id)
+
+  def generate_error_message(message, cell_id):
+    try:
+      vm = VirtualMachine.objects.get(cell_id=cell_id)
+      remove_machine(vm)
+    finally:
+      return JsonResponse({'response':'error', 'message': message}, status=200)
+
+  def create_device_ethernet_ports(cell_id, ethernet_ports):
+    vm = VirtualMachine.objects.get(cell_id=cell_id)
+    for port in ethernet_ports:
+      form = EthernetPortsForm(virtual_machine=vm,connected_to='none')
+      if form.is_valid():
+        continue
+      else:
+        return False
+    return True
 
   def remove_device(request):
     if request.is_ajax and request.method == "GET":

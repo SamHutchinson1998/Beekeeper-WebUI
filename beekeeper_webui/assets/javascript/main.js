@@ -289,6 +289,7 @@ function handleDeviceFormSubmit(graph)
     var disk_image = document.getElementById('disk_image_id').value;
     var cell_id = document.getElementById('cell_id').value;
     var csrf = $('input[name=csrfmiddlewaretoken]').val();
+    var ethernetports = document.getElementById('ethernetSlider').value;
     $.ajax({
       url: 'post_device_form',
       type: 'POST',
@@ -299,14 +300,14 @@ function handleDeviceFormSubmit(graph)
         cpus: cpus,
         disk_image: disk_image,
         cell_id: cell_id,
-        csrfmiddlewaretoken: csrf
+        csrfmiddlewaretoken: csrf,
+        ethernetports: ethernetports
       },
       success: function(result){
         if(result['response'] == 'error'){
           // remove the cell if there is an error in database submission or VM creation
           if (graph.isEnabled()){ graph.removeCells(); }
-          // perhaps get error messages from django here for more specialised messages?
-          toastr.error('Error adding device');
+          toastr.error(`Error adding device: ${result['message']}`);
         }
         if(result['response'] == 'success'){
           toastr.success('Device added successfully');

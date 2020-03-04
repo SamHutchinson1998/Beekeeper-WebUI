@@ -29,6 +29,10 @@ class EthernetPorts(models.Model):
   virtual_machine = models.ForeignKey(VirtualMachine, on_delete=models.CASCADE)
   connected_to = models.CharField(max_length=10)
 
+class EthernetPortsForm(forms.ModelForm):
+  class Meta:
+    model = EthernetPorts
+    fields = ['virtual_machine', 'connected_to']
 
 class ImageForm(forms.ModelForm):
   class Meta:
