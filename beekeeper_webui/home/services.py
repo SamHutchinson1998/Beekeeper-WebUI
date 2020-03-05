@@ -51,6 +51,13 @@ def create_virtual_machine(cell_id):
   cpus = vm.cpus
   disk_image = vm.disk_image.disk_image
 
+  ethernet_ports = """"""
+  for port in vm.ethernetports_set.all():
+    xml = """
+    <interface></interface>\n
+    """
+    ethernet_ports += xml
+
   xml = f"""
   <domain type='kvm'>
     <name>{name}</name>
@@ -89,6 +96,7 @@ def create_virtual_machine(cell_id):
         <readonly/>
       </disk>
       <input type='mouse' bus='ps2'/>
+      <input type='keyboard' bus='ps2'/>
       <graphics type='vnc' port='-1' autoport='yes' listen='0.0.0.0'/>
     </devices>
   </domain>"""
