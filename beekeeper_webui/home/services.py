@@ -82,6 +82,7 @@ def create_virtual_machine(cell_id):
     </features>
     <devices>
       <emulator>/usr/bin/kvm-spice</emulator>
+      {ethernet_ports}
       <disk type='file' device='disk'>
         <source file='/var/lib/libvirt/images/{name}.qcow2'/>
         <backingstore/>
