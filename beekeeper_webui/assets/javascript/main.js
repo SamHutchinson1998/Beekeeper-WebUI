@@ -173,10 +173,10 @@ function removeDevices(graph)
     for(i = 0; i < selected_cells.length; i++){
       cell_id = selected_cells[i].getId();
       if(selected_cells[i].isVertex()){
-        removeDevice(cell_id);
+        removeDevice(graph, selected_cells[i]);
       }
     }
-    graph.removeCells();
+    //graph.removeCells();
   }
 }
 function getDevices()
@@ -192,19 +192,23 @@ function getDevices()
   return output;
 }
 
-function removeDevice(cell_id)
+function removeDevice(graph, cell)
 {
+  cell_id = cell.getId();
   $.ajax({
     url: 'remove_device',
     data: {'cell_id':cell_id},
     async: false,
     success: function(result){
-      if(result.status == 200){ // if the task was successful
-        console.log('success', result);
+      if(result['result'] == 'success'){ // if the task was successful
+        //console.log('success', result);
+        graph.remove(cell);
+        toastr.success('Device removed successfully');
       }
       else{
         // handle error code here
-        console.log('error', result);
+        toastr.error('Error removing Device');
+        //console.log('error', result);
       }
     }
   });
@@ -312,8 +316,20 @@ function handleDeviceFormSubmit(graph)
         if(result['response'] == 'success'){
           toastr.success('Device added successfully');
         }
+        changeCellLabel(graph.getModel(),cell_id,name);
         $('#device_modal').modal('hide');
       },
     });
   });
+}
+
+function validateDeviceForm(ram, disk_size, )
+{
+
+}
+
+function changeCellLabel(model, cell_id, name)
+{
+  var cell = model.getCell(cell_id);
+  model.setValue(cell, name);
 }

@@ -93,7 +93,7 @@ class HomePageView(TemplateView):
         remove_machine(vm_record)
         return JsonResponse({'result': 'success'},status = 200)
       else:
-        return JsonResponse({'result': 'error'},status = 500)
+        return JsonResponse({'result': f'Unable to remove device {vm_record.name} from the database at this time'},status = 500)
   
   def change_vm_state(request):
     if request.is_ajax and request.method == "GET":

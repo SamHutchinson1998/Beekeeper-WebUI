@@ -140,7 +140,7 @@ function startVirtualMachines(button, graph)
         'cells': JSON.stringify(cellArry)
       },
       success: function(result){
-        alert('Devices successfully switched on');
+        toastr.success('Devices successfully switched on');
       }
     });
   })
@@ -164,7 +164,7 @@ function stopVirtualMachines(button, graph)
         'cells': JSON.stringify(cellArry)
       },
       success: function(result){
-        alert('Devices successfully switched off');
+        toastr.success('Devices successfully switched off');
       }
     });
   });
