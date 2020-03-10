@@ -39,7 +39,6 @@ function main(container, sidebar)
 
     // Creates the graph inside the given container
     var editor = new mxEditor();
-    //var graph = new mxGraph(container);
     var graph = editor.graph;
     editor.setGraphContainer(container);
 
@@ -85,7 +84,6 @@ function displayGraph(graph)
 {
   insertStatusLights(graph);
 }
-
 
 function getLegend()
 {
@@ -278,7 +276,7 @@ function getStatusLight(cell_id)
       var device_status = result['device_status'];
       output = getVector(device_status); // getVector is in sidebar.js
     }
-  })
+  });
   //console.log(output);
   return output
 }
@@ -315,9 +313,9 @@ function handleDeviceFormSubmit(graph)
           toastr.error(`Error adding device: ${result['message']}`);
         }
         if(result['response'] == 'success'){
+          changeCellLabel(graph.getModel(),cell_id,name);
           toastr.success('Device added successfully');
         }
-        changeCellLabel(graph.getModel(),cell_id,name);
         $('#device_modal').modal('hide');
       },
     });
@@ -328,4 +326,15 @@ function changeCellLabel(model, cell_id, name)
 {
   var cell = model.getCell(cell_id);
   model.setValue(cell, name);
+}
+
+function removeDeviceNotSubmitted(cell_id)
+{
+  // Creates the graph inside the given container
+  var editor = new mxEditor();
+  var graph = editor.graph;
+  var string = getXml();
+  var xml_string = mxUtils.parseXml(string);
+  var codec = new mxCodec(xml_string);
+  codec.decode(xml_string.documentElement, graph.getModel());
 }

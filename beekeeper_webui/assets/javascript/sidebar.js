@@ -120,6 +120,18 @@ function getDeviceModal(image_id, cell_id, graph)
 
   $('#device_modal').on('hidden.bs.modal', function () {
     $('#device_form').trigger('reset');
+    $.ajax({
+      url: 'get_device_status',
+      data: {'cell_id': cell_id},
+      async: false,
+      dataType: "json",
+      success: function(result){
+        if(result['device_status'] == 'status_unknown'){ // VMs auto start on creation, so an unknown status still here implies something went wrong in the VM creation process.
+          if (graph.isEnabled()){ graph.removeCells(); } // only remove the cell on an unknown status
+          toastr.error('Unable to add device');
+        }
+      }
+    });
     // code to remove a device not added in the backend goes here
   });
 
@@ -130,5 +142,3 @@ function getDeviceModal(image_id, cell_id, graph)
     document.getElementById('cell_id').value = cell_id_string;
   });
 }
-
-
