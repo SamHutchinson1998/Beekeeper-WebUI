@@ -173,10 +173,10 @@ function removeDevices(graph)
     for(i = 0; i < selected_cells.length; i++){
       cell_id = selected_cells[i].getId();
       if(selected_cells[i].isVertex()){
-        removeDevice(graph, selected_cells[i]);
+        removeDevice(selected_cells[i]);
       }
     }
-    //graph.removeCells();
+    graph.removeCells();
   }
 }
 function getDevices()
@@ -192,7 +192,7 @@ function getDevices()
   return output;
 }
 
-function removeDevice(graph, cell)
+function removeDevice(cell)
 {
   cell_id = cell.getId();
   $.ajax({
@@ -202,7 +202,7 @@ function removeDevice(graph, cell)
     success: function(result){
       if(result['result'] == 'success'){ // if the task was successful
         //console.log('success', result);
-        graph.remove(cell);
+        //graph.remove(cell);
         toastr.success('Device removed successfully');
       }
       else{
@@ -321,11 +321,6 @@ function handleDeviceFormSubmit(graph)
       },
     });
   });
-}
-
-function validateDeviceForm(ram, disk_size, )
-{
-
 }
 
 function changeCellLabel(model, cell_id, name)
