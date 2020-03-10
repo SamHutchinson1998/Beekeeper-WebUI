@@ -77,6 +77,7 @@ function main(container, sidebar)
     getLegend();
     insertStatusLights(graph);
     graphListener(graph);
+
     window.setInterval(function(){ displayGraph(graph); }, 2000); // update the graph every second
   }
 };

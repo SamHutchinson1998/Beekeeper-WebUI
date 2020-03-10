@@ -120,6 +120,7 @@ function getDeviceModal(image_id, cell_id, graph)
 
   $('#device_modal').on('hidden.bs.modal', function () {
     $('#device_form').trigger('reset');
+    // code to remove a device not added in the backend goes here
   });
 
   $('#device_modal').on("shown.bs.modal", function(event){
