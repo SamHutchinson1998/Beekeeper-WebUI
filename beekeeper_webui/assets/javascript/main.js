@@ -4,7 +4,6 @@
 
 function main(container, sidebar)
 {
-  handleDeviceFormSubmit(graph);
   // Toastr options for displaying the toast
   toastr.options = {
     "closeButton": true,
@@ -77,7 +76,7 @@ function main(container, sidebar)
     getLegend();
     insertStatusLights(graph);
     graphListener(graph);
-
+    handleDeviceFormSubmit(graph);
     window.setInterval(function(){ displayGraph(graph); }, 2000); // update the graph every second
   }
 };
