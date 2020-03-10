@@ -140,6 +140,7 @@ function startVirtualMachines(button, graph)
         'cells': JSON.stringify(cellArry)
       },
       success: function(result){
+        insertStatusLights(graph);
         toastr.success('Devices successfully switched on');
       }
     });
@@ -164,6 +165,7 @@ function stopVirtualMachines(button, graph)
         'cells': JSON.stringify(cellArry)
       },
       success: function(result){
+        insertStatusLights(graph);
         toastr.success('Devices successfully switched off');
       }
     });

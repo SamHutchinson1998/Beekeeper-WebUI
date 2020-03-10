@@ -76,7 +76,7 @@ function main(container, sidebar)
     insertStatusLights(graph);
     graphListener(graph);
     handleDeviceFormSubmit(graph);
-    window.setInterval(function(){ displayGraph(graph); }, 2000); // update the graph every second
+    //window.setInterval(function(){ displayGraph(graph); }, 2000); // update the graph every second
   }
 };
 // displayGraph gets called when the user clicks the refresh button
@@ -326,15 +326,4 @@ function changeCellLabel(model, cell_id, name)
 {
   var cell = model.getCell(cell_id);
   model.setValue(cell, name);
-}
-
-function removeDeviceNotSubmitted(cell_id)
-{
-  // Creates the graph inside the given container
-  var editor = new mxEditor();
-  var graph = editor.graph;
-  var string = getXml();
-  var xml_string = mxUtils.parseXml(string);
-  var codec = new mxCodec(xml_string);
-  codec.decode(xml_string.documentElement, graph.getModel());
 }
