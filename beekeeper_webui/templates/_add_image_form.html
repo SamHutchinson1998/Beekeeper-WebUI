@@ -9,7 +9,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <form action="{% url 'upload_image' %}" method="POST" enctype="multipart/form-data">
+        <form action="{% url 'upload_image' %}" method="POST" onsubmit="return validateImageForm()" enctype="multipart/form-data">
           {% csrf_token %}
           {{ form|crispy }}
           <input type="hidden" name="next" value="{{ request.path }}"/>
@@ -22,3 +22,16 @@
     </div>
   </div>
 </div>
+<script>
+  function validateImageForm()
+  {
+    var image = document.getElementById('id_disk_image').value;
+    if(image.match(/.(iso|qcow2)$/)){
+      return true
+    }
+    else{
+      alert('Disk Image is not of valid format')
+      return false
+    }
+  }
+</script>

@@ -177,6 +177,7 @@ function removeDevices(graph)
       }
     }
     graph.removeCells();
+    toastr.success('Devices removed');
   }
 }
 function getDevices()
