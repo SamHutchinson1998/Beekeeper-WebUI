@@ -11,10 +11,11 @@
       <div class="modal-body">
         <form action="{% url 'remove_image' %}" method="POST" enctype="multipart/form-data">
           <select class="selectpicker" multiple>
-            {% for image in disk_images %}
-              <option name='option'id={{image.id}}>{{ image.name }}</option>
-            {% endfor %}
+          {% for image in disk_images %}
+            <option name='option'id={{image.id}}>{{ image.name }}</option>
+          {% endfor %}
           </select>
+	  <div style="margin-top:10px;"></div>
           <input type="hidden" name="next" value="{{ request.path }}"/>
           <input type="submit" value="Remove Images" class="btn btn-primary"/>
         </form>
