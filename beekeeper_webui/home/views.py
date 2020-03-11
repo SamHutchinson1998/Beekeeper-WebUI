@@ -135,6 +135,8 @@ class HomePageView(TemplateView):
     if request.method == 'POST':
       images = request.POST.getlist('diskImages', None)
       for image in images:
-        disk_image = DiskImage.objects.get(name=image).delete()
+        disk_image = DiskImage.objects.get(name=image)
+        disk_image.disk_image.delete()
+        disk_image.delete()
       return HttpResponseRedirect(next)
 
