@@ -96,6 +96,12 @@ def create_virtual_machine(cell_id):
         <target dev='hda' bus='ide'/>
         <readonly/>
       </disk>
+      <serial type='pty'>
+        <target port='0'/>
+      </serial>
+      <console type='pty'>
+        <target type='serial' port='0'/>
+      </console>
       <input type='mouse' bus='ps2'/>
       <input type='keyboard' bus='ps2'/>
       <graphics type='vnc' port='-1' autoport='yes' listen='0.0.0.0'/>

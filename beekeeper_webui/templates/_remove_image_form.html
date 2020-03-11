@@ -1,3 +1,4 @@
+{% load static %}
 <div class="modal fade" id="removeImageModal">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -11,7 +12,7 @@
         <form action="{% url 'remove_image' %}" method="POST" enctype="multipart/form-data">
           <select class="selectpicker" multiple>
             {% for image in disk_images %}
-              <option>{% option.name %}</option>
+              <option name='option'id={{image.id}}>{{ image.name }}</option>
             {% endfor %}
           </select>
           <input type="hidden" name="next" value="{{ request.path }}"/>
