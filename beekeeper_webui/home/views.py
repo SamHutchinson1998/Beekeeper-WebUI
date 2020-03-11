@@ -61,7 +61,6 @@ class HomePageView(TemplateView):
 
   def get_devices(request):
     if request.is_ajax and request.method == "GET":
-      print(request)
       disk_images = json.loads(serialize('json', DiskImage.objects.all()))
       return JsonResponse({"disk_images":disk_images}, status = 200)
 
@@ -134,6 +133,8 @@ class HomePageView(TemplateView):
   def remove_image(request):
     next = request.POST.get('next', '/')
     if request.method == 'POST':
-      print(request.POST)
+      images = request.POST.get('diskImages', None)
+      for image in images:
+        disk_image = DiskImage.objects.get(name=image).delete()
       return HttpResponseRedirect(next)
 

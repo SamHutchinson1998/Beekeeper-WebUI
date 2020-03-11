@@ -26,12 +26,36 @@
   function validateImageForm()
   {
     var image = document.getElementById('id_disk_image').value;
+    var name = document.getElementById('id_name').value;
     if(image.match(/.(iso|qcow2)$/)){
       return true
     }
     else{
-      alert('Disk Image is not of valid format')
-      return false
+      alert('Disk Image is not of valid format');
+      return false;
     }
+    if(!validateName(name)){
+      alert('Disk Image name already in use');
+      return false;
+    }
+  }
+  function validateName(name)
+  {
+    $.ajax({
+      url: "get_devices",
+      async: false,
+      success: function(result){
+        var images = result['disk_images'];
+        var i;
+        for(i=0;i<images.length;i++){
+          image_name = images[i].name;
+          if(image_name == name){
+            return true;
+          }
+        }
+        return false;
+      }
+    });
+
   }
 </script>
