@@ -33,12 +33,13 @@ function addToolbarItem(toolbar, graph, tool, tooltype)
         break;
         case 'cable':
           style = `strokeWidth=5;strokeColor=black;endArrow=none;html=1;`;
-          cell = new mxCell('Test Cable', new mxGeometry(0, 0, 150, 150), style); // last two values are height and width respectively
+          cell = new mxCell('', new mxGeometry(0, 0, 150, 150), style); // last two values are height and width respectively
           cell.geometry.setTerminalPoint(new mxPoint(0, 170), true); // source point
           cell.geometry.setTerminalPoint(new mxPoint(180, 0), false); // target point
           cell.geometry.relative = true;
           cell.edge = true;
           graph.importCells([cell], x, y, parent);
+          model.setValue(cell, `bridge_${cell.getId()}`);
         break;
         default:
           cell = null;

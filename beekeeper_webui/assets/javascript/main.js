@@ -173,6 +173,9 @@ function removeDevices(graph)
       if(selected_cells[i].isVertex()){
         removeDevice(selected_cells[i]);
       }
+      if(selected_cells[i].isEdge()){
+        
+      }
     }
     graph.removeCells();
     toastr.success('Devices removed');
@@ -208,6 +211,11 @@ function removeDevice(cell)
       }
     }
   });
+}
+
+function removeCable(cell)
+{
+  
 }
 
 function sendRequest(xml)
