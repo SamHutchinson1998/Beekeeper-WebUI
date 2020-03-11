@@ -200,14 +200,11 @@ function removeDevice(cell)
     async: false,
     success: function(result){
       if(result['result'] == 'success'){ // if the task was successful
-        //console.log('success', result);
-        //graph.remove(cell);
+
         toastr.success('Device removed successfully');
       }
-      else{
-        // handle error code here
+      else{ // handle error code here
         toastr.error('Error removing Device');
-        //console.log('error', result);
       }
     }
   });

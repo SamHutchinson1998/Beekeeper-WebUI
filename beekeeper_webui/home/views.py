@@ -133,11 +133,8 @@ class HomePageView(TemplateView):
   def remove_image(request):
     next = request.POST.get('next', '/')
     if request.method == 'POST':
-      #print(request.POST)
       images = request.POST.getlist('diskImages', None)
-      #print(images)
       for image in images:
-        #print(image)
         disk_image = DiskImage.objects.get(name=image).delete()
       return HttpResponseRedirect(next)
 
