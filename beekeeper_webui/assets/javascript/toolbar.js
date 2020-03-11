@@ -38,6 +38,9 @@ function addToolbarItem(toolbar, graph, tool, tooltype)
           cell.geometry.setTerminalPoint(new mxPoint(180, 0), false); // target point
           cell.geometry.relative = true;
           cell.edge = true;
+          if(cell.isEdge()){
+            model.setValue(cell, `bridge_${cell.id()}`);
+          }
           graph.importCells([cell], x, y, parent);
         break;
         default:
@@ -47,9 +50,6 @@ function addToolbarItem(toolbar, graph, tool, tooltype)
     finally
     {
       model.endUpdate();
-    }
-    if(cell.isEdge()){
-      model.setValue(cell, `bridge_${cell.getId()}`);
     }
     graph.setSelectionCell(cell);
   }

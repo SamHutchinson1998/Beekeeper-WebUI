@@ -181,6 +181,7 @@ function removeDevices(graph)
     toastr.success('Devices removed');
   }
 }
+
 function getDevices()
 {
   var output = null;
