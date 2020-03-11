@@ -27,7 +27,7 @@
   {
     var image = document.getElementById('id_disk_image').value;
     var name = document.getElementById('id_name').value;
-    if(image.match(/.(iso|qcow2)$/)){
+    if(image.toLowerCase().match(/.(iso|qcow2)$/)){
       return true
     }
     else{
