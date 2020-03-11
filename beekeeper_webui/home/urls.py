@@ -12,5 +12,6 @@ urlpatterns = [
     path('get_device_vnc', HomePageView.get_device_vnc, name='get_device_vnc'),
     path('load_device_vnc', HomePageView.load_device_vnc, name='load_device_vnc'),
     path('get_device_status', HomePageView.get_device_status, name='get_device_status'),
-    path('reload_body', HomePageView.reload_body, name="reload_body")
+    path('reload_body', HomePageView.reload_body, name="reload_body"),
+    path('remove_image', HomePageView.remove_image, name="remove_image")
 ]

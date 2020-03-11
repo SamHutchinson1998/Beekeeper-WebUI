@@ -6,7 +6,7 @@ from django.core.serializers import serialize
 from django.conf import settings
 from django.urls import reverse
 from django.template import Context, Template
-from .services import create_ethernet_ports, generate_error_message, get_vm_status, create_device_req, lookup_domain, get_domain_vnc_socket, create_virtual_machine, remove_machine, turn_off_devices, turn_on_devices
+from .services import get_images, create_ethernet_ports, generate_error_message, get_vm_status, create_device_req, lookup_domain, get_domain_vnc_socket, create_virtual_machine, remove_machine, turn_off_devices, turn_on_devices
 from .models import EthernetPorts, EthernetPortsForm, ImageForm, DiskImage, VirtualMachine, VirtualMachineForm
 from urllib.parse import urlencode
 import os
@@ -20,7 +20,8 @@ class HomePageView(TemplateView):
   def get_context_data( *args, **kwargs):
     context = {
       'form': ImageForm(),
-      'device_form': VirtualMachineForm()
+      'device_form': VirtualMachineForm(),
+      'disk_images': DiskImage.objects.all()
     }
     return context
 
@@ -129,3 +130,6 @@ class HomePageView(TemplateView):
       }
       return render(request, '_body.html', context)
     return JsonResponse({},status=200)
+
+  def remove_image(request):
+    print('something')

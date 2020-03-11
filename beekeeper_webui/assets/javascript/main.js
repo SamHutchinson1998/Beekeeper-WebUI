@@ -70,7 +70,7 @@ function main(container, sidebar)
     var codec = new mxCodec(xml_string);
     codec.decode(xml_string.documentElement, graph.getModel());
     keyBindings(graph);
-    addMouseWheelZoom(graph)
+    //addMouseWheelZoom(graph) // re-enable this sometime soon
     getDeviceMenu(graph);
     getLegend();
     insertStatusLights(graph);
