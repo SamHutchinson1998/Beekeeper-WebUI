@@ -39,7 +39,6 @@ function addToolbarItem(toolbar, graph, tool, tooltype)
           cell.geometry.relative = true;
           cell.edge = true;
           graph.importCells([cell], x, y, parent);
-          model.setValue(cell, `bridge_${cell.getId()}`);
         break;
         default:
           cell = null;
@@ -48,6 +47,9 @@ function addToolbarItem(toolbar, graph, tool, tooltype)
     finally
     {
       model.endUpdate();
+    }
+    if(cell.isEdge()){
+      model.setValue(cell, `bridge_${cell.getId()}`);
     }
     graph.setSelectionCell(cell);
   }
