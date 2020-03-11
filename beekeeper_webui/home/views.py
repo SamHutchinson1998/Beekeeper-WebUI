@@ -134,6 +134,6 @@ class HomePageView(TemplateView):
   def remove_image(request):
     next = request.POST.get('next', '/')
     if request.method == 'POST':
-      print(request)
+      print(request.POST)
       return HttpResponseRedirect(next)
 

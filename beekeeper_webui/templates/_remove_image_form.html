@@ -10,8 +10,8 @@
       </div>
       <div class="modal-body">
         <form action="{% url 'remove_image' %}" method="POST" enctype="multipart/form-data">
-          <select class="selectpicker" multiple>
           {% csrf_token %}
+          <select name="diskImages" class="form-control" multiple>
           {% for image in disk_images %}
             <option name='option'id={{image.id}}>{{ image.name }}</option>
           {% endfor %}
