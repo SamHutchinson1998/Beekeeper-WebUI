@@ -38,10 +38,8 @@ function addToolbarItem(toolbar, graph, tool, tooltype)
           cell.geometry.setTerminalPoint(new mxPoint(180, 0), false); // target point
           cell.geometry.relative = true;
           cell.edge = true;
-          if(cell.isEdge()){
-            model.setValue(cell, `bridge_${cell.getId()}`);
-          }
-          graph.importCells([cell], x, y, parent);
+          var imported_cell = graph.importCells([cell], x, y, parent);
+          model.setValue(imported_cell, `bridge_${imported_cell.getId()}`);
         break;
         default:
           cell = null;

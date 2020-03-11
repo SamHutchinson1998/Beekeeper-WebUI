@@ -131,6 +131,7 @@ function graphListener(graph)
 {
   // Updates the display
   graph.getModel().addListener('change', function(){
+    // add code here to update labels of edges too?
     var encoder = new mxCodec();
     var result = encoder.encode(graph.getModel());
     // work on making Redis server requests here?
