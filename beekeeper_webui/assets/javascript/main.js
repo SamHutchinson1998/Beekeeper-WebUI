@@ -175,12 +175,31 @@ function removeDevices(graph)
         removeDevice(selected_cells[i]);
       }
       if(selected_cells[i].isEdge()){
-        
+        destroyNetworkBridge(selected_cells[i]);
       }
     }
     graph.removeCells();
     toastr.success('Devices removed');
   }
+}
+
+function destroyNetworkBridge(cell)
+{
+  var name = cell.getValue();
+  $.ajax({
+    url: 'destroy_network_bridge',
+    data: {'bridge_name': name},
+    async: false,
+    success: function(result){
+      if(result['response'] == 'success'){
+        toastr.success('Ethernet Cable removed successfully');
+        // deal with cell removal here
+      }
+      else{
+        toastr.error(`Unable to remove ethernet cable: ${result['error']}`);
+      }
+    }
+  });
 }
 
 function getDevices()

@@ -39,7 +39,9 @@ function addToolbarItem(toolbar, graph, tool, tooltype)
           cell.geometry.relative = true;
           cell.edge = true;
           var imported_cell = graph.importCells([cell], x, y, parent);
-          model.setValue(imported_cell[0], `bridge_${imported_cell[0].getId()}`);
+          var label = `bridge_${imported_cell[0].getId()}`;
+          model.setValue(imported_cell[0], label);
+          addNetworkBridge(label)
         break;
         default:
           cell = null;
@@ -173,7 +175,7 @@ function stopVirtualMachines(button, graph)
   });
 }
 
-function addNetworkBridge(cell, name)
+function addNetworkBridge(name)
 {
   $.ajax({
     url: 'create_network_bridge',
@@ -184,25 +186,10 @@ function addNetworkBridge(cell, name)
         toastr.success('Ethernet Cable added successfully');
       }
       else{
+        // deal with cell removal here
         toastr.error(`Unable to add ethernet cable: ${result['error']}`);
       }
     }
   });
 }
 
-function destroyNetworkBridge(cell, name)
-{
-  $.ajax({
-    url: 'destroy_network_bridge',
-    data: {'bridge_name': name},
-    async: false,
-    success: function(result){
-      if(result['response'] == 'success'){
-        toastr.success('Ethernet Cable removed successfully');
-      }
-      else{
-        toastr.error(`Unable to remove ethernet cable: ${result['error']}`);
-      }
-    }
-  });
-}
