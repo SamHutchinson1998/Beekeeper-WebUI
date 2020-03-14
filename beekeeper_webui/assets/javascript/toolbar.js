@@ -39,7 +39,7 @@ function addToolbarItem(toolbar, graph, tool, tooltype)
           cell.geometry.relative = true;
           cell.edge = true;
           var imported_cell = graph.importCells([cell], x, y, parent);
-          model.setValue(imported_cell, `bridge_${imported_cell.getId()}`);
+          model.setValue(imported_cell[0], `bridge_${imported_cell[0].getId()}`);
         break;
         default:
           cell = null;
