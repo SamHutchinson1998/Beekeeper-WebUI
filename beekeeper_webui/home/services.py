@@ -51,7 +51,7 @@ def create_virtual_machine(cell_id):
   cpus = vm.cpus
   disk_image = vm.disk_image.disk_image
 
-  ethernet_ports = """"""
+  ethernet_ports = """ """
   for port in vm.ethernetports_set.all():
     xml = """
     <interface></interface>\n
@@ -240,10 +240,7 @@ def destroy_network(name):
     conn.close()
     return 'Failed to open connection to QEMU'
   network = conn.networkLookupByName(name)
-  network.networkUndefine()
-  if network.destroy():
-    conn.close()
-    return 'success'
-  else:
-    conn.close()
-    return 'unable to destroy ethernet cable'
+  network.destroy()
+  network.undefine()
+  conn.close()
+  return 'success'
