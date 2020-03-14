@@ -211,3 +211,39 @@ def get_vm_status(cell_id):
       return 'status_online'
     if vm.isActive() < 1:
       return 'status_offline'
+
+def create_network(name):
+  xml = f""" 
+  <network>
+    <name>{name}</name>
+    <bridge name="{name}" stp='off' macTableManager="libvirt"/> 
+    <mtu size="9216"/> 
+  </network>
+  """
+  conn = libvirt.open('qemu:///system')
+  if conn == None:
+    conn.close()
+    return 'Failed to open connection to QEMU'
+  network = conn.networkDefineXML(xml)
+  if network == None:
+    conn.close()
+    return 'Failed to create an ethernet cable in the backend'
+  if network.create() < 0:
+    conn.close()
+    return 'Failed to boot up network bridge'
+  conn.close()
+  return 'success'
+
+def destroy_network(name):
+  conn = libvirt.open('qemu:///system')
+  if conn == None:
+    conn.close()
+    return 'Failed to open connection to QEMU'
+  network = conn.networkLookupByName(name)
+  network.networkUndefine()
+  if network.destroy():
+    conn.close()
+    return 'success'
+  else:
+    conn.close()
+    return 'unable to destroy ethernet cable'

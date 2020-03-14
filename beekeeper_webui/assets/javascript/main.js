@@ -205,7 +205,6 @@ function removeDevice(cell)
     async: false,
     success: function(result){
       if(result['result'] == 'success'){ // if the task was successful
-
         toastr.success('Device removed successfully');
       }
       else{ // handle error code here

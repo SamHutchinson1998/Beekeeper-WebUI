@@ -6,7 +6,7 @@ from django.core.serializers import serialize
 from django.conf import settings
 from django.urls import reverse
 from django.template import Context, Template
-from .services import create_ethernet_ports, generate_error_message, get_vm_status, create_device_req, lookup_domain, get_domain_vnc_socket, create_virtual_machine, remove_machine, turn_off_devices, turn_on_devices
+from .services import destroy_network, create_network, create_ethernet_ports, generate_error_message, get_vm_status, create_device_req, lookup_domain, get_domain_vnc_socket, create_virtual_machine, remove_machine, turn_off_devices, turn_on_devices
 from .models import EthernetPorts, EthernetPortsForm, ImageForm, DiskImage, VirtualMachine, VirtualMachineForm
 from urllib.parse import urlencode
 import os
@@ -140,3 +140,20 @@ class HomePageView(TemplateView):
         disk_image.delete()
       return HttpResponseRedirect(next)
 
+  def create_network_bridge(request):
+    name = request.GET.get('bridge_name', None)
+    if request.method == "GET":
+      network = create_network(name)
+      if network == 'success': # if network creation was not successful
+        return JsonResponse({'response': network})
+      else:
+        return JsonResponse({'error': network})
+      
+  def destroy_network_bridge(request):
+    name = request.GET.get('bridge_name', None)
+    if request.method == "GET":
+      remove_network = destroy_network(name)
+      if remove_network == 'success':
+        return JsonResponse({'response': remove_network})
+      else:
+        return JsonResponse({'error': remove_network})

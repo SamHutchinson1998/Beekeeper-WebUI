@@ -172,3 +172,37 @@ function stopVirtualMachines(button, graph)
     });
   });
 }
+
+function addNetworkBridge(cell, name)
+{
+  $.ajax({
+    url: 'create_network_bridge',
+    data: {'bridge_name': name},
+    async: false,
+    success: function(result){
+      if(result['response'] == 'success'){
+        toastr.success('Ethernet Cable added successfully');
+      }
+      else{
+        toastr.error(`Unable to add ethernet cable: ${result['error']}`);
+      }
+    }
+  });
+}
+
+function destroyNetworkBridge(cell, name)
+{
+  $.ajax({
+    url: 'destroy_network_bridge',
+    data: {'bridge_name': name},
+    async: false,
+    success: function(result){
+      if(result['response'] == 'success'){
+        toastr.success('Ethernet Cable removed successfully');
+      }
+      else{
+        toastr.error(`Unable to remove ethernet cable: ${result['error']}`);
+      }
+    }
+  });
+}
