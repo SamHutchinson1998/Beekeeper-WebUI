@@ -1,4 +1,3 @@
-{% load static %}
 <div class="modal fade" id="ethernet_modal">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -12,10 +11,8 @@
         <form action="{% url 'create_network_bridge' %}" method="POST" onsubmit="" enctype="multipart/form-data">
           <table>
             <th style="width:50%;font-weight:normal;margin-right: 10px;">
-              <select name="device_one" class="form-control">
-                {% for device in devices %}
-                  <option name='option'id={{device.id}}>{{device['fields'].name}}</option>
-                {% endfor %}
+              <select id="device_one"name="device_one" class="form-control">
+                <!-- js automates options here -->
               </select>
             </th>
             <th>
@@ -26,7 +23,7 @@
           </table>
           <table>
             <th style="width:50%;font-weight:normal;margin-right: 10px;">
-              <select name="device_two" class="form-control">
+              <select id="device_two"name="device_two" class="form-control">
                 {% for device in devices %}
                   <option name='option'id={{device.id}}>{{device.name}}</option>
                 {% endfor %}
@@ -45,6 +42,19 @@
 <script>
   var data = {{devices|safe}}
   console.log(data);
+
+  var device_one = document.getElementById('device_one');
+  var device_two = document.getElementById('device_two');
+
+  var i;
+  for(i = 0; i < data.length; i++){
+    var opt = document.createElement('option');
+    opt.appendChild(document.createTextNode(data[i].name));
+    opt.value = data[i].cell_id; // cell_id is used to query mxgraph's database of cells and connect ethernet cables to the correct cell
+    device_one.appendChild(opt);
+    device_two.appendChild(opt);
+  }
+
   function validateEthernetCable()
   {
 
