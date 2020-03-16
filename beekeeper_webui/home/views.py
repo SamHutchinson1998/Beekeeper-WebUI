@@ -22,7 +22,7 @@ class HomePageView(TemplateView):
       'form': ImageForm(),
       'device_form': VirtualMachineForm(),
       'disk_images': DiskImage.objects.all(),
-      'devices': VirtualMachine.objects.all()
+      'devices': serialize('json', VirtualMachine.objects.all())
     }
     return context
 

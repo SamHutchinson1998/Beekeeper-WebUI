@@ -12,9 +12,11 @@
           <table>
             <th style="width:50%;font-weight:normal;margin-right: 10px;">
               <select id="device_one" class="form-control">
+                <!-- 
                 {% for device in devices %}
                   <option name='option'value={{device.cell_id}}>{{device.name}}</option>
                 {% endfor %}
+                -->
               </select>
             </th>
             <th>
@@ -26,9 +28,11 @@
           <table>
             <th style="width:50%;font-weight:normal;margin-right: 10px;">
               <select id="device_two" class="form-control">
+                <!-- 
                 {% for device in devices %}
                   <option name='option'value={{device.cell_id}}>{{device.name}}</option>
                 {% endfor %}
+                -->
               </select>
             </th>
             <th>
@@ -47,7 +51,8 @@
   </div>
 </div>
 <script>
-
+  var devices = JSON.parse({{ devices }})
+  console.log(devices);
   function validateEthernetCable()
   {
 
