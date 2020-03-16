@@ -24,9 +24,11 @@
           <table>
             <th style="width:50%;font-weight:normal;margin-right: 10px;">
               <select id="device_two"name="device_two" class="form-control">
+                <!--
                 {% for device in devices %}
                   <option name='option'id={{device.id}}>{{device.name}}</option>
                 {% endfor %}
+                 -->
               </select>
             </th>
           </table>
@@ -48,7 +50,8 @@
 
   var i;
   for(i = 0; i < data.length; i++){
-    device = data[i].fields;
+    var device = data[i].fields;
+    console.log(device);
     var opt = document.createElement('option');
     opt.appendChild(document.createTextNode(device.name));
     opt.value = device.cell_id; // cell_id is used to query mxgraph's database of cells and connect ethernet cables to the correct cell
