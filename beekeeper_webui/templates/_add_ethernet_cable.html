@@ -50,9 +50,19 @@
     </div>
   </div>
 </div>
-<script>
-  var devices = JSON.parse({{ devices }})
+<script type='text/javascript'>
+  var devices = JSON.parse('{{ devices|safe }}')
   console.log(devices);
+  var device_one = document.getElementById('device_one');
+  var device_two = document.getElementById('device_two');
+  var i;
+  for(i=0;i<devices.length;i++){
+    var device = devices[i].fields;
+    console.log(device.name);
+    //new Option(text, value) value is cell_id as that's what will be needed to query both the django and the mxgraph databases.
+    device_one.add(new Option(device.name, device.cell_id));
+    device_two.add(new Option(device.name, device.cell_id));
+  }
   function validateEthernetCable()
   {
 
