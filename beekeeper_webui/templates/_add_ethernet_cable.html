@@ -9,14 +9,13 @@
       </div>
       <div class="modal-body">
         <form action="{% url 'create_network_bridge' %}" method="POST" onsubmit="" enctype="multipart/form-data">
+          <label for="ethernet_name">Cable Name</label>
+          <input type="text" id="ethernet_name"></input>
           <table>
-            <th style="width:50%;font-weight:normal;margin-right: 10px;">
+            <th style="width:50%;font-weight:normal;margin-right: 10px; margin-top: 10px;">
+              <label for="device_one">Source Device</label>
               <select id="device_one" class="form-control">
-                <!-- 
-                {% for device in devices %}
-                  <option name='option'value={{device.cell_id}}>{{device.name}}</option>
-                {% endfor %}
-                -->
+                <!-- js automated options here -->
               </select>
             </th>
             <th>
@@ -26,13 +25,10 @@
             </th>
           </table>
           <table>
-            <th style="width:50%;font-weight:normal;margin-right: 10px;">
+            <th style="width:50%;font-weight:normal;margin-left: 10px; margin-top: 10px;">
+              <label for="device_two">Target Device</label>
               <select id="device_two" class="form-control">
-                <!-- 
-                {% for device in devices %}
-                  <option name='option'value={{device.cell_id}}>{{device.name}}</option>
-                {% endfor %}
-                -->
+                <!-- js automated options here -->
               </select>
             </th>
             <th>
