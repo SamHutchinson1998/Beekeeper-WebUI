@@ -1,8 +1,9 @@
 function populateToolbar(editor, graph)
 {
   var toolbar = document.getElementById('toolbarContainer');
-  addToolbarItem(toolbar, graph, '../static/devices/ethernet_cable.svg', 'cable');
+  //addToolbarItem(toolbar, graph, '../static/devices/ethernet_cable.svg', 'cable');
   addToolbarItem(toolbar, graph, '../static/devices/Label.svg', 'textbox');
+  addToolbarButton(toolbar, '../static/devices/ethernet_cable.svg', 'cable', graph, editor);
   addToolbarButton(toolbar, '../static/devices/start_button.svg', 'start', graph, editor);
   addToolbarButton(toolbar, '../static/devices/stop_button.svg', 'stop', graph, editor);
   //addToolbarButton(toolbar, '../static/devices/refresh.svg', 'refresh');
@@ -32,6 +33,7 @@ function addToolbarItem(toolbar, graph, tool, tooltype)
           cell.setConnectable(false);
         break;
         case 'cable':
+          /*
           style = `strokeWidth=5;strokeColor=black;endArrow=none;html=1;`;
           cell = new mxCell('', new mxGeometry(0, 0, 150, 150), style); // last two values are height and width respectively
           cell.geometry.setTerminalPoint(new mxPoint(0, 170), true); // source point
@@ -41,7 +43,8 @@ function addToolbarItem(toolbar, graph, tool, tooltype)
           var imported_cell = graph.importCells([cell], x, y, parent);
           var label = `bridge_${imported_cell[0].getId()}`;
           model.setValue(imported_cell[0], label);
-          addNetworkBridge(label)
+          addNetworkBridge(label) // still useful
+          */
         break;
         default:
           cell = null;
@@ -87,6 +90,9 @@ function addToolbarButton(toolbar, image, type, graph, editor)
 
   switch(type)
   {
+    case 'cable':
+      addEthernetCable(button, graph)
+      button.title = "Add an ethernet cable";
     case 'start':
       startVirtualMachines(button, graph);
       button.title = `${type} selected/all devices`;
@@ -119,10 +125,14 @@ function refreshGraph(button)
 {
   button.addEventListener("click", function(){
     displayGraph();
-    //$("#graphBody").load('reload_body');
-    //$('#graphBody').load(window.location.href + "#graphBody");
-    //main(document.getElementById('graphContainer'), document.getElementById('sidebarContainer'));
   });
+}
+
+function addEthernetCable(button, graph)
+{
+  button.addEventListener("click", function(){
+    $('#ethernet_modal').modal('show');
+  })
 }
 
 function startVirtualMachines(button, graph)
