@@ -14,7 +14,7 @@
             <th style="width:50%;font-weight:normal;margin-right: 10px;">
               <select name="device_one" class="form-control">
                 {% for device in devices %}
-                  <option name='option'id={{device.id}}>{{device.name}}</option>
+                  <option name='option'id={{device.id}}>{{device['fields'].name}}</option>
                 {% endfor %}
               </select>
             </th>
