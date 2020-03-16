@@ -12,7 +12,9 @@
           <table>
             <th style="width:50%;font-weight:normal;margin-right: 10px;">
               <select id="device_one" class="form-control">
-                <!-- js automates options here -->
+                {% for device in devices %}
+                  <option name='option'value={{device.cell_id}}>{{device.name}}</option>
+                {% endfor %}
               </select>
             </th>
             <th>
@@ -23,9 +25,9 @@
           </table>
           <table>
             <th style="width:50%;font-weight:normal;margin-right: 10px;">
-              <select onload="populateEthernetSelectBox()" id="device_two"class="form-control">
+              <select id="device_two" class="form-control">
                 {% for device in devices %}
-                  <option name='option'id={{device.id}}>{{device.name}}</option>
+                  <option name='option'value={{device.cell_id}}>{{device.name}}</option>
                 {% endfor %}
               </select>
             </th>
@@ -45,26 +47,6 @@
   </div>
 </div>
 <script>
-
-  function populateEthernetSelectBox()
-  {
-    var data = {{devices|safe}}
-    var device_one = document.getElementById('device_one');
-    var device_two = document.getElementById('device_two');
-
-    var i;
-    for(i = 0; i < data.length; i++){
-      var device = data[i].fields;
-      console.log(device.name);
-      var opt = document.createElement("option");
-      opt.text = device.name;
-      opt.value = device.cell_id; // cell_id is used to query mxgraph's database of cells and connect ethernet cables to the correct cell
-      device_one.appendChild(opt);
-      device_two.add(opt);
-    }
-    console.log(device_one);
-    console.log(device_two);
-  }
 
   function validateEthernetCable()
   {
