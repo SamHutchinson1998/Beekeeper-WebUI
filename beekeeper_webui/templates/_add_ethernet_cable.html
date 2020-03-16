@@ -48,9 +48,10 @@
 
   var i;
   for(i = 0; i < data.length; i++){
+    device = data[i].fields;
     var opt = document.createElement('option');
-    opt.appendChild(document.createTextNode(data[i].name));
-    opt.value = data[i].cell_id; // cell_id is used to query mxgraph's database of cells and connect ethernet cables to the correct cell
+    opt.appendChild(document.createTextNode(device.name));
+    opt.value = device.cell_id; // cell_id is used to query mxgraph's database of cells and connect ethernet cables to the correct cell
     device_one.appendChild(opt);
     device_two.appendChild(opt);
   }
