@@ -21,7 +21,8 @@ class HomePageView(TemplateView):
     context = {
       'form': ImageForm(),
       'device_form': VirtualMachineForm(),
-      'disk_images': DiskImage.objects.all()
+      'disk_images': DiskImage.objects.all(),
+      'devices': VirtualMachine.objects.all()
     }
     return context
 

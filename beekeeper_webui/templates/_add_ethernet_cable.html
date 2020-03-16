@@ -1,4 +1,5 @@
-<div class="modal fade" id="ethernet_modal">
+{% load static %}
+<div class="modal fade modal-lg" id="ethernet_modal">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -8,7 +9,25 @@
         </button>
       </div>
       <div class="modal-body">
-
+        <form action="{% url 'create_network_bridge' %}" method="POST" onsubmit="" enctype="multipart/form-data">
+          <table>
+            <th style="width:50%;font-weight:normal;">
+              <select name="device_one" class="form-control">
+                {% for device in devices %}
+                  <option name='option'id={{device.id}}>{{device.name}}</option>
+                {% endfor %}
+              </select>
+            </th>
+            <th>
+              <select name="device_one" class="form-control">
+                {% for device in devices %}
+                  <option name='option'id={{device.id}}>{{device.name}}</option>
+                {% endfor %}
+              </select>
+            </th>
+          </table>
+          <input id="submit_ethernet_cable" type="submit" value="Submit" class="btn btn-primary"/>
+        </form>    
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -16,3 +35,9 @@
     </div>
   </div>
 </div>
+<script>
+  function validateEthernetCable()
+  {
+
+  }
+</script>

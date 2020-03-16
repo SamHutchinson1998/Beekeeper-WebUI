@@ -93,6 +93,7 @@ function addToolbarButton(toolbar, image, type, graph, editor)
     case 'cable':
       addEthernetCable(button, graph)
       button.title = "Add an ethernet cable";
+    break;
     case 'start':
       startVirtualMachines(button, graph);
       button.title = `${type} selected/all devices`;
