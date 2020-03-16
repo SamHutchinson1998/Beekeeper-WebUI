@@ -1,5 +1,5 @@
 {% load static %}
-<div class="modal fade modal-lg" id="ethernet_modal">
+<div class="modal fade" id="ethernet_modal">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -11,7 +11,7 @@
       <div class="modal-body">
         <form action="{% url 'create_network_bridge' %}" method="POST" onsubmit="" enctype="multipart/form-data">
           <table>
-            <th style="width:50%;font-weight:normal;">
+            <th style="width:50%;font-weight:normal;margin-right: 10px;">
               <select name="device_one" class="form-control">
                 {% for device in devices %}
                   <option name='option'id={{device.id}}>{{device.name}}</option>
@@ -19,7 +19,14 @@
               </select>
             </th>
             <th>
-              <select name="device_one" class="form-control">
+              <select name="device_one_ethernet" class="form-control">
+                <option disabled name='option'>Choose an Ethernet Port...</option>
+              </select>
+            </th>
+          </table>
+          <table>
+            <th style="width:50%;font-weight:normal;margin-right: 10px;">
+              <select name="device_two" class="form-control">
                 {% for device in devices %}
                   <option name='option'id={{device.id}}>{{device.name}}</option>
                 {% endfor %}
