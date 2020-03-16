@@ -72,7 +72,6 @@ function main(container, sidebar)
     keyBindings(graph);
     //addMouseWheelZoom(graph) // re-enable this sometime soon
     getDeviceMenu(graph);
-    loadEthernetSelectBoxes();
     getLegend();
     insertStatusLights(graph);
     graphListener(graph);
@@ -352,25 +351,4 @@ function changeCellLabel(model, cell_id, name)
 {
   var cell = model.getCell(cell_id);
   model.setValue(cell, name);
-}
-
-function loadEthernetSelectBoxes()
-{
-  var data = {{devices|safe}}
-
-  var device_one = document.getElementById('device_one');
-  var device_two = document.getElementById('device_two');
-
-  var i;
-  for(i = 0; i < data.length; i++){
-    var device = data[i].fields;
-    console.log(device.name);
-    var opt = document.createElement("option");
-    opt.text = device.name;
-    opt.value = device.cell_id; // cell_id is used to query mxgraph's database of cells and connect ethernet cables to the correct cell
-    device_one.appendChild(opt);
-    device_two.add(opt);
-  }
-  console.log(device_one);
-  console.log(device_two);
 }
