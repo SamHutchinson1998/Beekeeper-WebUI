@@ -42,24 +42,6 @@
   </div>
 </div>
 <script>
-  var data = {{devices|safe}}
-
-  var device_one = document.getElementById('device_one');
-  var device_two = document.getElementById('device_two');
-
-  var i;
-  for(i = 0; i < data.length; i++){
-    var device = data[i].fields;
-    console.log(device.name);
-    var opt = document.createElement("option");
-    opt.text = device.name;
-    opt.value = device.cell_id; // cell_id is used to query mxgraph's database of cells and connect ethernet cables to the correct cell
-    device_one.appendChild(opt);
-    device_two.add(opt);
-  }
-
-  console.log(device_one);
-  console.log(device_two);
 
   function validateEthernetCable()
   {
