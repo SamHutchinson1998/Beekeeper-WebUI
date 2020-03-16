@@ -83,7 +83,7 @@ class HomePageView(TemplateView):
       else:
         return generate_error_message('Unable to add device: Data entered is not valid', cell_id)
     else:
-      return generate_error_message('Unable to add device: Wrong HTTP request', cell_id)
+      return generate_error_message('Unable to add device: Wrong HTTP request', None)
 
   def remove_device(request):
     if request.is_ajax and request.method == "GET":
