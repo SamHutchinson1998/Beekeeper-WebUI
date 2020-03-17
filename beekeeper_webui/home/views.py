@@ -163,6 +163,6 @@ class HomePageView(TemplateView):
     cell_id = request.GET.get('cell_id', None)
     if request.method == 'GET':
       vm = VirtualMachine.objects.get(cell_id=cell_id)
-      ethernet_ports = json.loads(serialize('json', vm.ethernetports_set.objects.all()))
+      ethernet_ports = json.loads(serialize('json', vm.ethernetports_set.all()))
       return JsonResponse({'ethernet_ports': ethernet_ports})
     return JsonResponse({'error':'error'})

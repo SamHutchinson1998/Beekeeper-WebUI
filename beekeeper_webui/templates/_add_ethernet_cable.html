@@ -69,7 +69,7 @@
       device = devices[i].fields;
       if(device.cell_id == value){
         ethernet_ports = getEthernetPorts(device.name, value);
-        if(ethernet_ports){
+        if(ethernet_ports != null){
           manipulateEthernetPortSelection(element, ethernet_ports);
         }
         else{
@@ -89,18 +89,22 @@
 
   function getEthernetPorts(name, cell_id)
   {
+    var output = null;
     $.ajax({
       url: 'get_ethernet_ports',
       data: {'cell_id': cell_id},
+      async: false,
       success: function(result){
+        console.log(result['ethernet_ports']);
         if(result['ethernet_ports']){ // if it returns a list of ethernet ports
-          return result['ethernet_ports'];
+          output = result['ethernet_ports'];
         }
         else{
           return null;
         }
       }
     });
+    return output;
   }
 
   function manipulateEthernetPortSelection(element, ethernet_ports)
@@ -108,8 +112,8 @@
     var ethernet_ports_list = document.getElementById(element);
     var i;
     for(i=0; i<ethernet_ports.length; i++){
-      ethernet_port = ethernet_ports[i].fields;
-      ethernet_ports_list.add(new Option(`Ethernet Port ${i + 1}`, ethernet_port.id));
+      console.log(ethernet_ports[i]);
+      ethernet_ports_list.add(new Option(`Ethernet Port ${i + 1}`, ethernet_ports[i].pk));
     }
   }
 
