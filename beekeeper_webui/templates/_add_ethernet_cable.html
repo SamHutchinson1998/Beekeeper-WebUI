@@ -10,35 +10,36 @@
       <div class="modal-body">
         <form action="{% url 'create_network_bridge' %}" method="POST" onsubmit="" enctype="multipart/form-data">
           <label for="ethernet_name">Cable Name</label>
+          <small id="emailHelp" class="form-text text-muted">Name cannot be changed once submitted.</small>
           <input type="text" id="ethernet_name" class="form-control"></input>
           <label for="device_one">Source Device</label>
           <table>
-            <th style="width:50%;font-weight:normal;margin-right: 10px; margin-top: 10px;">
-              <select id="device_one" class="form-control">
+            <th style="width:50%;font-weight:normal;padding:10px;">
+              <select id="device_one" class="form-control" onchange="changeEthernetSelection(this.value, 'device_one_ethernet')">
                 <!-- js automated options here -->
               </select>
             </th>
             <th>
-              <select name="device_one_ethernet" class="form-control">
-                <option disabled name='option'>Choose an Ethernet Port...</option>
+              <select id="device_one_ethernet" name="device_one_ethernet" class="form-control" onload="changeEthernetSelection(this.value, 'device_one_ethernet')">
+                <!-- js automated options here -->
               </select>
             </th>
           </table>
           <label for="device_two">Target Device</label>
           <table>
-            <th style="width:50%;font-weight:normal;margin-left: 10px; margin-top: 10px;">
-              <select id="device_two" class="form-control">
+            <th style="width:50%;font-weight:normal;padding:10px;">
+              <select id="device_two" class="form-control" onchange="changeEthernetSelection(this.value, 'device_two_ethernet')">
                 <!-- js automated options here -->
               </select>
             </th>
             <th>
-              <select name="device_two_ethernet" class="form-control">
-                <option disabled name='option'>Choose an Ethernet Port...</option>
+              <select id="device_two_ethernet" name="device_two_ethernet" class="form-control" onload="changeEthernetSelection(this.value, 'device_two_ethernet')">
+                <!-- js automated options here -->
               </select>
             </th>
           </table>
           <input id="submit_ethernet_cable" type="submit" value="Submit" class="btn btn-primary"/>
-        </form>    
+        </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -59,6 +60,59 @@
     device_one.add(new Option(device.name, device.cell_id));
     device_two.add(new Option(device.name, device.cell_id));
   }
+
+  function changeEthernetSelection(value, element)
+  {
+    clearEthernetSelection(element);
+    var i;
+    for(i=0;i<devices.length;i++){
+      device = devices[i].fields;
+      if(device.cell_id == value){
+        ethernet_ports = getEthernetPorts(device.name, value);
+        if(ethernet_ports){
+          manipulateEthernetPortSelection(element, ethernet_ports);
+        }
+        else{
+          toastr.error(`Unable to get ethernet ports for device ${device.name}`);
+        }
+      }
+    }
+  }
+  
+  function clearEthernetSelection(element)
+  {
+    var device_element = document.getElementById(element);
+    while(device_element.options.length > 0){
+      device_element.remove(device_element.options.length - 1);
+    }
+  }
+
+  function getEthernetPorts(name, cell_id)
+  {
+    $.ajax({
+      url: 'get_ethernet_ports',
+      data: {'cell_id': cell_id},
+      success: function(result){
+        if(result['ethernet_ports']){ // if it returns a list of ethernet ports
+          return result['ethernet_ports'];
+        }
+        else{
+          return null;
+        }
+      }
+    });
+  }
+
+  function manipulateEthernetPortSelection(element, ethernet_ports)
+  {
+    var ethernet_ports_list = document.getElementById(element);
+    var i;
+    for(i=0; i<ethernet_ports.length; i++){
+      ethernet_port = ethernet_ports[i].fields;
+      ethernet_ports_list.add(new Option(`Ethernet Port ${i + 1}`, ethernet_port.id));
+    }
+  }
+
   function validateEthernetCable()
   {
 

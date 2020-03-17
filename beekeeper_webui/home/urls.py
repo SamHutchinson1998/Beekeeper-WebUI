@@ -15,5 +15,6 @@ urlpatterns = [
     path('reload_body', HomePageView.reload_body, name="reload_body"),
     path('remove_image', HomePageView.remove_image, name="remove_image"),
     path('create_network_bridge', HomePageView.create_network_bridge, name="create_network_bridge"),
-    path('destroy_network_bridge', HomePageView.destroy_network_bridge, name="destroy_network_bridge")
+    path('destroy_network_bridge', HomePageView.destroy_network_bridge, name="destroy_network_bridge"),
+    path('get_ethernet_ports', HomePageView.get_ethernet_ports, name="get_ethernet_ports")
 ]

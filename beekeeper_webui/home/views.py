@@ -158,3 +158,11 @@ class HomePageView(TemplateView):
         return JsonResponse({'response': remove_network})
       else:
         return JsonResponse({'error': remove_network})
+
+  def get_ethernet_ports(request):
+    cell_id = request.GET.get('cell_id', None)
+    if request.method == 'GET':
+      vm = VirtualMachine.objects.get(cell_id=cell_id)
+      ethernet_ports = json.loads(serialize('json', vm.ethernetports_set.objects.all()))
+      return JsonResponse({'ethernet_ports': ethernet_ports})
+    return JsonResponse({'error':'error'})
