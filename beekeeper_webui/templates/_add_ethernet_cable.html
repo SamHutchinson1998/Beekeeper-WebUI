@@ -1,4 +1,4 @@
-<div class="modal fade" id="ethernet_modal" onload="loadSelection();">
+<div class="modal fade" id="ethernet_modal">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -48,6 +48,7 @@
   </div>
 </div>
 <script type='text/javascript'>
+  var devices = null;
 
   function loadSelection()
   {
@@ -56,11 +57,11 @@
 
     // clear previous selections to update them with new data
     
-    clearSelection(device_one);
-    clearSelection(device_two);
-    clearSelection(document.getElementById('device_one_ethernet'));
-    clearSelection(document.getElementById('device_two_ethernet'));
-    var devices = getDevices(); //JSON.parse('{{ devices|safe }}')
+    clearSelection('device_one');
+    clearSelection('device_two');
+    clearSelection('device_one_ethernet');
+    clearSelection('device_two_ethernet');
+    devices = getDevices(); //JSON.parse('{{ devices|safe }}')
     if(devices){
       var i;
       for(i=0;i<devices.length;i++){
@@ -109,8 +110,10 @@
   function clearSelection(element)
   {
     var device_element = document.getElementById(element);
-    while(device_element.options.length > 0){
-      device_element.remove(device_element.options.length - 1);
+    if(device_element){
+      while(device_element.options.length > 0){
+        device_element.remove(device_element.options.length - 1);
+      }
     }
   }
 

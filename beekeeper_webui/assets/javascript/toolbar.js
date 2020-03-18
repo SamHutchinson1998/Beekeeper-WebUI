@@ -133,6 +133,9 @@ function addEthernetCable(button, graph)
 {
   button.addEventListener("click", function(){
     $('#ethernet_modal').modal('show');
+    $('#ethernet_modal').on('shown.bs.modal', function(){
+      loadSelection();
+    });
     $('#ethernet_modal').on('hidden.bs.modal', function(){
       $('#ethernet_form').trigger('reset');
     });

@@ -27,7 +27,7 @@ class VirtualMachine(models.Model):
 
 class EthernetPorts(models.Model):
   virtual_machine = models.ForeignKey(VirtualMachine, on_delete=models.CASCADE)
-  port_no = models.IntegerField()
+  port_no = models.IntegerField(default=0)
   connected_to = models.CharField(max_length=10)
 
 class EthernetPortsForm(forms.ModelForm):
