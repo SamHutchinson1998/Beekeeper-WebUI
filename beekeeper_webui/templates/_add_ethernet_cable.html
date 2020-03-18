@@ -8,7 +8,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <form action="{% url 'create_network_bridge' %}" method="POST" onsubmit="" enctype="multipart/form-data">
+        <form id="ethernet_form" action="{% url 'create_network_bridge' %}" method="POST" onsubmit="" enctype="multipart/form-data">
           <label for="ethernet_name">Cable Name</label>
           <small id="emailHelp" class="form-text text-muted">Name cannot be changed once submitted.</small>
           <input type="text" id="ethernet_name" class="form-control"></input>

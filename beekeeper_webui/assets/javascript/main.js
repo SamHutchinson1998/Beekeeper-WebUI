@@ -76,6 +76,7 @@ function main(container, sidebar)
     insertStatusLights(graph);
     graphListener(graph);
     handleDeviceFormSubmit(graph);
+    handleEthernetFormSubmit(graph);
     //window.setInterval(function(){ displayGraph(graph); }, 2000); // update the graph every second
   }
 };
@@ -351,4 +352,16 @@ function changeCellLabel(model, cell_id, name)
 {
   var cell = model.getCell(cell_id);
   model.setValue(cell, name);
+}
+
+function handleEthernetFormSubmit(graph)
+{
+  $('#ethernet_form').on('submit', function(e){
+    e.preventDefault();
+    var deviceoneethernet = document.getElementById('device_one_ethernet').value;
+    var devicetwoethernet = document.getElementById('device_two_ethernet').value;
+    console.log(deviceoneethernet);
+    console.log(devicetwoethernet);
+    $('#ethernet_modal').modal('hide');
+  });
 }
