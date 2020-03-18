@@ -128,9 +128,11 @@ def spawn_machine(disk_size, name, xml, token):
 
 def create_ethernet_ports(cell_id, ethernet_ports):
   vm = VirtualMachine.objects.get(cell_id=cell_id)
+  i = 0
   for port in range(ethernet_ports):
-    ethernet_port = EthernetPorts(virtual_machine=vm)
+    ethernet_port = EthernetPorts(virtual_machine=vm,port_no=i)
     ethernet_port.save()
+    i += 1
   return True
 
 def generate_error_message(message, cell_id):
@@ -244,3 +246,9 @@ def destroy_network(name):
   network.undefine()
   conn.close()
   return 'success'
+
+def plug_cable_in_devices(name, device_one_ethernet, device_two_ethernet):
+  eth_one = EthernetPorts.objects.get(id=device_one_ethernet)
+  eth_two = EthernetPorts.object.get(id=device_two_ethernet)
+  device_one = eth_one.virtual_machine
+  device_two = eth_two.virtual_machine

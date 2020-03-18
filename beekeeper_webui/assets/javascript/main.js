@@ -207,7 +207,7 @@ function getDevices()
 {
   var output = null;
   $.ajax({
-    url: "get_devices",
+    url: "get_images",
     async: false,
     success: function(result){
       output = result['disk_images'];
@@ -358,6 +358,7 @@ function handleEthernetFormSubmit(graph)
 {
   $('#ethernet_form').on('submit', function(e){
     e.preventDefault();
+    var name = document.getElementById('ethernet_name').value;
     var deviceoneethernet = document.getElementById('device_one_ethernet').value;
     var devicetwoethernet = document.getElementById('device_two_ethernet').value;
     console.log(deviceoneethernet);

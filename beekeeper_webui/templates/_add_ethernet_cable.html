@@ -1,4 +1,4 @@
-<div class="modal fade" id="ethernet_modal">
+<div class="modal fade" id="ethernet_modal" onload="loadSelection();">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -48,22 +48,49 @@
   </div>
 </div>
 <script type='text/javascript'>
-  var devices = JSON.parse('{{ devices|safe }}')
-  console.log(devices);
-  var device_one = document.getElementById('device_one');
-  var device_two = document.getElementById('device_two');
-  var i;
-  for(i=0;i<devices.length;i++){
-    var device = devices[i].fields;
-    console.log(device.name);
-    //new Option(text, value) value is cell_id as that's what will be needed to query both the django and the mxgraph databases.
-    device_one.add(new Option(device.name, device.cell_id));
-    device_two.add(new Option(device.name, device.cell_id));
+
+  function loadSelection()
+  {
+    var device_one = document.getElementById('device_one');
+    var device_two = document.getElementById('device_two');
+
+    // clear previous selections to update them with new data
+    
+    clearSelection(device_one);
+    clearSelection(device_two);
+    clearSelection(document.getElementById('device_one_ethernet'));
+    clearSelection(document.getElementById('device_two_ethernet'));
+    var devices = getDevices(); //JSON.parse('{{ devices|safe }}')
+    if(devices){
+      var i;
+      for(i=0;i<devices.length;i++){
+        var device = devices[i].fields;
+        console.log(device.name);
+        //new Option(text, value) value is cell_id as that's what will be needed to query both the django and the mxgraph databases.
+        device_one.add(new Option(device.name, device.cell_id));
+        device_two.add(new Option(device.name, device.cell_id));
+      }
+    }
+    else{
+      toastr.error('Unable to retrieve devices and thier etehrnet ports');
+    }
   }
 
+  function getDevices()
+  {
+    var output = null;
+    $.ajax({
+      url: 'get_devices',
+      async: false,
+      success: function(result){
+        output = result['devices'];
+      }
+    });
+    return output;
+  }
   function changeEthernetSelection(value, element)
   {
-    clearEthernetSelection(element);
+    clearSelection(element);
     var i;
     for(i=0;i<devices.length;i++){
       device = devices[i].fields;
@@ -79,7 +106,7 @@
     }
   }
   
-  function clearEthernetSelection(element)
+  function clearSelection(element)
   {
     var device_element = document.getElementById(element);
     while(device_element.options.length > 0){
@@ -112,7 +139,6 @@
     var ethernet_ports_list = document.getElementById(element);
     var i;
     for(i=0; i<ethernet_ports.length; i++){
-      console.log(ethernet_ports[i]);
       ethernet_ports_list.add(new Option(`Ethernet Port ${i + 1}`, ethernet_ports[i].pk));
     }
   }

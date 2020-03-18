@@ -60,7 +60,7 @@ class HomePageView(TemplateView):
       return JsonResponse({"saved":True}, status = 200)
     return JsonResponse({"saved":False}, status = 200)
 
-  def get_devices(request):
+  def get_images(request):
     if request.is_ajax and request.method == "GET":
       disk_images = json.loads(serialize('json', DiskImage.objects.all()))
       return JsonResponse({"disk_images":disk_images}, status = 200)
@@ -142,8 +142,10 @@ class HomePageView(TemplateView):
       return HttpResponseRedirect(next)
 
   def create_network_bridge(request):
-    name = request.GET.get('bridge_name', None)
     if request.method == "GET":
+      name = request.GET.get('bridge_name', None)
+      device_one_ethernet = request.GET.get('device_one_ethernet', None)
+      device_two_ethernet = request.GET.get('device_two_ethernet', None)
       network = create_network(name)
       if network == 'success': # if network creation was not successful
         return JsonResponse({'response': network})
@@ -166,3 +168,8 @@ class HomePageView(TemplateView):
       ethernet_ports = json.loads(serialize('json', vm.ethernetports_set.all()))
       return JsonResponse({'ethernet_ports': ethernet_ports})
     return JsonResponse({'error':'error'})
+  
+  def get_devices(request):
+    if request.is_ajax and request.method == "GET":
+      devices = json.loads(serialize('json', VirtualMachine.objects.all()))
+      return JsonResponse({"devices":devices}, status = 200)
