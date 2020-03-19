@@ -71,9 +71,12 @@
         device_one.add(new Option(device.name, device.cell_id));
         device_two.add(new Option(device.name, device.cell_id));
       }
+      // change selections here too so that on first load or refresh of the webpage it populates the ethernet ports selection field for the default value entered.
+      changeEthernetSelection(device_one.value, 'device_one_ethernet');
+      changeEthernetSelection(device_two.value, 'device_two_ethernet');
     }
     else{
-      toastr.error('Unable to retrieve devices and thier etehrnet ports');
+      toastr.error('Unable to retrieve devices and their ethernet ports');
     }
   }
 
