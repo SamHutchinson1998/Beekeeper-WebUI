@@ -230,7 +230,7 @@ def create_network(name):
   if network == None:
     conn.close()
     return 'Failed to create an ethernet cable in the backend'
-  network.create()
+  #network.create()
   conn.close()
   return 'success'
 
