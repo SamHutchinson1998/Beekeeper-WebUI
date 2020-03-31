@@ -192,18 +192,21 @@ function stopVirtualMachines(button, graph)
   });
 }
 
-function addNetworkBridge(name)
+function addNetworkBridge(name) //device_one_ethernet, device_two_ethernet)
 {
   $.ajax({
     url: 'create_network_bridge',
-    data: {'bridge_name': name},
+    data: {
+      'bridge_name': name,
+      'device_one_ethernet': device_one_ethernet,
+      'device_two_ethernet': device_two_ethernet
+    },
     async: false,
     success: function(result){
       if(result['response'] == 'success'){
-        toastr.success('Ethernet Cable added successfully');
+        toastr.success('Ethernet cable added successfully. Restart VMs for changes to take effect.');
       }
       else{
-        // deal with cell removal here
         toastr.error(`Unable to add ethernet cable: ${result['error']}`);
       }
     }

@@ -363,6 +363,8 @@ function handleEthernetFormSubmit(graph)
     var devicetwoethernet = document.getElementById('device_two_ethernet').value;
     console.log(deviceoneethernet);
     console.log(devicetwoethernet);
+    addNetworkBridge(name, deviceoneethernet, devicetwoethernet);
+    // add logic here for making the AJAX requests to create a network bridge
     $('#ethernet_modal').modal('hide');
   });
 }

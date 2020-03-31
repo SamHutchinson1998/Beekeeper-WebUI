@@ -248,7 +248,36 @@ def destroy_network(name):
   return 'success'
 
 def plug_cable_in_devices(name, device_one_ethernet, device_two_ethernet):
+  # Needs more work!
   eth_one = EthernetPorts.objects.get(id=device_one_ethernet)
   eth_two = EthernetPorts.object.get(id=device_two_ethernet)
-  device_one = eth_one.virtual_machine
-  device_two = eth_two.virtual_machine
+  device_one_record = eth_one.virtual_machine
+  device_two_record = eth_two.virtual_machine
+  if plug_cable_in_device(device_one_record):
+    if plug_cable_in_device(device_two_record):
+      return 'success'
+    else:
+      return f'Unable to plug ethernet cable to {device_two_record.name}'
+  else:
+    return f'Unable to plug ethernet cable to {device_one_record.name}'
+
+def plug_cable_in_device(device, name):
+  xml = f"""
+  <interface type='bridge'>
+    <source bridge='{name}'/>
+    <model type='virtio'/>
+  </interface>
+  """
+  conn = libvirt.open('qemu:///system')
+  if conn == None:
+    conn.close()
+    return False
+  dom = conn.lookupByName(device.name)
+  if dom.updateDeviceFlags(xml) == 0: # If updating the device XML was successful
+    return True
+  else:
+    return False
+  
+  
+  
+

@@ -6,7 +6,7 @@ from django.core.serializers import serialize
 from django.conf import settings
 from django.urls import reverse
 from django.template import Context, Template
-from .services import destroy_network, create_network, create_ethernet_ports, generate_error_message, get_vm_status, create_device_req, lookup_domain, get_domain_vnc_socket, create_virtual_machine, remove_machine, turn_off_devices, turn_on_devices
+from .services import plug_cable_in_devices, destroy_network, create_network, create_ethernet_ports, generate_error_message, get_vm_status, create_device_req, lookup_domain, get_domain_vnc_socket, create_virtual_machine, remove_machine, turn_off_devices, turn_on_devices
 from .models import EthernetPorts, EthernetPortsForm, ImageForm, DiskImage, VirtualMachine, VirtualMachineForm
 from urllib.parse import urlencode
 import os
@@ -146,12 +146,16 @@ class HomePageView(TemplateView):
       name = request.GET.get('bridge_name', None)
       device_one_ethernet = request.GET.get('device_one_ethernet', None)
       device_two_ethernet = request.GET.get('device_two_ethernet', None)
-      network = create_network(name)
-      if network == 'success': # if network creation was not successful
-        return JsonResponse({'response': network})
+      network = create_network(name) # this works
+      if network == 'success': # if network creation was successful
+        cable_plugged = plug_cable_in_devices(name, device_one_ethernet, device_two_ethernet)
+        if cable_plugged == 'success':
+          return JsonResponse({'response': network})
+        else:
+          return JsonResponse({'error': cable_plugged}) # Because the error here is to do with plugging in the cables
       else:
         return JsonResponse({'error': network})
-      
+
   def destroy_network_bridge(request):
     name = request.GET.get('bridge_name', None)
     if request.method == "GET":
