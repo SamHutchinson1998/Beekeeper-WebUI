@@ -248,11 +248,11 @@ def destroy_network(name):
 def plug_cable_in_devices(name, device_one_ethernet, device_two_ethernet):
   # Needs more work!
   eth_one = EthernetPorts.objects.get(id=device_one_ethernet)
-  eth_two = EthernetPorts.object.get(id=device_two_ethernet)
+  eth_two = EthernetPorts.objects.get(id=device_two_ethernet)
   device_one_record = eth_one.virtual_machine
   device_two_record = eth_two.virtual_machine
-  if plug_cable_in_device(device_one_record):
-    if plug_cable_in_device(device_two_record):
+  if plug_cable_in_device(device_one_record, name):
+    if plug_cable_in_device(device_two_record, name):
       return 'success'
     else:
       return f'Unable to plug ethernet cable to {device_two_record.name}'
