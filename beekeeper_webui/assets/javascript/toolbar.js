@@ -192,7 +192,7 @@ function stopVirtualMachines(button, graph)
   });
 }
 
-function addNetworkBridge(name) //device_one_ethernet, device_two_ethernet)
+function addNetworkBridge(name, device_one_ethernet, device_two_ethernet)
 {
   $.ajax({
     url: 'create_network_bridge',
