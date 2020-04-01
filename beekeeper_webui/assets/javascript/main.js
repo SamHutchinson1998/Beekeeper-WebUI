@@ -165,7 +165,8 @@ function connectEthernetCable(changes)
 {
   for(var i = 0; i < changes.length; i++){
     if(changes[i].constructor.name === "mxTerminalChange"){
-      console.log(changes[i].cell.value);
+      //console.log(changes[i].cell.value);
+      var cable_value = changes[i].cell.value;
     }
   }
 }
@@ -331,7 +332,7 @@ function handleDeviceFormSubmit(graph)
     var disk_image = document.getElementById('disk_image_id').value;
     var cell_id = document.getElementById('cell_id').value;
     var csrf = $('input[name=csrfmiddlewaretoken]').val();
-    var ethernetports = document.getElementById('ethernetSlider').value;
+    //var ethernetports = document.getElementById('ethernetSlider').value;
     $.ajax({
       url: 'post_device_form',
       type: 'POST',
@@ -343,7 +344,7 @@ function handleDeviceFormSubmit(graph)
         disk_image: disk_image,
         cell_id: cell_id,
         csrfmiddlewaretoken: csrf,
-        ethernetports: ethernetports
+        //ethernetports: ethernetports
       },
       success: function(result){
         if(result['response'] == 'error'){
