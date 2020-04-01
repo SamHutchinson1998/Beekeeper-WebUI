@@ -130,15 +130,10 @@ function addMouseWheelZoom(graph)
 
 function graphListener(graph)
 {
-  // When a cell is connected
-  graph.getModel().addListener('connect', function(sender, evt){
-    console.log('connect');
-  });
-  graph.getModel().addListener('disconnect', function(sender, evt){
-    console.log('disconnect');
-  });
   // Updates the display
-  graph.getModel().addListener('change', function(){
+  graph.getModel().addListener('change', function(sender, evt){
+    var changes = evt.getProperty('edit').changes;
+    console.log(changes);
     // add code here to update labels of edges too?
     var encoder = new mxCodec();
     var result = encoder.encode(graph.getModel());
