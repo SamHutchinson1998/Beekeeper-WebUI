@@ -1,7 +1,7 @@
 from django.http import JsonResponse
-from xml.dom import minidom
 from .models import DiskImage, VirtualMachine, EthernetPorts
 from django.conf import settings
+import xml.dom
 import os
 import uuid
 import libvirt
@@ -25,7 +25,7 @@ def get_domain_vnc_socket(domain):
   port = 5900 # default port
   host = '127.0.0.1' # default host
   raw_xml = domain.XMLDesc(0)
-  xml = minidom.parseString(raw_xml)
+  xml = xml.dom.minidom.parseString(raw_xml)
   graphicsTypes = xml.getElementsByTagName('graphics')
   for graphicsType in graphicsTypes:
     port = graphicsType.getAttribute('port')
@@ -121,6 +121,7 @@ def spawn_machine(disk_size, name, xml, token):
     if dom.create() < 0:
       print('Can not boot guest domain.', file=sys.stderr)
     else:
+      dom.setAutostart(1)
       print('Guest '+dom.name()+' has booted', file=sys.stderr)
       socket = get_domain_vnc_socket(dom)
       create_device_token(socket, token)
@@ -230,6 +231,7 @@ def create_network(name):
   if network == None:
     conn.close()
     return 'Failed to create an ethernet cable in the backend'
+  network.setAutostart(1) # Sets the network to autostart upon bootup of libvirt
   #network.create()
   conn.close()
   return 'success'
@@ -251,31 +253,52 @@ def plug_cable_in_devices(name, device_one_ethernet, device_two_ethernet):
   eth_two = EthernetPorts.objects.get(id=device_two_ethernet)
   device_one_record = eth_one.virtual_machine
   device_two_record = eth_two.virtual_machine
-  if plug_cable_in_device(device_one_record, name):
-    if plug_cable_in_device(device_two_record, name):
+  if plug_cable_in_device(eth_one, device_one_record, name):
+    if plug_cable_in_device(eth_two, device_two_record, name):
       return 'success'
     else:
       return f'Unable to plug ethernet cable to {device_two_record.name}'
   else:
     return f'Unable to plug ethernet cable to {device_one_record.name}'
 
-def plug_cable_in_device(device, name):
-  xml = f"""
-  <interface type='bridge'>
-    <source bridge='{name}'/>
-    <model type='virtio'/>
-  </interface>
-  """
+def plug_cable_in_device(eth, device, name):
   conn = libvirt.open('qemu:///system')
   if conn == None:
     conn.close()
     return False
   dom = conn.lookupByName(device.name)
-  if dom.updateDeviceFlags(xml) == 0: # If updating the device XML was successful
-    return True
+  device_xml = get_device_xml_from_domain(dom)
+  new_xml = return_int_xml_from_domain(name, eth, dom, device_xml)
+  if new_xml:
+    if dom.updateDeviceFlags(new_xml) == 0: # If updating the device XML was successful
+      conn.close()
+      return True
+    else:
+      conn.close()
+      return False
   else:
     return False
   
-  
-  
+def get_device_xml_from_domain(dom):
+  raw_xml = dom.XMLDesc(0)
+  xml = xml.dom.minidom.parseString(raw_xml)
+  devices = xml.getElementsByTagName('devices')
+  return devices
 
+def return_int_xml_from_domain(name, eth, dom, device_xml):
+  new_xml = xml.dom.minidom.parseString(f"""
+  <interface type='bridge'>
+    <source bridge='{name}'/>
+    <model type='virtio'/>
+  </interface>
+  """)
+  eth_port = int(eth.port_no)
+  count = 0
+  int_nodes = device_xml.getElementsByTagName('interface')
+  for interface in int_nodes:
+    if eth_port == count: # if the target ethernet port is found
+      device_xml.replaceChild(new_xml, interface)
+      return device_xml
+    else:
+      count += 1
+  return False
