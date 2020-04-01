@@ -160,6 +160,14 @@ function graphListener(graph)
   });
 }
 
+function connectEthernetCable(changes)
+{
+  for(var i = 0; i < changes.length; i++){
+    if(changes[i].constructor.name === "mxTerminalChange"){
+      console.log(changes[i].cell.value);
+    }
+  }
+}
 function keyBindings(graph)
 {
   var keyHandler = new mxKeyHandler(graph);
