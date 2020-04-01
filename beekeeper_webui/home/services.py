@@ -268,14 +268,15 @@ def plug_cable_in_device(eth, device, name):
     return False
   dom = conn.lookupByName(device.name)
   #device_xml = get_device_xml_from_domain(dom)
-  new_xml = return_int_xml_from_domain(name, eth, dom, dom_xml)
+  new_xml = return_int_xml_from_domain(name, eth, dom)
   if new_xml:
-    if dom.updateDeviceFlags(new_xml) == 0: # If updating the device XML was successful
-      conn.close()
-      return True
-    else:
-      conn.close()
-      return False
+    dom.updateDeviceFlags(new_xml)
+    #if dom.updateDeviceFlags(new_xml): # If updating the device XML was successful
+      #conn.close()
+      #return True
+    #else:
+      #conn.close()
+      #return False
   else:
     return False
   
@@ -296,11 +297,11 @@ def return_int_xml_from_domain(name, eth, dom):
   """)
   eth_port = int(eth.port_no)
   count = 0
-  int_nodes = dom_xml.getElementsByTagName('interface')
-  for interface in int_nodes:
+  for interface in dom_xml.getElementsByTagName('interface'):
     if eth_port == count: # if the target ethernet port is found
       interface = new_xml
-      return dom_xml
+      print(dom_xml.toxml().replace('<?xml version="1.0" ?>', ''))
+      return dom_xml.toxml()
     else:
       count += 1
   return False
