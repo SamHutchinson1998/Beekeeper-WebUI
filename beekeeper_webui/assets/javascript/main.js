@@ -134,6 +134,7 @@ function graphListener(graph)
   graph.getModel().addListener('change', function(sender, evt){
     var changes = evt.getProperty('edit').changes;
     console.log(changes);
+    connectEthernetCable(changes);
     // add code here to update labels of edges too?
     var encoder = new mxCodec();
     var result = encoder.encode(graph.getModel());
