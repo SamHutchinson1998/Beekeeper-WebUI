@@ -1,9 +1,9 @@
 function populateToolbar(editor, graph)
 {
   var toolbar = document.getElementById('toolbarContainer');
-  //addToolbarItem(toolbar, graph, '../static/devices/ethernet_cable.svg', 'cable');
+  addToolbarItem(toolbar, graph, '../static/devices/ethernet_cable.svg', 'cable');
   addToolbarItem(toolbar, graph, '../static/devices/Label.svg', 'textbox');
-  addToolbarButton(toolbar, '../static/devices/ethernet_cable.svg', 'cable', graph, editor);
+  //addToolbarButton(toolbar, '../static/devices/ethernet_cable.svg', 'cable', graph, editor);
   addToolbarButton(toolbar, '../static/devices/start_button.svg', 'start', graph, editor);
   addToolbarButton(toolbar, '../static/devices/stop_button.svg', 'stop', graph, editor);
   //addToolbarButton(toolbar, '../static/devices/refresh.svg', 'refresh');
@@ -197,7 +197,7 @@ function addNetworkBridge(label)
   $.ajax({
     url: 'create_network_bridge',
     data: {
-      'bridge_name': name
+      'bridge_name': label
     },
     async: false,
     success: function(result){

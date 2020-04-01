@@ -237,7 +237,7 @@ def create_network(name):
     conn.close()
     return 'Failed to create an ethernet cable in the backend'
   network.setAutostart(1) # Sets the network to autostart upon bootup of libvirt
-  #network.create()
+  network.create()
   conn.close()
   return 'success'
 
