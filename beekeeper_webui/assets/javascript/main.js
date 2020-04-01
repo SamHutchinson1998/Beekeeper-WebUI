@@ -130,12 +130,21 @@ function addMouseWheelZoom(graph)
 
 function graphListener(graph)
 {
+  // When a cell is connected
+  graph.getModel().addListener('connect', function(sender, evt){
+    console.log('connect');
+  });
+  graph.getModel().addListener('disconnect', function(sender, evt){
+    console.log('disconnect');
+  });
   // Updates the display
   graph.getModel().addListener('change', function(){
     // add code here to update labels of edges too?
     var encoder = new mxCodec();
     var result = encoder.encode(graph.getModel());
-    // work on making Redis server requests here?
+
+    // Experimented with Redis requests for a short period of time
+
     /*
     $.ajax({
       url: 'redis',

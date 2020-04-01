@@ -149,6 +149,9 @@ class HomePageView(TemplateView):
       network = create_network(name) # this works
       if network == 'success': # if network creation was successful
         return JsonResponse({'response': network})
+
+        # Experimented with pluggin cables into certain ports
+
         #cable_plugged = plug_cable_in_devices(name, device_one_ethernet, device_two_ethernet)
         #if cable_plugged == 'success':
           #return JsonResponse({'response': network})
