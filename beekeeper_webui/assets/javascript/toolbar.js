@@ -33,7 +33,6 @@ function addToolbarItem(toolbar, graph, tool, tooltype)
           cell.setConnectable(false);
         break;
         case 'cable':
-          /*
           style = `strokeWidth=5;strokeColor=black;endArrow=none;html=1;`;
           cell = new mxCell('', new mxGeometry(0, 0, 150, 150), style); // last two values are height and width respectively
           cell.geometry.setTerminalPoint(new mxPoint(0, 170), true); // source point
@@ -44,7 +43,6 @@ function addToolbarItem(toolbar, graph, tool, tooltype)
           var label = `bridge_${imported_cell[0].getId()}`;
           model.setValue(imported_cell[0], label);
           addNetworkBridge(label) // still useful
-          */
         break;
         default:
           cell = null;
@@ -90,10 +88,12 @@ function addToolbarButton(toolbar, image, type, graph, editor)
 
   switch(type)
   {
+    /*
     case 'cable':
       addEthernetCable(button, graph)
       button.title = "Add an ethernet cable";
     break;
+    */
     case 'start':
       startVirtualMachines(button, graph);
       button.title = `${type} selected/all devices`;
@@ -192,6 +192,28 @@ function stopVirtualMachines(button, graph)
   });
 }
 
+function addNetworkBridge(label)
+{
+  $.ajax({
+    url: 'create_network_bridge',
+    data: {
+      'bridge_name': name
+    },
+    async: false,
+    success: function(result){
+      if(result['response'] == 'success'){
+        toastr.success('Ethernet cable added successfully');
+      }
+      else{
+        toastr.error(`Unable to add ethernet cable: ${result['error']}`);
+      }
+    }
+  });
+}
+
+// Experimenting with manually connecting two devices
+
+/*
 function addNetworkBridge(name, device_one_ethernet, device_two_ethernet)
 {
   $.ajax({
@@ -212,4 +234,5 @@ function addNetworkBridge(name, device_one_ethernet, device_two_ethernet)
     }
   });
 }
+*/
 

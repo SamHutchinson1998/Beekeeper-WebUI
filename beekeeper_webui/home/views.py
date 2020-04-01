@@ -144,15 +144,16 @@ class HomePageView(TemplateView):
   def create_network_bridge(request):
     if request.method == "GET":
       name = request.GET.get('bridge_name', None)
-      device_one_ethernet = request.GET.get('device_one_ethernet', None)
-      device_two_ethernet = request.GET.get('device_two_ethernet', None)
+      #device_one_ethernet = request.GET.get('device_one_ethernet', None)
+      #device_two_ethernet = request.GET.get('device_two_ethernet', None)
       network = create_network(name) # this works
       if network == 'success': # if network creation was successful
-        cable_plugged = plug_cable_in_devices(name, device_one_ethernet, device_two_ethernet)
-        if cable_plugged == 'success':
-          return JsonResponse({'response': network})
-        else:
-          return JsonResponse({'error': cable_plugged}) # Because the error here is to do with plugging in the cables
+        return JsonResponse({'response': network})
+        #cable_plugged = plug_cable_in_devices(name, device_one_ethernet, device_two_ethernet)
+        #if cable_plugged == 'success':
+          #return JsonResponse({'response': network})
+        #else:
+          #return JsonResponse({'error': cable_plugged}) # Because the error here is to do with plugging in the cables
       else:
         return JsonResponse({'error': network})
 

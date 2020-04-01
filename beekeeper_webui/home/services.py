@@ -51,12 +51,17 @@ def create_virtual_machine(cell_id):
   cpus = vm.cpus
   disk_image = vm.disk_image.disk_image
 
-  ethernet_ports = """ """
-  for port in vm.ethernetports_set.all():
-    xml = """
-    <interface></interface>\n
-    """
-    ethernet_ports += xml
+
+  # Here I was experimenting with adding ethernet ports to a device manually
+
+  #ethernet_ports = """ """
+  #for port in vm.ethernetports_set.all():
+    #xml = """
+    #<interface>
+
+    #</interface>\n
+    #"""
+    #ethernet_ports += xml
 
   xml = f"""
   <domain type='kvm'>
@@ -82,7 +87,7 @@ def create_virtual_machine(cell_id):
     </features>
     <devices>
       <emulator>/usr/bin/kvm-spice</emulator>
-      {ethernet_ports}
+      
       <disk type='file' device='disk'>
         <source file='/var/lib/libvirt/images/{name}.qcow2'/>
         <backingstore/>
