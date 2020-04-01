@@ -267,9 +267,7 @@ def plug_cable_in_device(eth, device, name):
     conn.close()
     return False
   dom = conn.lookupByName(device.name)
-  device_xml = get_device_xml_from_domain(dom)
-  raw_xml = dom.XMLDesc(0)
-  dom_xml = minidom.parseString(raw_xml)
+  #device_xml = get_device_xml_from_domain(dom)
   new_xml = return_int_xml_from_domain(name, eth, dom, dom_xml)
   if new_xml:
     if dom.updateDeviceFlags(new_xml) == 0: # If updating the device XML was successful
@@ -287,7 +285,9 @@ def get_device_xml_from_domain(dom):
   devices = dom_xml.getElementsByTagName('devices')
   return devices
 
-def return_int_xml_from_domain(name, eth, dom, dom_xml):
+def return_int_xml_from_domain(name, eth, dom):
+  raw_xml = dom.XMLDesc(0)
+  dom_xml = minidom.parseString(raw_xml)
   new_xml = minidom.parseString(f"""
   <interface type='bridge'>
     <source bridge='{name}'/>
@@ -299,8 +299,8 @@ def return_int_xml_from_domain(name, eth, dom, dom_xml):
   int_nodes = dom_xml.getElementsByTagName('interface')
   for interface in int_nodes:
     if eth_port == count: # if the target ethernet port is found
-      dom_xml.replaceChild(new_xml, interface)
-      return device_xml
+      interface = new_xml
+      return dom_xml
     else:
       count += 1
   return False
