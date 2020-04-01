@@ -1,7 +1,7 @@
 from django.http import JsonResponse
 from .models import DiskImage, VirtualMachine, EthernetPorts
 from django.conf import settings
-import xml.dom
+from xml.dom import minidom
 import os
 import uuid
 import libvirt
@@ -25,7 +25,7 @@ def get_domain_vnc_socket(domain):
   port = 5900 # default port
   host = '127.0.0.1' # default host
   raw_xml = domain.XMLDesc(0)
-  xml = xml.dom.minidom.parseString(raw_xml)
+  xml = minidom.parseString(raw_xml)
   graphicsTypes = xml.getElementsByTagName('graphics')
   for graphicsType in graphicsTypes:
     port = graphicsType.getAttribute('port')
@@ -268,7 +268,9 @@ def plug_cable_in_device(eth, device, name):
     return False
   dom = conn.lookupByName(device.name)
   device_xml = get_device_xml_from_domain(dom)
-  new_xml = return_int_xml_from_domain(name, eth, dom, device_xml)
+  raw_xml = dom.XMLDesc(0)
+  dom_xml = minidom.parseString(raw_xml)
+  new_xml = return_int_xml_from_domain(name, eth, dom, dom_xml)
   if new_xml:
     if dom.updateDeviceFlags(new_xml) == 0: # If updating the device XML was successful
       conn.close()
@@ -281,12 +283,12 @@ def plug_cable_in_device(eth, device, name):
   
 def get_device_xml_from_domain(dom):
   raw_xml = dom.XMLDesc(0)
-  xml = xml.dom.minidom.parseString(raw_xml)
-  devices = xml.getElementsByTagName('devices')
+  dom_xml = minidom.parseString(raw_xml)
+  devices = dom_xml.getElementsByTagName('devices')
   return devices
 
-def return_int_xml_from_domain(name, eth, dom, device_xml):
-  new_xml = xml.dom.minidom.parseString(f"""
+def return_int_xml_from_domain(name, eth, dom, dom_xml):
+  new_xml = minidom.parseString(f"""
   <interface type='bridge'>
     <source bridge='{name}'/>
     <model type='virtio'/>
@@ -294,10 +296,10 @@ def return_int_xml_from_domain(name, eth, dom, device_xml):
   """)
   eth_port = int(eth.port_no)
   count = 0
-  int_nodes = device_xml.getElementsByTagName('interface')
+  int_nodes = dom_xml.getElementsByTagName('interface')
   for interface in int_nodes:
     if eth_port == count: # if the target ethernet port is found
-      device_xml.replaceChild(new_xml, interface)
+      dom_xml.replaceChild(new_xml, interface)
       return device_xml
     else:
       count += 1
