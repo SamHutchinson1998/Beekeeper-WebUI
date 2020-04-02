@@ -229,10 +229,10 @@ function removeDevices(graph)
 
 function destroyNetworkBridge(cell)
 {
-  var name = cell.getValue();
+  var cell_id = cell.getId();
   $.ajax({
     url: 'destroy_network_bridge',
-    data: {'bridge_name': name},
+    data: {'bridge_name': cell_id},
     async: false,
     success: function(result){
       if(result['response'] == 'success'){

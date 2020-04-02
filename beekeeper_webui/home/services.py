@@ -1,5 +1,5 @@
 from django.http import JsonResponse
-from .models import DiskImage, VirtualMachine, EthernetPorts, EthernetCable
+from .models import DiskImage, VirtualMachine, EthernetPort, EthernetCable
 from django.conf import settings
 from xml.dom import minidom
 import os
@@ -224,7 +224,7 @@ def create_network(name):
   if conn == None:
     conn.close()
     return 'Failed to open connection to QEMU'
-  network = conn.networkDefineXML(xml) # This line is giving me problems! Lol ! !
+  network = conn.networkDefineXML(xml)
   if network == None:
     conn.close()
     return 'Failed to create an ethernet cable in the backend'
@@ -233,17 +233,17 @@ def create_network(name):
   conn.close()
   return 'success'
 
-def destroy_network(name):
+def destroy_network(cell_id):
   conn = libvirt.open('qemu:///system')
   if conn == None:
     conn.close()
     return 'Failed to open connection to QEMU'
-  network = conn.networkLookupByName(name)
+  cable_record = EthernetCable.objects.get(cell_id=cell_id)
+  network = conn.networkLookupByName(cable_record.name)
   network.destroy()
   network.undefine()
-  conn.close()
-  cable_record = EthernetCable.objects.get(name=name)
   cable_record.delete()
+  conn.close()
   return 'success'
 
 def connect_ethernet_cable(cable_cell_id, source, target):
@@ -258,10 +258,10 @@ def connect_ethernet_cable(cable_cell_id, source, target):
 
 def create_ports(vm):
   mac_address = generate_mac_address()
-  ethernet_port = EthernetPorts(virtual_machine=vm, mac_address=mac_address)
+  ethernet_port = EthernetPort(virtual_machine=vm, mac_address=mac_address)
   ethernet_port.save()
   # search it up again as the object before saving is different to the object stored in the DB.
-  db_ethernet_port = EthernetPorts.objects.get(id=ethernet_port.id)
+  db_ethernet_port = EthernetPort.objects.get(id=ethernet_port.id)
   return db_ethernet_port
 
 def generate_mac_address():
@@ -282,15 +282,15 @@ def create_ethernet_ports(cell_id, ethernet_ports):
   vm = VirtualMachine.objects.get(cell_id=cell_id)
   i = 0
   for port in range(ethernet_ports):
-    ethernet_port = EthernetPorts(virtual_machine=vm,port_no=i)
+    ethernet_port = EthernetPort(virtual_machine=vm,port_no=i)
     ethernet_port.save()
     i += 1
   return True
 
 def plug_cable_in_devices(name, device_one_ethernet, device_two_ethernet):
   # Needs more work!
-  eth_one = EthernetPorts.objects.get(id=device_one_ethernet)
-  eth_two = EthernetPorts.objects.get(id=device_two_ethernet)
+  eth_one = EthernetPort.objects.get(id=device_one_ethernet)
+  eth_two = EthernetPort.objects.get(id=device_two_ethernet)
   device_one_record = eth_one.virtual_machine
   device_two_record = eth_two.virtual_machine
   if plug_cable_in_device(eth_one, device_one_record, name):

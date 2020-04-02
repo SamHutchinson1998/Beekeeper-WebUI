@@ -7,7 +7,7 @@ from django.conf import settings
 from django.urls import reverse
 from django.template import Context, Template
 from .services import connect_ethernet_cable, plug_cable_in_devices, destroy_network, create_network, create_ethernet_ports, generate_error_message, get_vm_status, create_device_req, lookup_domain, get_domain_vnc_socket, create_virtual_machine, remove_machine, turn_off_devices, turn_on_devices
-from .models import EthernetCable, EthernetPorts, EthernetPortsForm, ImageForm, DiskImage, VirtualMachine, VirtualMachineForm
+from .models import EthernetCable, EthernetPort, EthernetPortForm, ImageForm, DiskImage, VirtualMachine, VirtualMachineForm
 from urllib.parse import urlencode
 import os
 import json
@@ -170,9 +170,9 @@ class HomePageView(TemplateView):
         return JsonResponse({'error': network})
 
   def destroy_network_bridge(request):
-    name = request.GET.get('bridge_name', None)
+    cell_id = request.GET.get('cell_id', None)
     if request.method == "GET":
-      remove_network = destroy_network(name)
+      remove_network = destroy_network(cell_id)
       if remove_network == 'success':
         return JsonResponse({'response': remove_network})
       else:
