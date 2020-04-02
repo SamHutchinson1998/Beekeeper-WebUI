@@ -242,6 +242,8 @@ def destroy_network(name):
   network.destroy()
   network.undefine()
   conn.close()
+  cable_record = EthernetCable.objects.get(name=name)
+  cable_record.delete()
   return 'success'
 
 def connect_ethernet_cable(cable_cell_id, source, target):
