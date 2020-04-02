@@ -32,15 +32,15 @@ class EthernetPorts(models.Model):
 
 class EthernetCable(models.Model):
   name = models.CharField(max_length=100,default="bridge_name",unique=True)
-  source = models.ForeignKey(EthernetPorts, on_delete=models.CASCADE)
-  target = models.ForeignKey(EthernetPorts, on_delete=models.CASCADE)
+  source = models.ForeignKey(EthernetPorts, related_name='source', on_delete=models.CASCADE)
+  target = models.ForeignKey(EthernetPorts, related_name='target', on_delete=models.CASCADE)
   cell_id = models.IntegerField(default='0')
 
 
 class EthernetPortsForm(forms.ModelForm):
   class Meta:
     model = EthernetPorts
-    fields = ['virtual_machine', 'connected_to']
+    fields = ['virtual_machine', 'mac_address']
 
 class ImageForm(forms.ModelForm):
   class Meta:
