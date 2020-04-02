@@ -237,7 +237,7 @@ function destroyNetworkBridge(cell)
   var cell_id = cell.getId();
   $.ajax({
     url: 'destroy_network_bridge',
-    data: {'bridge_name': cell_id},
+    data: {'cell_id': cell_id},
     async: false,
     success: function(result){
       if(result['response'] == 'success'){
