@@ -17,6 +17,7 @@ urlpatterns = [
     path('create_network_bridge', HomePageView.create_network_bridge, name="create_network_bridge"),
     path('destroy_network_bridge', HomePageView.destroy_network_bridge, name="destroy_network_bridge"),
     path('get_ethernet_ports', HomePageView.get_ethernet_ports, name="get_ethernet_ports"),
-    path('get_devices', HomePageView.get_devices, name="get_devices")
+    path('get_devices', HomePageView.get_devices, name="get_devices"),
+    path('connect_cable', HomePageView.connect_cable, name="connect_cable")
 
 ]

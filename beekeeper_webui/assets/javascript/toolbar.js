@@ -42,7 +42,7 @@ function addToolbarItem(toolbar, graph, tool, tooltype)
           var imported_cell = graph.importCells([cell], x, y, parent);
           var label = `bridge_${imported_cell[0].getId()}`;
           model.setValue(imported_cell[0], label);
-          addNetworkBridge(label) // still useful
+          addNetworkBridge(label, imported_cell[0].getId());
         break;
         default:
           cell = null;
@@ -192,12 +192,13 @@ function stopVirtualMachines(button, graph)
   });
 }
 
-function addNetworkBridge(label)
+function addNetworkBridge(label, cell_id)
 {
   $.ajax({
     url: 'create_network_bridge',
     data: {
-      'bridge_name': label
+      'bridge_name': label,
+      'cell_id': cell_id
     },
     async: false,
     success: function(result){

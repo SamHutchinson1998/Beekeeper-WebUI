@@ -6,8 +6,8 @@ from django.core.serializers import serialize
 from django.conf import settings
 from django.urls import reverse
 from django.template import Context, Template
-from .services import plug_cable_in_devices, destroy_network, create_network, create_ethernet_ports, generate_error_message, get_vm_status, create_device_req, lookup_domain, get_domain_vnc_socket, create_virtual_machine, remove_machine, turn_off_devices, turn_on_devices
-from .models import EthernetPorts, EthernetPortsForm, ImageForm, DiskImage, VirtualMachine, VirtualMachineForm
+from .services import connect_ethernet_cable, plug_cable_in_devices, destroy_network, create_network, create_ethernet_ports, generate_error_message, get_vm_status, create_device_req, lookup_domain, get_domain_vnc_socket, create_virtual_machine, remove_machine, turn_off_devices, turn_on_devices
+from .models import EthernetCable, EthernetPorts, EthernetPortsForm, ImageForm, DiskImage, VirtualMachine, VirtualMachineForm
 from urllib.parse import urlencode
 import os
 import json
@@ -149,10 +149,14 @@ class HomePageView(TemplateView):
   def create_network_bridge(request):
     if request.method == "GET":
       name = request.GET.get('bridge_name', None)
+      cell_id = request.GET.get('cell_id', None)
       #device_one_ethernet = request.GET.get('device_one_ethernet', None)
       #device_two_ethernet = request.GET.get('device_two_ethernet', None)
       network = create_network(name) # this works
       if network == 'success': # if network creation was successful
+        # create entry for ethernet cable in the database
+        ethernet_cable = EthernetCable(name=name,cell_id=int(cell_id))
+        ethernet_cable.save()
         return JsonResponse({'response': network})
 
         # Experimented with pluggin cables into certain ports
@@ -186,3 +190,10 @@ class HomePageView(TemplateView):
     if request.is_ajax and request.method == "GET":
       devices = json.loads(serialize('json', VirtualMachine.objects.all()))
       return JsonResponse({"devices":devices}, status = 200)
+
+  def connect_cable(request):
+    if request.is_ajax and request.method == "GET":
+      cell_id = request.GET.get('cell_id', None)
+      source = request.GET.get('source', None)
+      target = request.GET.get('target', None)
+

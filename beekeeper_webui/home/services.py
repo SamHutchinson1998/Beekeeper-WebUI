@@ -1,11 +1,12 @@
 from django.http import JsonResponse
-from .models import DiskImage, VirtualMachine, EthernetPorts
+from .models import DiskImage, VirtualMachine, EthernetPorts, EthernetCable
 from django.conf import settings
 from xml.dom import minidom
 import os
 import uuid
 import libvirt
 import sys
+import random
 
 def lookup_domain(cell_id):
   dom = None
@@ -132,15 +133,6 @@ def spawn_machine(disk_size, name, xml, token):
       create_device_token(socket, token)
   conn.close()
 
-def create_ethernet_ports(cell_id, ethernet_ports):
-  vm = VirtualMachine.objects.get(cell_id=cell_id)
-  i = 0
-  for port in range(ethernet_ports):
-    ethernet_port = EthernetPorts(virtual_machine=vm,port_no=i)
-    ethernet_port.save()
-    i += 1
-  return True
-
 def generate_error_message(message, cell_id):
   try:
     vm = VirtualMachine.objects.get(cell_id=cell_id)
@@ -251,6 +243,47 @@ def destroy_network(name):
   network.undefine()
   conn.close()
   return 'success'
+
+def connect_ethernet_cable(cable_cell_id, source, target):
+  source_vm = VirtualMachine.objects.get(cell_id=source)
+  target_vm = VirtualMachine.objects.get(cell_id=target)
+  source_port = create_ports(source_vm)
+  target_port = create_ports(target_vm)
+  cable = EthernetCable.objects.get(cell_id=cable_cell_id)
+  cable.source = source_port
+  cable.target = target_port
+  cable.save()
+
+def create_ports(vm):
+  mac_address = generate_mac_address()
+  ethernet_port = EthernetPorts(virtual_machine=vm, mac_address=mac_address)
+  ethernet_port.save()
+  # search it up again as the object before saving is different to the object stored in the DB.
+  db_ethernet_port = EthernetPorts.objects.get(id=ethernet_port.id)
+  return db_ethernet_port
+
+def generate_mac_address():
+  # credit to Russ (https://stackoverflow.com/questions/8484877/mac-address-generator-in-python)
+  # for this (accessed 02/04/2020)
+  mac_address = "02:00:00:%02x:%02x:%02x" % (
+    random.randint(0, 255),
+    random.randint(0, 255),
+    random.randint(0, 255),
+  )
+  return mac_address
+
+#-----------------------------------------------------
+
+# Code under this line is research and does not contribute to the running of the program
+
+def create_ethernet_ports(cell_id, ethernet_ports):
+  vm = VirtualMachine.objects.get(cell_id=cell_id)
+  i = 0
+  for port in range(ethernet_ports):
+    ethernet_port = EthernetPorts(virtual_machine=vm,port_no=i)
+    ethernet_port.save()
+    i += 1
+  return True
 
 def plug_cable_in_devices(name, device_one_ethernet, device_two_ethernet):
   # Needs more work!

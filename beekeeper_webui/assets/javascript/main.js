@@ -165,11 +165,39 @@ function connectEthernetCable(changes)
 {
   for(var i = 0; i < changes.length; i++){
     if(changes[i].constructor.name === "mxTerminalChange"){
-      //console.log(changes[i].cell.value);
-      var cable_value = changes[i].cell.value;
+      cell = changes[i].cell;
+      var cable_source = getCableEndpoints(cell.source);
+      var cable_target = getCableEndpoints(cell.target);
+      var cable_id = changes[i].cell.id;
+      //connectCable(cable_source, cable_target, cable_id);
     }
   }
 }
+
+function getCableEndpoints(cell)
+{
+  if(cell != null){
+    return cell.id;
+  }
+  return false;
+}
+
+function connectCable(source, target, cell_id)
+{
+  $.ajax({
+    url: 'connect_cable',
+    data: {
+      'cell_id': cell_id,
+      'source': source,
+      'target': target
+    },
+    async: false, 
+    success: function(result){
+
+    }
+  });
+}
+
 function keyBindings(graph)
 {
   var keyHandler = new mxKeyHandler(graph);
@@ -178,6 +206,7 @@ function keyBindings(graph)
     removeDevices(graph);
   });
 }
+
 function removeDevices(graph)
 {
   if (graph.isEnabled())
