@@ -224,7 +224,7 @@ def create_network(name):
   if conn == None:
     conn.close()
     return 'Failed to open connection to QEMU'
-  network = conn.networkDefineXML(xml)
+  network = conn.networkDefineXML(xml) # This line is giving me problems! Lol ! !
   if network == None:
     conn.close()
     return 'Failed to create an ethernet cable in the backend'

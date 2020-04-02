@@ -152,7 +152,7 @@ class HomePageView(TemplateView):
       cell_id = request.GET.get('cell_id', None)
       #device_one_ethernet = request.GET.get('device_one_ethernet', None)
       #device_two_ethernet = request.GET.get('device_two_ethernet', None)
-      network = create_network(name) # this works
+      network = create_network(name)
       if network == 'success': # if network creation was successful
         # create entry for ethernet cable in the database
         ethernet_cable = EthernetCable(name=name,cell_id=int(cell_id))
