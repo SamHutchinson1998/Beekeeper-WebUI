@@ -194,6 +194,4 @@ class HomePageView(TemplateView):
   def connect_cable(request):
     if request.is_ajax and request.method == "GET":
       cell_id = request.GET.get('cell_id', None)
-      source = request.GET.get('source', None)
-      target = request.GET.get('target', None)
-
+      device = request.GET.get('device', None)

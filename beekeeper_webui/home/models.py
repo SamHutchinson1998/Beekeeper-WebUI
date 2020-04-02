@@ -35,14 +35,14 @@ class EthernetCable(models.Model):
   source = models.ForeignKey(EthernetPort, related_name='source', null=True, on_delete=models.CASCADE)
   target = models.ForeignKey(EthernetPort, related_name='target', null=True, on_delete=models.CASCADE)
   cell_id = models.IntegerField(default='0')
-  
+
   # Automatically delete any ethernet ports associated with the EthernetCable
   def delete(self):
     if self.source:
       self.source.delete()
     if self.target:
       self.target.delete()
-
+    super(EthernetCable, self).delete()
 
 class EthernetPortForm(forms.ModelForm):
   class Meta:

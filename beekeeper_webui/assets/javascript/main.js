@@ -169,7 +169,8 @@ function connectEthernetCable(changes)
       var cable_source = getCableEndpoints(cell.source);
       var cable_target = getCableEndpoints(cell.target);
       var cable_id = changes[i].cell.id;
-      //connectCable(cable_source, cable_target, cable_id);
+      //connectCable(cable_id, cable_source);
+      //connectCable(cable_id, cable_target);
     }
   }
 }
@@ -182,20 +183,24 @@ function getCableEndpoints(cell)
   return false;
 }
 
-function connectCable(source, target, cell_id)
+function connectCable(cell_id, device)
 {
-  $.ajax({
-    url: 'connect_cable',
-    data: {
-      'cell_id': cell_id,
-      'source': source,
-      'target': target
-    },
-    async: false, 
-    success: function(result){
-
-    }
-  });
+  if(device){
+    $.ajax({
+      url: 'connect_cable',
+      data: {
+        'cell_id': cell_id,
+        'device': device
+      },
+      async: false, 
+      success: function(result){
+  
+      }
+    });
+  }
+  else{
+    // remove the endpoint here using the cable
+  }
 }
 
 function keyBindings(graph)
