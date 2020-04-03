@@ -256,6 +256,8 @@ def connect_ethernet_cable(cable_cell_id, device, endpoint):
   if endpoint == "target":
     cable_endpoint = cable.target
   device_port = create_ports(device_record)
+  cable_endpoint = device_port
+  cable.save()
   libvirt_connect_cable(cable.name, device_record.name, device_port.mac_address)
 
 def create_ports(vm):
@@ -277,26 +279,13 @@ def libvirt_connect_cable(cable_name, device_name, mac_address):
   """
   domain.attachDevice(xml)
 
-  # Libvirt command to connect the ethernet cable to a device
-  #libvirt_cmd = 'virsh attach-interface'
-  #domain = f'--domain {device_name}'
-  #network_type = '--type network'
-  #source_network = f'--source {cable_name}'
-  #model = '--model virtio'
-  #mac = f'--mac {mac_address}'
-  #persist_settings = '--config'
-  #live_changes = '--live'
-
-  #command = f'{libvirt_cmd} {domain} {network_type} {source_network} {model} {mac} {persist_settings} {live_changes}'
-  #print(command)
-  #os.system(command)
-
 def disconnect_cable(cell_id, endpoint):
   print(cell_id)
   cable = EthernetCable.objects.get(cell_id=cell_id)
   mac_address = ''
   virtual_machine_name = ''
   if endpoint == "source":
+    # saving a source doesn't work
     virtual_machine_name = cable.source.virtual_machine.name
     mac_address = cable.source.mac_address
     cable.source.delete()
@@ -307,13 +296,16 @@ def disconnect_cable(cell_id, endpoint):
   cable.save()
   libvirt_disconnect_cable(endpoint, mac_address)
 
-def libvirt_disconnect_cable(vm_name, mac_address):
-  
-  virsh_cmd = 'virsh detach-interface'
-  #network_type = '--type network'
-  #mac_cmd = f'--mac {mac_address}'
-  #command = f'{virsh_cmd} {vm_name} {network_type} {mac_cmd}'
-  #os.system(command)
+def libvirt_disconnect_cable(cable_name, device_name, mac_address):
+  conn = libvirt.open('qemu:///system')
+  domain = conn.lookupByName(device_name)
+  xml = f"""
+    <interface type='network'>
+      <mac address='{mac_address}'/>
+      <source network='{cable_name}'/>
+    </interface>
+  """
+  domain.detachDevice(xml)
 
 def delete_endpoint(endpoint, cable):
   # remove any previous ethernet ports the cable was connected to
