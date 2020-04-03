@@ -197,9 +197,11 @@ class HomePageView(TemplateView):
       device = request.GET.get('device', None)
       endpoint = request.GET.get('endpoint', None)
       connect_ethernet_cable(cell_id, device, endpoint)
-  
+      return JsonResponse({'result': 'success'},status = 200)
+ 
   def disconnect_cable(request):
     if request.is_ajax and request.method == "GET":
       cell_id = request.GET.get('cell_id', None)
       endpoint = request.GET.get('endpoint', None)
       disconnect_cable(cell_id, endpoint)
+      return JsonResponse({'result': 'success'},status = 200)

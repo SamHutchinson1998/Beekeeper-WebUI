@@ -169,7 +169,7 @@ function connectEthernetCable(changes)
       var terminal_cell = changes[i].terminal;
       var previous_cell = changes[i].previous;
       var endpoint = '';
-      if(cell.source){
+      if(changes[i].source){
         endpoint = 'source';
       }
       else{
