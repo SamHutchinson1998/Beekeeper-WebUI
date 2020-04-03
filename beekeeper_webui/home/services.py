@@ -250,15 +250,14 @@ def connect_ethernet_cable(cable_cell_id, device, endpoint):
   cable = EthernetCable.objects.get(cell_id=cable_cell_id)
   delete_endpoint(endpoint, cable)
   device_record = VirtualMachine.objects.get(cell_id=device)
-  cable_endpoint = None
   if endpoint == "source":
-    cable_endpoint = cable.source
+    cable.source = create_ports(device_record)
+    cable.save()
+    libvirt_connect_cable(cable.name, device_record.name, cable.source.mac_address)
   if endpoint == "target":
-    cable_endpoint = cable.target
-  device_port = create_ports(device_record)
-  cable_endpoint = device_port
-  cable.save()
-  libvirt_connect_cable(cable.name, device_record.name, device_port.mac_address)
+    cable.target = create_ports(device_record)
+    cable.save()
+    libvirt_connect_cable(cable.name, device_record.name, cable.target.mac_address)
 
 def create_ports(vm):
   mac_address = generate_mac_address()
