@@ -1,5 +1,5 @@
 from django.http import JsonResponse
-from .models import DiskImage, VirtualMachine, EthernetPort, EthernetCable
+from .models import DiskImage, VirtualMachine, EthernetPorts, EthernetCable
 from django.conf import settings
 from xml.dom import minidom
 import os
@@ -260,10 +260,10 @@ def connect_ethernet_cable(cable_cell_id, device, endpoint):
 
 def create_ports(vm):
   mac_address = generate_mac_address()
-  ethernet_port = EthernetPort(virtual_machine=vm, mac_address=mac_address)
+  ethernet_port = EthernetPorts(virtual_machine=vm, mac_address=mac_address)
   ethernet_port.save()
   # search it up again as the object before saving is different to the object stored in the DB.
-  db_ethernet_port = EthernetPort.objects.get(id=ethernet_port.id)
+  db_ethernet_port = EthernetPorts.objects.get(id=ethernet_port.id)
   return db_ethernet_port
 
 def libvirt_connect_cable(cable_name, device_name, mac_address):
@@ -337,8 +337,8 @@ def create_ethernet_ports(cell_id, ethernet_ports):
 
 def plug_cable_in_devices(name, device_one_ethernet, device_two_ethernet):
   # Needs more work!
-  eth_one = EthernetPort.objects.get(id=device_one_ethernet)
-  eth_two = EthernetPort.objects.get(id=device_two_ethernet)
+  eth_one = EthernetPorts.objects.get(id=device_one_ethernet)
+  eth_two = EthernetPorts.objects.get(id=device_two_ethernet)
   device_one_record = eth_one.virtual_machine
   device_two_record = eth_two.virtual_machine
   if plug_cable_in_device(eth_one, device_one_record, name):

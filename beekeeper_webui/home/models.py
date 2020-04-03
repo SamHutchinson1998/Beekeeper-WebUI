@@ -25,15 +25,15 @@ class VirtualMachine(models.Model):
   disk_image = models.ForeignKey(DiskImage, on_delete=models.CASCADE)
   token = models.CharField(max_length=64,default='0')
 
-class EthernetPort(models.Model):
+class EthernetPorts(models.Model):
   virtual_machine = models.ForeignKey(VirtualMachine, on_delete=models.CASCADE)
   #connected_to = models.CharField(max_length=10)
   mac_address = models.CharField(max_length=48)
 
 class EthernetCable(models.Model):
   name = models.CharField(max_length=100,default="bridge_name",unique=True)
-  source = models.ForeignKey(EthernetPort, related_name='source', null=True, on_delete=models.CASCADE)
-  target = models.ForeignKey(EthernetPort, related_name='target', null=True, on_delete=models.CASCADE)
+  source = models.ForeignKey(EthernetPorts, related_name='source', null=True, on_delete=models.CASCADE)
+  target = models.ForeignKey(EthernetPorts, related_name='target', null=True, on_delete=models.CASCADE)
   cell_id = models.IntegerField(default='0')
 
   # Automatically delete any ethernet ports associated with the EthernetCable
@@ -44,9 +44,9 @@ class EthernetCable(models.Model):
       self.target.delete()
     super(EthernetCable, self).delete()
 
-class EthernetPortForm(forms.ModelForm):
+class EthernetPortsForm(forms.ModelForm):
   class Meta:
-    model = EthernetPort
+    model = EthernetPorts
     fields = ['virtual_machine', 'mac_address']
 
 class ImageForm(forms.ModelForm):
