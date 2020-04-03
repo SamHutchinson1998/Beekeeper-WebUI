@@ -1,0 +1,1 @@
+beekeeper_webui/assets/javascript/novnc/3/utils/websockify/run --verbose --token-plugin TokenFile --token-source ~/Beekeeper-WebUI/beekeeper_webui/assets/javascript/novnc/vnc_tokens/ --web ~/Beekeeper-WebUI/beekeeper_webui/assets/javascript/novnc/3 localhost:6080 --daemon

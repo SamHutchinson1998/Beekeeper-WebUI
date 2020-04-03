@@ -242,6 +242,10 @@ def destroy_network(cell_id):
   network = conn.networkLookupByName(cable_record.name)
   network.destroy()
   network.undefine()
+  if cable_record.source:
+    cable_record.source.delete()
+  if cable_record.target:
+    cable_record.target.delete()
   cable_record.delete()
   conn.close()
   return 'success'
@@ -292,8 +296,9 @@ def disconnect_cable(cell_id, endpoint):
     virtual_machine_name = cable.target.virtual_machine.name
     mac_address = cable.target.mac_address
     cable.target.delete()
-  cable.save()
-  libvirt_disconnect_cable(endpoint, mac_address)
+  #cable.save()
+  print(cable.name)
+  libvirt_disconnect_cable(cable.name, virtual_machine_name, mac_address)
 
 def libvirt_disconnect_cable(cable_name, device_name, mac_address):
   conn = libvirt.open('qemu:///system')
