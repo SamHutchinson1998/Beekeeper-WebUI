@@ -164,17 +164,42 @@ function graphListener(graph)
 function connectEthernetCable(changes)
 {
   for(var i = 0; i < changes.length; i++){
-    if(changes[i].constructor.name === "mxTerminalChange"){
-      cell = changes[i].cell;
-      var cable_source = getCableEndpoints(cell.source);
-      var cable_target = getCableEndpoints(cell.target);
+    if(changes[i].constructor.name === "mxTerminalChange"){ // if the program detects a cable being (dis)connected to a device
       var cable_id = changes[i].cell.id;
-      //connectCable(cable_id, cable_source);
-      //connectCable(cable_id, cable_target);
+      var terminal_cell = changes[i].terminal;
+      var previous_cell = changes[i].previous;
+      var endpoint = '';
+      if(cell.source){
+        endpoint = 'source';
+      }
+      else{
+        endpoint = 'target';
+      }
+      if(compareDevices(terminal_cell, previous_cell) == false){ // if there are any changes in the device the cable is connected to
+        connectCable(cable_id, terminal_cell, endpoint);
+      }
     }
   }
 }
 
+function compareDevices(previous, terminal)
+{
+  // previous = any previous cells the cable might've been attached to
+  // terminal = the current device, if any, which the cable might be attached to.
+
+  if(previous){
+    if(terminal){
+      if(previous.id == terminal.id){ return true; } // no need to create another port for the same cable for the same device
+      else{ return false;}
+    }
+    return false; // because there is no terminal but a previous cell, implying change
+  }
+  else{ // if there is no previous
+    if(terminal){ return false; } // because there is no previous but a terminal cell, implying change
+    return true; // both devices are null at this line but true returned as the program should not connect a cable to nothing
+  }
+}
+/*
 function getCableEndpoints(cell)
 {
   if(cell != null){
@@ -182,25 +207,41 @@ function getCableEndpoints(cell)
   }
   return false;
 }
+*/
 
-function connectCable(cell_id, device)
+function connectCable(cell_id, device, endpoint)
 {
+  // device at this point could still be null, which implies it has been disconnected as it's already been verified there's a change in device
   if(device){
     $.ajax({
       url: 'connect_cable',
       data: {
         'cell_id': cell_id,
-        'device': device
+        'device': device.id,
+        'endpoint': endpoint
       },
       async: false, 
       success: function(result){
-  
+        // Do nothing for now.
       }
     });
   }
   else{
+    // 'disconnect' the cable as it's no longer attached on one end
+    disconnectCable(cell_id, endpoint)
     // remove the endpoint here using the cable
   }
+}
+
+function disconnectCable(cell_id, endpoint)
+{
+  $.ajax({
+    url: 'disconnect_cable',
+    data: {
+      'cell_id': cell_id,
+      'endpoint': endpoint
+    }
+  });
 }
 
 function keyBindings(graph)

@@ -246,15 +246,17 @@ def destroy_network(cell_id):
   conn.close()
   return 'success'
 
-def connect_ethernet_cable(cable_cell_id, source, target):
-  source_vm = VirtualMachine.objects.get(cell_id=source)
-  target_vm = VirtualMachine.objects.get(cell_id=target)
-  source_port = create_ports(source_vm)
-  target_port = create_ports(target_vm)
+def connect_ethernet_cable(cable_cell_id, device, endpoint):
   cable = EthernetCable.objects.get(cell_id=cable_cell_id)
-  cable.source = source_port
-  cable.target = target_port
-  cable.save()
+  delete_endpoint(endpoint, cable)
+  device_record = VirtualMachine.objects.get(cell_id=device)
+  cable_endpoint = None
+  if endpoint == "source":
+    cable_endpoint = cable.source
+  if endpoint == "target":
+    cable_endpoint = cable.target
+  device_port = create_ports(device_record)
+  libvirt_connect_cable(cable.name, device_record.name, device_port.mac_address)
 
 def create_ports(vm):
   mac_address = generate_mac_address()
@@ -263,6 +265,52 @@ def create_ports(vm):
   # search it up again as the object before saving is different to the object stored in the DB.
   db_ethernet_port = EthernetPort.objects.get(id=ethernet_port.id)
   return db_ethernet_port
+
+def libvirt_connect_cable(cable_name, device_name, mac_address):
+  # Libvirt command to connect the ethernet cable to a device
+  libvirt_cmd = 'virsh attach-interface'
+  domain = f'--domain {device_name}'
+  network_type = '--type network'
+  source_network = f'--source {cable_name}'
+  model = '--model virtio'
+  mac = f'--mac {mac_address}'
+  persist_settings = '--config'
+  live_changes = '--live'
+
+  command = f'{libvirt_cmd} {domain} {network_type} {source_network} {model} {mac} {persist_settings} {live_changes}'
+  os.system(command)
+
+def disconnect_cable(cell_id, endpoint):
+  cable = EthernetCable.objects.get(cell_id=cell_id)
+  mac_address = ''
+  virtual_machine_name = ''
+  if endpoint == "source":
+    virtual_machine_name = cable.source.virtual_machine.name
+    mac_address = cable.source.mac_address
+    cable.source.delete()
+  if endpoint == "target":
+    virtual_machine_name = cable.target.virtual_machine.name
+    mac_address = cable.target.mac_address
+    cable.target.delete()
+  cable.save()
+  libvirt_disconnect_cable(endpoint, mac_address)
+
+def libvirt_disconnect_cable(vm_name, mac_address):
+  virsh_cmd = 'virsh detach-interface'
+  network_type = '--type network'
+  mac_cmd = f'--mac {mac_address}'
+  command = f'{virsh_cmd} {vm_name} {network_type} {mac_cmd}'
+  os.system(command)
+
+def delete_endpoint(endpoint, cable):
+  # remove any previous ethernet ports the cable was connected to
+  if endpoint == 'source':
+    if cable.source != None: # if the cable is already connected to a source point
+      cable.source.delete()
+  if endpoint == 'target': 
+    if cable.target != None: # if the cable is already connected to a target point
+      cable.target.delete()
+  cable.save()
 
 def generate_mac_address():
   # credit to Russ (https://stackoverflow.com/questions/8484877/mac-address-generator-in-python)

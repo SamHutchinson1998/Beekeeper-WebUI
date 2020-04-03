@@ -6,7 +6,7 @@ from django.core.serializers import serialize
 from django.conf import settings
 from django.urls import reverse
 from django.template import Context, Template
-from .services import connect_ethernet_cable, plug_cable_in_devices, destroy_network, create_network, create_ethernet_ports, generate_error_message, get_vm_status, create_device_req, lookup_domain, get_domain_vnc_socket, create_virtual_machine, remove_machine, turn_off_devices, turn_on_devices
+from .services import connect_ethernet_cable, disconnect_cable, plug_cable_in_devices, destroy_network, create_network, create_ethernet_ports, generate_error_message, get_vm_status, create_device_req, lookup_domain, get_domain_vnc_socket, create_virtual_machine, remove_machine, turn_off_devices, turn_on_devices
 from .models import EthernetCable, EthernetPort, EthernetPortForm, ImageForm, DiskImage, VirtualMachine, VirtualMachineForm
 from urllib.parse import urlencode
 import os
@@ -195,3 +195,11 @@ class HomePageView(TemplateView):
     if request.is_ajax and request.method == "GET":
       cell_id = request.GET.get('cell_id', None)
       device = request.GET.get('device', None)
+      endpoint = request.GET.get('endpoint', None)
+      connect_ethernet_cable(cell_id, device, endpoint)
+  
+  def disconnect_cable(request):
+    if request.is_ajax and request.method == "GET":
+      cell_id = request.GET.get('cell_id', None)
+      endpoint = request.GET.get('endpoint', None)
+      disconnect_cable(cell_id, endpoint)
