@@ -203,7 +203,7 @@ function addNetworkBridge(label, cell_id)
     async: false,
     success: function(result){
       if(result['response'] == 'success'){
-        toastr.success('Ethernet cable added successfully');
+        toastr.success('Ethernet cable added successfully. Restart any VMs it is connect to,  for changes to take effect');
       }
       else{
         toastr.error(`Unable to add ethernet cable: ${result['error']}`);

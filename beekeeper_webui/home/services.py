@@ -244,8 +244,10 @@ def destroy_network(cell_id):
   network.undefine()
   if cable_record.source:
     cable_record.source.delete()
+    libvirt_disconnect_cable(cable_record.name, cable_record.source.virtual_machine.name, cable_record.source.mac_address)
   if cable_record.target:
     cable_record.target.delete()
+    libvirt_disconnect_cable(cable_record.name, cable_record.target.virtual_machine.name, cable_record.target.mac_address)
   cable_record.delete()
   conn.close()
   return 'success'
@@ -280,7 +282,7 @@ def libvirt_connect_cable(cable_name, device_name, mac_address):
       <source network='{cable_name}'/>
     </interface>
   """
-  domain.attachDevice(xml)
+  domain.attachDeviceFlags(xml, libvirt.VIR_DOMAIN_AFFECT_CONFIG)
 
 def disconnect_cable(cell_id, endpoint):
   print(cell_id)
@@ -319,7 +321,7 @@ def delete_endpoint(endpoint, cable):
   if endpoint == 'target': 
     if cable.target != None: # if the cable is already connected to a target point
       cable.target.delete()
-  cable.save()
+  #cable.save()
 
 def generate_mac_address():
   # credit to Russ (https://stackoverflow.com/questions/8484877/mac-address-generator-in-python)
