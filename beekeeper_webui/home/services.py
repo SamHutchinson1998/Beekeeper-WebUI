@@ -282,7 +282,8 @@ def libvirt_connect_cable(cable_name, device_name, mac_address):
       <source network='{cable_name}'/>
     </interface>
   """
-  domain.attachDeviceFlags(xml, libvirt.VIR_DOMAIN_AFFECT_CONFIG)#libvirt.VIR_DOMAIN_AFFECT_LIVE)#libvirt.VIR_DOMAIN_AFFECT_CONFIG)
+  domain.attachDeviceFlags(xml, libvirt.VIR_DOMAIN_AFFECT_LIVE)#libvirt.VIR_DOMAIN_AFFECT_LIVE)#libvirt.VIR_DOMAIN_AFFECT_CONFIG)
+  domain.updateDeviceFlags(xml, libvirt.VIR_DOMAIN_AFFECT_CONFIG) # Persist to the xml config of a virtual machine
 
 def disconnect_cable(cell_id, endpoint):
   print(cell_id)

@@ -2,20 +2,21 @@ function getDeviceMenu(graph)
 {
   graph.popupMenuHandler.factoryMethod = function(menu, cell, evt)
   {
-    // Input code here to differentiate between status light, custom images and labels, and actual devices.
-    if(isCellDevice(cell)){
-      menu.addItem('SSH (to be completed)', null, function(){
-        alert('SSH');
-      });
-      menu.addItem('VNC', null, function(){
-        getVNC(cell);
-      });
-      menu.addItem('Deploy (to be completed)', null, function(){
-        alert('Deploy');
-      });
-      menu.addItem('Delete', null, function(){
-        removeDevices(graph);
-      });
+    if(cell){ // A user could right-click on a blank area
+      if(isCellDevice(cell)){
+        menu.addItem('SSH (to be completed)', null, function(){
+          alert('SSH');
+        });
+        menu.addItem('VNC', null, function(){
+          getVNC(cell);
+        });
+        menu.addItem('Deploy (to be completed)', null, function(){
+          alert('Deploy');
+        });
+        menu.addItem('Delete', null, function(){
+          removeDevices(graph);
+        });
+      }
     }
   }
 }
