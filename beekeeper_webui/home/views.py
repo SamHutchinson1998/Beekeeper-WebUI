@@ -104,6 +104,7 @@ class HomePageView(TemplateView):
   def change_vm_state(request):
     if request.is_ajax and request.method == "GET":
       device_list = json.loads(request.GET.get('cells', None))
+      print(device_list)
       if request.GET.get('state',None) == 'start':
         turn_on_devices(device_list)
       else:
