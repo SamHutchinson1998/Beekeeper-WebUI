@@ -19,6 +19,6 @@ urlpatterns = [
     path('get_ethernet_ports', HomePageView.get_ethernet_ports, name="get_ethernet_ports"),
     path('get_devices', HomePageView.get_devices, name="get_devices"),
     path('connect_cable', HomePageView.connect_cable, name="connect_cable"),
-    path('disconnect_cable', HomePageView.disconnect_cable, name='disconnect_cable')
-
+    path('disconnect_cable', HomePageView.disconnect_cable, name='disconnect_cable'),
+    path('lookup_device', HomePageView.lookup_device, name='lookup_device')
 ]

@@ -277,12 +277,12 @@ def libvirt_connect_cable(cable_name, device_name, mac_address):
   conn = libvirt.open('qemu:///system')
   domain = conn.lookupByName(device_name)
   xml = f"""
-    <interface type='bridge'>
+    <interface type='network'>
       <mac address='{mac_address}'/>
-      <source bridge='{cable_name}'/>
+      <source network='{cable_name}'/>
     </interface>
   """
-  domain.attachDeviceFlags(xml, libvirt.VIR_DOMAIN_AFFECT_LIVE)#libvirt.VIR_DOMAIN_AFFECT_CONFIG)
+  domain.attachDeviceFlags(xml, libvirt.VIR_DOMAIN_AFFECT_CONFIG)#libvirt.VIR_DOMAIN_AFFECT_LIVE)#libvirt.VIR_DOMAIN_AFFECT_CONFIG)
 
 def disconnect_cable(cell_id, endpoint):
   print(cell_id)

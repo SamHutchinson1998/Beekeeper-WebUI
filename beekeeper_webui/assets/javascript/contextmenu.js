@@ -2,19 +2,17 @@ function getDeviceMenu(graph)
 {
   graph.popupMenuHandler.factoryMethod = function(menu, cell, evt)
   {
-    if(cell.isVertex()){
-      if(cell.getAttribute('type', '') != 'textbox'){
-        menu.addItem('SSH (to be completed)', null, function(){
-          alert('SSH');
-        });
-        menu.addItem('VNC', null, function(){
-          getVNC(cell);
-        });
-        menu.addItem('Deploy (to be completed)', null, function(){
-          alert('Deploy');
-        });
-      }
-      if(cell.getAttribute('type', '') != 'status_light')
+    // Input code here to differentiate between status light, custom images and labels, and actual devices.
+    if(isCellDevice(cell)){
+      menu.addItem('SSH (to be completed)', null, function(){
+        alert('SSH');
+      });
+      menu.addItem('VNC', null, function(){
+        getVNC(cell);
+      });
+      menu.addItem('Deploy (to be completed)', null, function(){
+        alert('Deploy');
+      });
       menu.addItem('Delete', null, function(){
         removeDevices(graph);
       });
@@ -37,4 +35,20 @@ function getVNC(cell)
 function deployDevice()
 {
 
+}
+
+function isCellDevice(cell)
+{
+  var cell_id = cell.getId();
+  $.ajax({
+    url: "lookup_device",
+    async: false,
+    data: {'cell_id': cell_id},
+    success: function(result){
+      if(result['response'] == "found"){
+        return true;
+      }
+    }
+  });
+  return false;
 }

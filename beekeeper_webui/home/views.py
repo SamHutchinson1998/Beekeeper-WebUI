@@ -206,3 +206,11 @@ class HomePageView(TemplateView):
       endpoint = request.GET.get('endpoint', None)
       disconnect_cable(cell_id, endpoint)
       return JsonResponse({'result': 'success'},status = 200)
+
+  def lookup_device(request):
+    cell_id = request.GET.get('cell_id', None)
+    try:
+      vm = VirtualMachine.objects.get(cell_id=cell_id)
+      return JsonResponse({'response': 'Found'})
+    except:
+      return JsonResponse({'response': 'Not Found'})
