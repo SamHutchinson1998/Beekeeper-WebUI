@@ -39,16 +39,20 @@ function deployDevice()
 
 function isCellDevice(cell)
 {
+  var output = null;
   var cell_id = cell.getId();
   $.ajax({
     url: "lookup_device",
     async: false,
     data: {'cell_id': cell_id},
     success: function(result){
-      if(result['response'] == "found"){
-        return true;
+      if(result['response'] == "Found"){
+        output = true;
+      }
+      else{
+        output = false;
       }
     }
   });
-  return false;
+  return output;
 }
