@@ -283,7 +283,7 @@ def libvirt_connect_cable(cable_name, device_name, mac_address):
     </interface>
   """
   domain.attachDeviceFlags(xml, libvirt.VIR_DOMAIN_AFFECT_LIVE)#libvirt.VIR_DOMAIN_AFFECT_LIVE)#libvirt.VIR_DOMAIN_AFFECT_CONFIG)
-  domain.updateDeviceFlags(xml, libvirt.VIR_DOMAIN_AFFECT_CONFIG) # Persist to the xml config of a virtual machine
+  domain.attachDeviceFlags(xml, libvirt.VIR_DOMAIN_AFFECT_CONFIG) # Persist to the xml config of a virtual machine
 
 def disconnect_cable(cell_id, endpoint):
   print(cell_id)
@@ -313,6 +313,7 @@ def libvirt_disconnect_cable(cable_name, device_name, mac_address):
     </interface>
   """
   domain.detachDevice(xml)
+  domain.detachDeviceFlags(xml, libvirt.VIR_DOMAIN_AFFECT_CONFIG)
 
 def delete_endpoint(endpoint, cable):
   # remove any previous ethernet ports the cable was connected to
