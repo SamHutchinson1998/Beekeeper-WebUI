@@ -44,7 +44,7 @@ function main(container, sidebar)
 
     var images_list = getImages();
     var i;
-    addNatIcon('nat');
+    addNatIcon(sidebar, graph, 'nat');
     for(i = 0; i < images_list.length; i++){
       var image = images_list[i].fields;
       var id = images_list[i].pk;
