@@ -7,7 +7,7 @@ from django.conf import settings
 from django.urls import reverse
 from django.template import Context, Template
 from .services import connect_ethernet_cable, disconnect_cable, plug_cable_in_devices, destroy_network, create_network, create_ethernet_ports, generate_error_message, get_vm_status, create_device_req, lookup_domain, get_domain_vnc_socket, create_virtual_machine, remove_machine, turn_off_devices, turn_on_devices
-from .models import EthernetCable, EthernetPorts, EthernetPortsForm, ImageForm, DiskImage, VirtualMachine, VirtualMachineForm
+from .models import EthernetCable, EthernetPorts, EthernetPortsForm, ImageForm, DiskImage, Device, DeviceForm
 from urllib.parse import urlencode
 import os
 import json
@@ -20,9 +20,9 @@ class HomePageView(TemplateView):
   def get_context_data( *args, **kwargs):
     context = {
       'form': ImageForm(),
-      'device_form': VirtualMachineForm(),
+      'device_form': DeviceForm(),
       'disk_images': DiskImage.objects.all(),
-      'devices': serialize('json', VirtualMachine.objects.all())
+      'devices': serialize('json', Device.objects.all())
     }
     return context
 
@@ -69,7 +69,7 @@ class HomePageView(TemplateView):
     if request.method == "POST":
       modified_request = create_device_req(request)
       cell_id = modified_request.get('cell_id', None)
-      form = VirtualMachineForm(modified_request)
+      form = DeviceForm(modified_request)
       print(modified_request)
       if form.is_valid():
         if form.save():
@@ -94,7 +94,7 @@ class HomePageView(TemplateView):
   def remove_device(request):
     if request.is_ajax and request.method == "GET":
       retrieved_cell_id = json.loads(request.GET.get('cell_id',None))
-      vm_record = VirtualMachine.objects.get(cell_id=retrieved_cell_id)
+      vm_record = Device.objects.get(cell_id=retrieved_cell_id)
       if vm_record.delete():
         remove_machine(vm_record)
         return JsonResponse({'result': 'success'},status = 200)
@@ -113,7 +113,7 @@ class HomePageView(TemplateView):
 
   def get_device_vnc(request):
     cell_id = request.GET.get('cell_id', None)
-    token = VirtualMachine.objects.get(cell_id=cell_id).token
+    token = Device.objects.get(cell_id=cell_id).token
     base_url = reverse('load_device_vnc')
     path = urlencode({'path':'websockify'})
     token = urlencode({'token':token})
@@ -132,7 +132,7 @@ class HomePageView(TemplateView):
     if request.method == 'GET':
       context = {
         'form': ImageForm(),
-        'device_form': VirtualMachineForm()
+        'device_form': DeviceForm()
       }
       return render(request, '_body.html', context)
     return JsonResponse({},status=200)
@@ -182,14 +182,14 @@ class HomePageView(TemplateView):
   def get_ethernet_ports(request):
     cell_id = request.GET.get('cell_id', None)
     if request.method == 'GET':
-      vm = VirtualMachine.objects.get(cell_id=cell_id)
+      vm = Device.objects.get(cell_id=cell_id)
       ethernet_ports = json.loads(serialize('json', vm.ethernetports_set.all()))
       return JsonResponse({'ethernet_ports': ethernet_ports})
     return JsonResponse({'error':'error'})
   
   def get_devices(request):
     if request.is_ajax and request.method == "GET":
-      devices = json.loads(serialize('json', VirtualMachine.objects.all()))
+      devices = json.loads(serialize('json', Device.objects.all()))
       return JsonResponse({"devices":devices}, status = 200)
 
   def connect_cable(request):
@@ -210,7 +210,7 @@ class HomePageView(TemplateView):
   def lookup_device(request):
     cell_id = request.GET.get('cell_id', None)
     try:
-      vm = VirtualMachine.objects.get(cell_id=cell_id)
+      vm = Device.objects.get(cell_id=cell_id)
       return JsonResponse({'response': 'Found'})
     except:
       return JsonResponse({'response': 'Not Found'})

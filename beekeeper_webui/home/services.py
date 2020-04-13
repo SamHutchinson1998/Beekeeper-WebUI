@@ -1,5 +1,5 @@
 from django.http import JsonResponse
-from .models import DiskImage, VirtualMachine, EthernetPorts, EthernetCable
+from .models import DiskImage, Device, EthernetPorts, EthernetCable
 from django.conf import settings
 from xml.dom import minidom
 import os
@@ -12,7 +12,7 @@ def lookup_domain(cell_id):
   dom = None
   conn = libvirt.open('qemu:///system')
   try:
-    vm_record = VirtualMachine.objects.get(cell_id=cell_id)
+    vm_record = Device.objects.get(cell_id=cell_id)
     dom = conn.lookupByName(vm_record.name)
   except:
     dom = None
@@ -42,7 +42,7 @@ def create_virtual_machine(cell_id):
 
   # token generation happens here
   token = str(uuid.uuid4())
-  vm = VirtualMachine.objects.get(cell_id=cell_id)
+  vm = Device.objects.get(cell_id=cell_id)
   vm.token = token
   vm.save()
 
@@ -135,7 +135,7 @@ def spawn_machine(disk_size, name, xml, token):
 
 def generate_error_message(message, cell_id):
   try:
-    vm = VirtualMachine.objects.get(cell_id=cell_id)
+    vm = Device.objects.get(cell_id=cell_id)
     remove_machine(vm)
   finally:
     return JsonResponse({'response':'error', 'message': message}, status=200)
@@ -172,7 +172,7 @@ def turn_off_devices(devices):
   else:
     #shut off selected devices
     for device in devices:
-      vm_name = VirtualMachine.objects.get(cell_id=device).name
+      vm_name = Device.objects.get(cell_id=device).name
       dom = conn.lookupByName(vm_name)
       if dom.isActive(): # If device is not already turned off
         dom.destroy()
@@ -189,7 +189,7 @@ def turn_on_devices(devices):
   else:
     #turn on selected devices
     for device in devices:
-      vm_name = VirtualMachine.objects.get(cell_id=device).name
+      vm_name = Device.objects.get(cell_id=device).name
       dom = conn.lookupByName(vm_name)
       if dom.isActive() < 1: # If device is already turned on
         dom.create()
@@ -255,7 +255,7 @@ def destroy_network(cell_id):
 def connect_ethernet_cable(cable_cell_id, device, endpoint):
   cable = EthernetCable.objects.get(cell_id=cable_cell_id)
   delete_endpoint(endpoint, cable)
-  device_record = VirtualMachine.objects.get(cell_id=device)
+  device_record = Device.objects.get(cell_id=device)
   if endpoint == "source":
     cable.source = create_ports(device_record)
     cable.save()
@@ -340,7 +340,7 @@ def generate_mac_address():
 # Code under this line is research and does not contribute to the running of the program
 
 def create_ethernet_ports(cell_id, ethernet_ports):
-  vm = VirtualMachine.objects.get(cell_id=cell_id)
+  vm = Device.objects.get(cell_id=cell_id)
   i = 0
   for port in range(ethernet_ports):
     ethernet_port = EthernetPort(virtual_machine=vm,port_no=i)

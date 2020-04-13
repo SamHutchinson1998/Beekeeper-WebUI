@@ -16,7 +16,7 @@ class DiskImage(models.Model):
   devicetype = models.CharField(max_length=8,choices=DEVICE_TYPES, default='pc')
   disk_image = models.FileField(upload_to='disk_images/')
 
-class VirtualMachine(models.Model):
+class Device(models.Model):
   name = models.CharField(max_length=100,default="vm_name", unique=True)
   ram = models.CharField(max_length=8)
   disk_size = models.IntegerField()
@@ -26,7 +26,7 @@ class VirtualMachine(models.Model):
   token = models.CharField(max_length=64,default='0')
 
 class EthernetPorts(models.Model):
-  virtual_machine = models.ForeignKey(VirtualMachine, on_delete=models.CASCADE)
+  virtual_machine = models.ForeignKey(Device, on_delete=models.CASCADE)
   #connected_to = models.CharField(max_length=10)
   mac_address = models.CharField(max_length=48)
 
@@ -46,9 +46,9 @@ class ImageForm(forms.ModelForm):
     model = DiskImage
     fields = ['name', 'devicetype', 'disk_image']
 
-class VirtualMachineForm(forms.ModelForm):
+class DeviceForm(forms.ModelForm):
   class Meta:
-    model = VirtualMachine
+    model = Device
     fields = ['name','ram', 'disk_size', 'cpus', 'cell_id','disk_image']
     labels = {
       'ram': 'RAM (MB)',

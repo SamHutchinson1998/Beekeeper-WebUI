@@ -42,6 +42,7 @@ function addNatIcon(sidebar, graph, deviceType)
     {
       device = graph.insertVertex(parent, null, deviceType, x, y, 100, 100, stylesheet);
       device.setConnectable(true);
+      toastr.success('Amend the label to change the network')
     }
     finally
     {
@@ -63,7 +64,7 @@ function addNatIcon(sidebar, graph, deviceType)
   wrapper.appendChild(icon);
 
   var description = document.createElement('div');
-  description.innerHTML = deviceType;
+  description.innerHTML = 'Internet';
   description.setAttribute('align','center');
   wrapper.appendChild(description); 
 
