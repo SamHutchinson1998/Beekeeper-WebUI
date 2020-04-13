@@ -26,6 +26,58 @@ function hideSidebarChildNodes(children, value)
   }
 }
 
+function addNatIcon(sidebar, graph, deviceType)
+{
+  var image = getVector(deviceType);
+  var funct = function(graph, evt, cell, x, y)
+  {
+    var parent = graph.getDefaultParent();
+    var model = graph.getModel();
+    
+    var device = null;
+    var stylesheet = `shape=image;image=${image};` +
+    `verticalLabelPosition=bottom;verticalAlign=top;labelHandleSize=8;`;
+    model.beginUpdate();
+    try
+    {
+      device = graph.insertVertex(parent, null, deviceType, x, y, 100, 100, stylesheet);
+      device.setConnectable(true);
+    }
+    finally
+    {
+      model.endUpdate();
+    }
+    graph.setSelectionCell(device);
+    cell_id = graph.getSelectionCell().getId();
+  }
+  var wrapper = document.createElement('div');
+  wrapper.setAttribute('data-image-tags',`${deviceType},${deviceType}`);
+  wrapper.setAttribute('id', 'deviceItem');
+  wrapper.style.display = 'inline';
+
+  var icon = document.createElement('img');
+  icon.setAttribute('src', image);
+  icon.setAttribute('id', 'sidebarItem');
+  icon.setAttribute('align', 'center');
+  icon.title = 'Drag this onto the canvas to create a new device';
+  wrapper.appendChild(icon);
+
+  var description = document.createElement('div');
+  description.innerHTML = deviceType;
+  description.setAttribute('align','center');
+  wrapper.appendChild(description); 
+
+  sidebar.appendChild(wrapper);
+
+  var dragElement = document.createElement('div');
+  dragElement.style.border = 'dashed black 1px';
+  dragElement.style.width = '150px';
+  dragElement.style.height = '150px';
+
+  var ds = mxUtils.makeDraggable(icon,graph,funct,dragElement,0,0,true,true);
+  ds.setGuidesEnabled(true);
+}
+
 function addSidebarIcon(sidebar, graph, disk_image, image_id)
 {
   var image = getVector(disk_image.devicetype);
@@ -108,6 +160,8 @@ function getVector(device)
       return `${filepath}status_suspended.svg`;
     case 'status_online':
       return `${filepath}status_online.svg`;
+    case 'nat':
+      return `${filepath}nat.svg`;
     case "mlswitch":
     default:
       return `${filepath}computer.svg`;

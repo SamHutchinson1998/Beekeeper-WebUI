@@ -44,6 +44,7 @@ function main(container, sidebar)
 
     var images_list = getImages();
     var i;
+    addNatIcon('nat');
     for(i = 0; i < images_list.length; i++){
       var image = images_list[i].fields;
       var id = images_list[i].pk;
@@ -199,15 +200,6 @@ function compareDevices(previous, terminal)
     return true; // both devices are null at this line but true returned as the program should not connect a cable to nothing
   }
 }
-/*
-function getCableEndpoints(cell)
-{
-  if(cell != null){
-    return cell.id;
-  }
-  return false;
-}
-*/
 
 function connectCable(cell_id, device, endpoint)
 {
@@ -321,11 +313,6 @@ function removeDevice(cell)
       }
     }
   });
-}
-
-function removeCable(cell)
-{
-  
 }
 
 function sendRequest(xml)
