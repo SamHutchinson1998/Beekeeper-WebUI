@@ -5,11 +5,11 @@ function getDeviceMenu(graph)
     if(cell){ // A user could right-click on a blank area
       if(isCellDevice(cell)){
         if(cell.children[1]){
-          menu.addItem('Disconnect to the internet', null, function(){
+          menu.addItem('Disconnect from the internet', null, function(){
             disconnectFromTheInternet(evt, graph, cell);
           });
         } else {
-          menu.addItem('Connect from the internet', null, function(){
+          menu.addItem('Connect to the internet', null, function(){
             connectToTheInternet(graph, cell);
           });
         }

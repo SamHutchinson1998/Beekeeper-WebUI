@@ -216,7 +216,7 @@ class HomePageView(TemplateView):
       return JsonResponse({'response': 'Not Found'})
 
   def connect_device_to_internet(request):
-    cell_id = request.get.GET('cell_id', None)
+    cell_id = request.GET.get('cell_id', None)
     device_name = Device.objects.get(cell_id=cell_id).name
     if connect_to_internet(device_name):
       return JsonResponse({'result': 'success'})
@@ -224,7 +224,7 @@ class HomePageView(TemplateView):
       return JsonResponse({'result': 'failure'})
 
   def disconnect_device_from_internet(request):
-    cell_id = request.get.GET('cell_id', None)
+    cell_id = request.GET.get('cell_id', None)
     device_name = Device.objects.get(cell_id=cell_id).name
     if disconnect_from_internet(device_name):
       return JsonResponse({'result': 'success'})
