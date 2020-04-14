@@ -33,22 +33,16 @@ function getDeviceMenu(graph)
 
 function connectToTheInternet(graph, cell)
 {
-  children = cell.children;
-  var id = cell.getId();
   image = getVector('nat')
   var style = `port;shape=image;image=${image};spacingLeft=12;`;
-  if(children){
-    graph.getModel().setStyle(children[1], style);
-  }
+  var nat_logo = graph.insertVertex(cell, null, '', 1, 0.3, 16, 16, style, true);
+  nat_logo.geometry.offset = new mxPoint(-8, -8);
 }
 
 function disconnectFromTheInternet(graph, cell)
 {
-  children = cell.children;
-  var style = ''
-  if(children){
-    graph.getModel().setStyle(children[1], style)
-  }
+  nat_cell = cell.children[1]; // The cell which is the nat icon
+  graph.removeCell(nat_cell);
 }
 
 function getSSH()
