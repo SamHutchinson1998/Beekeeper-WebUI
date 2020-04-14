@@ -5,12 +5,12 @@ function getDeviceMenu(graph)
     if(cell){ // A user could right-click on a blank area
       if(isCellDevice(cell)){
         if(cell.children[1]){
-          menu.addItem('Connect to the internet', null, function(){
-            connectToTheInternet();
+          menu.addItem('Disconnect to the internet', null, function(){
+            connectToTheInternet(graph, cell);
           });
         } else {
-          menu.addItem('Disconnect from the internet', null, function(){
-            connectToTheInternet();
+          menu.addItem('Connect from the internet', null, function(){
+            connectToTheInternet(graph, cell);
           });
         }
 
@@ -36,7 +36,7 @@ function connectToTheInternet(graph, cell)
   children = cell.children;
   var id = cell.getId();
   image = getVector('nat')
-  var style = `port;shape=image;image=${image};spacingLeft=12;`;
+  var style = `port;shape=image;image=${image};spacingRight=18;`;
   if(children){
     graph.getModel().setStyle(children[1], style);
   }
