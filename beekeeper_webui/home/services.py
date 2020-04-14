@@ -335,6 +335,30 @@ def generate_mac_address():
   )
   return mac_address
 
+def connect_to_internet(device_name):
+  conn = libvirt.open('qemu:///system')
+  domain = conn.lookupByName(device_name)
+  xml = f"""
+    <interface type='network'>
+      <source network='default'/>
+    </interface>
+  """
+  domain.attachDeviceFlags(xml, libvirt.VIR_DOMAIN_AFFECT_LIVE)#libvirt.VIR_DOMAIN_AFFECT_LIVE)#libvirt.VIR_DOMAIN_AFFECT_CONFIG)
+  domain.attachDeviceFlags(xml, libvirt.VIR_DOMAIN_AFFECT_CONFIG) # Persist to the xml config of a virtual machine
+  return True
+
+def disconnect_from_internet(device_name):
+  conn = libvirt.open('qemu:///system')
+  domain = conn.lookupByName(device_name)
+  xml = f"""
+    <interface type='network'>
+      <source network='default'/>
+    </interface>
+  """
+  domain.detachDevice(xml)
+  domain.detachDeviceFlags(xml, libvirt.VIR_DOMAIN_AFFECT_CONFIG)
+  return True
+
 #-----------------------------------------------------
 
 # Code under this line is research and does not contribute to the running of the program
@@ -406,3 +430,4 @@ def return_int_xml_from_domain(name, eth, dom):
     else:
       count += 1
   return False
+

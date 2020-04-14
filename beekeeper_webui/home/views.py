@@ -6,7 +6,7 @@ from django.core.serializers import serialize
 from django.conf import settings
 from django.urls import reverse
 from django.template import Context, Template
-from .services import connect_ethernet_cable, disconnect_cable, plug_cable_in_devices, destroy_network, create_network, create_ethernet_ports, generate_error_message, get_vm_status, create_device_req, lookup_domain, get_domain_vnc_socket, create_virtual_machine, remove_machine, turn_off_devices, turn_on_devices
+from .services import connect_to_internet, disconnect_from_internet, connect_ethernet_cable, disconnect_cable, plug_cable_in_devices, destroy_network, create_network, create_ethernet_ports, generate_error_message, get_vm_status, create_device_req, lookup_domain, get_domain_vnc_socket, create_virtual_machine, remove_machine, turn_off_devices, turn_on_devices
 from .models import EthernetCable, EthernetPorts, EthernetPortsForm, ImageForm, DiskImage, Device, DeviceForm
 from urllib.parse import urlencode
 import os
@@ -214,3 +214,19 @@ class HomePageView(TemplateView):
       return JsonResponse({'response': 'Found'})
     except:
       return JsonResponse({'response': 'Not Found'})
+
+  def connect_device_to_internet(request):
+    cell_id = request.get.GET('cell_id', None)
+    device_name = Device.objects.get(cell_id=cell_id).name
+    if connect_to_internet(device_name):
+      return JsonResponse({'result': 'success'})
+    else:
+      return JsonResponse({'result': 'failure'})
+
+  def disconnect_device_from_internet(request):
+    cell_id = request.get.GET('cell_id', None)
+    device_name = Device.objects.get(cell_id=cell_id).name
+    if disconnect_from_internet(device_name):
+      return JsonResponse({'result': 'success'})
+    else:
+      return JsonResponse({'result': 'failure'})

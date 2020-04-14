@@ -13,7 +13,6 @@ function getDeviceMenu(graph)
             connectToTheInternet(graph, cell);
           });
         }
-
         menu.addItem('SSH (to be completed)', null, function(){
           alert('SSH');
         });
@@ -33,18 +32,47 @@ function getDeviceMenu(graph)
 
 function connectToTheInternet(graph, cell)
 {
-  image = getVector('nat')
+  image = getVector('nat');
+  var cell_id = cell.getId();
   var style = `port;shape=image;image=${image};spacingLeft=12;`;
-  var nat_logo = graph.insertVertex(cell, null, '', 1, 0.35, 16, 16, style, true);
-  nat_logo.geometry.offset = new mxPoint(-8, -8);
+
+  $.ajax({
+    url: 'connect_device_to_internet',
+    data: {'cell_id': cell_id},
+    async: false,
+    success: function(result){
+      if(result['result'] == 'success'){
+        var nat_logo = graph.insertVertex(cell, null, '', 1, 0.35, 16, 16, style, true);
+        nat_logo.geometry.offset = new mxPoint(-8, -8);
+        toastr.success('Device connected to the internet');
+      }
+      else{
+        toastr.error('Unable to connect device to the internet');
+      }
+    }
+  });
 }
 
 function disconnectFromTheInternet(evt, graph, cell)
 {
+  var cell_id = cell.getId();
   var nat_cell = cell.children[1]; // The cell which is the nat icon
   //cell.remove(1) // Index of the nat icon, as a child of the device vertex
-  graph.removeCells([nat_cell]);
-  mxEvent.consume(evt);
+  $.ajax({
+    url: 'disconnect_device_from_internet',
+    data: {'cell_id': cell_id},
+    async: false,
+    success: function(result){
+      if(result['result'] == 'success'){
+        graph.removeCells([nat_cell]);
+        mxEvent.consume(evt);
+        toastr.success('Device disconnected from the internet');
+      }
+      else{
+        toastr.error('Unable to disconnect device from the internet');
+      }
+    }
+  });
 }
 
 function getSSH()
