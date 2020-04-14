@@ -26,6 +26,7 @@ function hideSidebarChildNodes(children, value)
   }
 }
 
+/*
 function addNatIcon(sidebar, graph, deviceType)
 {
   var image = getVector(deviceType);
@@ -78,7 +79,7 @@ function addNatIcon(sidebar, graph, deviceType)
   var ds = mxUtils.makeDraggable(icon,graph,funct,dragElement,0,0,true,true);
   ds.setGuidesEnabled(true);
 }
-
+*/
 function addSidebarIcon(sidebar, graph, disk_image, image_id)
 {
   var image = getVector(disk_image.devicetype);

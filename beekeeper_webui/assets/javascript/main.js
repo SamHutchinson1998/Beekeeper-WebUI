@@ -254,14 +254,16 @@ function removeDevices(graph)
     for(i = 0; i < selected_cells.length; i++){
       cell_id = selected_cells[i].getId();
       if(selected_cells[i].isVertex()){
-        removeDevice(selected_cells[i]);
+        if(isCellDevice(selected_cells[i])){
+          removeDevice(selected_cells[i]);
+        }
       }
       if(selected_cells[i].isEdge()){
         destroyNetworkBridge(selected_cells[i]);
       }
     }
     graph.removeCells();
-    toastr.success('Devices removed');
+    //toastr.success('Devices removed');
   }
 }
 
@@ -443,4 +445,24 @@ function handleEthernetFormSubmit(graph)
     // add logic here for making the AJAX requests to create a network bridge
     $('#ethernet_modal').modal('hide');
   });
+}
+
+function isCellDevice(cell)
+{
+  var output = null;
+  var cell_id = cell.getId();
+  $.ajax({
+    url: "lookup_device",
+    async: false,
+    data: {'cell_id': cell_id},
+    success: function(result){
+      if(result['response'] == "Found"){
+        output = true;
+      }
+      else{
+        output = false;
+      }
+    }
+  });
+  return output;
 }

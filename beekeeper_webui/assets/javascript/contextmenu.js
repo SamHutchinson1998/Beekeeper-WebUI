@@ -4,6 +4,16 @@ function getDeviceMenu(graph)
   {
     if(cell){ // A user could right-click on a blank area
       if(isCellDevice(cell)){
+        if(cell.children[1]){
+          menu.addItem('Connect to the internet', null, function(){
+            connectToTheInternet();
+          });
+        } else {
+          menu.addItem('Disconnect from the internet', null, function(){
+            connectToTheInternet();
+          });
+        }
+
         menu.addItem('SSH (to be completed)', null, function(){
           alert('SSH');
         });
@@ -18,6 +28,26 @@ function getDeviceMenu(graph)
         });
       }
     }
+  }
+}
+
+function connectToTheInternet(graph, cell)
+{
+  children = cell.children;
+  var id = cell.getId();
+  image = getVector('nat')
+  var style = `port;shape=image;image=${image};spacingLeft=12;`;
+  if(children){
+    graph.getModel().setStyle(children[1], style);
+  }
+}
+
+function disconnectFromTheInternet(graph, cell)
+{
+  children = cell.children;
+  var style = ''
+  if(children){
+    graph.getModel().setStyle(children[1], style)
   }
 }
 
@@ -38,22 +68,3 @@ function deployDevice()
 
 }
 
-function isCellDevice(cell)
-{
-  var output = null;
-  var cell_id = cell.getId();
-  $.ajax({
-    url: "lookup_device",
-    async: false,
-    data: {'cell_id': cell_id},
-    success: function(result){
-      if(result['response'] == "Found"){
-        output = true;
-      }
-      else{
-        output = false;
-      }
-    }
-  });
-  return output;
-}
