@@ -77,16 +77,20 @@ function disconnectFromTheInternet(evt, graph, cell)
 
 function getSSH(cell)
 {
-  var client_stuff = 'Hello, world';
-  var content = document.createElement('div');
-  mxUtils.write(content, client_stuff);
-  label = cell.getValue();
-  var ssh_window = new mxWindow(`${label} - SSH`, content, 300, 50, 200, null, true, true);
-
-  ssh_window.setMaximizable(true);
-  ssh_window.setScrollable(true);
-  ssh_window.setResizable(true);
-  ssh_window.setVisible(true);
+  var label = cell.getValue();
+  $.ajax({
+    url: 'lookup_device',
+    data: {'cell_id': cell.getId()},
+    success: function(result){
+      if(result['response'] != "Not Found"){
+        alert(`Open up a terminal and input the following:\nssh -t [user]@${window.location.href} sudo virsh console ${label}\n\n where [user] is your account on the server`);
+      }
+      else{
+        toastr.error('Unable to offer SSH at this time');
+      }
+    }
+  });
+  alert()
 }
 
 function getVNC(cell)

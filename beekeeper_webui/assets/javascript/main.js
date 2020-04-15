@@ -456,7 +456,7 @@ function isCellDevice(cell)
     async: false,
     data: {'cell_id': cell_id},
     success: function(result){
-      if(result['response'] == "Found"){
+      if(result['response'] != "Not Found"){
         output = true;
       }
       else{
