@@ -13,14 +13,14 @@ function getDeviceMenu(graph)
             connectToTheInternet(graph, cell);
           });
         }
-        menu.addItem('SSH (to be completed)', null, function(){
+        menu.addItem('Get SSH Link', null, function(){
           getSSH(cell);
         });
         menu.addItem('VNC', null, function(){
           getVNC(cell);
         });
-        menu.addItem('Deploy (to be completed)', null, function(){
-          alert('Deploy');
+        menu.addItem('Download', null, function(){
+          deployDevice(cell);
         });
         menu.addItem('Delete', null, function(){
           removeDevices(graph);
@@ -83,14 +83,13 @@ function getSSH(cell)
     data: {'cell_id': cell.getId()},
     success: function(result){
       if(result['response'] != "Not Found"){
-        alert(`Open up a terminal and input the following:\nssh -t [user]@${window.location.href} sudo virsh console ${label}\n\n where [user] is your account on the server`);
+        alert(`Open up a terminal and input the following:\nssh -t [user]@${window.location.host} sudo virsh console ${label}\n\n where [user] is your account on the server`);
       }
       else{
         toastr.error('Unable to offer SSH at this time');
       }
     }
   });
-  alert()
 }
 
 function getVNC(cell)
@@ -100,8 +99,15 @@ function getVNC(cell)
   window.open( '/get_device_vnc?cell_id='+id, '_blank');
 }
 
-function deployDevice()
+function deployDevice(cell)
 {
-
+  var id = cell.getId();
+  $.ajax({
+    url: 'download_device',
+    data: {'cell_id': id},
+    success: function(result){
+      toastr.warning('Download in progress');
+    }
+  });
 }
 

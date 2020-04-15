@@ -112,6 +112,9 @@ def create_virtual_machine(cell_id):
       <input type='keyboard' bus='ps2'/>
       <graphics type='vnc' port='-1' autoport='yes' listen='0.0.0.0'/>
     </devices>
+    <qemu:commandline>
+      <qemu:env name='console' value='ttyS0'/>
+    </qemu:commandline>
   </domain>"""
   #print(xml)
   spawn_machine(disk_size, name, xml, token)
@@ -358,6 +361,22 @@ def disconnect_from_internet(device_name):
   domain.detachDevice(xml)
   domain.detachDeviceFlags(xml, libvirt.VIR_DOMAIN_AFFECT_CONFIG)
   return True
+
+def get_device_file(device_name):
+  conn = libvirt.open('qemu:///system')
+  domain = conn.lookupByName(device_name)
+  conn.close()
+  raw_xml = domain.XMLDesc(0)
+  xml = minidom.parseString(raw_xml)
+  components = xml.getElementsByTagName('disk')
+  for component in components:
+    device = component.getAttribute('device')
+    if device == 'disk':
+      child_nodes = component.childNodes
+      for node in child_nodes:
+        if node.tagName == 'source':
+          vm_file = node.getAttribute('file')
+          return vm_file
 
 #-----------------------------------------------------
 
