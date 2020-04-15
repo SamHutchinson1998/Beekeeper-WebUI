@@ -14,7 +14,7 @@ function getDeviceMenu(graph)
           });
         }
         menu.addItem('SSH (to be completed)', null, function(){
-          alert('SSH');
+          getSSH(cell);
         });
         menu.addItem('VNC', null, function(){
           getVNC(cell);
@@ -75,9 +75,18 @@ function disconnectFromTheInternet(evt, graph, cell)
   });
 }
 
-function getSSH()
+function getSSH(cell)
 {
-  
+  var client_stuff = 'Hello, world';
+  var content = document.createElement('div');
+  mxUtils.write(content, client_stuff);
+  label = cell.getValue();
+  var ssh_window = new mxWindow(`${label} - SSH`, content, 300, 50, 200, null, true, true);
+
+  ssh_window.setMaximizable(true);
+  ssh_window.setScrollable(true);
+  ssh_window.setResizable(true);
+  ssh_window.setVisible(true);
 }
 
 function getVNC(cell)
