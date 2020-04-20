@@ -108,6 +108,9 @@ def create_virtual_machine(cell_id):
         <target port='0'/>
         <alias name='serial1'/>
       </serial>
+      <console type='pty'>
+        <target type='serial' port='0'/>
+      </console>
       <input type='mouse' bus='ps2'/>
       <input type='keyboard' bus='ps2'/>
       <graphics type='vnc' port='-1' autoport='yes' listen='0.0.0.0'/>
