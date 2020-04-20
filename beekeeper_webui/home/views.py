@@ -211,7 +211,7 @@ class HomePageView(TemplateView):
     cell_id = request.GET.get('cell_id', None)
     try:
       vm = Device.objects.get(cell_id=cell_id)
-      return JsonResponse({'response': json.loads(serialize('json', vm))})
+      return JsonResponse({'response': vm.name, 'console_port': vm.console_port})
     except:
       return JsonResponse({'response': 'Not Found'})
 

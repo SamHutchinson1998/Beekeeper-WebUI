@@ -42,7 +42,7 @@ def create_virtual_machine(cell_id):
 
   # token generation happens here
   token = str(uuid.uuid4())
-  console_port = "1{:04d}".format(cell_id)
+  console_port = "1{:04d}".format(int(cell_id))
   vm = Device.objects.get(cell_id=cell_id)
   vm.token = token
   vm.console_port = console_port

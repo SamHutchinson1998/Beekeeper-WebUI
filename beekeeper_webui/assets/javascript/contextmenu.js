@@ -83,8 +83,8 @@ function getTelnet(cell)
     async: false,
     success: function(result){
       if(result['response'] != 'Not Found'){
-        var device = result.fields;
-        console.log(fields);
+        var console_port = result['console_port'];
+        window.open(`telnet://${window.location.host}:${console_port}`)
       }
     }
   });
