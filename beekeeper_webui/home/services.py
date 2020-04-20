@@ -65,7 +65,7 @@ def create_virtual_machine(cell_id):
     #ethernet_ports += xml
 
   xml = f"""
-  <domain type='kvm'>
+  <domain type='kvm' xmlns:qemu='http://libvirt.org/schemas/domain/qemu/1.0'>
     <name>{name}</name>
     <memory unit='MB'>{memory}</memory>
     <currentmemory unit='MB'>{memory}</currentmemory>
@@ -102,12 +102,12 @@ def create_virtual_machine(cell_id):
         <target dev='hda' bus='ide'/>
         <readonly/>
       </disk>
-      <serial type='pty'>
+      <serial type='tcp'>
+        <source mode='bind' host='0.0.0.0' service='4555' tls='no'/>
+        <protocol type='telnet'/>
         <target port='0'/>
+        <alias name='serial1'/>
       </serial>
-      <console type='pty'>
-        <target type='serial' port='0'/>
-      </console>
       <input type='mouse' bus='ps2'/>
       <input type='keyboard' bus='ps2'/>
       <graphics type='vnc' port='-1' autoport='yes' listen='0.0.0.0'/>
@@ -116,6 +116,12 @@ def create_virtual_machine(cell_id):
       <qemu:env name='console' value='ttyS0'/>
     </qemu:commandline>
   </domain>"""
+       #<serial type='pty'>
+        #<target port='0'/>
+      #</serial>
+      #<console type='pty'>
+       #<target type='serial' port='0'/>
+      #</console>
   #print(xml)
   spawn_machine(disk_size, name, xml, token)
 
