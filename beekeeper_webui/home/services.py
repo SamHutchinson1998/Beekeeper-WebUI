@@ -374,7 +374,7 @@ def get_device_file(device_name):
     if device == 'disk':
       child_nodes = component.childNodes
       for node in child_nodes:
-        if node.tagName == 'source':
+        if node == 'source':
           vm_file = node.getAttribute('file')
           return vm_file
 
