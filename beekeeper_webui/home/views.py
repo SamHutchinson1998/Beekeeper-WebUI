@@ -71,7 +71,6 @@ class HomePageView(TemplateView):
       modified_request = create_device_req(request)
       cell_id = modified_request.get('cell_id', None)
       form = DeviceForm(modified_request)
-      print(modified_request)
       if form.is_valid():
         if form.save():
           create_virtual_machine(cell_id)
@@ -212,7 +211,7 @@ class HomePageView(TemplateView):
     cell_id = request.GET.get('cell_id', None)
     try:
       vm = Device.objects.get(cell_id=cell_id)
-      return JsonResponse({'response': vm.name})
+      return JsonResponse({'response': json.loads(serialize('json', vm))})
     except:
       return JsonResponse({'response': 'Not Found'})
 

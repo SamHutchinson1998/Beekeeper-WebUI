@@ -24,6 +24,7 @@ class Device(models.Model):
   cell_id = models.IntegerField(default='0')
   disk_image = models.ForeignKey(DiskImage, on_delete=models.CASCADE)
   token = models.CharField(max_length=64,default='0')
+  console_port = models.IntegerField(default='10000')
 
 class EthernetPorts(models.Model):
   virtual_machine = models.ForeignKey(Device, on_delete=models.CASCADE)

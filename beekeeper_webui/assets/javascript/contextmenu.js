@@ -13,8 +13,8 @@ function getDeviceMenu(graph)
             connectToTheInternet(graph, cell);
           });
         }
-        menu.addItem('Get SSH Link', null, function(){
-          getSSH(cell);
+        menu.addItem('Telnet', null, function(){
+          getTelnet(cell);
         });
         menu.addItem('VNC', null, function(){
           getVNC(cell);
@@ -75,21 +75,20 @@ function disconnectFromTheInternet(evt, graph, cell)
   });
 }
 
-function getSSH(cell)
+function getTelnet(cell)
 {
-  var label = cell.getValue();
   $.ajax({
     url: 'lookup_device',
     data: {'cell_id': cell.getId()},
+    async: false,
     success: function(result){
-      if(result['response'] != "Not Found"){
-        alert(`Open up a terminal and input the following:\nssh -t [user]@${window.location.host} sudo virsh console ${label}\n\n where [user] is your account on the server`);
-      }
-      else{
-        toastr.error('Unable to offer SSH at this time');
+      if(result['response'] != 'Not Found'){
+        var device = result.fields;
+        console.log(fields);
       }
     }
   });
+  window.open
 }
 
 function getVNC(cell)

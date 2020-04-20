@@ -42,8 +42,10 @@ def create_virtual_machine(cell_id):
 
   # token generation happens here
   token = str(uuid.uuid4())
+  console_port = "1{:04d}".format(cell_id)
   vm = Device.objects.get(cell_id=cell_id)
   vm.token = token
+  vm.console_port = console_port
   vm.save()
 
   name = vm.name
@@ -103,7 +105,7 @@ def create_virtual_machine(cell_id):
         <readonly/>
       </disk>
       <serial type='tcp'>
-        <source mode='bind' host='0.0.0.0' service='4555' tls='no'/>
+        <source mode='bind' host='0.0.0.0' service='{console_port}' tls='no'/>
         <protocol type='telnet'/>
         <target port='0'/>
         <alias name='serial1'/>
