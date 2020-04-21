@@ -79,6 +79,24 @@ class EthernetCableTest(TestCase):
 
 # Forms tests
 
+class EthernetPortsForm(TestCase):
+
+  def test_valid_ethernet_port(self):
+    image = create_image(self, 'test_image', 'pc', '../ubuntu-18.04.2-live-server-amd64.iso')
+    device = create_device(self, 'test_device', '2048', 25, 2, 15, image, 'this-is-a-made-up-token', 10015)
+    ethernet_port = create_ethernet_ports(self, device, 'MA:CA:DD:RE:SS:XD')
+    data = {'virtual_machine': ethernet_port.virtual_machine, 'mac_address': ethernet_port.mac_address}
+    form = EthernetPortsForm(data=data)
+    self.assertTrue(form.is_valid())
+
+  def test_invalid_ethernet_port(self):
+    image = create_image(self, 'test_image', 'pc', '../ubuntu-18.04.2-live-server-amd64.iso')
+    device = create_device(self, 'test_device', '2048', 25, 2, 15, image, 'this-is-a-made-up-token', 10015)
+    ethernet_port = create_ethernet_ports(self, device, 'MA:CA:DD:RE:SS:XD'*20) # mac_address is greater than length 48 so should fail
+    data = {'virtual_machine': ethernet_port.virtual_machine, 'mac_address': ethernet_port.mac_address}
+    form = EthernetPortsForm(data=data)
+    self.assertFalse(form.is_valid())
+
 class ImageFormTest(TestCase):
 
   def test_valid_image_form(self):
@@ -99,3 +117,6 @@ class ImageFormTest(TestCase):
     data = {'name': image.name, 'devicetype': image.devicetype, 'disk_image': image.disk_image}
     form = ImageForm(data=data)
     self.assertFalse(form.is_valid())
+
+class DeviceFormTest(TestCase):
+
