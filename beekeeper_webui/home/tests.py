@@ -1,4 +1,5 @@
 from django.test import TestCase
+from django.db import IntegrityError
 from .models import Device, DiskImage, EthernetPorts, EthernetCable
 from .models import EthernetPortsForm, ImageForm, DeviceForm
 
@@ -89,20 +90,12 @@ class ImageFormTest(TestCase):
   def test_image_name_uniqueness(self):
     image = create_image(self, 'test_image', 'pc', '../ubuntu-18.04.2-live-server-amd64.iso')
     image.save()
-    image2 = create_image(self, 'test_image', 'pc', '../ubuntu-18.04.2-live-server-amd64.iso')
-    data = {'name': image2.name, 'devicetype': image2.devicetype, 'disk_image': image2.disk_image}
-    form = ImageForm(data=data)
-    self.assertFalse(form.is_valid())
+    with self.assertRaises(Exception) as raised:
+      image2 = create_image(self, 'test_image', 'pc', '../ubuntu-18.04.2-live-server-amd64.iso')
+    self.assertEqual(IntegrityError, type(raised.exception))
 
   def test_image_max_length(self):
     image = create_image(self, 'a'*101, 'pc', '../ubuntu-18.04.2-live-server-amd64.iso')
     data = {'name': image.name, 'devicetype': image.devicetype, 'disk_image': image.disk_image}
     form = ImageForm(data=data)
     self.assertFalse(form.is_valid())
-
-  def test_default_device_type(self):
-    image = create_image(self, 'test-image', None, '../ubuntu-18.04.2-live-server-amd64.iso')
-    data = {'name': image.name, 'devicetype':image.devicetype, 'disk_image': image.disk_image}
-    form = ImageForm(data=data)
-    self.assertEqual(form.fields['devicetype'], 'pc')
-    self.assertTrue(form.is_valid())
