@@ -166,6 +166,6 @@ class ImageViewTest(TestCase):
     print(f"\n\n{image_dict}")
     # compare last image, take a sample etc
     self.assertJSONEqual(
-      str(resp.content, encoding='utf8'),
+      resp.content,
       image_dict
     )
