@@ -2,7 +2,7 @@ from django.test import TestCase, TransactionTestCase
 from django.db import IntegrityError
 from django.urls import reverse
 from .models import Device, DiskImage, EthernetPorts, EthernetCable
-from .models import EthernetPortsForm, ImageForm, DeviceForm
+from .models import ImageForm, DeviceForm
 
 # Table of contents
 
@@ -156,13 +156,12 @@ class ImageViewTest(TestCase):
     image3.save()
 
     image_dict = {
-      'disk_images': [image, image2, image3]
+      b'disk_images': [image, image2, image3]
     }
 
     url = reverse('get_images')
     resp = self.client.get(url)
     self.assertEqual(resp.status_code, 200)
     print(resp.content)
-    print(resp.content['disk_images'][2])
     # compare last image, take a sample etc
-    self.assertIn(image_dict, resp.content['disk_images'][2])
+    self.assertIn(image_dict, resp.content)
