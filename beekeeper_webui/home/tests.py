@@ -1,8 +1,10 @@
 from django.test import TestCase, TransactionTestCase
 from django.db import IntegrityError
 from django.urls import reverse
+from django.core.serializers import serialize
 from .models import Device, DiskImage, EthernetPorts, EthernetCable
 from .models import ImageForm, DeviceForm
+import json
 
 # Table of contents
 
@@ -155,14 +157,13 @@ class ImageViewTest(TestCase):
     image3 = create_image(self, 'test_image_3', 'switch', '../ubuntu-18.04.2-live-server-amd64.iso')
     image3.save()
 
-    image_dict = {
-      'disk_images': [image, image2, image3]
-    }
+    image_dict = {'disk_images': json.loads(serialize('json', DiskImage.objects.all()))}
 
     url = reverse('get_images')
     resp = self.client.get(url)
     self.assertEqual(resp.status_code, 200)
     print(resp.content)
+    self.maxDiff = None
     print(f"\n\n{image_dict}")
     # compare last image, take a sample etc
     self.assertJSONEqual(
