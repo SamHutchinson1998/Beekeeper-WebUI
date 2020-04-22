@@ -150,12 +150,19 @@ class ImageViewTest(TestCase):
   def test_image_retrieval(self):
     image = create_image(self, 'test_image', 'pc', '../ubuntu-18.04.2-live-server-amd64.iso')
     image.save()
-    image = create_image(self, 'test_image_2', 'router', '../ubuntu-18.04.2-live-server-amd64.iso')
-    image.save()
-    image = create_image(self, 'test_image_3', 'switch', '../ubuntu-18.04.2-live-server-amd64.iso')
-    image.save()
+    image2 = create_image(self, 'test_image_2', 'router', '../ubuntu-18.04.2-live-server-amd64.iso')
+    image2.save()
+    image3 = create_image(self, 'test_image_3', 'switch', '../ubuntu-18.04.2-live-server-amd64.iso')
+    image3.save()
+
+    image_dict = {
+      'disk_images': [image, image2, image3]
+    }
 
     url = reverse('get_images')
     resp = self.client.get(url)
     self.assertEqual(resp.status_code, 200)
     print(resp.content)
+    print(resp.content['disk_images'][2])
+    # compare last image, take a sample etc
+    self.assertIn(image_dict, resp.content['disk_images'][2])
