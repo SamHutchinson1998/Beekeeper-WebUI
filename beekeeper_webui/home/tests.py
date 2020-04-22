@@ -156,12 +156,16 @@ class ImageViewTest(TestCase):
     image3.save()
 
     image_dict = {
-      b'disk_images': [image, image2, image3]
+      'disk_images': [image, image2, image3]
     }
 
     url = reverse('get_images')
     resp = self.client.get(url)
     self.assertEqual(resp.status_code, 200)
     print(resp.content)
+    print(f"\n\n{image_dict}")
     # compare last image, take a sample etc
-    self.assertIn(image_dict, resp.content)
+    self.assertJSONEqual(
+      str(resp.content, encoding='utf8'),
+      image_dict
+    )
