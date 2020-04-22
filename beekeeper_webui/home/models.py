@@ -37,11 +37,6 @@ class EthernetCable(models.Model):
   target = models.ForeignKey(EthernetPorts, related_name='target', null=True, on_delete=models.SET_NULL)
   cell_id = models.IntegerField(default='0')
 
-class EthernetPortsForm(forms.ModelForm):
-  class Meta:
-    model = EthernetPorts
-    fields = ['virtual_machine', 'mac_address']
-
 class ImageForm(forms.ModelForm):
   class Meta:
     model = DiskImage

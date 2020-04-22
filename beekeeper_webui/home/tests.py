@@ -1,5 +1,6 @@
 from django.test import TestCase, TransactionTestCase
 from django.db import IntegrityError
+from django.urls import reverse
 from .models import Device, DiskImage, EthernetPorts, EthernetCable
 from .models import EthernetPortsForm, ImageForm, DeviceForm
 
@@ -101,7 +102,7 @@ class ImageFormTest(TransactionTestCase):
     form = ImageForm(data)
     self.assertFalse(form.is_valid())
 
-class DeviceFormTest(TestCase):
+class DeviceFormTest(TransactionTestCase):
 
   def test_valid_device_form(self):
     image = create_image(self, 'test_image', 'pc', '../ubuntu-18.04.2-live-server-amd64.iso')
@@ -139,3 +140,22 @@ class DeviceFormTest(TestCase):
       device = create_device(self, 'test_device', '2048', 25, 2, 15, image, 'this-is-a-made-up-token', 10015)
     Device.objects.get(name=device.name).delete()
     self.assertEqual(IntegrityError, type(raised.exception))
+
+#No forms for Ethernet Cables - data is automaitcally entered by the system and so doesn't need one
+
+# 3. Views Tests
+
+class ImageViewTest(TestCase):
+
+  def test_image_retrieval(self):
+    image = create_image(self, 'test_image', 'pc', '../ubuntu-18.04.2-live-server-amd64.iso')
+    image.save()
+    image = create_image(self, 'test_image_2', 'router', '../ubuntu-18.04.2-live-server-amd64.iso')
+    image.save()
+    image = create_image(self, 'test_image_3', 'switch', '../ubuntu-18.04.2-live-server-amd64.iso')
+    image.save()
+
+    url = reverse('get_images')
+    resp = self.client.get(url)
+    self.assertEqual(resp.status_code, 200)
+    print(resp.content)
