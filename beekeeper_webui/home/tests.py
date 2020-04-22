@@ -87,7 +87,7 @@ class ImageFormTest(TransactionTestCase):
     form = ImageForm(data)
     self.assertTrue(form.is_valid())
 
-  def test_image_name_uniqueness(self):
+  def test_image_unique_name(self):
     image = create_image(self, 'test_image', 'pc', '../ubuntu-18.04.2-live-server-amd64.iso')
     image.save()
     with self.assertRaises(Exception) as raised:
@@ -108,3 +108,34 @@ class DeviceFormTest(TestCase):
     device = create_device(self, 'test_device', '2048', 25, 2, 15, image, 'this-is-a-made-up-token', 10015)
     data = {'name': device.name, 'ram': device.ram, 'disk_size': device.disk_size, 'cpus': device.cpus, 'cell_id': device.cell_id, 'disk_image': device.disk_image, 'token': device.token, 'console_port': device.console_port}
     form = DeviceForm(data)
+    self.assertTrue(form.is_valid())
+  
+  def test_device_name_max_length(self):
+    image = create_image(self, 'test_image', 'pc', '../ubuntu-18.04.2-live-server-amd64.iso')
+    device = create_device(self, 'a'*101, '2048', 25, 2, 15, image, 'this-is-a-made-up-token', 10015)
+    data = {'name': device.name, 'ram': device.ram, 'disk_size': device.disk_size, 'cpus': device.cpus, 'cell_id': device.cell_id, 'disk_image': device.disk_image, 'token': device.token, 'console_port': device.console_port}
+    form = DeviceForm(data)
+    self.assertFalse(form.is_valid())
+    
+  def test_device_ram_max_length(self):
+    image = create_image(self, 'test_image', 'pc', '../ubuntu-18.04.2-live-server-amd64.iso')
+    device = create_device(self, 'test_device', '9'*9, 25, 2, 15, image, 'this-is-a-made-up-token', 10015)
+    data = {'name': device.name, 'ram': device.ram, 'disk_size': device.disk_size, 'cpus': device.cpus, 'cell_id': device.cell_id, 'disk_image': device.disk_image, 'token': device.token, 'console_port': device.console_port}
+    form = DeviceForm(data)
+    self.assertFalse(form.is_valid())
+
+  def test_device_token_max_length(self):
+    image = create_image(self, 'test_image', 'pc', '../ubuntu-18.04.2-live-server-amd64.iso')
+    device = create_device(self, 'test_device', '2048', 25, 2, 15, image, 'this-is-a-made-up-token'*8, 10015)
+    data = {'name': device.name, 'ram': device.ram, 'disk_size': device.disk_size, 'cpus': device.cpus, 'cell_id': device.cell_id, 'disk_image': device.disk_image, 'token': device.token, 'console_port': device.console_port}
+    form = DeviceForm(data)
+    self.assertFalse(form.is_valid())
+
+  def test_device_unique_name(self):
+    image = create_image(self, 'test_image', 'pc', '../ubuntu-18.04.2-live-server-amd64.iso')
+    device = create_device(self, 'test_device', '2048', 25, 2, 15, image, 'this-is-a-made-up-token', 10015)
+    device.save()
+    with self.assertRaises(Exception) as raised:
+      device = create_device(self, 'test_device', '2048', 25, 2, 15, image, 'this-is-a-made-up-token', 10015)
+    Device.objects.get(name=device.name).delete()
+    self.assertEqual(IntegrityError, type(raised.exception))
