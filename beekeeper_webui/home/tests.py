@@ -115,8 +115,14 @@ class ImageFormTest(TestCase):
   def test_image_max_length(self):
     image = create_image(self, 'a'*101, 'pc', '../ubuntu-18.04.2-live-server-amd64.iso')
     data = {'name': image.name, 'devicetype': image.devicetype, 'disk_image': image.disk_image}
-    form = ImageForm(data=data)
+    form = ImageForm(data)
+    print(form.errors)
     self.assertFalse(form.is_valid())
 
-#class DeviceFormTest(TestCase):
+class DeviceFormTest(TestCase):
 
+  def test_valid_device_form(self):
+    image = create_image(self, 'test_image', 'pc', '../ubuntu-18.04.2-live-server-amd64.iso')
+    device = create_device(self, 'test_device', '2048', 25, 2, 15, image, 'this-is-a-made-up-token', 10015)
+    data = {'name': device.name, 'ram': device.ram, 'disk_size': device.disk_size, 'cpus': device.cpus, 'cell_id': device.cell_id, 'disk_image': device.disk_image, 'token': device.token, 'console_port': device.console_port}
+    form = DeviceForm(data)
