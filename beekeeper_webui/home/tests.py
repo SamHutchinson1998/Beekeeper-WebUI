@@ -18,7 +18,7 @@ import os
 # Models tests
 
 def create_image(self, name, devicetype):
-  file_path = os.path.join(settings.MEDIA_ROOT, 'disk_images/ubuntu-18.04.3-desktop-amd64.iso')
+  file_path = os.path.join(settings.MEDIA_ROOT, 'disk_images/TempleOS_1.ISO')
   diskimage = open(file_path)
   return DiskImage.objects.create(name=name, devicetype=devicetype, disk_image=SimpleUploadedFile(diskimage.name, diskimage.read()))
 
