@@ -208,7 +208,7 @@ def create_device_req(request):
     update_request = request.POST.copy()
     name = update_request['name'].replace(" ", '_') # ensure spaces in the name are replaced with underscores
     update_request.update({'name':name})
-    return request
+    return update_request
 
 def get_vm_status(cell_id):
   vm = lookup_domain(cell_id)

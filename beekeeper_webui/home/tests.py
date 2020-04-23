@@ -249,7 +249,7 @@ class DeviceViewTest(TransactionTestCase):
         'cell_id': '5'
       },
       #content_type='application/json',
-      HTTP_X_REQUESTED_WITH="XMLHttpRequest"
+      #HTTP_X_REQUESTED_WITH="XMLHttpRequest"
     )
     self.assertEqual(resp.status_code, 200)
     self.assertJSONEqual(
