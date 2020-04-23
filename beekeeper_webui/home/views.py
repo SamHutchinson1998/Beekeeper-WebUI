@@ -70,7 +70,7 @@ class HomePageView(TemplateView):
   def create_device(request):
     if request.method == "POST":
       modified_request = create_device_req(request)
-      cell_id = modified_request.get('cell_id', None)
+      cell_id = request.POST.get('cell_id', None)
       form = DeviceForm(modified_request)
       if form.is_valid():
         if form.save():

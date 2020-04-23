@@ -248,7 +248,7 @@ class DeviceViewTest(TransactionTestCase):
         'image': image.id,
         'cell_id': '5'
       },
-      content_type='application/json',
+      #content_type='application/json',
       HTTP_X_REQUESTED_WITH="XMLHttpRequest"
     )
     self.assertEqual(resp.status_code, 200)
@@ -271,7 +271,6 @@ class DeviceViewTest(TransactionTestCase):
         'image': image.id,
         'cell_id': '5'
       },
-      content_type='application/json',
       HTTP_X_REQUESTED_WITH="XMLHttpRequest"
     )
     self.assertEqual(resp.status_code, 400)
@@ -297,7 +296,6 @@ class DeviceViewTest(TransactionTestCase):
         'image': image.id,
         'cell_id': '5'
       },
-      content_type='application/json',
       HTTP_X_REQUESTED_WITH="XMLHttpRequest"
     )
     self.assertEqual(resp.status_code, 400)
@@ -323,7 +321,6 @@ class DeviceViewTest(TransactionTestCase):
         'image': image.id,
         'cell_id': '5'
       },
-      content_type='application/json',
       HTTP_X_REQUESTED_WITH="XMLHttpRequest"
     )
     self.assertEqual(resp.status_code, 400)
