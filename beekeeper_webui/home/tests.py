@@ -18,7 +18,7 @@ import os
 # Models tests
 
 def create_image(self, name, devicetype):
-  diskimage = open('../ubuntu-18.04.2-live-server-amd64.iso')
+  diskimage = open('~/ubuntu-18.04.2-live-server-amd64.iso')
   return DiskImage.objects.create(name=name, devicetype=devicetype, disk_image=SimpleUploadedFile(diskimage.name, diskimage.read()))
 
 def create_device(self, name, ram, disk_size, cpus, cell_id, disk_image, token, console_port):
