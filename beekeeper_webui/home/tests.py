@@ -287,7 +287,7 @@ class DeviceViewTest(TransactionTestCase):
     image = create_image(self, 'test_image_4', 'pc', '../ubuntu-18.04.2-live-server-amd64.iso')
     image.save()
     url = reverse('post_device_form')
-    resp = self.client.get(
+    resp = self.client.post(
       url,
       data={
         'name': 'a'*101, #invalid data
@@ -313,7 +313,7 @@ class DeviceViewTest(TransactionTestCase):
     image = create_image(self, 'test_image_4', 'pc', '../ubuntu-18.04.2-live-server-amd64.iso')
     image.save()
     url = reverse('post_device_form')
-    resp = self.client.get(
+    resp = self.client.post(
       url,
       data={
         'name': 'test device 2', #invalid data
