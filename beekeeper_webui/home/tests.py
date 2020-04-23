@@ -18,9 +18,9 @@ import os
 # Models tests
 
 def create_image(self, name, devicetype):
-  file_path = os.path.join(settings.MEDIA_ROOT, 'disk_images/TempleOS_1.ISO', content_type='multipart/form-data')
+  file_path = os.path.join(settings.MEDIA_ROOT, 'disk_images/TempleOS_1.ISO')
   diskimage = open(file_path)
-  return DiskImage.objects.create(name=name, devicetype=devicetype, disk_image=SimpleUploadedFile(diskimage.name, diskimage.read()))
+  return DiskImage.objects.create(name=name, devicetype=devicetype, disk_image=SimpleUploadedFile(diskimage.name, diskimage.read(), content_type='multipart/form-data'))
 
 def create_device(self, name, ram, disk_size, cpus, cell_id, disk_image, token, console_port):
   return Device.objects.create(name=name, ram=ram, disk_size=disk_size, cpus=cpus, cell_id=cell_id, disk_image=disk_image, token=token, console_port=console_port)
