@@ -248,7 +248,7 @@ class DeviceViewTest(TransactionTestCase):
         'ram': '2048',
         'disk_size': '25',
         'cpus': '2',
-        'image': image.id,
+        'image': image,
         'cell_id': '5'
       },
       #content_type='application/json',
@@ -272,7 +272,7 @@ class DeviceViewTest(TransactionTestCase):
         'ram': '2048',
         'disk_size': '25',
         'cpus': '2',
-        'image': image.id,
+        'image': image,
         'cell_id': '5'
       },
       HTTP_X_REQUESTED_WITH="XMLHttpRequest"
@@ -298,7 +298,7 @@ class DeviceViewTest(TransactionTestCase):
         'ram': '2048',
         'disk_size': '25',
         'cpus': '2',
-        'image': image.id,
+        'image': image,
         'cell_id': '5'
       },
       HTTP_X_REQUESTED_WITH="XMLHttpRequest"
@@ -324,7 +324,7 @@ class DeviceViewTest(TransactionTestCase):
         'ram': '2048',
         'disk_size': '25',
         'cpus': '2',
-        'image': image.id,
+        'image': image,
         'cell_id': '5'
       },
       HTTP_X_REQUESTED_WITH="XMLHttpRequest"
