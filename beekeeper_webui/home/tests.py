@@ -258,7 +258,8 @@ class DeviceViewTest(TransactionTestCase):
     )
   
   def test_device_creation_wrong_request(self):
-    image = DiskImage.objects.get(name='test_image_4')
+    image = create_image(self, 'test_image_4', 'pc', '../ubuntu-18.04.2-live-server-amd64.iso')
+    image.save()
     url = reverse('post_device_form')
     resp = self.client.post(
       url,
@@ -283,7 +284,8 @@ class DeviceViewTest(TransactionTestCase):
     )
   
   def test_device_creation_invalid_data(self):
-    image = DiskImage.objects.get(name='test_image_4')
+    image = create_image(self, 'test_image_4', 'pc', '../ubuntu-18.04.2-live-server-amd64.iso')
+    image.save()
     url = reverse('post_device_form')
     resp = self.client.get(
       url,
@@ -308,7 +310,8 @@ class DeviceViewTest(TransactionTestCase):
     )
 
   def test_device_name_with_space(self):
-    image = DiskImage.objects.get(name='test_image_4')
+    image = create_image(self, 'test_image_4', 'pc', '../ubuntu-18.04.2-live-server-amd64.iso')
+    image.save()
     url = reverse('post_device_form')
     resp = self.client.get(
       url,
