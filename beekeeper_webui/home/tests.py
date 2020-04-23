@@ -2,9 +2,11 @@ from django.test import TestCase, TransactionTestCase
 from django.db import IntegrityError
 from django.urls import reverse
 from django.core.serializers import serialize
+from django.conf import settings
 from .models import Device, DiskImage, EthernetPorts, EthernetCable
 from .models import ImageForm, DeviceForm
 import json
+import os
 
 # Table of contents
 
@@ -143,9 +145,58 @@ class DeviceFormTest(TransactionTestCase):
     Device.objects.get(name=device.name).delete()
     self.assertEqual(IntegrityError, type(raised.exception))
 
-#No forms for Ethernet Cables - data is automaitcally entered by the system and so doesn't need one
+#No forms for Ethernet Cables - data is automatically entered by the system and so doesn't need one
 
 # 3. Views Tests
+
+class XmlViewTest(TestCase):
+
+  def get_xml(self):
+    xml_file = open(os.path.join(settings.STATIC_ROOT, 'graph.xml'), 'r')
+    xml_string = xml_file.read()
+    xml_file.close()
+    return xml_string
+
+  def test_xml_retreival(self):
+    url = reverse('retrieveXml')
+    resp = self.client.get(url)
+    self.assertEqual(resp.status_code, 200)
+    xml_string = self.get_xml()
+    xml_dict = {'response': xml_string}
+    self.assertJSONEqual(
+      resp.content,
+      xml_dict
+    )
+
+  def test_xml_save(self):
+    xml_string = self.get_xml()
+    url = reverse('home')
+    resp = self.client.get(
+      url,
+      data={'XML': xml_string},
+      content_type='application/json',
+      HTTP_X_REQUESTED_WITH="XMLHttpRequest"
+    )
+    self.assertEqual(resp.status_code, 200)
+    self.assertJSONEqual(
+      resp.content,
+      {'saved': True}
+    )
+  
+  def test_xml_wrong_request_type(self):
+    xml_string = self.get_xml()
+    url = reverse('home')
+    resp = self.client.post(
+      url,
+      data={'XML': xml_string},
+      content_type='application/json',
+      HTTP_X_REQUESTED_WITH="XMLHttpRequest"
+    )
+    self.assertEqual(resp.status_code, 200)
+    self.assertJSONEqual(
+      resp.content,
+      {'saved': False}
+    )
 
 class ImageViewTest(TestCase):
 
@@ -162,9 +213,7 @@ class ImageViewTest(TestCase):
     url = reverse('get_images')
     resp = self.client.get(url)
     self.assertEqual(resp.status_code, 200)
-    print(resp.content)
     self.maxDiff = None
-    print(f"\n\n{image_dict}")
     # compare last image, take a sample etc
     self.assertJSONEqual(
       resp.content,
