@@ -206,8 +206,9 @@ def turn_on_devices(devices):
 def create_device_req(request):
   if request.method == 'POST':
     update_request = request.POST.copy()
-    name = update_request['name'].replace(" ", '_') # ensure spaces in the name are replaced with underscores
-    update_request.update({'name':name})
+    update_request.POST['name'].replace(" ", '_')
+    #name = update_request['name'].replace(" ", '_') # ensure spaces in the name are replaced with underscores
+    #update_request.update({'name':name})
     return update_request
 
 def get_vm_status(cell_id):
