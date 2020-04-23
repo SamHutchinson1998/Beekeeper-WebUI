@@ -177,7 +177,7 @@ class XmlViewTest(TestCase):
       content_type='text/xml',
       HTTP_X_REQUESTED_WITH="XMLHttpRequest"
     )
-    #self.assertEqual(resp.status_code, 200)
+    self.assertEqual(resp.status_code, 200)
     self.assertJSONEqual(
       resp.content,
       {'saved': True}
@@ -192,7 +192,7 @@ class XmlViewTest(TestCase):
       content_type='text/xml',
       HTTP_X_REQUESTED_WITH="XMLHttpRequest"
     )
-    #self.assertEqual(resp.status_code, 200)
+    self.assertEqual(resp.status_code, 400)
     self.assertJSONEqual(
       resp.content,
       {'saved': False}
@@ -218,4 +218,34 @@ class ImageViewTest(TestCase):
     self.assertJSONEqual(
       resp.content,
       image_dict
+    )
+
+  def test_image_retrieval_wrong_request(self):
+    url = reverse('get_images')
+    resp = self.client.post(url)
+    self.assertEqual(resp.status_code, 400)
+    self.maxDiff = None
+    # compare last image, take a sample etc
+    self.assertJSONEqual(
+      resp.content,
+      {'disk_images': 'None'}
+    )
+
+class DeviceViewTest(TestCase):
+
+  def test_device_creation(self):
+    image = create_image(self, 'test_image_4', 'pc', '../ubuntu-18.04.2-live-server-amd64.iso')
+    image.save()
+    image = DiskImage.objects.get(name='test_image_4')
+    url = reverse('post_device_form')
+    resp = self.client.get(
+      url,
+      data={
+        'name': 'test_device',
+        'ram': '2048',
+        'disk_size': '25',
+        'cpus': '2',
+        'image': image.id,
+        'cell_id': '5'
+      }
     )

@@ -59,12 +59,13 @@ class HomePageView(TemplateView):
       xml_file.write(xml_string)
       xml_file.close()
       return JsonResponse({"saved":True}, status = 200)
-    return JsonResponse({"saved":False}, status = 200)
+    return JsonResponse({"saved":False}, status = 400)
 
   def get_images(request):
     if request.is_ajax and request.method == "GET":
       disk_images = json.loads(serialize('json', DiskImage.objects.all()))
       return JsonResponse({"disk_images":disk_images}, status = 200)
+    return JsonResponse({'disk_images': 'None'}, status = 400)
 
   def create_device(request):
     if request.method == "POST":

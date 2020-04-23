@@ -146,7 +146,7 @@ def generate_error_message(message, cell_id):
     vm = Device.objects.get(cell_id=cell_id)
     remove_machine(vm)
   finally:
-    return JsonResponse({'response':'error', 'message': message}, status=200)
+    return JsonResponse({'response':'error', 'message': message}, status=400)
 
 def create_device_token(socket, token):
   token_mapping = "{}: {}:{}".format(token, socket[0], socket[1])
