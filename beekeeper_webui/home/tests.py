@@ -18,7 +18,7 @@ import os
 # Models tests
 
 def create_image(self, name, devicetype):
-  file_path = os.path.join(settings.MEDIA_ROOT, 'disk_images/TempleOS_1.ISO')
+  file_path = os.path.join(settings.MEDIA_ROOT, 'disk_images/TempleOS_1.ISO', content_type='multipart/form-data')
   diskimage = open(file_path)
   return DiskImage.objects.create(name=name, devicetype=devicetype, disk_image=SimpleUploadedFile(diskimage.name, diskimage.read()))
 
