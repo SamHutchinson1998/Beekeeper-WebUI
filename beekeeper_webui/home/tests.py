@@ -18,8 +18,8 @@ import os
 # Models tests
 
 def create_image(self, name, devicetype):
-  #file_path = os.path.join(settings.BASE_DIR, 'TempleOS_1.ISO')
-  diskimage = open('/home/529816/TempleOS_1.ISO', 'rb')
+  file_path = os.path.join(settings.MEDIA_ROOT, 'TempleOS_1.ISO')
+  diskimage = open(file_path, 'rb')
   return DiskImage.objects.create(name=name, devicetype=devicetype, disk_image=SimpleUploadedFile(diskimage.name, diskimage.read(), content_type='multipart/form-data'))
 
 def create_device(self, name, ram, disk_size, cpus, cell_id, disk_image, token, console_port):
@@ -254,6 +254,7 @@ class DeviceViewTest(TransactionTestCase):
       #content_type='application/json',
       HTTP_X_REQUESTED_WITH="XMLHttpRequest"
     )
+    print(resp.content)
     self.assertEqual(resp.status_code, 200)
     self.assertJSONEqual(
       resp.content,
@@ -264,7 +265,7 @@ class DeviceViewTest(TransactionTestCase):
     image = create_image(self, 'test_image_4', 'pc')
     image.save()
     url = reverse('post_device_form')
-    resp = self.client.post(
+    resp = self.client.get(
       url,
       data={
         'name': 'test_device',
@@ -276,6 +277,7 @@ class DeviceViewTest(TransactionTestCase):
       },
       HTTP_X_REQUESTED_WITH="XMLHttpRequest"
     )
+    print(resp.content)
     self.assertEqual(resp.status_code, 400)
     self.assertJSONEqual(
       resp.content,
@@ -301,6 +303,7 @@ class DeviceViewTest(TransactionTestCase):
       },
       HTTP_X_REQUESTED_WITH="XMLHttpRequest"
     )
+    print(resp.content)
     self.assertEqual(resp.status_code, 400)
     self.assertJSONEqual(
       resp.content,
