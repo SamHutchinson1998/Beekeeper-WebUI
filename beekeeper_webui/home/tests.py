@@ -231,14 +231,14 @@ class ImageViewTest(TestCase):
       {'disk_images': 'None'}
     )
 
-class DeviceViewTest(TestCase):
+class DeviceViewTest(TransactionTestCase):
 
   def test_device_creation(self):
     image = create_image(self, 'test_image_4', 'pc', '../ubuntu-18.04.2-live-server-amd64.iso')
     image.save()
     image = DiskImage.objects.get(name='test_image_4')
     url = reverse('post_device_form')
-    resp = self.client.get(
+    resp = self.client.post(
       url,
       data={
         'name': 'test_device',
@@ -247,5 +247,88 @@ class DeviceViewTest(TestCase):
         'cpus': '2',
         'image': image.id,
         'cell_id': '5'
+      },
+      content_type='application/json',
+      HTTP_X_REQUESTED_WITH="XMLHttpRequest"
+    )
+    self.assertEqual(resp.status_code, 200)
+    self.assertJSONEqual(
+      resp.content,
+      {'response': 'success'}
+    )
+  
+  def test_device_creation_wrong_request(self):
+    image = DiskImage.objects.get(name='test_image_4')
+    url = reverse('post_device_form')
+    resp = self.client.post(
+      url,
+      data={
+        'name': 'test_device',
+        'ram': '2048',
+        'disk_size': '25',
+        'cpus': '2',
+        'image': image.id,
+        'cell_id': '5'
+      },
+      content_type='application/json',
+      HTTP_X_REQUESTED_WITH="XMLHttpRequest"
+    )
+    self.assertEqual(resp.status_code, 400)
+    self.assertJSONEqual(
+      resp.content,
+      {
+        'response': 'error',
+        'message': 'Unable to add device: Wrong HTTP request'
       }
     )
+  
+  def test_device_creation_invalid_data(self):
+    image = DiskImage.objects.get(name='test_image_4')
+    url = reverse('post_device_form')
+    resp = self.client.get(
+      url,
+      data={
+        'name': 'a'*101, #invalid data
+        'ram': '2048',
+        'disk_size': '25',
+        'cpus': '2',
+        'image': image.id,
+        'cell_id': '5'
+      },
+      content_type='application/json',
+      HTTP_X_REQUESTED_WITH="XMLHttpRequest"
+    )
+    self.assertEqual(resp.status_code, 400)
+    self.assertJSONEqual(
+      resp.content,
+      {
+        'response': 'error',
+        'message': 'Unable to add device: Data entered is not valid'
+      }
+    )
+
+  def test_device_name_with_space(self):
+    image = DiskImage.objects.get(name='test_image_4')
+    url = reverse('post_device_form')
+    resp = self.client.get(
+      url,
+      data={
+        'name': 'test device 2', #invalid data
+        'ram': '2048',
+        'disk_size': '25',
+        'cpus': '2',
+        'image': image.id,
+        'cell_id': '5'
+      },
+      content_type='application/json',
+      HTTP_X_REQUESTED_WITH="XMLHttpRequest"
+    )
+    self.assertEqual(resp.status_code, 400)
+    self.assertJSONEqual(
+      resp.content,
+      {
+        'response': 'success',
+      }
+    )
+    device = Device.objects.get(name='test_device_2')
+    self.assertEqual(device.name, 'test_device_2')
