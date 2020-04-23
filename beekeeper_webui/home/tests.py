@@ -2,7 +2,8 @@ from django.test import TestCase, TransactionTestCase
 from django.db import IntegrityError
 from django.urls import reverse
 from django.core.serializers import serialize
-from django.core.files.uploadedfile import)rom django.conf import settings
+from django.core.files.uploadedfile import SimpleUploadedFile
+from django.conf import settings
 from .models import Device, DiskImage, EthernetPorts, EthernetCable
 from .models import ImageForm, DeviceForm
 import json
@@ -18,8 +19,7 @@ import os
 
 def create_image(self, name, devicetype):
   diskimage = open('../ubuntu-18.04.2-live-server-amd64.iso')
-  diskimage.name, diskimage.read())
-  return DiskImage.objects.create(name=name, devicetype=devicetype, disk_image=diskimage)
+  return DiskImage.objects.create(name=name, devicetype=devicetype, disk_image=SimpleUploadedFile(diskimage.name, diskimage.read()))
 
 def create_device(self, name, ram, disk_size, cpus, cell_id, disk_image, token, console_port):
   return Device.objects.create(name=name, ram=ram, disk_size=disk_size, cpus=cpus, cell_id=cell_id, disk_image=disk_image, token=token, console_port=console_port)
