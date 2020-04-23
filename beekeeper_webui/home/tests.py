@@ -248,7 +248,7 @@ class DeviceViewTest(TransactionTestCase):
         'ram': '2048',
         'disk_size': '25',
         'cpus': '2',
-        'image': image,
+        'disk_image': image.id,
         'cell_id': '5'
       },
       #content_type='application/json',
@@ -272,7 +272,7 @@ class DeviceViewTest(TransactionTestCase):
         'ram': '2048',
         'disk_size': '25',
         'cpus': '2',
-        'image': image,
+        'disk_image': image.id,
         'cell_id': '5'
       },
       HTTP_X_REQUESTED_WITH="XMLHttpRequest"
@@ -298,7 +298,7 @@ class DeviceViewTest(TransactionTestCase):
         'ram': '2048',
         'disk_size': '25',
         'cpus': '2',
-        'image': image,
+        'disk_image': image.id,
         'cell_id': '5'
       },
       HTTP_X_REQUESTED_WITH="XMLHttpRequest"
@@ -324,7 +324,7 @@ class DeviceViewTest(TransactionTestCase):
         'ram': '2048',
         'disk_size': '25',
         'cpus': '2',
-        'image': image,
+        'disk_image': image.id,
         'cell_id': '5'
       },
       HTTP_X_REQUESTED_WITH="XMLHttpRequest"
@@ -332,9 +332,7 @@ class DeviceViewTest(TransactionTestCase):
     self.assertEqual(resp.status_code, 400)
     self.assertJSONEqual(
       resp.content,
-      {
-        'response': 'success',
-      }
+      {'response': 'success'}
     )
     device = Device.objects.get(name='test_device_2')
     self.assertEqual(device.name, 'test_device_2')
