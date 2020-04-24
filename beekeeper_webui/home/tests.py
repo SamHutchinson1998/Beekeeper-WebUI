@@ -261,12 +261,12 @@ class DeviceViewTest(TransactionTestCase):
     resp = self.client.post(
       url,
       data={
-        'name': 'test device 3', #invalid data
+        'name': name, #invalid data
         'ram': '2048',
         'disk_size': '25',
         'cpus': '2',
         'disk_image': image.id,
-        'cell_id': '902'
+        'cell_id': cell_id
       },
       HTTP_X_REQUESTED_WITH="XMLHttpRequest"
     )
