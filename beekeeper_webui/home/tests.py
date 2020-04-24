@@ -249,12 +249,15 @@ class DeviceViewTest(TransactionTestCase):
       conn.close()
       return False
 
-  def cleanup_crew(self, device_name):
-    conn = libvirt.open('qemu:///system')
-    dom = conn.lookupByName(device_name)
-    dom.undefine()
-    dom.destroy()
-    conn.close()
+  def cleanup_crew(self, cell_id):
+    url = reverse('remove_device')
+    resp = self.client.get(
+      url,
+      data={
+        'cell_id': cell_id # Same as above test
+      },
+      HTTP_X_REQUESTED_WITH="XMLHttpRequest"
+    )
   
   def create_device_libvirt(self, name, cell_id, image):
     url = reverse('post_device_form')
@@ -278,7 +281,7 @@ class DeviceViewTest(TransactionTestCase):
     image = DiskImage.objects.get(name='test_image_4')
     resp = self.create_device_libvirt('test_device', '899', image)
     self.assertEqual(self.lookup_device('test_device'), True) # Tests to see if libvirt has created the VM
-    self.cleanup_crew('test_device') # remove its entry from libvirt
+    self.cleanup_crew('899') # remove its entry from libvirt
     self.assertEqual(resp.status_code, 200)
     self.assertJSONEqual(
       resp.content,
@@ -329,7 +332,7 @@ class DeviceViewTest(TransactionTestCase):
     image = create_image(self, 'test_image_4', 'pc')
     image.save()
     resp = self.create_device_libvirt('test_device_3', '902', image)
-    self.cleanup_crew('test_device_3') # remove its entry from libvirt
+    self.cleanup_crew('902') # remove its entry from libvirt
     self.assertEqual(resp.status_code, 200)
     self.assertJSONEqual(
       resp.content,
@@ -337,7 +340,7 @@ class DeviceViewTest(TransactionTestCase):
     )
     device = Device.objects.get(name='test_device_3')
     self.assertEqual(device.name, 'test_device_3')
-    self.assertEqual(self.lookup_device('test_device'), True) # Tests to see if libvirt has created the VM
+    self.assertEqual(self.lookup_device('test_device_3'), True) # Tests to see if libvirt has created the VM
 
   def test_device_removal(self):
     image = create_image(self, 'test_image', 'pc')
@@ -356,4 +359,4 @@ class DeviceViewTest(TransactionTestCase):
       resp.content,
       {'result': 'success'}
     )
-    self.assertEqual(self.lookup_device('test_device_3'), False)
+    self.assertEqual(self.lookup_device('test_device_4'), False)
