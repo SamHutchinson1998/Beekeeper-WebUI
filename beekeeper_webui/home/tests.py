@@ -6,6 +6,7 @@ from django.core.files.uploadedfile import SimpleUploadedFile
 from django.conf import settings
 from .models import Device, DiskImage, EthernetPorts, EthernetCable
 from .models import ImageForm, DeviceForm
+import libvirt
 import json
 import os
 
@@ -239,6 +240,13 @@ class ImageViewTest(TestCase):
 
 class DeviceViewTest(TransactionTestCase):
 
+  def lookup_device(device_name):
+    conn = libvirt.open('qemu:///system')
+    if conn.lookupByName(device_name):
+      return True
+    else:
+      return False
+
   def test_device_creation(self):
     image = create_image(self, 'test_image_4', 'pc')
     image.save()
@@ -259,6 +267,7 @@ class DeviceViewTest(TransactionTestCase):
     )
     print(resp.content)
     self.assertEqual(resp.status_code, 200)
+    self.assertEqual(self.lookup_device('test_device'), True) # Tests to see if libvirt has created the VM
     self.assertJSONEqual(
       resp.content,
       {'response': 'success'}
@@ -339,3 +348,21 @@ class DeviceViewTest(TransactionTestCase):
     )
     device = Device.objects.get(name='test_device_3')
     self.assertEqual(device.name, 'test_device_3')
+    self.assertEqual(self.lookup_device('test_device'), True) # Tests to see if libvirt has created the VM
+
+  def test_device_removal(self):
+    device = Device.objects.get(name='test_device_3')
+    url = reverse('remove_device')
+    resp = self.client.get(
+      url,
+      data={
+        'cell_id': device.cell_id
+      },
+      HTTP_X_REQUESTED_WITH="XMLHttpRequest"
+    )
+    self.assertEqual(resp.status_code, 200)
+    self.assertJSONEqual(
+      resp.content,
+      {'result': 'success'}
+    )
+    self.assertEqual(self.lookup_device(device.name), False)

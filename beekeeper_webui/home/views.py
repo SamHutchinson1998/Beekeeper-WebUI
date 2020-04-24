@@ -110,7 +110,7 @@ class HomePageView(TemplateView):
         turn_on_devices(device_list)
       else:
         turn_off_devices(device_list)
-    return JsonResponse({},status=200)
+    return JsonResponse({},status=400)
 
   def get_device_vnc(request):
     cell_id = request.GET.get('cell_id', None)
