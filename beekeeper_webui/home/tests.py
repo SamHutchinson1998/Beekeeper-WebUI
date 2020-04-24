@@ -243,29 +243,41 @@ class DeviceViewTest(TransactionTestCase):
   def lookup_device(device_name):
     conn = libvirt.open('qemu:///system')
     if conn.lookupByName(device_name):
+      conn.close()
       return True
     else:
+      conn.close()
       return False
+
+  def cleanup_crew(device_name):
+    conn = libvirt.open('qemu:///system')
+    dom = conn.lookupByName(device_name)
+    dom.undefine()
+    dom.destroy()
+    conn.close()
+  
+  def create_device_libvirt(self, name, cell_id, image):
+    url = reverse('post_device_form')
+    resp = self.client.post(
+      url,
+      data={
+        'name': 'test device 3', #invalid data
+        'ram': '2048',
+        'disk_size': '25',
+        'cpus': '2',
+        'disk_image': image.id,
+        'cell_id': '902'
+      },
+      HTTP_X_REQUESTED_WITH="XMLHttpRequest"
+    )
+    return resp
 
   def test_device_creation(self):
     image = create_image(self, 'test_image_4', 'pc')
     image.save()
     image = DiskImage.objects.get(name='test_image_4')
-    url = reverse('post_device_form')
-    resp = self.client.post(
-      url,
-      data={
-        'name': 'test_device',
-        'ram': '2048',
-        'disk_size': '25',
-        'cpus': '2',
-        'disk_image': image.id,
-        'cell_id': '899'
-      },
-      #content_type='application/json',
-      HTTP_X_REQUESTED_WITH="XMLHttpRequest"
-    )
-    print(resp.content)
+    resp = self.create_device_libvirt('test_device', '899', image)
+    self.cleanup_crew('test_device') # remove its entry from libvirt
     self.assertEqual(resp.status_code, 200)
     self.assertEqual(self.lookup_device('test_device'), True) # Tests to see if libvirt has created the VM
     self.assertJSONEqual(
@@ -302,19 +314,7 @@ class DeviceViewTest(TransactionTestCase):
   def test_device_creation_invalid_data(self):
     image = create_image(self, 'test_image_4', 'pc')
     image.save()
-    url = reverse('post_device_form')
-    resp = self.client.post(
-      url,
-      data={
-        'name': 'a'*101, #invalid data
-        'ram': '2048',
-        'disk_size': '25',
-        'cpus': '2',
-        'disk_image': image.id,
-        'cell_id': '901'
-      },
-      HTTP_X_REQUESTED_WITH="XMLHttpRequest"
-    )
+    resp = self.create_device_libvirt('a'*101, '901', image)
     print(resp.content)
     self.assertEqual(resp.status_code, 400)
     self.assertJSONEqual(
@@ -328,19 +328,8 @@ class DeviceViewTest(TransactionTestCase):
   def test_device_name_with_space(self):
     image = create_image(self, 'test_image_4', 'pc')
     image.save()
-    url = reverse('post_device_form')
-    resp = self.client.post(
-      url,
-      data={
-        'name': 'test device 3', #invalid data
-        'ram': '2048',
-        'disk_size': '25',
-        'cpus': '2',
-        'disk_image': image.id,
-        'cell_id': '902'
-      },
-      HTTP_X_REQUESTED_WITH="XMLHttpRequest"
-    )
+    resp = self.create_device_libvirt('test_device_3', '902', image)
+    self.cleanup_crew('test_device_3') # remove its entry from libvirt
     self.assertEqual(resp.status_code, 200)
     self.assertJSONEqual(
       resp.content,
@@ -351,12 +340,14 @@ class DeviceViewTest(TransactionTestCase):
     self.assertEqual(self.lookup_device('test_device'), True) # Tests to see if libvirt has created the VM
 
   def test_device_removal(self):
-    device = Device.objects.get(name='test_device_3')
+    image = create_image(self, 'test_image', 'pc')
+    image.save()
+    self.create_device_libvirt('test_device_4', '903', image)
     url = reverse('remove_device')
     resp = self.client.get(
       url,
       data={
-        'cell_id': device.cell_id
+        'cell_id': '903' # Same as above test
       },
       HTTP_X_REQUESTED_WITH="XMLHttpRequest"
     )
@@ -365,4 +356,4 @@ class DeviceViewTest(TransactionTestCase):
       resp.content,
       {'result': 'success'}
     )
-    self.assertEqual(self.lookup_device(device.name), False)
+    self.assertEqual(self.lookup_device('test_device_3'), False)
