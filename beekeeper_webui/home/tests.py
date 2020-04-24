@@ -18,7 +18,7 @@ import os
 # Models tests
 
 def create_image(self, name, devicetype):
-  file_path = os.path.join(settings.MEDIA_ROOT, 'TempleOS_1.ISO')
+  file_path = os.path.join(settings.MEDIA_ROOT, 'disk_images/TempleOS_1.ISO')
   diskimage = open(file_path, 'rb')
   return DiskImage.objects.create(name=name, devicetype=devicetype, disk_image=SimpleUploadedFile(diskimage.name, diskimage.read(), content_type='multipart/form-data'))
 
@@ -90,9 +90,10 @@ class EthernetCableTest(TestCase):
 class ImageFormTest(TransactionTestCase):
 
   def test_valid_image_form(self):
-    image = create_image(self, 'test_image_2', 'pc')
+    image = create_image(self, 'Ubuntu Test Image lmaoo', 'pc')
     data = {'name': image.name, 'devicetype': image.devicetype, 'disk_image': image.disk_image}
     form = ImageForm(data)
+    print(form.errors)
     self.assertTrue(form.is_valid())
 
   def test_image_unique_name(self):
@@ -113,9 +114,11 @@ class DeviceFormTest(TransactionTestCase):
 
   def test_valid_device_form(self):
     image = create_image(self, 'test_image', 'pc')
-    device = create_device(self, 'test_device', '2048', 25, 2, 15, image, 'this-is-a-made-up-token', 10015)
-    data = {'name': device.name, 'ram': device.ram, 'disk_size': device.disk_size, 'cpus': device.cpus, 'cell_id': device.cell_id, 'disk_image': device.disk_image, 'token': device.token, 'console_port': device.console_port}
+    image.save()
+    device = create_device(self, 'ubuntu_test_device', '2048', 25, 2, 15, image, 'this-is-a-made-up-token', 10015)
+    data = {'name': device.name, 'ram': device.ram, 'disk_size': device.disk_size, 'cpus': device.cpus, 'cell_id': device.cell_id, 'disk_image': image.id, 'token': device.token, 'console_port': device.console_port}
     form = DeviceForm(data)
+    print(form.errors)
     self.assertTrue(form.is_valid())
   
   def test_device_name_max_length(self):
@@ -249,7 +252,7 @@ class DeviceViewTest(TransactionTestCase):
         'disk_size': '25',
         'cpus': '2',
         'disk_image': image.id,
-        'cell_id': '5'
+        'cell_id': '899'
       },
       #content_type='application/json',
       HTTP_X_REQUESTED_WITH="XMLHttpRequest"
@@ -273,7 +276,7 @@ class DeviceViewTest(TransactionTestCase):
         'disk_size': '25',
         'cpus': '2',
         'disk_image': image.id,
-        'cell_id': '5'
+        'cell_id': '900'
       },
       HTTP_X_REQUESTED_WITH="XMLHttpRequest"
     )
@@ -299,7 +302,7 @@ class DeviceViewTest(TransactionTestCase):
         'disk_size': '25',
         'cpus': '2',
         'disk_image': image.id,
-        'cell_id': '5'
+        'cell_id': '901'
       },
       HTTP_X_REQUESTED_WITH="XMLHttpRequest"
     )
@@ -320,19 +323,19 @@ class DeviceViewTest(TransactionTestCase):
     resp = self.client.post(
       url,
       data={
-        'name': 'test device 2', #invalid data
+        'name': 'test device 3', #invalid data
         'ram': '2048',
         'disk_size': '25',
         'cpus': '2',
         'disk_image': image.id,
-        'cell_id': '5'
+        'cell_id': '902'
       },
       HTTP_X_REQUESTED_WITH="XMLHttpRequest"
     )
-    self.assertEqual(resp.status_code, 400)
+    self.assertEqual(resp.status_code, 200)
     self.assertJSONEqual(
       resp.content,
       {'response': 'success'}
     )
-    device = Device.objects.get(name='test_device_2')
-    self.assertEqual(device.name, 'test_device_2')
+    device = Device.objects.get(name='test_device_3')
+    self.assertEqual(device.name, 'test_device_3')
