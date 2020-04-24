@@ -240,7 +240,7 @@ class ImageViewTest(TestCase):
 
 class DeviceViewTest(TransactionTestCase):
 
-  def lookup_device(device_name):
+  def lookup_device(self, device_name):
     conn = libvirt.open('qemu:///system')
     if conn.lookupByName(device_name):
       conn.close()
@@ -249,7 +249,7 @@ class DeviceViewTest(TransactionTestCase):
       conn.close()
       return False
 
-  def cleanup_crew(device_name):
+  def cleanup_crew(self, device_name):
     conn = libvirt.open('qemu:///system')
     dom = conn.lookupByName(device_name)
     dom.undefine()
@@ -277,9 +277,9 @@ class DeviceViewTest(TransactionTestCase):
     image.save()
     image = DiskImage.objects.get(name='test_image_4')
     resp = self.create_device_libvirt('test_device', '899', image)
+    self.assertEqual(self.lookup_device('test_device'), True) # Tests to see if libvirt has created the VM
     self.cleanup_crew('test_device') # remove its entry from libvirt
     self.assertEqual(resp.status_code, 200)
-    self.assertEqual(self.lookup_device('test_device'), True) # Tests to see if libvirt has created the VM
     self.assertJSONEqual(
       resp.content,
       {'response': 'success'}
