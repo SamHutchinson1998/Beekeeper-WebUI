@@ -108,18 +108,22 @@ class HomePageView(TemplateView):
       print(device_list)
       if request.GET.get('state',None) == 'start':
         turn_on_devices(device_list)
+        return JsonResponse({'result': 'success'}, status=200)
       else:
         turn_off_devices(device_list)
-    return JsonResponse({},status=400)
+        return JsonResponse({'result': 'success'}, status=200)
+    return JsonResponse({'result': 'wrong request'}, status=400)
 
   def get_device_vnc(request):
-    cell_id = request.GET.get('cell_id', None)
-    token = Device.objects.get(cell_id=cell_id).token
-    base_url = reverse('load_device_vnc')
-    path = urlencode({'path':'websockify'})
-    token = urlencode({'token':token})
-    url = '{}?{}?{}'.format(base_url,path,token)
-    return HttpResponseRedirect(url)
+    if request.is_ajax and request.method == "GET":
+      cell_id = request.GET.get('cell_id', None)
+      token = Device.objects.get(cell_id=cell_id).token
+      base_url = reverse('load_device_vnc')
+      path = urlencode({'path':'websockify'})
+      token = urlencode({'token':token})
+      url = '{}?{}?{}'.format(base_url,path,token)
+      return HttpResponseRedirect(url)
+    return JsonResponse({'result': 'wrong request'}, status=400)
 
   def load_device_vnc(request):
     return render(request, 'vnc.html')

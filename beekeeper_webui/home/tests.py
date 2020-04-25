@@ -305,7 +305,6 @@ class DeviceViewTest(TransactionTestCase):
       },
       HTTP_X_REQUESTED_WITH="XMLHttpRequest"
     )
-    print(resp.content)
     self.assertEqual(resp.status_code, 400)
     self.assertJSONEqual(
       resp.content,
@@ -319,7 +318,6 @@ class DeviceViewTest(TransactionTestCase):
     image = create_image(self, 'test_image_4', 'pc')
     image.save()
     resp = self.create_device_libvirt('a'*101, '901', image)
-    print(resp.content)
     self.assertEqual(resp.status_code, 400)
     self.assertJSONEqual(
       resp.content,
@@ -361,3 +359,90 @@ class DeviceViewTest(TransactionTestCase):
       {'result': 'success'}
     )
     self.assertEqual(self.lookup_device('test_device_4'), False)
+
+    def test_turn_on_devices(self):
+      image = create_image(self, 'test_image', 'pc')
+      image.save()
+      self.create_device_libvirt('test_device_4', '903', image)
+      url = reverse('change_vm_state')
+      resp = self.client.get(
+        url,
+        data={
+          'state': 'start',
+          'cells': ['903']
+        },
+        HTTP_X_REQUESTED_WITH="XMLHttpRequest"
+      )
+      self.assertEqual(resp.status_code, 200)
+      self.assertEqual(
+        resp.content,
+        {'result': 'success'}
+      )
+      self.cleanup_crew('903') # remove its entry from libvirt
+
+
+    def test_turn_off_devices(self):
+      image = create_image(self, 'test_image', 'pc')
+      image.save()
+      self.create_device_libvirt('test_device_4', '903', image)
+      url = reverse('change_vm_state')
+      resp = self.client.get(
+        url,
+        data={
+          'state': 'stop',
+          'cells': ['903']
+        },
+        HTTP_X_REQUESTED_WITH="XMLHttpRequest"
+      )
+      self.assertEqual(resp.status_code, 200)
+      self.assertEqual(
+        resp.content,
+        {'result': 'success'}
+      )
+      self.cleanup_crew('903') # remove its entry from libvirt
+    
+    def test_change_vm_state_wrong_request(self):
+      image = create_image(self, 'test_image', 'pc')
+      image.save()
+      self.create_device_libvirt('test_device_4', '903', image)
+      url = reverse('change_vm_state')
+      resp = self.client.get(
+        url,
+        data={
+          'state': 'stop',
+          'cells': ['903']
+        },
+        HTTP_X_REQUESTED_WITH="XMLHttpRequest"
+      )
+      self.assertEqual(resp.status_code, 400)
+      self.assertEqual(
+        resp.content,
+        {'result': 'wrong request'}
+      )
+      self.cleanup_crew('903') # remove its entry from libvirt
+
+    def test_device_vnc(self):
+      image = create_image(self, 'test_image', 'pc')
+      image.save()
+      self.create_device_libvirt('test_device_4', '903', image)
+      url = reverse('get_device_vnc')
+      resp = self.client.get(
+        url,
+        data={
+          'cell_id': '903',
+          'cells': ['903']
+        },
+        HTTP_X_REQUESTED_WITH="XMLHttpRequest"
+      )
+      print(resp.content)
+
+    def test_retrieve_device_status(self):
+      image = create_image(self, 'test_image', 'pc')
+      image.save()
+      self.create_device_libvirt('test_device_4', '903', image)
+
+    def test_device_status_wrong_request(self):
+      print('something')
+
+    def test_get_device_vnc_link(self):
+      print('something')
