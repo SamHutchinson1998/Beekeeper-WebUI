@@ -369,7 +369,7 @@ class DeviceViewTest(TransactionTestCase):
       url,
       data={
         'state': 'start',
-        'cells': ['903']
+        'cells': '[903]'
       },
       HTTP_X_REQUESTED_WITH="XMLHttpRequest"
     )
@@ -390,7 +390,7 @@ class DeviceViewTest(TransactionTestCase):
       url,
       data={
         'state': 'stop',
-        'cells': ['903']
+        'cells': '[903]'
       },
       HTTP_X_REQUESTED_WITH="XMLHttpRequest"
     )
@@ -430,7 +430,6 @@ class DeviceViewTest(TransactionTestCase):
       url,
       data={
         'cell_id': '903',
-        'cells': ['903']
       },
       HTTP_X_REQUESTED_WITH="XMLHttpRequest"
     )
