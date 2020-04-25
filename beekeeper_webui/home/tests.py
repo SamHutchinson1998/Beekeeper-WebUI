@@ -410,7 +410,7 @@ class DeviceViewTest(TransactionTestCase):
       url,
       data={
         'state': 'stop',
-        'cells': ['903']
+        'cells': '[903]'
       },
       HTTP_X_REQUESTED_WITH="XMLHttpRequest"
     )
