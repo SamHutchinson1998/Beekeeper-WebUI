@@ -344,7 +344,7 @@ class DeviceViewTest(TransactionTestCase):
   def test_device_removal(self):
     image = create_image(self, 'test_image', 'pc')
     image.save()
-    self.create_device_libvirt('test_device_4', '903', image)
+    self.create_device_libvirt('test_device_5', '903', image)
     url = reverse('remove_device')
     resp = self.client.get(
       url,
@@ -358,12 +358,12 @@ class DeviceViewTest(TransactionTestCase):
       resp.content,
       {'result': 'success'}
     )
-    self.assertEqual(self.lookup_device('test_device_4'), False)
+    self.assertEqual(self.lookup_device('test_device_5'), False)
 
   def test_turn_on_devices(self):
     image = create_image(self, 'test_image', 'pc')
     image.save()
-    self.create_device_libvirt('test_device_4', '903', image)
+    self.create_device_libvirt('test_device_5', '903', image)
     url = reverse('change_vm_state')
     resp = self.client.get(
       url,
@@ -384,7 +384,7 @@ class DeviceViewTest(TransactionTestCase):
   def test_turn_off_devices(self):
     image = create_image(self, 'test_image', 'pc')
     image.save()
-    self.create_device_libvirt('test_device_4', '903', image)
+    self.create_device_libvirt('test_device_5', '903', image)
     url = reverse('change_vm_state')
     resp = self.client.get(
       url,
@@ -404,7 +404,7 @@ class DeviceViewTest(TransactionTestCase):
   def test_change_vm_state_wrong_request(self):
     image = create_image(self, 'test_image', 'pc')
     image.save()
-    self.create_device_libvirt('test_device_4', '903', image)
+    self.create_device_libvirt('test_device_5', '903', image)
     url = reverse('change_vm_state')
     resp = self.client.post(
       url,
@@ -424,7 +424,7 @@ class DeviceViewTest(TransactionTestCase):
   def test_device_vnc(self):
     image = create_image(self, 'test_image', 'pc')
     image.save()
-    self.create_device_libvirt('test_device_4', '903', image)
+    self.create_device_libvirt('test_device_5', '903', image)
     url = reverse('get_device_vnc')
     resp = self.client.get(
       url,
@@ -435,11 +435,13 @@ class DeviceViewTest(TransactionTestCase):
       HTTP_X_REQUESTED_WITH="XMLHttpRequest"
     )
     print(resp.content)
+    self.cleanup_crew('903') # remove its entry from libvirt
 
   def test_retrieve_device_status(self):
     image = create_image(self, 'test_image', 'pc')
     image.save()
-    self.create_device_libvirt('test_device_4', '903', image)
+    self.create_device_libvirt('test_device_5', '903', image)
+    self.cleanup_crew('903') # remove its entry from libvirt
 
   def test_device_status_wrong_request(self):
     print('something')
