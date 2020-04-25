@@ -406,7 +406,7 @@ class DeviceViewTest(TransactionTestCase):
     image.save()
     self.create_device_libvirt('test_device_4', '903', image)
     url = reverse('change_vm_state')
-    resp = self.client.get(
+    resp = self.client.post(
       url,
       data={
         'state': 'stop',
