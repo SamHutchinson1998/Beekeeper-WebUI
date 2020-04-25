@@ -374,7 +374,7 @@ class DeviceViewTest(TransactionTestCase):
       HTTP_X_REQUESTED_WITH="XMLHttpRequest"
     )
     self.assertEqual(resp.status_code, 200)
-    self.assertEqual(
+    self.assertJSONEqual(
       resp.content,
       {'result': 'success'}
     )
@@ -395,12 +395,12 @@ class DeviceViewTest(TransactionTestCase):
       HTTP_X_REQUESTED_WITH="XMLHttpRequest"
     )
     self.assertEqual(resp.status_code, 200)
-    self.assertEqual(
+    self.assertJSONEqual(
       resp.content,
       {'result': 'success'}
     )
     self.cleanup_crew('903') # remove its entry from libvirt
-  
+
   def test_change_vm_state_wrong_request(self):
     image = create_image(self, 'test_image', 'pc')
     image.save()
@@ -415,7 +415,7 @@ class DeviceViewTest(TransactionTestCase):
       HTTP_X_REQUESTED_WITH="XMLHttpRequest"
     )
     self.assertEqual(resp.status_code, 400)
-    self.assertEqual(
+    self.assertJSONEqual(
       resp.content,
       {'result': 'wrong request'}
     )
