@@ -255,7 +255,7 @@ class DeviceViewTest(TransactionTestCase):
     resp = self.client.get(
       url,
       data={
-        'cell_id': cell_id # Same as above test
+        'cell_id': cell_id
       },
       HTTP_X_REQUESTED_WITH="XMLHttpRequest"
     )
