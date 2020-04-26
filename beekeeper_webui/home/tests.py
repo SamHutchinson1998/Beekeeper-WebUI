@@ -245,7 +245,7 @@ class ImageViewTest(TestCase):
     resp = self.client.post(
       url,
       data={
-        'diskImages': '[test_image_5]'
+        'diskImages': 'test_image_5'
       }
     )
     self.assertRedirects(
