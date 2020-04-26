@@ -91,8 +91,9 @@ class EthernetCableTest(TestCase):
 class ImageFormTest(TransactionTestCase):
 
   def test_valid_image_form(self):
-    image = create_image(self, 'Ubuntu Test Image lmaoo', 'pc')
-    data = {'name': image.name, 'devicetype': image.devicetype, 'disk_image': image.disk_image}
+    file_path = os.path.join(settings.MEDIA_ROOT, 'disk_images/TempleOS.ISO')
+    diskimage = open(file_path, 'rb')
+    data = {'name': 'Ubuntu Test Image lmaoo', 'devicetype': 'pc', 'disk_image': SimpleUploadedFile(diskimage.name, diskimage.read(), content_type='multipart/form-data')}
     form = ImageForm(data)
     print(form.errors)
     self.assertTrue(form.is_valid())
@@ -116,8 +117,8 @@ class DeviceFormTest(TransactionTestCase):
   def test_valid_device_form(self):
     image = create_image(self, 'test_image', 'pc')
     image.save()
-    device = create_device(self, 'ubuntu_test_device', '2048', 25, 2, 15, image, 'this-is-a-made-up-token', 10015)
-    data = {'name': device.name, 'ram': device.ram, 'disk_size': device.disk_size, 'cpus': device.cpus, 'cell_id': device.cell_id, 'disk_image': image.id, 'token': device.token, 'console_port': device.console_port}
+    image = DiskImage.objects.get(name='test_image')
+    data = {'name': 'ubuntu_test_device', 'ram': '2048', 'disk_size': 25, 'cpus': 2, 'cell_id': 15, 'disk_image': image, 'token': 'this-is-a-made-up-token', 'console_port': 10015}
     form = DeviceForm(data)
     print(form.errors)
     self.assertTrue(form.is_valid())
