@@ -128,9 +128,11 @@ class HomePageView(TemplateView):
     return render(request, 'vnc.html')
 
   def get_device_status(request):
-    cell_id = request.GET.get('cell_id',None)
-    device_status = get_vm_status(cell_id)
-    return JsonResponse({'device_status':device_status},status=200)
+    if request.method == "GET":
+      cell_id = request.GET.get('cell_id',None)
+      device_status = get_vm_status(cell_id)
+      return JsonResponse({'device_status':device_status},status=200)
+    return JsonResponse({'result': 'wrong request'}, status=400)
 
   def reload_body(request):
     if request.method == 'GET':
@@ -139,7 +141,7 @@ class HomePageView(TemplateView):
         'device_form': DeviceForm()
       }
       return render(request, '_body.html', context)
-    return JsonResponse({},status=200)
+    return JsonResponse({'result': 'wrong_request'},status=200)
 
   def remove_image(request):
     if request.method == 'POST':

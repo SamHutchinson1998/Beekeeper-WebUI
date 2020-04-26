@@ -238,6 +238,39 @@ class ImageViewTest(TestCase):
       {'disk_images': 'None'}
     )
 
+  def test_remove_image(self):
+    image = create_image(self, 'test_image_5', 'pc')
+    image.save()
+    url = reverse('remove_image')
+    resp = self.client.post(
+      url,
+      data={
+        'diskImages': '[test_image_5]'
+      }
+    )
+    self.assertRedirects(
+      resp,
+      '/',
+      status_code=302,
+      target_status_code=200,
+      msg_prefix='',
+      fetch_redirect_response=True
+    )
+    # check that it's database entry has been deleted too
+    self.assertTrue(DiskImage.objects.get(name='test_image_5'), None)
+  
+  def test_remove_image_wrong_request(self):
+    image = create_image(self, 'test_image_5', 'pc')
+    image.save()
+    url = reverse('remove_image')
+    resp = self.client.get(
+      url,
+      data={
+        'diskImages': '[test_image_5]'
+      }
+    )
+    self.assertTrue(resp.content, {'result': 'wrong request'})
+
 class DeviceViewTest(TransactionTestCase):
 
   def lookup_device(self, device_name):
@@ -442,20 +475,62 @@ class DeviceViewTest(TransactionTestCase):
       msg_prefix='',
       fetch_redirect_response=True
     )
-    #self.assertTrue(
-      #f'/load_device_vnc?path=websockify?token={device.token}',
-      #resp['location']
-    #)
     self.cleanup_crew('903') # remove its entry from libvirt
+
+  def test_device_vnc_wrong_request(self):
+    image = create_image(self, 'test_image', 'pc')
+    image.save()
+    self.create_device_libvirt('test_device_5', '903', image)
+    url = reverse('get_device_vnc')
+    resp = self.client.post(
+      url,
+      data={
+        'cell_id': '903',
+      },
+      HTTP_X_REQUESTED_WITH="XMLHttpRequest"
+    )
+    self.assertEqual(resp.status_code, 400)
+    self.assertJSONEqual(
+      resp.content,
+      {'result': 'wrong request'}
+    )
+    self.cleanup_crew('903') # remove its entry from libvirt    
 
   def test_retrieve_device_status(self):
     image = create_image(self, 'test_image', 'pc')
     image.save()
     self.create_device_libvirt('test_device_5', '903', image)
+    url = reverse('get_device_status')
+    resp = self.client.get(
+      url,
+      data={
+        'cell_id': '903'
+      }
+    )
+    self.assertEqual( resp.content, {'device_status': 'status_online'})
+    self.assertEqual(resp.status_code, 200)
+
+    # If the device has been turned off
+    self.client.get(reverse('change_vm_state'), data={'state': 'stop', 'cells': '[903]'})
+    self.assertEqual(resp.content, {'device_status': 'status_offline'})
+    self.assertEqual(resp.status_code, 200)
+
+    # if the device has been removed and there's no record of it
     self.cleanup_crew('903') # remove its entry from libvirt
+    self.client.get(reverse('change_vm_state'), data={'state': 'stop', 'cells': '[903]'})
+    self.assertEqual(resp.content, {'device_status': 'status_unknown'})
+    self.assertEqual(resp.status_code, 200)
 
   def test_device_status_wrong_request(self):
-    print('something')
-
-  def test_get_device_vnc_link(self):
-    print('something')
+    image = create_image(self, 'test_image', 'pc')
+    image.save()
+    self.create_device_libvirt('test_device_5', '903', image)
+    url = reverse('get_device_status')
+    resp = self.client.get(
+      url,
+      data={
+        'cell_id': '903'
+      }
+    )
+    self.assertEqual( resp.content, {'result': 'wrong_request'})
+    self.assertEqual(resp.status_code, 400)
