@@ -505,12 +505,12 @@ class DeviceViewTest(TransactionTestCase):
         'cell_id': '903'
       }
     )
-    self.assertJSONEqual( resp.content, {'device_status': 'status_offline'})
+    self.assertJSONEqual( resp.content, {'device_status': 'status_online'})
     self.assertEqual(resp.status_code, 200)
 
     # If the device has been turned on
-    self.client.get(reverse('change_vm_state'), data={'state': 'start', 'cells': '[903]'})
-    self.assertJSONEqual(resp.content, {'device_status': 'status_online'})
+    self.client.get(reverse('change_vm_state'), data={'state': 'stop', 'cells': '[903]'})
+    self.assertJSONEqual(resp.content, {'device_status': 'status_offline'})
     self.assertEqual(resp.status_code, 200)
 
     # if the device has been removed and there's no record of it
