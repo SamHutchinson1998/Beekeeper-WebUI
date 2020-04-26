@@ -142,14 +142,15 @@ class HomePageView(TemplateView):
     return JsonResponse({},status=200)
 
   def remove_image(request):
-    next = request.POST.get('next', '/')
     if request.method == 'POST':
+      next = request.POST.get('next', '/')
       images = request.POST.getlist('diskImages', None)
       for image in images:
         disk_image = DiskImage.objects.get(name=image)
         disk_image.disk_image.delete()
         disk_image.delete()
       return HttpResponseRedirect(next)
+    return JsonResponse({'result': 'wrong request'}, status=400)
 
   def create_network_bridge(request):
     if request.method == "GET":

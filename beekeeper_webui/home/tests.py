@@ -259,8 +259,17 @@ class DeviceViewTest(TransactionTestCase):
       },
       HTTP_X_REQUESTED_WITH="XMLHttpRequest"
     )
-    DiskImage.objects.all().delete()
-  
+    # For removal of all the disk images
+    images = []
+    for image in DiskImage.objects.all():
+      images.append(image.id)
+    resp = self.client.post(
+      reverse('remove_image'),
+      data={
+        'diskImages': images
+      },
+      HTTP_X_REQUESTED_WITH="XMLHttpRequest"
+    )
   def create_device_libvirt(self, name, cell_id, image):
     url = reverse('post_device_form')
     resp = self.client.post(
