@@ -259,6 +259,7 @@ class DeviceViewTest(TransactionTestCase):
       },
       HTTP_X_REQUESTED_WITH="XMLHttpRequest"
     )
+    DiskImage.objects.all().delete()
   
   def create_device_libvirt(self, name, cell_id, image):
     url = reverse('post_device_form')

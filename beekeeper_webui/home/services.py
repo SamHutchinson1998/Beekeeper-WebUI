@@ -80,7 +80,7 @@ def create_virtual_machine(cell_id):
     <on_reboot>restart</on_reboot>
     <on_crash>destroy</on_crash>
     <os>
-      <type arch='x86_64'>hvm</type>
+      <type arch='x86_64' machine='pc'>hvm</type>
       <boot dev='hd'/>
       <boot dev='cdrom'/>
     </os>
