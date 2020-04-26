@@ -530,6 +530,6 @@ class DeviceViewTest(TransactionTestCase):
         'cell_id': '903'
       }
     )
-    self.assertEqual( resp.content, {'result': 'wrong_request'})
+    self.assertEqual( resp.content, {'result': 'wrong request'})
     self.assertEqual(resp.status_code, 400)
     self.cleanup_crew('903') # remove its entry from libvirt
