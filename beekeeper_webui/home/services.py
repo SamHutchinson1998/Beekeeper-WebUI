@@ -232,8 +232,9 @@ def create_network(name):
   if conn == None:
     conn.close()
     return 'Failed to open connection to QEMU'
-  network = conn.networkDefineXML(xml)
-  if network == None:
+  try:
+    network = conn.networkDefineXML(xml)
+  except:
     conn.close()
     return 'Failed to create an ethernet cable in the backend'
   network.setAutostart(1) # Sets the network to autostart upon bootup of libvirt
