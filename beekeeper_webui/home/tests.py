@@ -430,6 +430,7 @@ class DeviceViewTest(TransactionTestCase):
       resp.content,
       {'result': 'success'}
     )
+    self.client.get(url, data={'state': 'start', 'cells': '[903]'})
     self.cleanup_crew('903') # remove its entry from libvirt
 
   def test_change_vm_state_wrong_request(self):
