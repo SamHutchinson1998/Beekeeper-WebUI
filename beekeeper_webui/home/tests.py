@@ -29,6 +29,9 @@ def create_device(self, name, ram, disk_size, cpus, cell_id, disk_image, token, 
 def create_ethernet_ports(self, virtual_machine, mac_address):
   return EthernetPorts.objects.create(virtual_machine=virtual_machine, mac_address=mac_address)
 
+def create_ethernet_cable(self, name, source, target, cell_id):
+  return EthernetCable.objects.create(name=name, source=source, target=target, cell_id=cell_id)
+
 class DiskImageTest(TestCase):
 
   def test_image_creation(self):
@@ -52,9 +55,6 @@ class EthernetPortsTest(TestCase):
     self.assertTrue(isinstance(ethernet_port, EthernetPorts))
 
 class EthernetCableTest(TestCase):
-
-  def create_ethernet_cable(self, name, source, target, cell_id):
-    return EthernetCable.objects.create(name=name, source=source, target=target, cell_id=cell_id)
 
   def test_ethernet_cable(self):
     image = create_image(self, 'test_image', 'pc')
@@ -534,3 +534,83 @@ class DeviceViewTest(TransactionTestCase):
     self.assertJSONEqual( resp.content, {'result': 'wrong request'})
     self.assertEqual(resp.status_code, 400)
     self.cleanup_crew('903') # remove its entry from libvirt
+
+class EthernetCableViewTest(TransactionTestCase):
+
+  def cleanup_crew(self, cell_id):
+    self.client.get(reverse('destroy_network_bridge'), data={'cell_id': cell_id})
+
+  def test_ethernet_cable_creation(self):
+    # Ethernet cable creation is somewhat more automated than devices - name is auto generated
+    resp = self.client.get(
+      reverse('create_network_bridge'),
+      data={
+        'bridge_name': 'test_bridge_1',
+        'cell_id': '904'
+      }
+    )
+    self.assertJSONEqual(resp.content, {'response': 'success'})
+    self.assertEqual(resp.status_code, 200)
+    self.cleanup_crew('904')
+
+  def test_ethernet_cable_creation_wrong_request(self):
+    resp = self.client.post(
+      reverse('create_network_bridge'),
+      data={
+        'bridge_name': 'test_bridge_1',
+        'cell_id': '904'
+      }
+    )
+    self.assertJSONEqual(resp.content, {'result': 'wrong request'})
+    self.assertEqual(resp.status_code, 400)
+    self.cleanup_crew('904')
+
+  def test_ethernet_cable_creation_error(self):
+    # can bluff an error by creating a network which already exists
+    self.client.get(
+      reverse('create_network_bridge'),
+      data={
+        'bridge_name': 'test_bridge_1',
+        'cell_id': '904'
+      }
+    )
+    resp = self.client.get( # this is the response we care about
+      reverse('create_network_bridge'),
+      data={
+        'bridge_name': 'test_bridge_1',
+        'cell_id': '905'
+      }
+    )
+    self.assertJSONEqual(resp.content, {'error': 'Failed to create an ethernet cable in the backend'})
+    self.assertEqual(resp.status_code, 500)
+    self.cleanup_crew('904')
+    self.cleanup_crew('905')
+
+  def test_ethernet_cable_removal(self):
+    # first create a network bridge
+    self.client.get(
+      reverse('create_network_bridge'),
+      data={
+        'bridge_name': 'test_bridge_1',
+        'cell_id': '904'
+      }
+    )
+    # then test it's removal
+    resp = self.client.get(reverse('destroy_network_bridge'), data={'cell_id': '904'})
+    self.assertEqual(resp.status_code, 200)
+    self.client.assertJSONEqual(resp.content, {'response': 'success'})
+  
+  def test_ethernet_cable_removal_wrong_request(self):
+    self.client.get(
+      reverse('create_network_bridge'),
+      data={
+        'bridge_name': 'test_bridge_1',
+        'cell_id': '904'
+      }
+    )
+    # then test it's removal
+    resp = self.client.post(reverse('destroy_network_bridge'), data={'cell_id': '904'})
+    self.assertJSONEqual(resp.content, {'error': 'wrong request'})
+    self.assertEqual(resp.status_code, 400)
+
+

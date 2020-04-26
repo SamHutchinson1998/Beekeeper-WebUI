@@ -165,9 +165,9 @@ class HomePageView(TemplateView):
         # create entry for ethernet cable in the database
         ethernet_cable = EthernetCable(name=name,cell_id=int(cell_id))
         ethernet_cable.save()
-        return JsonResponse({'response': network})
+        return JsonResponse({'response': network}, status=200)
 
-        # Experimented with pluggin cables into certain ports
+        # Experimented with plugging cables into certain ports
 
         #cable_plugged = plug_cable_in_devices(name, device_one_ethernet, device_two_ethernet)
         #if cable_plugged == 'success':
@@ -175,24 +175,26 @@ class HomePageView(TemplateView):
         #else:
           #return JsonResponse({'error': cable_plugged}) # Because the error here is to do with plugging in the cables
       else:
-        return JsonResponse({'error': network})
-
+        return JsonResponse({'error': network}, status=500)
+    return JsonResponse({'result': 'wrong request'}, status=400)
+        
   def destroy_network_bridge(request):
-    cell_id = request.GET.get('cell_id', None)
     if request.method == "GET":
+      cell_id = request.GET.get('cell_id', None)
       remove_network = destroy_network(cell_id)
       if remove_network == 'success':
-        return JsonResponse({'response': remove_network})
+        return JsonResponse({'response': remove_network}, status=200)
       else:
-        return JsonResponse({'error': remove_network})
+        return JsonResponse({'error': remove_network}, status=500)
+    return JsonResponse({'result': 'wrong request'}, status=400)
 
   def get_ethernet_ports(request):
     cell_id = request.GET.get('cell_id', None)
     if request.method == 'GET':
       vm = Device.objects.get(cell_id=cell_id)
       ethernet_ports = json.loads(serialize('json', vm.ethernetports_set.all()))
-      return JsonResponse({'ethernet_ports': ethernet_ports})
-    return JsonResponse({'error':'error'})
+      return JsonResponse({'ethernet_ports': ethernet_ports}, status=200)
+    return JsonResponse({'error':'wrong request'}, status=400)
   
   def get_devices(request):
     if request.is_ajax and request.method == "GET":
