@@ -63,7 +63,7 @@ class EthernetCableTest(TestCase):
     target_device = create_device(self, 'test_device_2', '2048', 25, 2, 15, image, 'this-is-a-made-up-token', 10015)
     target = create_ethernet_ports(self, target_device, 'MA:CA:DD:RE:SS:XD')
 
-    ethernet_cable = self.create_ethernet_cable('test-cable', source, target, 15)
+    ethernet_cable = create_ethernet_cable(self, 'test-cable', source, target, 15)
     self.assertTrue(isinstance(ethernet_cable, EthernetCable))
 
   def test_ethernet_cable_wo_source(self):
@@ -71,7 +71,7 @@ class EthernetCableTest(TestCase):
     target_device = create_device(self, 'test_device_2', '2048', 25, 2, 15, image, 'this-is-a-made-up-token', 10015)
     target = create_ethernet_ports(self, target_device, 'MA:CA:DD:RE:SS:XD')
 
-    ethernet_cable = self.create_ethernet_cable('test-cable', None, target, 15)
+    ethernet_cable = create_ethernet_cable(self, 'test-cable', None, target, 15)
     self.assertTrue(isinstance(ethernet_cable, EthernetCable))
 
   def test_ethernet_cable_wo_target(self):
@@ -79,11 +79,11 @@ class EthernetCableTest(TestCase):
     source_device = create_device(self, 'test_device', '2048', 25, 2, 15, image, 'this-is-a-made-up-token', 10015)
     source = create_ethernet_ports(self, source_device, 'MA:CA:DD:RE:SS:XD')
 
-    ethernet_cable = self.create_ethernet_cable('test-cable', source, None, 15)
+    ethernet_cable = create_ethernet_cable(self, 'test-cable', source, None, 15)
     self.assertTrue(isinstance(ethernet_cable, EthernetCable))
 
   def test_ethernet_cable_wo_source_target(self):
-    ethernet_cable = self.create_ethernet_cable('test-cable', None, None, 15)
+    ethernet_cable = create_ethernet_cable(self, 'test-cable', None, None, 15)
     self.assertTrue(isinstance(ethernet_cable, EthernetCable))
 
 # Forms tests
@@ -563,7 +563,6 @@ class EthernetCableViewTest(TransactionTestCase):
     )
     self.assertJSONEqual(resp.content, {'result': 'wrong request'})
     self.assertEqual(resp.status_code, 400)
-    self.cleanup_crew('904')
 
   def test_ethernet_cable_creation_error(self):
     # can bluff an error by creating a network which already exists
@@ -612,5 +611,7 @@ class EthernetCableViewTest(TransactionTestCase):
     resp = self.client.post(reverse('destroy_network_bridge'), data={'cell_id': '904'})
     self.assertJSONEqual(resp.content, {'error': 'wrong request'})
     self.assertEqual(resp.status_code, 400)
+    self.cleanup_crew('904')
+
 
 
