@@ -583,7 +583,6 @@ class EthernetCableViewTest(TransactionTestCase):
     self.assertJSONEqual(resp.content, {'error': 'Failed to create an ethernet cable in the backend'})
     self.assertEqual(resp.status_code, 500)
     self.cleanup_crew('904')
-    self.cleanup_crew('905')
 
   def test_ethernet_cable_removal(self):
     # first create a network bridge
@@ -597,7 +596,7 @@ class EthernetCableViewTest(TransactionTestCase):
     # then test it's removal
     resp = self.client.get(reverse('destroy_network_bridge'), data={'cell_id': '904'})
     self.assertEqual(resp.status_code, 200)
-    self.client.assertJSONEqual(resp.content, {'response': 'success'})
+    self.assertJSONEqual(resp.content, {'response': 'success'})
   
   def test_ethernet_cable_removal_wrong_request(self):
     self.client.get(
@@ -609,7 +608,7 @@ class EthernetCableViewTest(TransactionTestCase):
     )
     # then test it's removal
     resp = self.client.post(reverse('destroy_network_bridge'), data={'cell_id': '904'})
-    self.assertJSONEqual(resp.content, {'error': 'wrong request'})
+    self.assertJSONEqual(resp.content, {'result': 'wrong request'})
     self.assertEqual(resp.status_code, 400)
     self.cleanup_crew('904')
 
