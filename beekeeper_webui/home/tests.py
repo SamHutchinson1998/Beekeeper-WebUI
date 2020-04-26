@@ -499,35 +499,22 @@ class DeviceViewTest(TransactionTestCase):
     image.save()
     self.create_device_libvirt('test_device_5', '903', image)
     url = reverse('get_device_status')
-    resp = self.client.get(
-      url,
-      data={
-        'cell_id': '903'
-      }
-    )
+    resp = self.client.get(url, data={'cell_id': '903'})
     self.assertJSONEqual( resp.content, {'device_status': 'status_online'})
     self.assertEqual(resp.status_code, 200)
 
-    # If the device has been turned on
+    # If the device has been turned off
     self.client.get(reverse('change_vm_state'), data={'state': 'stop', 'cells': '[903]'})
-    resp = self.client.get(
-      url,
-      data={
-        'cell_id': '903'
-      }
-    )
+    resp = self.client.get(url,data={'cell_id': '903'})
     self.assertJSONEqual(resp.content, {'device_status': 'status_offline'})
     self.assertEqual(resp.status_code, 200)
 
+    # Turn the device back on
+    self.client.get(reverse('change_vm_state'), data={'state': 'start', 'cells': '[903]'})
     # if the device has been removed and there's no record of it
     self.cleanup_crew('903') # remove its entry from libvirt
-    self.client.get(reverse('change_vm_state'), data={'state': 'stop', 'cells': '[903]'})
-    resp = self.client.get(
-      url,
-      data={
-        'cell_id': '903'
-      }
-    )
+    resp = self.client.get(url,data={'cell_id': '903'})
+
     self.assertJSONEqual(resp.content, {'device_status': 'status_unknown'})
     self.assertEqual(resp.status_code, 200)
 
