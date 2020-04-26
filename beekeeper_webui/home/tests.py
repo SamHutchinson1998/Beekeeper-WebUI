@@ -259,7 +259,7 @@ class DeviceViewTest(TransactionTestCase):
       },
       HTTP_X_REQUESTED_WITH="XMLHttpRequest"
     )
-    
+
   def create_device_libvirt(self, name, cell_id, image):
     url = reverse('post_device_form')
     resp = self.client.post(
@@ -433,7 +433,7 @@ class DeviceViewTest(TransactionTestCase):
       },
       HTTP_X_REQUESTED_WITH="XMLHttpRequest"
     )
-    print(resp.content)
+    print(resp['location'])
     self.cleanup_crew('903') # remove its entry from libvirt
 
   def test_retrieve_device_status(self):
