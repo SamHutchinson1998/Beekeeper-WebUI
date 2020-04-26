@@ -510,12 +510,24 @@ class DeviceViewTest(TransactionTestCase):
 
     # If the device has been turned on
     self.client.get(reverse('change_vm_state'), data={'state': 'stop', 'cells': '[903]'})
+    resp = self.client.get(
+      url,
+      data={
+        'cell_id': '903'
+      }
+    )
     self.assertJSONEqual(resp.content, {'device_status': 'status_offline'})
     self.assertEqual(resp.status_code, 200)
 
     # if the device has been removed and there's no record of it
     self.cleanup_crew('903') # remove its entry from libvirt
     self.client.get(reverse('change_vm_state'), data={'state': 'stop', 'cells': '[903]'})
+    resp = self.client.get(
+      url,
+      data={
+        'cell_id': '903'
+      }
+    )
     self.assertJSONEqual(resp.content, {'device_status': 'status_unknown'})
     self.assertEqual(resp.status_code, 200)
 
