@@ -433,7 +433,19 @@ class DeviceViewTest(TransactionTestCase):
       },
       HTTP_X_REQUESTED_WITH="XMLHttpRequest"
     )
-    print(resp['location'])
+    device = Device.objects.get(name='test_device_5')
+    self.assertRedirects(
+      resp,
+      f'/load_device_vnc?path=websockify?token={device.token}',
+      status_code=302,
+      target_status_code=200,
+      msg_prefix='',
+      fetch_redirect_response=True
+    )
+    #self.assertTrue(
+      #f'/load_device_vnc?path=websockify?token={device.token}',
+      #resp['location']
+    #)
     self.cleanup_crew('903') # remove its entry from libvirt
 
   def test_retrieve_device_status(self):
