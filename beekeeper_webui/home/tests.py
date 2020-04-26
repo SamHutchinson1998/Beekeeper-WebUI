@@ -256,8 +256,6 @@ class ImageViewTest(TestCase):
       msg_prefix='',
       fetch_redirect_response=True
     )
-    # check that it's database entry has been deleted too
-    self.assertTrue(DiskImage.objects.get(name='test_image_5'), None)
   
   def test_remove_image_wrong_request(self):
     image = create_image(self, 'test_image_5', 'pc')
@@ -526,7 +524,7 @@ class DeviceViewTest(TransactionTestCase):
     image.save()
     self.create_device_libvirt('test_device_5', '903', image)
     url = reverse('get_device_status')
-    resp = self.client.get(
+    resp = self.client.post(
       url,
       data={
         'cell_id': '903'
@@ -534,3 +532,4 @@ class DeviceViewTest(TransactionTestCase):
     )
     self.assertEqual( resp.content, {'result': 'wrong_request'})
     self.assertEqual(resp.status_code, 400)
+    self.cleanup_crew('903') # remove its entry from libvirt
