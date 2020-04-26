@@ -505,18 +505,18 @@ class DeviceViewTest(TransactionTestCase):
         'cell_id': '903'
       }
     )
-    self.assertEqual( resp.content, {'device_status': 'status_online'})
+    self.assertJSONEqual( resp.content, {'device_status': 'status_online'})
     self.assertEqual(resp.status_code, 200)
 
     # If the device has been turned off
     self.client.get(reverse('change_vm_state'), data={'state': 'stop', 'cells': '[903]'})
-    self.assertEqual(resp.content, {'device_status': 'status_offline'})
+    self.assertJSONEqual(resp.content, {'device_status': 'status_offline'})
     self.assertEqual(resp.status_code, 200)
 
     # if the device has been removed and there's no record of it
     self.cleanup_crew('903') # remove its entry from libvirt
     self.client.get(reverse('change_vm_state'), data={'state': 'stop', 'cells': '[903]'})
-    self.assertEqual(resp.content, {'device_status': 'status_unknown'})
+    self.assertJSONEqual(resp.content, {'device_status': 'status_unknown'})
     self.assertEqual(resp.status_code, 200)
 
   def test_device_status_wrong_request(self):
@@ -530,6 +530,6 @@ class DeviceViewTest(TransactionTestCase):
         'cell_id': '903'
       }
     )
-    self.assertEqual( resp.content, {'result': 'wrong request'})
+    self.assertJSONEqual( resp.content, {'result': 'wrong request'})
     self.assertEqual(resp.status_code, 400)
     self.cleanup_crew('903') # remove its entry from libvirt
