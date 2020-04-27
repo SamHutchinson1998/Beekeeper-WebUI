@@ -766,6 +766,12 @@ class EthernetCableViewTest(TransactionTestCase):
     image.save()
     # create a device
     self.create_device_libvirt('test_device_5', '903', image)
+    # connect it to the internet
+    self.client.get(
+      reverse('connect_device_to_internet'),
+      data={'cell_id': '903'}
+    )
+    # now disconnect it from the internet
     resp = self.client.get(
       reverse('disconnect_device_from_internet'),
       data={'cell_id': '903'}
