@@ -200,6 +200,7 @@ class HomePageView(TemplateView):
     if request.is_ajax and request.method == "GET":
       devices = json.loads(serialize('json', Device.objects.all()))
       return JsonResponse({"devices":devices}, status = 200)
+    return JsonResponse({'result': 'wrong request'}, status=400)
 
   def connect_cable(request):
     if request.is_ajax and request.method == "GET":
@@ -208,6 +209,7 @@ class HomePageView(TemplateView):
       endpoint = request.GET.get('endpoint', None)
       connect_ethernet_cable(cell_id, device, endpoint)
       return JsonResponse({'result': 'success'},status = 200)
+    return JsonResponse({'result': 'wrong request'}, status=400)
 
   def disconnect_cable(request):
     if request.is_ajax and request.method == "GET":
@@ -215,30 +217,34 @@ class HomePageView(TemplateView):
       endpoint = request.GET.get('endpoint', None)
       disconnect_cable(cell_id, endpoint)
       return JsonResponse({'result': 'success'},status = 200)
+    return JsonResponse({'result': 'wrong request'}, status=400)
 
   def lookup_device(request):
     cell_id = request.GET.get('cell_id', None)
     try:
       vm = Device.objects.get(cell_id=cell_id)
-      return JsonResponse({'response': vm.name, 'console_port': vm.console_port})
+      return JsonResponse({'response': vm.name, 'console_port': vm.console_port}, status=200)
     except:
       return JsonResponse({'response': 'Not Found'})
 
   def connect_device_to_internet(request):
-    cell_id = request.GET.get('cell_id', None)
-    device_name = Device.objects.get(cell_id=cell_id).name
-    if connect_to_internet(device_name):
-      return JsonResponse({'result': 'success'})
-    else:
-      return JsonResponse({'result': 'failure'})
+    if request.is_ajax and request.method == "GET":
+      cell_id = request.GET.get('cell_id', None)
+      device_name = Device.objects.get(cell_id=cell_id).name
+      if connect_to_internet(device_name):
+        return JsonResponse({'result': 'success'}, status=200)
+      else:
+        return JsonResponse({'result': 'failure'}, status=500)
+    return JsonResponse({'result': 'wrong request'}, status=400)
 
   def disconnect_device_from_internet(request):
-    cell_id = request.GET.get('cell_id', None)
-    device_name = Device.objects.get(cell_id=cell_id).name
-    if disconnect_from_internet(device_name):
-      return JsonResponse({'result': 'success'})
-    else:
-      return JsonResponse({'result': 'failure'})
+    if request.is_ajax and request.method == "GET":
+      cell_id = request.GET.get('cell_id', None)
+      device_name = Device.objects.get(cell_id=cell_id).name
+      if disconnect_from_internet(device_name):
+        return JsonResponse({'result': 'success'})
+      else:
+        return JsonResponse({'result': 'failure'})
 
   def download_device(request):
     cell_id = request.GET.get('cell_id', None)

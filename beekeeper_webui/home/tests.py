@@ -535,20 +535,67 @@ class DeviceViewTest(TransactionTestCase):
     self.assertEqual(resp.status_code, 400)
     self.cleanup_crew('903') # remove its entry from libvirt
 
+  def test_get_devices(self):
+    image = create_image(self, 'test_image', 'pc')
+    image.save()
+    self.create_device_libvirt('test_device_5', '903', image)
+    self.create_device_libvirt('test_device_6', '905', image)
+    self.create_device_libvirt('test_device_7', '906', image)
+
+    resp = self.client.get(reverse('get_devices'))
+    self.assertEqual(resp.status_code, 200)
+    self.assertJSONEqual(
+      resp.content,
+      {'devices': json.loads(serialize('json', Device.objects.all()))}
+    )
+    self.cleanup_crew('903')
+    self.cleanup_crew('905')
+    self.cleanup_crew('906')
+
 class EthernetCableViewTest(TransactionTestCase):
+
+  def create_ethernet_cable(self, name, cell_id):
+    resp = self.client.get(
+      reverse('create_network_bridge'),
+      data={
+        'bridge_name': name,
+        'cell_id': cell_id
+      }
+    )
+    return resp
+
+  def create_device_libvirt(self, name, cell_id, image):
+    url = reverse('post_device_form')
+    resp = self.client.post(
+      url,
+      data={
+        'name': name, #invalid data
+        'ram': '2048',
+        'disk_size': '25',
+        'cpus': '2',
+        'disk_image': image.id,
+        'cell_id': cell_id
+      },
+      HTTP_X_REQUESTED_WITH="XMLHttpRequest"
+    )
+    return resp
+  
+  def cleanup_crew_device_edition(self, cell_id):
+    url = reverse('remove_device')
+    resp = self.client.get(
+      url,
+      data={
+        'cell_id': cell_id
+      },
+      HTTP_X_REQUESTED_WITH="XMLHttpRequest"
+    )
 
   def cleanup_crew(self, cell_id):
     self.client.get(reverse('destroy_network_bridge'), data={'cell_id': cell_id})
 
   def test_ethernet_cable_creation(self):
     # Ethernet cable creation is somewhat more automated than devices - name is auto generated
-    resp = self.client.get(
-      reverse('create_network_bridge'),
-      data={
-        'bridge_name': 'test_bridge_1',
-        'cell_id': '904'
-      }
-    )
+    resp = self.create_ethernet_cable('test_cable_1', '904')
     self.assertJSONEqual(resp.content, {'response': 'success'})
     self.assertEqual(resp.status_code, 200)
     self.cleanup_crew('904')
@@ -566,13 +613,7 @@ class EthernetCableViewTest(TransactionTestCase):
 
   def test_ethernet_cable_creation_error(self):
     # can bluff an error by creating a network which already exists
-    self.client.get(
-      reverse('create_network_bridge'),
-      data={
-        'bridge_name': 'test_bridge_1',
-        'cell_id': '904'
-      }
-    )
+    self.create_ethernet_cable('test_bridge_1', '904')
     resp = self.client.get( # this is the response we care about
       reverse('create_network_bridge'),
       data={
@@ -586,31 +627,164 @@ class EthernetCableViewTest(TransactionTestCase):
 
   def test_ethernet_cable_removal(self):
     # first create a network bridge
-    self.client.get(
-      reverse('create_network_bridge'),
-      data={
-        'bridge_name': 'test_bridge_1',
-        'cell_id': '904'
-      }
-    )
+    self.create_ethernet_cable('test_bridge_1', '904')
     # then test it's removal
     resp = self.client.get(reverse('destroy_network_bridge'), data={'cell_id': '904'})
     self.assertEqual(resp.status_code, 200)
     self.assertJSONEqual(resp.content, {'response': 'success'})
   
   def test_ethernet_cable_removal_wrong_request(self):
-    self.client.get(
-      reverse('create_network_bridge'),
-      data={
-        'bridge_name': 'test_bridge_1',
-        'cell_id': '904'
-      }
-    )
+    create_ethernet_cable('test_bridge_1', '904')
     # then test it's removal
     resp = self.client.post(reverse('destroy_network_bridge'), data={'cell_id': '904'})
     self.assertJSONEqual(resp.content, {'result': 'wrong request'})
     self.assertEqual(resp.status_code, 400)
     self.cleanup_crew('904')
+  
+  def test_connect_cable(self):
+    image = create_image(self, 'test_image', 'pc')
+    image.save()
+    # create a device
+    self.create_device_libvirt('test_device_5', '903', image)
+    self.create_device_libvirt('test_device_5', '905', image)
+    self.create_ethernet_cable('test_bridge_1', '904')
 
+    # test both source and target endpoints
+    url = reverse('connect_cable')
+    resp = self.client.get(
+      url,
+      data = {'cell_id': '904','device': '903','endpoint': 'source'}
+    )
+    self.assertEqual(resp.status_code, 200)
+    self.assertJSONEqual(resp.content, {'result': 'success'})
+
+    resp = self.client.get(
+      url,
+      data = {'cell_id': '904','device': '905','endpoint': 'target'}
+    )
+    self.assertEqual(resp.status_code, 200)
+    self.assertJSONEqual(resp.content, {'result': 'success'})
+
+    self.cleanup_crew('904')
+    self.cleanup_crew_device_edition('903')
+    self.cleanup_crew_device_edition('905')
+
+  def test_connect_cable_wrong_request(self):
+    image = create_image(self, 'test_image', 'pc')
+    image.save()
+    # create a device
+    self.create_device_libvirt('test_device_5', '903', image)
+    self.create_ethernet_cable('test_bridge_1', '904')
+
+    # test both source and target endpoints
+    url = reverse('connect_cable')
+    resp = self.client.post(
+      url,
+      data = {'cell_id': '904','device': '903','endpoint': 'source'}
+    )
+    self.assertEqual(resp.status_code, 400)
+    self.assertJSONEqual(resp.content, {'result': 'wrong request'})
+    self.cleanup_crew('904')
+    self.cleanup_crew_device_edition('903')
+  
+  def test_disconnect_ethernet_cable(self):
+    image = create_image(self, 'test_image', 'pc')
+    image.save()
+    # create a device
+    self.create_device_libvirt('test_device_5', '903', image)
+    self.create_device_libvirt('test_device_5', '905', image)
+    self.create_ethernet_cable('test_bridge_1', '904')
+    # connect the cable first
+    self.client.get(
+      reverse('connect_cable'),
+      data = {'cell_id': '904','device': '903','endpoint': 'source'}
+    )
+    self.client.get(
+      reverse('connect_cable'),
+      data = {'cell_id': '904','device': '905','endpoint': 'target'}
+    )
+    # test disconnect of both source and target
+    resp = self.client.get(
+      reverse('disconnect_cable'),
+      data={'cell_id': '904', 'endpoint': 'source'}
+    )
+    self.assertEqual(resp.status_code, 200)
+    self.assertJSONEqual(resp.content, {'result': 'success'})
+
+    resp = self.client.get(
+      reverse('disconnect_cable'),
+      data={'cell_id': '904', 'endpoint': 'target'}
+    )
+    self.assertEqual(resp.status_code, 200)
+    self.assertJSONEqual(resp.content, {'result': 'success'})
+    self.cleanup_crew('904')
+    self.cleanup_crew_device_edition('903')
+    self.cleanup_crew_device_edition('905')
+    
+  def test_disconnect_ethernet_cable_wrong_request(self):
+    image = create_image(self, 'test_image', 'pc')
+    image.save()
+    # create a device
+    self.create_device_libvirt('test_device_5', '903', image)
+    self.create_ethernet_cable('test_bridge_1', '904')
+    # connect the cable first
+    resp = self.client.post(
+      reverse('connect_cable'),
+      data = {'cell_id': '904','device': '903','endpoint': 'source'}
+    )
+    self.assertEqual(resp.status_code, 400)
+    self.assertJSONEqual(resp.content, {'result': 'wrong request'})
+
+  def test_connect_device_to_internet(self):
+    image = create_image(self, 'test_image', 'pc')
+    image.save()
+    # create a device
+    self.create_device_libvirt('test_device_5', '903', image)
+    resp = self.client.get(
+      reverse('connect_device_to_internet'),
+      data={'cell_id': '903'}
+    )
+    self.assertEqual(resp.status_code, 200)
+    self.assertJSONEqual(resp.content, {'result': 'success'})
+    self.cleanup_crew_device_edition('903')
+
+  def test_connect_device_to_internet_wrong_request(self):
+    image = create_image(self, 'test_image', 'pc')
+    image.save()
+    # create a device
+    self.create_device_libvirt('test_device_5', '903', image)
+    resp = self.client.post(
+      reverse('connect_device_to_internet'),
+      data={'cell_id': '903'}
+    )
+    self.assertEqual(resp.status_code, 400)
+    self.assertJSONEqual(resp.content, {'result': 'wrong request'})
+    self.cleanup_crew_device_edition('903')
+
+  def test_disconnect_device_from_internet(self):
+    image = create_image(self, 'test_image', 'pc')
+    image.save()
+    # create a device
+    self.create_device_libvirt('test_device_5', '903', image)
+    resp = self.client.get(
+      reverse('disconnect_device_from_internet'),
+      data={'cell_id': '903'}
+    )
+    self.assertEqual(resp.status_code, 200)
+    self.assertJSONEqual(resp.content, {'result': 'success'})
+    self.cleanup_crew_device_edition('903')
+
+  def test_disconnect_device_from_internet_wrong_request(self):
+    image = create_image(self, 'test_image', 'pc')
+    image.save()
+    # create a device
+    self.create_device_libvirt('test_device_5', '903', image)
+    resp = self.client.post(
+      reverse('disconnect_device_from_internet'),
+      data={'cell_id': '903'}
+    )
+    self.assertEqual(resp.status_code, 200)
+    self.assertJSONEqual(resp.content, {'result': 'success'})
+    self.cleanup_crew_device_edition('903')
 
 
