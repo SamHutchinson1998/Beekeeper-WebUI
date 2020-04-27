@@ -614,13 +614,8 @@ class EthernetCableViewTest(TransactionTestCase):
   def test_ethernet_cable_creation_error(self):
     # can bluff an error by creating a network which already exists
     self.create_ethernet_cable('test_bridge_1', '904')
-    resp = self.client.get( # this is the response we care about
-      reverse('create_network_bridge'),
-      data={
-        'bridge_name': 'test_bridge_1',
-        'cell_id': '905'
-      }
-    )
+    resp = self.create_ethernet_cable('test_bridge_1', '905') # This is the response we care about
+
     self.assertJSONEqual(resp.content, {'error': 'Failed to create an ethernet cable in the backend'})
     self.assertEqual(resp.status_code, 500)
     self.cleanup_crew('904')
@@ -632,7 +627,7 @@ class EthernetCableViewTest(TransactionTestCase):
     resp = self.client.get(reverse('destroy_network_bridge'), data={'cell_id': '904'})
     self.assertEqual(resp.status_code, 200)
     self.assertJSONEqual(resp.content, {'response': 'success'})
-  
+
   def test_ethernet_cable_removal_wrong_request(self):
     self.create_ethernet_cable('test_bridge_1', '904')
     # then test it's removal
@@ -640,7 +635,7 @@ class EthernetCableViewTest(TransactionTestCase):
     self.assertJSONEqual(resp.content, {'result': 'wrong request'})
     self.assertEqual(resp.status_code, 400)
     self.cleanup_crew('904')
-  
+
   def test_connect_cable(self):
     image = create_image(self, 'test_image', 'pc')
     image.save()
