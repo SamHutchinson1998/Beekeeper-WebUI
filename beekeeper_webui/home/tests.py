@@ -646,7 +646,7 @@ class EthernetCableViewTest(TransactionTestCase):
     image.save()
     # create a device
     self.create_device_libvirt('test_device_5', '903', image)
-    self.create_device_libvirt('test_device_5', '905', image)
+    self.create_device_libvirt('test_device_6', '905', image)
     self.create_ethernet_cable('test_bridge_1', '904')
 
     # test both source and target endpoints
@@ -692,7 +692,7 @@ class EthernetCableViewTest(TransactionTestCase):
     image.save()
     # create a device
     self.create_device_libvirt('test_device_5', '903', image)
-    self.create_device_libvirt('test_device_5', '905', image)
+    self.create_device_libvirt('test_device_6', '905', image)
     self.create_ethernet_cable('test_bridge_1', '904')
     # connect the cable first
     self.client.get(
