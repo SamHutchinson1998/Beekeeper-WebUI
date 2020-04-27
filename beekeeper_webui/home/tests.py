@@ -618,7 +618,6 @@ class EthernetCableViewTest(TransactionTestCase):
 
     self.assertJSONEqual(resp.content, {'error': 'Failed to create an ethernet cable in the backend'})
     self.assertEqual(resp.status_code, 500)
-    self.cleanup_crew('904')
 
   def test_ethernet_cable_removal(self):
     # first create a network bridge
