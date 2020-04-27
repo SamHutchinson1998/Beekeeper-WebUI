@@ -242,9 +242,10 @@ class HomePageView(TemplateView):
       cell_id = request.GET.get('cell_id', None)
       device_name = Device.objects.get(cell_id=cell_id).name
       if disconnect_from_internet(device_name):
-        return JsonResponse({'result': 'success'})
+        return JsonResponse({'result': 'success'}, status=200)
       else:
-        return JsonResponse({'result': 'failure'})
+        return JsonResponse({'result': 'failure'}, status=500)
+    return JsonResponse({'result': 'wrong request'}, status=400)
 
   def download_device(request):
     cell_id = request.GET.get('cell_id', None)

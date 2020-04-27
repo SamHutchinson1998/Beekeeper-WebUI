@@ -634,7 +634,7 @@ class EthernetCableViewTest(TransactionTestCase):
     self.assertJSONEqual(resp.content, {'response': 'success'})
   
   def test_ethernet_cable_removal_wrong_request(self):
-    create_ethernet_cable('test_bridge_1', '904')
+    self.create_ethernet_cable('test_bridge_1', '904')
     # then test it's removal
     resp = self.client.post(reverse('destroy_network_bridge'), data={'cell_id': '904'})
     self.assertJSONEqual(resp.content, {'result': 'wrong request'})
@@ -789,8 +789,8 @@ class EthernetCableViewTest(TransactionTestCase):
       reverse('disconnect_device_from_internet'),
       data={'cell_id': '903'}
     )
-    self.assertEqual(resp.status_code, 200)
-    self.assertJSONEqual(resp.content, {'result': 'success'})
+    self.assertEqual(resp.status_code, 400)
+    self.assertJSONEqual(resp.content, {'result': 'wrong request'})
     self.cleanup_crew_device_edition('903')
 
 
