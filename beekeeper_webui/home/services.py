@@ -144,6 +144,7 @@ def disks_for_qcow2(disk_image):
   image_name = image_file.name.replace('disk_images/', '')
   xml = f"""
     <disk type='file' device='disk'>
+      <driver name='qemu' type='qcow2' cache='none'/>
       <source file='{new_image_file_path}{image_name}'/> # uses the qcow2 file copied over from the media directory
       <backingstore/>
       <driver name='qemu' type='raw'/>
@@ -317,6 +318,7 @@ def libvirt_connect_cable(cable_name, device_name, mac_address):
     <interface type='bridge'>
       <mac address='{mac_address}'/>
       <source bridge='{cable_name}'/>
+      <model type='e1000'/>
     </interface>
   """
   domain.attachDeviceFlags(xml, libvirt.VIR_DOMAIN_AFFECT_LIVE)#libvirt.VIR_DOMAIN_AFFECT_LIVE)#libvirt.VIR_DOMAIN_AFFECT_CONFIG)
@@ -378,6 +380,7 @@ def connect_to_internet(device_name):
   xml = f"""
     <interface type='network'>
       <source network='default'/>
+      <model type='e1000'/>
     </interface>
   """
   domain.attachDeviceFlags(xml, libvirt.VIR_DOMAIN_AFFECT_LIVE)#libvirt.VIR_DOMAIN_AFFECT_LIVE)#libvirt.VIR_DOMAIN_AFFECT_CONFIG)
