@@ -144,7 +144,7 @@ def disks_for_qcow2(disk_image):
   image_name = image_file.name.replace('disk_images/', '')
   xml = f"""
     <disk type='file' device='disk'>
-      <source file='{new_image_file_path}{image_name}.qcow2'/>
+      <source file='{new_image_file_path}{image_name}'/> # uses the qcow2 file copied over from the media directory
       <backingstore/>
       <driver name='qemu' type='raw'/>
       <target dev='vda' bus='virtio'/>
