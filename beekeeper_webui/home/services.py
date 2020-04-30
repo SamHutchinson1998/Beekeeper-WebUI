@@ -52,7 +52,7 @@ def create_virtual_machine(cell_id):
   memory = vm.ram
   disk_size = vm.disk_size
   cpus = vm.cpus
-  disk_image = vm.disk_image.disk_image
+  disk_image = vm.disk_image
 
 
   # Here I was experimenting with adding ethernet ports to a device manually
@@ -90,20 +90,7 @@ def create_virtual_machine(cell_id):
     </features>
     <devices>
       <emulator>/usr/bin/kvm-spice</emulator>
-      
-      <disk type='file' device='disk'>
-        <source file='/var/lib/libvirt/images/{name}.qcow2'/>
-        <backingstore/>
-        <driver name='qemu' type='raw'/>
-        <target dev='vda' bus='virtio'/>
-      </disk>
-      <disk type='file' device='cdrom'>
-        <driver name='qemu' type='raw'/>
-        <source file='{settings.MEDIA_ROOT}/{disk_image}'/>
-        <backingstore/>
-        <target dev='hda' bus='ide'/>
-        <readonly/>
-      </disk>
+      {create_disks(name, disk_image)}
       <serial type='tcp'>
         <source mode='bind' host='0.0.0.0' service='{console_port}' tls='no'/>
         <protocol type='telnet'/>
@@ -123,6 +110,47 @@ def create_virtual_machine(cell_id):
       #</console>
   #print(xml)
   spawn_machine(disk_size, name, xml, token)
+
+def create_disks(device_name, disk_image):
+  if disk_image.extension() == 'iso':
+    return disks_for_iso(device_name, disk_image)
+  if disk_image.extension() == 'qcow2':
+    return disks_for_qcow2(disk_image)
+
+def disks_for_iso(device_name, disk_image):
+  xml = f"""
+    <disk type='file' device='disk'>
+      <source file='/var/lib/libvirt/images/{device_name}.qcow2'/>
+      <backingstore/>
+      <driver name='qemu' type='raw'/>
+      <target dev='vda' bus='virtio'/>
+    </disk>
+    <disk type='file' device='cdrom'>
+      <driver name='qemu' type='raw'/>
+      <source file='{settings.MEDIA_ROOT}/{disk_image.disk_image}'/>
+      <backingstore/>
+      <target dev='hda' bus='ide'/>
+      <readonly/>
+    </disk>
+    """
+  return xml
+
+def disks_for_qcow2(disk_image):
+  image_file = disk_image.disk_image
+  image_name = image_file.name.replace('disk_images/', '')
+  full_image_file_path = os.path.join(settings.MEDIA_ROOT, image_file)
+  new_image_file_path = '/var/lib/libvirt/images/'
+  os.system(f'cp {full_image_file_path} {new_image_file_path}')
+
+  xml = f"""
+    <disk type='file' device='disk'>
+      <source file='{new_image_file_path}{image_name}.qcow2'/>
+      <backingstore/>
+      <driver name='qemu' type='raw'/>
+      <target dev='vda' bus='virtio'/>
+    </disk>
+  """
+  return xml
 
 def spawn_machine(disk_size, name, xml, token):
   config = xml
