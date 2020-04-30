@@ -1,6 +1,6 @@
 from django.db import models
 from django import forms
-
+import os
 # Create your models here.
 
 DEVICE_TYPES = (
@@ -15,6 +15,14 @@ class DiskImage(models.Model):
   name = models.CharField(max_length=100, unique=True)
   devicetype = models.CharField(max_length=8,choices=DEVICE_TYPES, default='pc')
   disk_image = models.FileField(upload_to='disk_images/')
+
+  def extension(self):
+    name, extension = os.path.splitext(self.disk_image.name)
+    if extension.lower() == '.iso':
+      return 'iso'
+    if extension.lower() == '.qcow2':
+      return 'qcow2'
+    return 'other'
 
 class Device(models.Model):
   name = models.CharField(max_length=100,default="vm_name", unique=True)
