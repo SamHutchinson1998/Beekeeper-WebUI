@@ -137,11 +137,11 @@ def disks_for_iso(device_name, disk_image):
 
 def disks_for_qcow2(disk_image):
   image_file = disk_image.disk_image
-  image_name = image_file.name.replace('disk_images/', '')
-  full_image_file_path = os.path.join(settings.MEDIA_ROOT, image_file)
+  full_image_file_path = os.path.join(f'{settings.MEDIA_ROOT}/', image_file.name)
   new_image_file_path = '/var/lib/libvirt/images/'
   os.system(f'cp {full_image_file_path} {new_image_file_path}')
 
+  image_name = image_file.name.replace('disk_images/', '')
   xml = f"""
     <disk type='file' device='disk'>
       <source file='{new_image_file_path}{image_name}.qcow2'/>
