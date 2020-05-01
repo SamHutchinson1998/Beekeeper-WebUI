@@ -24,8 +24,8 @@
         <p>Beekeeper is a network emulation tool which enables for the configuration of devices and networks within a virtualised domain. Images are uploaded by the user and they can be used to create devices. This guide can serve as a help page or a starting point for new users.</p>
         <h2>User Management</h2>
         <h3>Initial Setup</h3>
-        <p>To control who can access the software, a login system has been implemented to enable/disable access to select users when typing in your hostname in the browser!:</p>
-        <img src="{% static 'get_started_guide/login_page.PNG' %}"/>
+        <p>To control who can access the software, a login system has been implemented to enable/disable access to select users when typing in your hostname in the browser:</p>
+        <img style="padding: 10px;" src="{% static 'get_started_guide/login_page.PNG' %}"/>
         <p class='pSpacing'>If this is a first install of the software, On your server you'll need to create a user in the CLI of the software, navigating to the <code>Beekeeper-WebUI</code> directory and creating a superuser like so:</p>
         <kbd>
          $ cd ~/Beekeeper-WebUI<br />
@@ -34,24 +34,24 @@
           $ python manage.py createsuperuser<br />
         </kbd>
         <p class='pSpacing'>You'll then be prompted to enter your credentials like below: </p>
-        <img src="{% static 'get_started_guide/credentials.PNG' %}"/>
+        <img style="padding: 10px;"  src="{% static 'get_started_guide/credentials.PNG' %}"/>
         <p class='pSpacing'>And you have successfully created new user for your beekeeper! Head over to the main screen section or the Adding/Removing users section below to setup more users.</p>
         <br />
         <h3>Adding/Removing Users</h3>
         <p>To create any more users, you'll need to navigate to</p>
         <p id='window_location'></p>
         <p>You'll be presented with a login screen. You can use the credentials created in the user management section to gain access to the admin portal:</p>
-        <img src="{% static 'get_started_guide/django_admin_screen.PNG' %}"/>
+        <img style="padding: 10px;"  src="{% static 'get_started_guide/django_admin_screen.PNG' %}"/>
         <p class='pSpacing'>The disk images can be uploaded via the main screen itself and can be added/removed later. Clicking <code>change</code> gives you an overview of all the users in your system.</p>
-        <img src="{% static 'get_started_guide/change_user_screen.PNG' %}"/>
+        <img style="padding: 10px;"  src="{% static 'get_started_guide/change_user_screen.PNG' %}"/>
         <p class='pSpacing'>You will be able to add a new user in the top right corner, which produces a new form.</p>
-        <img src="{% static 'get_started_guide/add_user_screen.PNG' %}"/>
+        <img style="padding: 10px;"  src="{% static 'get_started_guide/add_user_screen.PNG' %}"/>
         <p class='pSpacing'>Alternatively, clicking on one of the names within the previous screen (The change users screen) brings you to a seperate form. At the bottom of this, you'll be able to save your changes to a user or delete it.</p>
-        <img src="{% static 'get_started_guide/change_user_screen_2.PNG' %}"/>
+        <img style="padding: 10px;"  src="{% static 'get_started_guide/change_user_screen_2.PNG' %}"/>
         <p></p>
         <h2>Main Screen</h2>
         <p>The screen provides the core functionality of Beekeeper - to create your network topology!</p>
-        <img src="{% static 'get_started_guide/main_screen.PNG' %}"/>
+        <img style="padding: 10px;"  src="{% static 'get_started_guide/main_screen.PNG' %}"/>
         <ol class='pSpacing'>
           <li>Navigation Bar And Toolbar - For virtual machine operations plus additional features to assist the user in constructing their network</li>
           <li>Sidebar - lists all the available devices that can be created</li>
