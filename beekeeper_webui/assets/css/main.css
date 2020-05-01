@@ -1,6 +1,11 @@
+.navbar-custom-item {
+  margin-left: 20px;
+}
+
 .pSpacing {
   margin-top: 10px;
 }
+
 #sidebarContainer {
   position: absolute;
   overflow: hidden;
