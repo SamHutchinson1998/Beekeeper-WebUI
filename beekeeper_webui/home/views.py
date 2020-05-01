@@ -247,6 +247,9 @@ class HomePageView(TemplateView):
         return JsonResponse({'result': 'failure'}, status=500)
     return JsonResponse({'result': 'wrong request'}, status=400)
 
+  def get_started_guide(request):
+    return render(request, 'get_started_guide.html')
+
   def download_device(request):
     cell_id = request.GET.get('cell_id', None)
     device_name = Device.objects.get(cell_id=cell_id).name

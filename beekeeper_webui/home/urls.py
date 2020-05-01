@@ -24,5 +24,6 @@ urlpatterns = [
     path('lookup_device', HomePageView.lookup_device, name='lookup_device'),
     path('connect_device_to_internet', HomePageView.connect_device_to_internet, name="connect_device_to_internet"),
     path('disconnect_device_from_internet', HomePageView.disconnect_device_from_internet, name="disconnect_device_from_internet"),
+    path('get_started_guide', HomePageView.get_started_guide, name='get_started_guide'),
     path('download_device', HomePageView.download_device, name="download_device")
 ]
