@@ -4,31 +4,33 @@
     <img src="{% static 'logos/uoh-black.svg' %}" width="90" height="40" alt=""> 
   </a>
   {% if user.is_authenticated %}
-  <div class="nav navbar-nav navbar-left">
-    <div class="dropdown mr-auto nav-item navbar-custom-item">
-      <a href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">File<span class="caret"></span></a>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenu2" >
-        <a href='#mymodal' data-toggle="modal" data-target="#mymodal"class="dropdown-item " >Upload Disk Image</a>
-        <a href='#removeImageModal' data-toggle="modal" data-target="#removeImageModal"class="dropdown-item" >Remove Disk Image</a>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="nav navbar-nav navbar-left">
+      <div class="dropdown mr-auto nav-item navbar-custom-item">
+        <a href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">File<span class="caret"></span></a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenu2" >
+          <a href='#mymodal' data-toggle="modal" data-target="#mymodal"class="dropdown-item " >Upload Disk Image</a>
+          <a href='#removeImageModal' data-toggle="modal" data-target="#removeImageModal"class="dropdown-item" >Remove Disk Image</a>
+        </div>
+      </div>
+      <div class="dropdown mr-auto nav-item navbar-custom-item">
+        <a href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Help<span class="caret"></span></a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenu2" >
+          <a href="{% url 'get_started_guide' %}" target="_blank" class="dropdown-item" >Get Started</a>
+        </div>
       </div>
     </div>
-    <div class="dropdown mr-auto nav-item navbar-custom-item">
-      <a href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Help<span class="caret"></span></a>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenu2" >
-        <a href="{% url 'get_started_guide' %}" target="_blank" class="dropdown-item" >Get Started</a>
+    <div class="nav navbar-nav navbar-right">
+      <div class="dropdown mr-auto nav-item navbar-custom-item">
+        <button class="btn btn-primary" onclick="window.location.href='{% url 'logout' %}';">Logout</button>
       </div>
     </div>
-  </div>
-  <div class="nav navbar-nav navbar-right">
-    <div class="dropdown mr-auto nav-item navbar-custom-item">
-      <button class="btn btn-primary" onclick="window.location.href='{% url 'logout' %}';">Logout</button>
+    {% else %}
+    <div class="nav navbar-nav navbar-right">
+      <button class="btn btn-primary" onclick="window.location.href='{% url 'login' %}';">Login</button>
     </div>
+    {%endif%}
   </div>
-  {% else %}
-  <div class="nav navbar-nav navbar-right">
-    <button class="btn btn-primary" onclick="window.location.href='{% url 'login' %}';">Login</button>
-  </div>
-  {%endif%}
 </nav>
 
 {% include '_add_image_form.html' %}
