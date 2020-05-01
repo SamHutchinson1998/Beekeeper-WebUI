@@ -9,7 +9,7 @@
   <script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script>
 
 </head>
-<body data-spy="scroll" data-target="#toc" class='pv-4'>
+<body data-spy="scroll" data-target="#toc" class='py-4'>
   <div class='container'>
     <div class='row'>
       <div class="col-sm-3">
@@ -22,17 +22,17 @@
         <p>Beekeeper is a network emulation tool which enables for the configuration of devices and networks within a virtualised domain. Images are uploaded by the user and they can be used to create devices. This guide can serve as a help page or a starting point for new users.</p>
         <h2>User Management</h2>
         <p>To control who can access the software, a login system has been implemented to enable/disable access to select users:</p>
-        <img src="{% static 'get_started_guide/login_page.png' %}">
+        <img src="{% static 'get_started_guide/login_page.PNG' %}">
         <p>If this is a first install of the software, On your server you'll need to create a user in the CLI of the software, navigating to the <code>Beekeeper-WebUI</code> directory and creating a superuser like so:</p>
-        <kbd>$ cd ~/Beekeeper-WebUI</kbd>
-        <kbd>$ source venv/bin/activate</kbd>
-        <kbd>$ cd beekeeper_webui/</kbd>
-        <kbd>$ python manage.py createsuperuser</kbd>
+        <samp>$ cd ~/Beekeeper-WebUI</samp>
+        <samp>$ source venv/bin/activate</samp>
+        <samp>$ cd beekeeper_webui/</samp>
+        <samp>$ python manage.py createsuperuser</samp>
         <p>You'll then be prompted to enter your credentials like below: </p>
-        <img src="{% static 'get_started_guide/credentials.png' %}">
+        <img src="{% static 'get_started_guide/credentials.PNG' %}">
+        <h3>Adding A User</h3>
         <p>To create any more users, you'll need to navigate to</p>
         <p id='window_location'></p>
-        <h3>Adding A User</h3>
         <h3>Removing a User</h3>
         <h2>Main Screen</h2>
         <h3>Toolbars</h3>
