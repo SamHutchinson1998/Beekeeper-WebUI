@@ -24,10 +24,12 @@
         <p>To control who can access the software, a login system has been implemented to enable/disable access to select users:</p>
         <img src="{% static 'get_started_guide/login_page.PNG' %}">
         <p>If this is a first install of the software, On your server you'll need to create a user in the CLI of the software, navigating to the <code>Beekeeper-WebUI</code> directory and creating a superuser like so:</p>
-        <samp>$ cd ~/Beekeeper-WebUI</samp>
-        <samp>$ source venv/bin/activate</samp>
-        <samp>$ cd beekeeper_webui/</samp>
-        <samp>$ python manage.py createsuperuser</samp>
+        <samp>
+          $ cd ~/Beekeeper-WebUI
+          $ source venv/bin/activate
+          $ cd beekeeper_webui/
+          $ python manage.py createsuperuser
+        </samp>
         <p>You'll then be prompted to enter your credentials like below: </p>
         <img src="{% static 'get_started_guide/credentials.PNG' %}">
         <h3>Adding A User</h3>
