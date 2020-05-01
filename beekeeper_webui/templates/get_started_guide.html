@@ -9,11 +9,11 @@
   <script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script>
 
 </head>
-<body data-spy="scroll" data-target="#toc" class='sticky-top'>
+<body data-spy="scroll" data-target="#toc" class='pv-4'>
   <div class='container'>
     <div class='row'>
       <div class="col-sm-3">
-        <nav id="toc" data-toggle="toc"></nav>
+        <nav id="toc" data-toggle="toc" class='sticky-top'></nav>
       </div>
       <div class="col-sm-9">
         <h1>Get Started With Beekeeper</h1>
@@ -22,7 +22,16 @@
         <p>Beekeeper is a network emulation tool which enables for the configuration of devices and networks within a virtualised domain. Images are uploaded by the user and they can be used to create devices. This guide can serve as a help page or a starting point for new users.</p>
         <h2>User Management</h2>
         <p>To control who can access the software, a login system has been implemented to enable/disable access to select users:</p>
-        <img src="{% static 'get_started_guide/login_page.PNG' %}">
+        <img src="{% static 'get_started_guide/login_page.png' %}">
+        <p>If this is a first install of the software, On your server you'll need to create a user in the CLI of the software, navigating to the <code>Beekeeper-WebUI</code> directory and creating a superuser like so:</p>
+        <kbd>$ cd ~/Beekeeper-WebUI</kbd>
+        <kbd>$ source venv/bin/activate</kbd>
+        <kbd>$ cd beekeeper_webui/</kbd>
+        <kbd>$ python manage.py createsuperuser</kbd>
+        <p>You'll then be prompted to enter your credentials like below: </p>
+        <img src="{% static 'get_started_guide/credentials.png' %}">
+        <p>To create any more users, you'll need to navigate to</p>
+        <p id='window_location'></p>
         <h3>Adding A User</h3>
         <h3>Removing a User</h3>
         <h2>Main Screen</h2>
@@ -38,3 +47,7 @@
     </div>
   </div>
 </body>
+<script>
+  host = window.location.host
+  document.getElementById('window_location').innerText = `http://${host}/admin`
+</script>
