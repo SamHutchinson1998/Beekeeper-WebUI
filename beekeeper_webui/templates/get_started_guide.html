@@ -1,5 +1,5 @@
+{% load static %}
 <head>
-
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">  
   <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
@@ -19,7 +19,10 @@
         <h1>Get Started With Beekeeper</h1>
         <p class='lead'>This user guide will get you familiar with Beekeeper's functions through a tour of the UI as well as basic admin activities</p>
         <h2>Overview<h2>
+        <p>Beekeeper is a network emulation tool which enables for the configuration of devices and networks within a virtualised domain. Images are uploaded by the user and they can be used to create devices. This guide can serve as a help page or a starting point for new users.</p>
         <h2>User Management</h2>
+        <p>To control who can access the software, a login system has been implemented to enable/disable access to select users:</p>
+        <img src="{% static 'get_started_guide/login_page.png' %}"></img>
         <h3>Adding A User</h3>
         <h3>Removing a User</h3>
         <h2>Main Screen</h2>
