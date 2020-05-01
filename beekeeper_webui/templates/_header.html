@@ -18,7 +18,9 @@
         <a href="{% url 'get_started_guide' %}" target="_blank" class="dropdown-item" >Get Started</a>
       </div>
     </div>
-    <button class="btn btn-primary" onclick="window.location.href='{% url 'logout' %}';">Logout</button>
+    <div class="nav navbar-nav navbar-right">
+      <button class="btn btn-primary" onclick="window.location.href='{% url 'logout' %}';">Login</button>
+    </div>
   </div>
   {% else %}
   <div class="nav navbar-nav navbar-right">
