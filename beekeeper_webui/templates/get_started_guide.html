@@ -24,17 +24,19 @@
         <p>To control who can access the software, a login system has been implemented to enable/disable access to select users:</p>
         <img src="{% static 'get_started_guide/login_page.PNG' %}">
         <p>If this is a first install of the software, On your server you'll need to create a user in the CLI of the software, navigating to the <code>Beekeeper-WebUI</code> directory and creating a superuser like so:</p>
-        <samp>
-          $ cd ~/Beekeeper-WebUI
-          $ source venv/bin/activate
-          $ cd beekeeper_webui/
-          $ python manage.py createsuperuser
-        </samp>
+        <kbd>
+          $ cd ~/Beekeeper-WebUI<br />
+          $ source venv/bin/activate<br />
+          $ cd beekeeper_webui/<br />
+          $ python manage.py createsuperuser<br />
+        </kbd>
         <p>You'll then be prompted to enter your credentials like below: </p>
         <img src="{% static 'get_started_guide/credentials.PNG' %}">
         <h3>Adding A User</h3>
         <p>To create any more users, you'll need to navigate to</p>
         <p id='window_location'></p>
+        <p>You'll be presented with a login screen. You can use the credentials created in the user management section to gain access to the admin portal:</p>
+        <img src="{% static 'get_started_guide/django_admin_screen.PNG' %}">
         <h3>Removing a User</h3>
         <h2>Main Screen</h2>
         <h3>Toolbars</h3>
