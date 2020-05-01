@@ -1,3 +1,6 @@
+.pSpacing {
+  padding-top: 10px;
+}
 #sidebarContainer {
   position: absolute;
   overflow: hidden;
