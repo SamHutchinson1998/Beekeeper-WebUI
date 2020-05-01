@@ -1,26 +1,29 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   {% load static %}
-  <a class="navbar-brand" href="#">
-    <img src="{% static 'logos/uoh-black.svg' %}" width="90" height="40" alt=""> 
-  </a>
-  {% if user.is_authenticated %}
-    <div class="dropdown mr-auto nav-item">
-      <a href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">File<span class="caret"></span></a>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenu2" >
-        <a href='#mymodal' data-toggle="modal" data-target="#mymodal"class="dropdown-item" >Upload Disk Image</a>
-        <a href='#removeImageModal' data-toggle="modal" data-target="#removeImageModal"class="dropdown-item" >Remove Disk Image</a>
+  <div clas='navbar-nav mr-auto'>
+    <a class="navbar-brand" href="#">
+      <img src="{% static 'logos/uoh-black.svg' %}" width="90" height="40" alt=""> 
+    </a>
+    {% if user.is_authenticated %}
+      <div class="dropdown mr-auto nav-item">
+        <a href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">File<span class="caret"></span></a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenu2" >
+          <a href='#mymodal' data-toggle="modal" data-target="#mymodal"class="dropdown-item" >Upload Disk Image</a>
+          <a href='#removeImageModal' data-toggle="modal" data-target="#removeImageModal"class="dropdown-item" >Remove Disk Image</a>
+        </div>
       </div>
-    </div>
-    <div class="dropdown mr-auto nav-item">
-      <a href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Help<span class="caret"></span></a>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenu2" >
-        <a href="{% url 'get_started_guide' %}" target="_blank" class="dropdown-item" >Get Started</a>
+      <div class="dropdown mr-auto nav-item">
+        <a href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Help<span class="caret"></span></a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenu2" >
+          <a href="{% url 'get_started_guide' %}" target="_blank" class="dropdown-item" >Get Started</a>
+        </div>
       </div>
-    </div>
-    <button class="btn btn-primary" onclick="window.location.href='{% url 'logout' %}';">Logout</button>
-  {% else %}
-    <button class="btn btn-primary" onclick="window.location.href='{% url 'login' %}';">Login</button>
-  {%endif%}
+      <button class="btn btn-primary" onclick="window.location.href='{% url 'logout' %}';">Logout</button>
+    {% else %}
+      <button class="btn btn-primary" onclick="window.location.href='{% url 'login' %}';">Login</button>
+    {%endif%}
+  </div>
+
 </nav>
 
 {% include '_add_image_form.html' %}
