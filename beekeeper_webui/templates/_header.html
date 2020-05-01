@@ -5,10 +5,16 @@
   </a>
   {% if user.is_authenticated %}
     <div class="dropdown mr-auto nav-item">
-      <a href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">File <span class="caret"></span></a>
+      <a href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">File<span class="caret"></span></a>
       <div class="dropdown-menu" aria-labelledby="dropdownMenu2" >
         <a href='#mymodal' data-toggle="modal" data-target="#mymodal"class="dropdown-item" >Upload Disk Image</a>
         <a href='#removeImageModal' data-toggle="modal" data-target="#removeImageModal"class="dropdown-item" >Remove Disk Image</a>
+      </div>
+    </div>
+    <div class="dropdown mr-auto nav-item">
+      <a href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Help<span class="caret"></span></a>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenu2" >
+        <a href='#get_started' target="_blank" class="dropdown-item" >Get Started</a>
       </div>
     </div>
     <button class="btn btn-primary" onclick="window.location.href='{% url 'logout' %}';">Logout</button>
