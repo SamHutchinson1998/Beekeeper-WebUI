@@ -122,8 +122,40 @@
         <img style="padding: 10px;"  src="{% static 'get_started_guide/remove_image.gif' %}"/>
         <p>Multiple disk images can be selected for removal for shift clicking or ctrl clicking the names in the selection box.</p>
         <h3>Device Creation</h3>
+        <img style="padding: 10px;"  src="{% static 'get_started_guide/add_device.gif' %}"/>
+        <p>Dragging a device onto the canvas produces a form in which the specifications of the device are entered, such as CPU and RAM. These can be entered via a slider (if one is provided) or via a text box.</p>
         <h2>Device/Context Menus</h2>
+        <img style="padding: 10px;"  src="{% static 'get_started_guide/context_menus.png' %}"/>
+        <p class='pSpacing'>Right clicking on a device generates a context menu to provide functionality specific to that device. Connecting/unconnecting to the internet will create another NIC on the device that enables full internet activity with DNS resolution.</p>
         <h3>Telnet/VNC</h3>
+        <p>Telnet and VNC are available for accessing a device.</p>
+        <h2>VNC</h2>
+        <p>VNC will open a seperate window displaying a desktop screen, the same as display output for a given device. This relies on a websocket for proxying connections, that comes installed with Beekeeper. So if it does not work, this would mean that it hasn't started. There is a script <code>start_ws.sh</code> in the /Beekeeper-WebUI directory. This can be executed using:</p>
+        <kbd><br />$ sudo ./start_ws.sh<br /></kbd>
+        <p>If the websocket is already running, it may need to be restarted.</p>
+        <h2>Telnet</h2>
+        <p>Some devices, such as Cisco routers/switches, will run in headless mode and won't really have a desktop which the user can interact with using VNC.</p>
+        <p>Telnet makes a connection through to the serial port of the device, giving a connection through the the Command Line Interface of a device. this is supported on a few browsers:</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Web Browser</th>
+              <th>Google Chrome</th>
+              <th>Microsoft Edge</th>
+              <th>Mozilla Firefox</th>
+              <th>Safari (MacOS)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>Support for Telnet</tr>
+            <tr><span class="glyphicon glyphicon-ok"></span></tr>
+            <tr><span class="glyphicon glyphicon-remove"></span></tr>
+            <tr><span class="glyphicon glyphicon-ok"></span></tr>
+            <tr><span class="glyphicon glyphicon-remove"></span></tr>
+          </tbody>
+        </table>
+        <p class='pSpacing'>Telnet is configured for the device directly by Beekeeper, so where your browser does not support it, it will provide the host and port in the search bar of the browser which can be used for telnet from a desktop client such as the terminal or PuTTY:</p>
+        <img style="padding: 10px;"  src="{% static 'get_started_guide/telnet.png' %}"/>
       </div>
     </div>
   </div>
