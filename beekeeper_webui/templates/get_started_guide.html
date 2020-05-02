@@ -72,8 +72,7 @@
           <div class='col-sm-8'>
             <ol class='pSpacing'>
               <li>Sidebar contains all the devices which have been uploaded through the program. These can be .iso files (Disk Images) or a virtual hard disk such as a .qcow2 file</li>
-              <li>Search function at the top allows a device to be searched by their name, as displayed below each icon, or by their function</li>
-              <li>To create a device, they are dragged from here onto the canvas</li>
+              <li>Search function at the top allows a device to be searched by their name, as displayed below each icon, or by their function. Available device options that can be searched are displayed below:</li>
               <table class='table pSpacing'>
                 <thead>
                   <tr>
@@ -102,10 +101,18 @@
                     <td>server</td>
                 </tbody>
               </table>
+              <li>To create a device, they are dragged from the sidebar onto the canvas</li>
             </ol>
           </div>
         </div>
         <h3>Main Canvas</h3>
+        <img style="padding: 10px;"  src="{% static 'get_started_guide/main_canvas.gif' %}"/>
+        <p class='pSpacing'>Aside from the ability to draw networks, key bindings enable for devices and ethernet cables to be deleted. Likewise, devices and labels can be dragged around too. A confirmation message should appear in the top right-hand corner.</p>
+        <p>Further to this, a device also has a status light showing green if its online and red if not. There's also a grey status light; this means that: </p>
+        <ul>
+          <li>The device does not exist, or</li>
+          <li>There has been a permission error in the host OS whilst retrieving the status of a device</li>
+        </ul>
         <h2>Forms</h2>
         <h3>Image Upload/Removal</h3>
         <h3>Device Creation</h3>
