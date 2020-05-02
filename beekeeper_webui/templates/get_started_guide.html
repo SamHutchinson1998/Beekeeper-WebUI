@@ -131,8 +131,8 @@
         <p>Telnet and VNC are available for accessing a device.</p>
         <h2>VNC</h2>
         <p>VNC will open a seperate window displaying a desktop screen, the same as display output for a given device. This relies on a websocket for proxying connections, that comes installed with Beekeeper. So if it does not work, this would mean that it hasn't started. There is a script <code>start_ws.sh</code> in the /Beekeeper-WebUI directory. This can be executed using:</p>
-        <kbd><br />$ sudo ./start_ws.sh<br /></kbd>
-        <p>If the websocket is already running, it may need to be restarted.</p>
+        <kbd>$ sudo ./start_ws.sh<br /></kbd>
+        <p class='pSpacing'>If the websocket is already running, it may need to be restarted.</p>
         <h2>Telnet</h2>
         <p>Some devices, such as Cisco routers/switches, will run in headless mode and won't really have a desktop which the user can interact with using VNC.</p>
         <p>Telnet makes a connection through to the serial port of the device, giving a connection through the the Command Line Interface of a device. this is supported on a few browsers:</p>
@@ -147,11 +147,13 @@
             </tr>
           </thead>
           <tbody>
-            <tr>Support for Telnet</tr>
-            <tr><span class="glyphicon glyphicon-ok"></span></tr>
-            <tr><span class="glyphicon glyphicon-remove"></span></tr>
-            <tr><span class="glyphicon glyphicon-ok"></span></tr>
-            <tr><span class="glyphicon glyphicon-remove"></span></tr>
+            <tr>
+              <th>Support for Telnet</th>
+              <th><span class="glyphicon glyphicon-ok"></span></th>
+              <th><span class="glyphicon glyphicon-remove"></span></th>
+              <th><span class="glyphicon glyphicon-ok"></span></th>
+              <th><span class="glyphicon glyphicon-remove"></span></th>
+            </tr>
           </tbody>
         </table>
         <p class='pSpacing'>Telnet is configured for the device directly by Beekeeper, so where your browser does not support it, it will provide the host and port in the search bar of the browser which can be used for telnet from a desktop client such as the terminal or PuTTY:</p>
