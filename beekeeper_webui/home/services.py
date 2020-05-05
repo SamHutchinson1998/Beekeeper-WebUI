@@ -109,7 +109,7 @@ def create_virtual_machine(cell_id):
        #<target type='serial' port='0'/>
       #</console>
   #print(xml)
-  spawn_machine(disk_size, name, xml, token)
+  spawn_machine(disk_size, name, xml, token, disk_image.extension())
 
 def create_disks(device_name, disk_image):
   if disk_image.extension() == 'iso':
@@ -153,14 +153,15 @@ def disks_for_qcow2(disk_image, device_name):
   """
   return xml
 
-def spawn_machine(disk_size, name, xml, token):
+def spawn_machine(disk_size, name, xml, token, image_file_type):
   config = xml
   conn = libvirt.open('qemu:///system')
   dom = conn.defineXML(config)
   if dom == None:
     print('Failed to define a domain from an XML definition.', file=sys.stderr)
   else:
-    os.system(f'qemu-img create -f raw /var/lib/libvirt/images/{name}.qcow2 {disk_size}G')
+    if image_file_type == 'iso': # if disk image is qcow2, no need to create another qcow2 image which overwrites it
+      os.system(f'qemu-img create -f raw /var/lib/libvirt/images/{name}.qcow2 {disk_size}G')
     if dom.create() < 0:
       print('Can not boot guest domain.', file=sys.stderr)
     else:
