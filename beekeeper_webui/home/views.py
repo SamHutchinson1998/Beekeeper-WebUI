@@ -249,11 +249,3 @@ class HomePageView(TemplateView):
 
   def get_started_guide(request):
     return render(request, 'get_started_guide.html')
-
-  def download_device(request):
-    cell_id = request.GET.get('cell_id', None)
-    device_name = Device.objects.get(cell_id=cell_id).name
-    file_path = get_device_file(device_name)
-    response = HttpResponse(content_type='application/force-download')
-    response['Content-Disposition'] = 'attachment; filename=%s' % smart_str(file_path)
-    return response

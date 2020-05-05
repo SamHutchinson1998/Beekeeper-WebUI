@@ -98,15 +98,3 @@ function getVNC(cell)
   window.open( '/get_device_vnc?cell_id='+id, '_blank');
 }
 
-function deployDevice(cell)
-{
-  var id = cell.getId();
-  $.ajax({
-    url: 'download_device',
-    data: {'cell_id': id},
-    success: function(result){
-      toastr.warning('Download in progress');
-    }
-  });
-}
-

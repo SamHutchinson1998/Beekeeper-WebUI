@@ -399,22 +399,6 @@ def disconnect_from_internet(device_name):
   domain.detachDeviceFlags(xml, libvirt.VIR_DOMAIN_AFFECT_CONFIG)
   return True
 
-def get_device_file(device_name):
-  conn = libvirt.open('qemu:///system')
-  domain = conn.lookupByName(device_name)
-  conn.close()
-  raw_xml = domain.XMLDesc(0)
-  xml = minidom.parseString(raw_xml)
-  components = xml.getElementsByTagName('disk')
-  for component in components:
-    device = component.getAttribute('device')
-    if device == 'disk':
-      child_nodes = component.childNodes
-      for node in child_nodes:
-        if node == 'source':
-          vm_file = node.getAttribute('file')
-          return vm_file
-
 #-----------------------------------------------------
 
 # Code under this line is research and does not contribute to the running of the program
