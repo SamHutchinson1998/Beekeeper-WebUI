@@ -19,9 +19,6 @@ function getDeviceMenu(graph)
         menu.addItem('VNC', null, function(){
           getVNC(cell);
         });
-        menu.addItem('Download', null, function(){
-          deployDevice(cell);
-        });
         menu.addItem('Delete', null, function(){
           removeDevices(graph);
         });
