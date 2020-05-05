@@ -30,7 +30,7 @@ class Device(models.Model):
   disk_size = models.IntegerField()
   cpus = models.IntegerField()
   cell_id = models.IntegerField(default='0')
-  disk_image = models.ForeignKey(DiskImage, on_delete=models.CASCADE)
+  disk_image = models.ForeignKey(DiskImage, on_delete=models.SET_NULL)
   token = models.CharField(max_length=64,default='0')
   console_port = models.IntegerField(default='10000')
 
