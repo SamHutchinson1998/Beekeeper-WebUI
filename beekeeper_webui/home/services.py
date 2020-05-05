@@ -140,7 +140,6 @@ def disks_for_qcow2(disk_image, device_name):
   full_image_file_path = os.path.join(f'{settings.MEDIA_ROOT}/', image_file.name)
   new_image_file_path = '/var/lib/libvirt/images/'
   os.system(f'cp {full_image_file_path} {new_image_file_path}')
-  os.system(f'mv {new_image_file_path}{image_file.name} {new_image_file_path}{device_name}')
   image_name = image_file.name.replace('disk_images/', '')
   os.system(f'mv {new_image_file_path}{image_name} {new_image_file_path}{device_name}')
   xml = f"""
