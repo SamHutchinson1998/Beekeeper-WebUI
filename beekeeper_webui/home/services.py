@@ -115,7 +115,7 @@ def create_disks(device_name, disk_image):
   if disk_image.extension() == 'iso':
     return disks_for_iso(device_name, disk_image)
   if disk_image.extension() == 'qcow2':
-    return disks_for_qcow2(disk_image)
+    return disks_for_qcow2(disk_image, device_name)
 
 def disks_for_iso(device_name, disk_image):
   xml = f"""
@@ -135,17 +135,17 @@ def disks_for_iso(device_name, disk_image):
     """
   return xml
 
-def disks_for_qcow2(disk_image):
+def disks_for_qcow2(disk_image, device_name):
   image_file = disk_image.disk_image
   full_image_file_path = os.path.join(f'{settings.MEDIA_ROOT}/', image_file.name)
   new_image_file_path = '/var/lib/libvirt/images/'
   os.system(f'cp {full_image_file_path} {new_image_file_path}')
-
+  os.system(f'mv {new_image_file_path}{image_file.name} {new_image_file_path}{device_name}')
   image_name = image_file.name.replace('disk_images/', '')
   xml = f"""
     <disk type='file' device='disk'>
       <driver name='qemu' type='qcow2' cache='none'/>
-      <source file='{new_image_file_path}{image_name}'/> # uses the qcow2 file copied over from the media directory
+      <source file='{new_image_file_path}{device_name}'/> # uses the qcow2 file copied over from the media directory
       <backingstore/>
       <driver name='qemu' type='raw'/>
       <target dev='vda' bus='virtio'/>
